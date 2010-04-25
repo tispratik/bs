@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_many :projects, :through => :project_roles
   has_many :tasks, :through => :projects
   has_many :ac_proj_op_tasks, :through => :projects, :source => :tasks, :conditions => "projects.status = #{Decode::BS_PROJ_STATUS_AC} AND tasks.status=#{Decode::BS_TASK_STATUS_OP}"
-  #has_one :contact, :as => :contactable
   has_many :calendars, :as => :calendarable
   has_many :events, :through => :calendars
   has_many :project_invitations
@@ -17,8 +16,10 @@ class User < ActiveRecord::Base
   alias :roles :project_roles
   accepts_nested_attributes_for :usr, :ucontact
   
-  validates_presence_of :login_email
-  
+  validates_presence_of :login_email, :username
+  validates_associated :usr, :ucontact
+  validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? }
+
   def validate
     validate_login_email
   end

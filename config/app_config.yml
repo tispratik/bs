@@ -1,6 +1,5 @@
 development:
   domain: localhost:3000
-  db_schema_name: backstage1_3dev
   smtp_address: "smtp.gmail.com"
   smtp_port: 587
   smtp_domain: "www.gmail.com"
@@ -12,7 +11,6 @@ test:
 
 production:
   domain: example.com
-  db_schema_name: backstage1_3prod
   smtp_address: ""
   smtp_port: 999
   smtp_domain: ""
