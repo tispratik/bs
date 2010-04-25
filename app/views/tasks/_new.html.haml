@@ -1,0 +1,11 @@
+- semantic_form_for [@project, @project.tasks.new] do |f|
+  - f.inputs do
+    = f.input :name
+    = f.input :description
+    = f.input :assign_to, :as => :select, :collection => @project.users, :prompt => false
+    = f.input :due_date, :as => :string, :input_html => { :class => 'datepick', :name => 'task[due_date]' }
+    = f.input :task_type, :as => :select, :collection => Task::TYPES, :prompt => false
+    = f.input :priority, :as => :select, :collection => Task::PRIORITIES, :prompt => false
+  - f.buttons do
+    = link_to "Go back", project_path(@project)
+    = f.commit_button "Create Task"

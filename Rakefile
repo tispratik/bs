@@ -8,3 +8,11 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+begin
+  require 'delayed/tasks'
+  require 'thinking_sphinx/tasks'
+  require 'thinking_sphinx/deltas/delayed_delta/tasks'
+rescue LoadError
+  STDERR.puts "Run `rake gems:install` to install required gems"
+end

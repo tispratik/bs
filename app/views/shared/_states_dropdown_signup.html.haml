@@ -1,0 +1,4 @@
+- if @states.nil?
+- @states = []
+- end
+= collection_select(:contact, :state, @states, :iso, :name, {:prompt => true, :selected => @user.contact.state}, {})

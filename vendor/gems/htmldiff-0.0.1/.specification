@@ -1,0 +1,63 @@
+--- !ruby/object:Gem::Specification 
+name: htmldiff
+version: !ruby/object:Gem::Version 
+  version: 0.0.1
+platform: ruby
+authors: 
+- Nathan Herald
+autorequire: htmldiff
+bindir: bin
+cert_chain: []
+
+date: 2008-11-20 00:00:00 -06:00
+default_executable: 
+dependencies: []
+
+description: HTML diffs of text (borrowed from a wiki software I no longer remember)
+email: nathan@myobie.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README
+- LICENSE
+- TODO
+files: 
+- LICENSE
+- README
+- Rakefile
+- TODO
+- lib/htmldiff.rb
+- spec/htmldiff_spec.rb
+- spec/spec_helper.rb
+has_rdoc: true
+homepage: http://github.com/myobie/htmldiff
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 2
+summary: HTML diffs of text (borrowed from a wiki software I no longer remember)
+test_files: []
+

@@ -1,0 +1,45 @@
+- content_for :sidebar do
+  %h1 New Wiki Page
+    
+  - semantic_form_for [@project, @project.wiki_pages.new] do |f|
+    - f.inputs do
+      =f .input :title
+    - f.buttons do
+      = f.commit_button "Create CoEdit Page"
+
+%table
+  %tr
+    %th
+      Title
+    %th
+      Updated by
+    %th
+      Last Update
+  - @wiki_pages.each do |wiki_page|
+    %tr{:class => cycle("even", "odd")}
+      %td
+        - if wiki_page.deleted_at?
+          %del
+            = link_to truncate(wiki_page.title, 55, "..."), [@project, wiki_page]
+            = "(" + wiki_page.version.to_s() + ")"
+        - else
+          = link_to truncate(wiki_page.title, 55, "..."), [@project, wiki_page]
+          = "(" + wiki_page.version.to_s() + ")"
+      %td
+        - if wiki_page.version > 1
+          = h truncate(wiki_page.versions.last.user.to_s(), 20, "...")
+        - else
+          = h truncate(wiki_page.creator.to_s(), 20, "...")
+      %td
+        - if wiki_page.version > 1
+          = wiki_page.versions.last.created_at
+      - unless wiki_page.deleted_at?
+        %td
+          = link_to image_tag('edit.png'), [:edit, @project, wiki_page]
+        %td
+          = link_to "Diff", [:diff, @project, wiki_page] if wiki_page.version > 1
+        %td
+          = link_to image_tag('delete.png'), [@project, wiki_page], :method => :delete
+      - else
+        %td
+          = link_to "Reopen", [:restore, @project, wiki_page]

@@ -1,0 +1,13 @@
+:javascript
+  wmd_options = {
+    output: "Markdown"
+  }
+
+= javascript_include_tag "wmd/wmd"
+
+- semantic_form_for [@project, @wiki_page] do |f|
+  - f.inputs do
+    = f.input :title
+    = f.input :content
+  - f.buttons do
+    = f.commit_button "Update"

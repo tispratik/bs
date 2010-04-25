@@ -1,0 +1,14 @@
+%h2
+  Upcoming Events
+  
+%table.ec-row-table
+  %tr
+    - (Time.now.to_date..(Time.now+5.days).to_date).each_with_index do |date, i|
+      %td.ec-event-cell
+        = "Today, " if i == 0
+        = "Tomorrow, " if i == 1
+        = date.strftime("%A")
+        - events.each do |event|
+          - if event.start_at.to_date == date || event.end_at.to_date == date
+            %p
+              = link_to event, event

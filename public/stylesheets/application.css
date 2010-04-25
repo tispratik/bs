@@ -1,0 +1,589 @@
+form.formtastic ul, form.formtastic ol, form.formtastic legend, form.formtastic p {
+  margin: 0;
+  padding: 0; }
+form.formtastic li {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px; }
+form.formtastic fieldset {
+  display: block;
+  *display: inline-block; }
+  form.formtastic fieldset:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+form.formtastic abbr, form.formtastic acronym {
+  border: 0;
+  font-variant: normal;
+  font-weight: normal; }
+form.formtastic ol, form.formtastic ul {
+  list-style: none; }
+form.formtastic label {
+  display: block;
+  *display: inline-block; }
+  form.formtastic label:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+form.formtastic input, form.formtastic textarea {
+  vertical-align: middle; }
+form.formtastic .check_boxes input, form.formtastic .radio input {
+  margin: 0; }
+form.formtastic .check_boxes label, form.formtastic .radio label {
+  cursor: pointer; }
+form.formtastic .hidden {
+  display: none; }
+form.formtastic .date li, form.formtastic .time li, form.formtastic .datetime li {
+  float: left;
+  width: auto;
+  clear: none; }
+form.formtastic .date label, form.formtastic .time label, form.formtastic .datetime label {
+  display: none;
+  width: auto; }
+form.formtastic .date input, form.formtastic .time input, form.formtastic .datetime input {
+  display: inline;
+  margin: 0;
+  padding: 0; }
+form.formtastic .errors {
+  list-style: square; }
+  form.formtastic .errors li {
+    padding: 0;
+    border: none;
+    display: list-item;
+    float: none;
+    clear: both; }
+form.formtastic .inputs {
+  z-index: 99; }
+form.formtastic .buttons li {
+  float: left; }
+form.formtastic li {
+  *display: inline-block;
+  display: block; }
+  form.formtastic li:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  form.formtastic li fieldset {
+    border: none;
+    position: relative;
+    margin-top: 0px; }
+  form.formtastic li legend {
+    display: block;
+    margin-bottom: 0; }
+  form.formtastic li .label {
+    display: block;
+    clear: both;
+    background: transparent; }
+  form.formtastic li ol {
+    float: left;
+    margin: 0; }
+    form.formtastic li ol li {
+      padding: 0;
+      border: 0;
+      display: inline; }
+form.formtastic fieldset {
+  width: 100%; }
+form.formtastic label {
+  float: left;
+  width: 20%;
+  text-align: left;
+  padding-left: 0; }
+form.formtastic li ol {
+  padding: 0 10% 0 20%; }
+form.formtastic li fieldset legend, form.formtastic li fieldset legend .label {
+  display: block; }
+form.formtastic li fieldset legend {
+  width: 20%;
+  text-align: left;
+  display: inline;
+  float: left;
+  clear: none;
+  padding: 0;
+  width: 100%; }
+form.formtastic li fieldset .label {
+  position: absolute;
+  width: 20%;
+  top: 0px;
+  left: 0; }
+form.formtastic li fieldset label {
+  padding-left: 0; }
+form.formtastic li fieldset label, form.formtastic li fieldset input {
+  width: auto;
+  display: inline;
+  clear: none;
+  text-align: left; }
+form.formtastic li fieldset select {
+  padding: 0;
+  clear: both;
+  display: block; }
+form.formtastic .inline-hints, form.formtastic .inline-errors, form.formtastic .errors {
+  margin: 0 0 0 20%; }
+form.formtastic input, form.formtastic textarea {
+  width: 70%; }
+form.formtastic select {
+  width: auto; }
+form.formtastic .checkbox li, form.formtastic .radio li {
+  display: block;
+  clear: both; }
+form.formtastic .checkbox input, form.formtastic .radio input {
+  border: none; }
+form.formtastic .buttons {
+  padding-left: 20%;
+  width: 80%; }
+  form.formtastic .buttons input {
+    width: auto; }
+  form.formtastic .buttons li {
+    width: auto;
+    float: left;
+    display: inline; }
+form.formtastic #errorExplanation {
+  margin-left: 20%;
+  width: 70%; }
+form.formtastic li {
+  padding: 5px 0px; }
+form.formtastic li.boolean label {
+  padding-left: 20%;
+  width: 100%; }
+  form.formtastic li.boolean label input {
+    width: auto;
+    margin-right: 0.5em; }
+form.formtastic label {
+  line-height: 1.4em;
+  font-size: 13px; }
+form.formtastic label.error {
+  margin-left: 20%;
+  color: #f22; }
+form.formtastic p.inline-errors {
+  color: #f22; }
+form.formtastic p.inline-hints {
+  color: #777;
+  font-style: italic;
+  font-size: 11px; }
+form.formtastic .date legend label, form.formtastic .time legend label, form.formtastic .datetime legend label {
+  display: block !important; }
+form.formtastic.labels-within-fields label.error {
+  padding: 0;
+  margin: 0; }
+form.formtastic.stack ul, form.formtastic.stack ol, form.formtastic.stack legend, form.formtastic.stack p {
+  margin: 0;
+  padding: 0; }
+form.formtastic.stack li {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px; }
+form.formtastic.stack fieldset {
+  display: block;
+  *display: inline-block; }
+  form.formtastic.stack fieldset:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+form.formtastic.stack abbr, form.formtastic.stack acronym {
+  border: 0;
+  font-variant: normal;
+  font-weight: normal; }
+form.formtastic.stack ol, form.formtastic.stack ul {
+  list-style: none; }
+form.formtastic.stack label {
+  display: block;
+  *display: inline-block; }
+  form.formtastic.stack label:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+form.formtastic.stack input, form.formtastic.stack textarea {
+  vertical-align: middle; }
+form.formtastic.stack .check_boxes input, form.formtastic.stack .radio input {
+  margin: 0; }
+form.formtastic.stack .check_boxes label, form.formtastic.stack .radio label {
+  cursor: pointer; }
+form.formtastic.stack .hidden {
+  display: none; }
+form.formtastic.stack .date li, form.formtastic.stack .time li, form.formtastic.stack .datetime li {
+  float: left;
+  width: auto;
+  clear: none; }
+form.formtastic.stack .date label, form.formtastic.stack .time label, form.formtastic.stack .datetime label {
+  display: none;
+  width: auto; }
+form.formtastic.stack .date input, form.formtastic.stack .time input, form.formtastic.stack .datetime input {
+  display: inline;
+  margin: 0;
+  padding: 0; }
+form.formtastic.stack .errors {
+  list-style: square; }
+  form.formtastic.stack .errors li {
+    padding: 0;
+    border: none;
+    display: list-item;
+    float: none;
+    clear: both; }
+form.formtastic.stack .inputs {
+  z-index: 99; }
+form.formtastic.stack .buttons li {
+  float: left; }
+form.formtastic.stack li {
+  *display: inline-block;
+  display: block; }
+  form.formtastic.stack li:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  form.formtastic.stack li fieldset {
+    border: none;
+    position: relative;
+    margin-top: 0px; }
+  form.formtastic.stack li legend {
+    display: block;
+    margin-bottom: 0; }
+  form.formtastic.stack li .label {
+    display: block;
+    clear: both;
+    background: transparent; }
+  form.formtastic.stack li ol {
+    float: left;
+    margin: 0; }
+    form.formtastic.stack li ol li {
+      padding: 0;
+      border: 0;
+      display: inline; }
+form.formtastic.stack fieldset {
+  width: 100%; }
+form.formtastic.stack ol {
+  padding-left: 0; }
+form.formtastic.stack input {
+  clear: both;
+  float: none; }
+form.formtastic.stack li {
+  display: block;
+  clear: both;
+  float: none;
+  width: 100%; }
+  form.formtastic.stack li ol {
+    padding: 0; }
+  form.formtastic.stack li li {
+    clear: none;
+    width: auto; }
+  form.formtastic.stack li fieldset legend, form.formtastic.stack li fieldset legend .label {
+    display: block;
+    clear: both; }
+  form.formtastic.stack li fieldset .label {
+    position: relative; }
+  form.formtastic.stack li fieldset label, form.formtastic.stack li fieldset input {
+    width: auto; }
+form.formtastic.stack .date ol, form.formtastic.stack .time ol, form.formtastic.stack .datetime ol {
+  width: 100%; }
+form.formtastic.stack .date li, form.formtastic.stack .time li, form.formtastic.stack .datetime li {
+  display: inline;
+  clear: none;
+  float: left;
+  padding-right: 0; }
+form.formtastic.stack .checkbox li, form.formtastic.stack .radio li {
+  display: block; }
+form.formtastic.stack .checkbox input, form.formtastic.stack .radio input {
+  border: none; }
+form.formtastic.stack label {
+  display: block;
+  clear: both;
+  float: none;
+  width: 92%; }
+form.formtastic.stack input, form.formtastic.stack textarea {
+  width: 92%; }
+form.formtastic.stack select {
+  width: auto; }
+form.formtastic.stack .errors li {
+  display: list-item; }
+form.formtastic.stack .buttons ol {
+  padding-left: 0;
+  padding-right: 0; }
+form.formtastic.stack .buttons li {
+  float: left;
+  width: auto;
+  clear: none;
+  display: inline; }
+form.formtastic.stack .buttons input {
+  width: auto; }
+form.formtastic.stack #errorExplanation {
+  width: 100%; }
+form.formtastic.stack .label {
+  #left: -0.5em;
+  #position: relative; }
+form.formtastic.stack li.boolean label {
+  padding-left: 0; }
+
+html, body {
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: #eee;
+  font-family: 'Lucida Grande', Verdana, Arial, Tahoma, Helvetica;
+  font-size: 0.75em; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  color: #111; }
+
+h1 {
+  font-size: 2em;
+  line-height: 1;
+  margin-bottom: 0.5em; }
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.75em; }
+
+h3 {
+  font-size: 1em;
+  line-height: 1;
+  margin-bottom: 1em; }
+
+#flash_messages .flash {
+  padding: 5px 8px;
+  margin: 10px 0; }
+#flash_messages .flash.notice {
+  background-color: #CFC;
+  border: solid 1px #6C6; }
+#flash_messages .flash.alert {
+  background-color: #FCC;
+  border: solid 1px #C66; }
+#flash_messages .flash.error {
+  background-color: #FCC;
+  border: solid 1px #C66; }
+
+#preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+  #preloader #preloader-spinner {
+    position: relative;
+    top: 40%;
+    left: 45%;
+    width: 10%;
+    height: 50px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 0px 0px 8px #000;
+    -moz-box-shadow: 0px 0px 8px #000;
+    -webkit-box-shadow: 0px 0px 8px #000; }
+    #preloader #preloader-spinner img {
+      margin: 8px; }
+
+#container {
+  margin: 10px 20px; }
+
+#header {
+  margin-bottom: 10px;
+  text-align: right; }
+  #header a {
+    padding: 2px 8px; }
+  #header .links a.orange {
+    background-color: #FFFED1;
+    color: black;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-color: #D1D1CD;
+    border-style: solid;
+    border-width: 2px; }
+  #header .status {
+    margin-left: 20px; }
+
+#sidebar {
+  width: 20%; }
+  #sidebar h1 {
+    background-color: #E1EEFA;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    font-size: 1.5em;
+    line-height: 1; }
+  #sidebar .home {
+    padding: 5px; }
+    #sidebar .home a {
+      text-align: left;
+      padding: 0px 5px 5px 5px;
+      font-size: 1.25em;
+      text-decoration: none;
+      color: #636162; }
+  #sidebar .home.current {
+    background-color: #fff; }
+    #sidebar .home.current a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #FF5900; }
+  #sidebar .projects .project {
+    padding: 5px; }
+    #sidebar .projects .project a {
+      text-decoration: none;
+      color: #636162; }
+  #sidebar .projects .project.current {
+    background-color: #fff; }
+    #sidebar .projects .project.current a {
+      color: #FF5900;
+      text-decoration: none;
+      font-weight: bold;
+      color: #FF5900; }
+
+#content {
+  width: 76%;
+  float: right;
+  padding: 10px 2%;
+  background-color: #fff; }
+  #content h1 {
+    text-align: center;
+    padding: 10px 30px 10px 30px;
+    background-color: #D0E4F5; }
+  #content .menu a {
+    padding: 2px 10px 2px 10px; }
+  #content .menu a.current {
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: #FF5900; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.clear {
+  clear: both; }
+
+.hide {
+  display: none; }
+
+.green {
+  color: #0f0; }
+
+.red {
+  color: #faa; }
+
+.content_20 {
+  width: 20%; }
+
+.content_80 {
+  width: 80%; }
+
+.content_70 {
+  width: 70%; }
+
+table td, table th {
+  padding: 10px; }
+
+.even {
+  background-color: #F0F8FF; }
+
+ins.diffmod, ins.diffins {
+  background-color: #dfd; }
+
+del.diffmod, del.diffdel {
+  background-color: #faa; }
+
+#comments .comment {
+  box-shadow: 0px 0px 4px #ccc;
+  -moz-box-shadow: 0px 0px 4px #ccc;
+  -webkit-box-shadow: 0px 0px 4px #ccc;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 1px; }
+  #comments .comment .comment-header {
+    cursor: pointer; }
+    #comments .comment .comment-header .user-image {
+      margin-right: 5px; }
+    #comments .comment .comment-header .user-image img {
+      width: 20px;
+      height: 20px; }
+    #comments .comment .comment-header .source {
+      color: #aaa; }
+    #comments .comment .comment-header .short-message {
+      color: #aaa; }
+
+#new_comment_form {
+  box-shadow: 0px 0px 4px #ccc;
+  -moz-box-shadow: 0px 0px 4px #ccc;
+  -webkit-box-shadow: 0px 0px 4px #ccc;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 10px; }
+  #new_comment_form #comment_message {
+    width: 95%;
+    height: 100px; }
+  #new_comment_form fieldset.buttons {
+    padding: 0; }
+
+span.match {
+  background-color: #ffa; }
+
+#articles .container {
+  padding-bottom: 10px; }
+#articles .source {
+  background-color: #E8E8E8;
+  color: #A8A8A8;
+  padding-bottom: 1px;
+  margin-top: 2px;
+  font-size: 1em; }
+#articles .article {
+  padding: 2px; }
+  #articles .article > .left {
+    width: 70%; }
+  #articles .article .author {
+    margin-right: 10px; }
+    #articles .article .author img {
+      width: 20px;
+      height: 20px; }
+  #articles .article .title {
+    font-size: 1em;
+    padding-left: 10px; }
+    #articles .article .title .type {
+      color: #aaa; }
+  #articles .article .right {
+    color: #575455;
+    font-size: 1em;
+    text-align: right; }
+  #articles .article .content {
+    padding: 10px; }
+
+.tags #article_tag_list {
+  width: 60%; }
+
+#search_form {
+  padding-left: 100px;
+  margin-bottom: 10px; }
+  #search_form #advanced_search input[type=text] {
+    width: 60%; }
+  #search_form #advanced_search input[type=text]#search_citation_date {
+    width: 100px; }
+
+#search_form.loading {
+  background: url("../images/spinner.gif") left top no-repeat; }
+
+#attachments .attachment {
+  border: 2px solid #eee;
+  margin: 5px 0px;
+  padding: 5px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px; }

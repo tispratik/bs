@@ -1,0 +1,30 @@
+- if logged_in?
+  - content_for :sidebar do
+    = render :partial => "projects/my", :locals => {:user => current_user}
+    
+- form_tag '/users', :method => :get do
+  #content_80
+    - if @users.empty?
+      %b
+        No members yet for this project !
+    - else
+      %table.chapter_table
+        %tr.header
+          %th
+          %th
+            = sort_link 'Name', :first_name
+          %th
+            One Line Bio
+        - @users.each do |user|
+          %tr{ :class => cycle(:odd, :even) }
+            %td
+              = image_tag(profile_image(user.contact.email), {:width => 50, :height => 50})
+            %td
+              = url_name(user, "users")
+            %td
+              = user.one_line_bio
+        %tr
+        %tr
+        %tr{ :align => "right" }
+          %td{ :colspan => "5" }
+            = will_paginate @users

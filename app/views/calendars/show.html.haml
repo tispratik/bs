@@ -1,0 +1,23 @@
+= stylesheet_link_tag "event_calendar"
+
+#content_20
+  %h1
+    = Time.now.strftime("%b %d")
+    
+  %h3
+    Add an event on
+    = Time.now.strftime("%b %d")
+  = render :partial => "events/form", :locals => {:event => @calendarable.calendar.events.new(:start_at => Time.now)}
+
+#content_80
+  - ical_url = polymorphic_path([@calendarable, :calendar], :format => :ical)
+  %p
+    = link_to "Get calendar in Ical format", ical_url
+
+  %h2
+    Upload Existing iCalendar file
+  - form_tag ical_url, :multipart => true do
+    = file_field_tag :ical_file
+    = submit_tag "Upload"
+
+  = event_calendar

@@ -1,0 +1,38 @@
+:javascript
+  $(document).ready(function() {
+    $('a.delete').click(function() {
+      $.post($(this).attr('href'), {_method: "delete"}, function() {
+        $.fn.colorbox.close()
+        $('#filter_calendars_form').submitNow()
+      }, "script")
+      return false;
+    })
+  })
+
+%h1
+  = @event
+  
+Event from
+= link_to @event.calendar.calendarable, [@event.calendar.calendarable, :calendar]
+
+- if @event.is_all_day?
+  %p
+    All Day Event on
+    = @event.start_at
+- else
+  %p
+    Start at:
+    = @event.start_at
+  %p
+    End at:
+    = @event.end_at
+
+- if @event.recurring?
+  %p
+    Repeat every
+    = @event.repeat_frequency
+
+- if @event.calendar.user == current_user
+  = link_to "Edit Event", edit_event_path(@event), :class => :colorbox
+  |
+  = link_to "Delete Event", event_path(@event), :class => :delete

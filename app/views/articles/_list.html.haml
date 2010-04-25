@@ -1,0 +1,34 @@
+- articles_by_source = articles.inject({}) do |h, article|
+  - h[article.citation_source] ||= []
+  - h[article.citation_source] << article
+  - h
+
+- articles_by_source.each do |source, articles_list|
+  .article
+    .source
+      &nbsp;
+      - if articles.respond_to?(:excertps)
+        = articles.excerpt_for h(source)
+      - else
+        =h source
+    - reset_cycle
+    - articles_list.each do |article|
+      - div_for article, :class => cycle("even", "odd") do
+        .left
+          .author.left
+            = image_tag profile_image(article.creator.contact.email)
+          .title
+            - if articles.respond_to?(:excertps)
+              = link_to article.excerpts.title, [@project, article]
+            - else
+              = link_to article.title, [@project, article]
+            - if article.assets.count > 0
+              %span.type
+                (#{article.assets.first.data_content_type.gsub(/\/.*/, '')})
+          .clear
+        .right
+          = time_ago_in_words article.created_at
+          ago
+        .clear
+
+= will_paginate articles

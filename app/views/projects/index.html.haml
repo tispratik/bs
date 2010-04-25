@@ -1,0 +1,37 @@
+= link_to "Create New Project", new_project_path
+
+%h2
+  Projects
+
+- if @projects.empty?
+  %b
+    No Projects Found !
+- else
+  %table.chapter_table
+    %tr.header
+      %th
+      %th
+        = sort_link 'Name', :name
+      %th
+        = sort_link 'Permalink', :permalink
+      %th
+        Description
+      %th
+        = sort_link 'Status', :statusDecode
+      %th
+        = sort_link 'Creation', :created_at
+    - @projects.each do |project|
+      %tr{:class => cycle(:odd, :even)}
+        %td
+          = image_tag("project.ico", {:width => 13, :height => 13})
+        %td
+          = link_to project.name, project_path(project)
+        %td
+          = project.permalink
+        %td
+          = truncate(project.description, :length => 100, :omission => "...")
+        %td
+          = project.status
+        %td
+          = project.created_at
+  = will_paginate @projects

@@ -1,0 +1,11 @@
+- semantic_form_for @project do |f|
+  - f.inputs do
+    = f.input :name
+    = f.input :status, :as => :select, :collection => Project::STATUSES, :prompt => false
+    = f.input :description
+    = f.input :objectives
+    = f.input :is_public
+    = f.input :use_ssl
+  - f.buttons do
+    = f.commit_button "Update Project"
+    = link_to "Go back", project_path(@project)

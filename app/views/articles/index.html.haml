@@ -1,0 +1,100 @@
+:javascript
+  $(document).ready(function() {
+    $('#advanced_search_link').click(function() {
+      $('#advanced_search').show();
+      $('#simple_search').hide();
+      return false;
+    })
+    
+    $('#simple_search_link').click(function() {
+      $('#advanced_search').hide();
+      $('#simple_search').show();
+      return false;
+    })
+    
+    $.each(["title", "author", "tags", "citation_source"], function(i, field_name) {
+      $('#search_'+ field_name).autocomplete("#{suggest_project_articles_path(@project)}", {
+        extraParams: {field: field_name},
+        minChars: 3
+      })
+    })
+    
+    $('#simple_search form, #advanced_search form').submitWithAjax();
+    
+    $('#clear_search').click(function() {
+      $('#simple_search form, #advanced_search form').each(function() {
+        this.reset()
+      });
+      $('#search_form').addClass('loading');
+      $.getScript("#{url_for([@project, :articles])}")
+      return false;
+    })
+    
+    // live search
+    var timeout;
+    var last_value;
+    $('input#search').keyup(function(e) {
+      if (!(last_value == this.value) && this.value.length > 2) {
+        last_value = this.value;
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          $('#simple_search form').submit();
+        }, 500);
+      }
+    })
+
+    $('#simple_search form, #advanced_search form').submit(function() {
+      $('#search_form').addClass('loading');
+      $(this).find('input[type=submit]').attr('disabled', 'disabled');
+    })
+  })
+
+- content_for :sidebar do
+  = render :partial => "new", :locals => {:article => @project.articles.build}
+
+#search_form
+  #simple_search{:style => params[:search].is_a?(Hash) ? "display:none" : "" }
+    - form_tag [:search, @project, :articles], :method => :get do
+      = text_field_tag "search", (params[:search] if params[:search].is_a?(String)), :size => 60, :autocomplete => "off"
+      = submit_tag "Search"
+      &nbsp;
+      = link_to "Advanced Search", "#", :id => :advanced_search_link
+  #advanced_search{:style => params[:search].is_a?(Hash) ? "" : "display:none"}
+    - form_tag [:search, @project, :articles], :method => :get, :class => :formtastic do
+      %h2 Advanced Search
+      %fieldset.inputs
+        %ol
+          %li
+            = label_tag :search_title
+            = text_field_tag "search[title]", (params[:search][:title] if params[:search])
+          %li
+            = label_tag :search_author
+            = text_field_tag "search[author]", (params[:search][:author] if params[:search])
+          %li
+            = label_tag :search_tags
+            = text_field_tag "search[tags]", (params[:search][:tags] if params[:search])
+          %li
+            = label_tag :search_citation_source
+            = text_field_tag "search[citation_source]", (params[:search][:citation_source] if params[:search])
+          %li
+            = label_tag :search_citation_date
+            = select_tag "search[citation_date_within]", options_for_select([["1 day", "1.day"], ["3 days", "3.days"], ["1 week", "1.week"], ["1 month", "1.month"], ["1 year", "1.year"]])
+            of:
+            = text_field_tag "search[citation_date]", (params[:search][:citation_date] if params[:search])
+            %p.inline-hints
+              e.g. today, Friday, Mar 26, 3/26/04
+          %li
+            = label_tag :search_attachment_content_type
+            = select_tag "search[attachment_content_type]", options_for_select(["", "text", "image", "audio", "video"], (params[:search][:attachment_content_type] if params[:search]))
+
+      %fieldset.buttons
+        %ol
+          %li
+            = submit_tag "Search"
+            &nbsp;
+            = link_to "Simple Search", "#", :id => :simple_search_link
+
+  = link_to "Clear Search", "#", :id => :clear_search
+
+#articles
+  = render :partial => "list", :locals => {:articles => @articles}

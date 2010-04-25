@@ -1,0 +1,38 @@
+- if logged_in?
+  - content_for :sidebar do
+    = render :partial => "my", :locals => {:user => current_user}
+
+%p
+  Status:
+  = @project.status_val
+%p
+  Project is:
+  = @project.is_public? ? "public" : "private"
+
+%br
+  
+%h3 
+  %b
+    Objectives:
+=h @project.objectives
+
+%br
+%br
+  
+%h3
+  %b
+    Description:
+= h @project.description
+
+%br 
+%br
+
+%p 
+  = link_to 'Edit', edit_project_path(@project)
+  |
+  = link_to 'Project Members', [@project, :project_roles]
+
+%br 
+
+= render :partial => "events/upcoming", :locals => {:events => @project.calendar.events}
+

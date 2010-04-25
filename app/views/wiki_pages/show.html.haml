@@ -1,0 +1,36 @@
+- unless @wiki_page.deleted_at?
+  - content_for :sidebar do
+    = render 'versions'
+
+%h2.left
+  = h @wiki_page
+&nbsp;
+- unless @wiki_page.deleted_at?
+  = link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
+.clear
+
+= markdown @wiki_page.content
+
+%br
+%br
+
+%p
+  Revision #{@wiki_page.version}, edited by
+  - if @wiki_page.versions.empty?
+    = link_to @wiki_page.creator, @wiki_page.creator
+  - else
+    = link_to @wiki_page.versions.last.user, @wiki_page.versions.last.user
+
+%h2.left Comments
+.right
+  = link_to "Go back", session[:return_to]
+.clear  
+#comments
+  = render @wiki_page.comments
+
+- if logged_in?
+  #new_comment_form
+    %h2 Add new Comment
+    #comment_errors
+    = render :partial => "comments/form", :locals => {:comment => @wiki_page.comments.new}
+

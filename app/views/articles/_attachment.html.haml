@@ -1,0 +1,11 @@
+.attachment
+  - if attachment.image?
+    = link_to image_tag(attachment.url(:small)), attachment.url, :popup => :true
+  - else
+    = image_tag attachment.file_icon
+    = link_to attachment, attachment.url
+  = link_to "Delete", attachment, :method => :delete
+  
+  - if attachment.data_content_type == 'text/plain'
+    .source
+      =sanitize simple_format(File.read(attachment.data.path))

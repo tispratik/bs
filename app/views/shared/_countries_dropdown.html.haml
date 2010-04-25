@@ -1,0 +1,34 @@
+= select(:contact, :country, Country.all.collect {|c| [c.name, c.ison.to_s]}, options = {:prompt => true})
+%script{ :type => "text/javascript" }
+  $(function(){
+  $('#contact_country').change(function(){
+  var country_id = $(this).val();
+  
+  $.ajax({
+  type: "POST",
+  url: "/contacts/get_states_for_country",
+  data: "country=" + country_id,
+  timeout: 5000,
+  success: function(msg){
+  $("#states_list").html(msg);
+  },
+  error: function(xhrObj){
+  $("#states_list").html("responseText: " + xhrObj.responseText + "\n" +
+  "responseXML: " +
+  xhrObj.responseXML +
+  "\n" +
+  "readyState: " +
+  xhrObj.readyState +
+  "\n" +
+  "status: " +
+  xhrObj.status +
+  "\n" +
+  "statusText: " +
+  xhrObj.statusText);
+  }
+  });
+  
+  return false;
+  
+  });
+  });

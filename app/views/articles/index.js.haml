@@ -1,0 +1,3 @@
+$('#articles').html("#{escape_javascript(render :partial => "list", :locals => {:articles => @articles})}")
+$('#search_form').removeClass('loading');
+$('#search_form').find('input[type=submit]').removeAttr('disabled')

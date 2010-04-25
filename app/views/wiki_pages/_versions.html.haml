@@ -1,0 +1,42 @@
+:javascript
+  $(document).ready(function() {
+  
+    $('[name="versions[]"]').change(function() {
+      var count_checked = $('[name="versions[]"]:checked').size();
+      if (count_checked >= 2) {
+        $('[name="versions[]"]:not(:checked)').attr("disabled", "disabled")
+        $('#submit_diff').removeAttr("disabled")
+      } else {
+        $('[name="versions[]"]').removeAttr("disabled")
+        $('#submit_diff').attr("disabled", "disabled")
+      }
+    })
+    
+    $('#submit_diff').attr("disabled", "disabled")
+    $('[name="versions[]"]').change()
+  })
+
+%h1
+  Versions
+
+- @changes_from ||= @wiki_page.versions.count
+- @changes_to ||= @wiki_page.versions.count + 1
+
+- form_tag diff_project_wiki_page_path(@project, @wiki_page), :method => :get do
+  %p
+    = check_box_tag "versions[]", 1, (@changes_from == 1 || @changes_to == 1)
+    - if @wiki_page.creator
+      = link_to @wiki_page.creator, polymorphic_path([@wiki_page.project, @wiki_page], :version => 1)
+      = time_ago_in_words @wiki_page.created_at
+      ago
+  
+  - @wiki_page.versions.each do |version|
+    %p
+      = check_box_tag "versions[]", version.number, (@changes_from == version.number || @changes_to == version.number)
+      - if version.user
+        = link_to version.user, polymorphic_path([@wiki_page.project, @wiki_page], :version => version.number)
+        = time_ago_in_words version.created_at
+        ago
+  %br
+  %p
+    = submit_tag "View Differences", :id => "submit_diff"

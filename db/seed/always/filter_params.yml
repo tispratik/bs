@@ -1,0 +1,156 @@
+<%
+require 'decode'
+i = 0
+%>
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: user_status
+ disp_value: Active
+ internal_param: user_status
+ internal_value: 1
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: user_status
+ disp_value: Pending
+ internal_param: user_status
+ internal_value: 2
+ sort_order: 2
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: user_status
+ disp_value: In active
+ internal_param: user_status
+ internal_value: 3
+ sort_order: 3
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_type
+ disp_value: Action Item
+ internal_param: task_type
+ internal_value: <%= Decode::TASK_TYPE_AI %>
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_type
+ disp_value: Open Issue
+ internal_param: task_type
+ internal_value: <%= Decode::TASK_TYPE_OI %>
+ sort_order: 2
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_status
+ disp_value: Open
+ internal_param: status
+ internal_value: <%= Decode::TASK_STATUS_OPEN %>
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_status
+ disp_value: Closed
+ internal_param: status
+ internal_value: <%= Decode::TASK_STATUS_COMPLETED %>
+ sort_order: 5
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_priority
+ disp_value: High
+ internal_param: priority
+ internal_value: <%= Decode::TASK_PRIORITY_HIGH %>
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_priority
+ disp_value: Medium
+ internal_param: priority
+ internal_value: <%= Decode::TASK_PRIORITY_MED %>
+ sort_order: 2
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_priority
+ disp_value: Low
+ internal_param: priority
+ internal_value: <%= Decode::TASK_PRIORITY_LOW %>
+ sort_order: 3 
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_due_date
+ disp_value: Due Today
+ internal_param: due_date
+ internal_value: today
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_due_date
+ disp_value: Due Tomorrow
+ internal_param: due_date
+ internal_value: tomorrow
+ sort_order: 2
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_due_date
+ disp_value: Due End of Week
+ internal_param: due_date
+ internal_value: eow
+ sort_order: 3
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: task_due_date
+ disp_value: Past Due
+ internal_param: due_date
+ internal_value: past
+ sort_order: 4
+      
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: project_status
+ disp_value: Active
+ internal_param: status
+ internal_value: <%= Decode::PROJECT_STATUS_ACTIVE %>
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: project_status
+ disp_value: Cancelled
+ internal_param: status
+ internal_value: <%= Decode::PROJECT_STATUS_CANCELLED %>
+ sort_order: 2
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: project_status
+ disp_value: In-active
+ internal_param: status
+ internal_value: <%= Decode::PROJECT_STATUS_INACTIVE %>
+ sort_order: 3
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: project_status
+ disp_value: Suspended
+ internal_param: status
+ internal_value: <%= Decode::PROJECT_STATUS_SUSPENDED %>
+ sort_order: 4
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: project_status
+ disp_value: Closed
+ internal_param: status
+ internal_value: <%= Decode::PROJECT_STATUS_CLOSED %>
+ sort_order: 5

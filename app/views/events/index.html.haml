@@ -1,0 +1,48 @@
+
+:javascript
+  $(document).ready(function() {
+    $('#filter_calendars_form').submitWithAjax();
+    $('.colorbox').live('click', function() {
+      $.fn.colorbox({href: $(this).attr('href'), width: "60%", height: "40%"});
+      return false;
+    })
+    
+    $('#new_event').labelsWithinFields()
+  })
+
+- content_for :sidebar do
+  %h1
+    = Time.now.strftime("%b %d")
+
+  - if logged_in?
+  
+    - if @calendarable.roles.first(:conditions => {:user_id => current_user.id})
+      %h3
+        Add an event on
+        = Time.now.strftime("%b %d")
+      = render :partial => "events/add_form", :locals => {:event => @calendarable.calendar.events.new(:start_at => Time.now)}
+    
+    / - if @calendarable.is_a?(User) && @calendarable == current_user
+    /   %h3 Available calendars
+    /   - form_tag [@calendarable, :events], :method =>:get, :id => "filter_calendars_form" do
+    /     - @calendarable.calendars.each do |calendar|
+    /       %p
+    /         %label
+    /           = check_box_tag "calendar_ids[]", calendar.id, (!params[:calendar_ids] || params[:calendar_ids].include?(calendar.id.to_s))
+    /           = calendar.name
+    /         - unless calendar.name == 'default'
+    /           = link_to "Remove", calendar, :method => :delete
+    /     = hidden_field_tag "calendar_ids[]"
+    /     = submit_tag "Show Selected Calendars"
+    / 
+    /   %h3 Add New Calendar
+    /   - form_tag [@calendarable, :calendars], :multipart => true do
+    /     = file_field_tag :ical_file
+    /     = submit_tag "Upload"
+
+- ical_url = polymorphic_path([@calendarable, :calendar], :format => :ical)
+%p
+  = link_to "Get calendar in Ical format", ical_url
+
+#calendar
+  = event_calendar

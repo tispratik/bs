@@ -1,0 +1,54 @@
+span.match
+  background-color: #ffa
+
+#articles
+  .container
+    padding-bottom: 10px
+  .source
+    background-color: #E8E8E8
+    color: #A8A8A8
+    padding-bottom: 1px
+    margin-top: 2px
+    font-size: 1em
+  .article
+    > .left
+      width: 70%
+    padding: 2px
+    .author
+      margin-right: 10px
+      img
+        width: 20px
+        height: 20px
+    .title
+      font-size: 1em
+      padding-left: 10px
+      .type
+        color: #aaa
+    .right
+      color: #575455
+      font-size: 1em
+      text-align: right
+    .content
+      padding: 10px
+
+.tags
+  #article_tag_list
+    width: 60%
+
+#search_form
+  padding-left: 100px
+  margin-bottom: 10px
+  #advanced_search
+    input[type=text]
+      width: 60%
+    input[type=text]#search_citation_date
+      width: 100px
+#search_form.loading
+  background: url("../images/spinner.gif") left top no-repeat
+
+#attachments
+  .attachment
+    border: 2px solid #eee
+    margin: 5px 0px
+    padding: 5px
+    +border-radius("4px")

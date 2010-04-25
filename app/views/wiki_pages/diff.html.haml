@@ -1,0 +1,13 @@
+- content_for :sidebar do
+  = render 'versions'
+
+%h2.left
+  = @wiki_page
+&nbsp;
+= link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
+.clear
+
+%h3 Changes From Revision #{@changes_from} to #{@changes_to}
+
+= diff(h(@content_from), h(@content_to)).gsub(/\n/, "<br/>")
+

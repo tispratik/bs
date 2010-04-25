@@ -1,0 +1,12 @@
+:javascript
+  $(document).ready(function() {
+    $('#edit_event_#{@event.id}').submit(function() {
+      $.post(this.action, $(this).serialize(), function() {
+        $.fn.colorbox.close()
+        $('#filter_calendars_form').submitNow()
+      }, "script")
+      return false;
+    })
+  })
+
+= render :partial => "form", :locals => {:event => @event}

@@ -1,0 +1,30 @@
+- pending_invitations = @project.invitations.confirmed_is(false)
+- if pending_invitations.present?
+  %h3 Pending Invitations
+  - pending_invitations.each do |invitation|
+    %p
+      = link_to invitation.user, invitation.user
+  %br
+
+- semantic_form_for [@project, @project.invitations.new] do |f|
+  - f.inputs do
+    = f.input :invitee, :label => "Invite new member", :hint => "Username or email of user who you are inviting"
+  - f.buttons do
+    = f.commit_button "Send Invitation"
+    = link_to "Go back", project_path(@project)
+
+%br
+  
+%h3 Project Members
+%table
+  %tr
+    %td
+      Name
+    %td
+      Role    
+  - @roles.each do |role|
+    %tr{:class => cycle("even", "odd")}
+      %td
+        = role.user
+      %td
+        = role.to_name

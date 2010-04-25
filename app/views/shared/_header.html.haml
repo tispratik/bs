@@ -1,0 +1,9 @@
+#heady
+  #header_left
+  - if current_user != nil
+  #top-bar
+    = link_to "Edit Profile", "http://localhost:3000/users/show"
+    \&nbsp;
+    = link_to "<font color='RED'>Logout " + current_user.the_string + "</font>", logout_path
+  #header_right
+  - end
