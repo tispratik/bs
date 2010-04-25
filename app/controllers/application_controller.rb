@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
   
   def set_user_time_zone
-    Time.zone = current_user.contact.time_zone if (current_user && current_user.contact)
+    Time.zone = current_user.ucontact.time_zone if (current_user && current_user.ucontact)
   end
   
   def remove_param

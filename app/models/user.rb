@@ -1,27 +1,41 @@
 class User < ActiveRecord::Base
   
-  establish_connection :launchpad
+  establish_connection "va_#{RAILS_ENV}"
   
+  has_one :usr
+  has_one :ucontact
   has_many :project_roles
   has_many :projects, :through => :project_roles
   has_many :tasks, :through => :projects
-  has_many :ac_proj_op_tasks, :through => :projects, :source => :tasks, :conditions => "projects.status = #{Decode::PROJECT_STATUS_ACTIVE} AND tasks.status=#{Decode::TASK_STATUS_OPEN}"
-  has_one :contact, :as => :contactable
+  has_many :ac_proj_op_tasks, :through => :projects, :source => :tasks, :conditions => "projects.status = #{Decode::BS_PROJ_STATUS_AC} AND tasks.status=#{Decode::BS_TASK_STATUS_OP}"
+  #has_one :contact, :as => :contactable
   has_many :calendars, :as => :calendarable
   has_many :events, :through => :calendars
   has_many :project_invitations
   has_many :articles
   
   alias :roles :project_roles
+  accepts_nested_attributes_for :usr, :ucontact
   
+  validates_presence_of :login_email
+  
+  def validate
+    validate_login_email
+  end
+  
+  def validate_login_email
+    unless EmailVeracity::Address.new(login_email).valid?
+      errors.add(:login_email, "is invalid")
+    end
+  end
   
   acts_as_authentic do |a|
     a.logged_in_timeout = 100.minutes # default is 10.minutes
     a.validates_format_of_login_field_options :with => /^\w+$/, :message =>"Only numbers, letters and underscore allowed"
   end
   
-  def self.find_by_username_or_email(login)
-    find_by_username(login) || first(:conditions => {:contacts => {:email => login}}, :joins => :contact)
+  def self.find_by_username_or_login_email(login)
+    find_by_username(login) || find_by_login_email(login)
   end
   
   def my_projects_with_roles
@@ -37,7 +51,7 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    [first_name, last_name].join(' ')
+    [usr.first_name, usr.last_name].join(' ')
   end
   
   def self.curr_user

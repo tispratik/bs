@@ -168,37 +168,6 @@ class CreateTables < ActiveRecord::Migration
     
     add_index :project_invitations, [:project_id, :user_id], :unique => true
     
-    #REF Area
-    create_table :pages do |t|
-      t.string :page_name
-      t.string :header
-      t.string :selected_tab
-      t.string :selected_submenu
-      t.string :location_bar
-      t.string :filter_name
-      t.string :selected_sidebar
-    end
-    
-    create_table :links do |t|
-      t.string :control_name
-      t.string :control_type
-      t.string :caption
-      t.string :controller_text
-      t.string :action_text
-      t.string :id_text
-      t.integer :sort_order
-      t.string :group_by      
-    end
-    
-    create_table :decodes do |t|
-      t.string :name
-      t.string :constant_value
-      t.string :internal_value
-      t.string :display_value
-      t.integer :sort_order
-      t.integer :is_active
-    end
-    
     create_table :filters do |t|
       t.string :filter_name
       t.string :display_name

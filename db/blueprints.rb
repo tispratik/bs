@@ -1,13 +1,15 @@
 require 'machinist/active_record'
 require 'random_data'
 require 'faker'
+require 'populator'
+require 'time_extensions'
 
 due_dates = [Date.today, Date.tomorrow, Date.yesterday, Date.today.end_of_week, Date.today.beginning_of_month, Date.today.end_of_month]
 
 Project.blueprint do
   name          { Faker::Company.name }
   permalink     { Random.alphanumeric }
-  status        { Project::STATUSES.rand.id }
+  status        { Project::BS_STATUSES.rand.id }
   description   { Faker::Lorem.paragraph }
   objectives    { Faker::Lorem.paragraph }
 end

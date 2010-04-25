@@ -32,7 +32,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_type
  disp_value: Action Item
  internal_param: task_type
- internal_value: <%= Decode::TASK_TYPE_AI %>
+ internal_value: <%= Decode::BS_TASK_TYPE_AI %>
  sort_order: 1
 
 Filter_Param<%= i=i+1 %>:  
@@ -40,7 +40,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_type
  disp_value: Open Issue
  internal_param: task_type
- internal_value: <%= Decode::TASK_TYPE_OI %>
+ internal_value: <%= Decode::BS_TASK_TYPE_OI %>
  sort_order: 2
 
 Filter_Param<%= i=i+1 %>:  
@@ -48,7 +48,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_status
  disp_value: Open
  internal_param: status
- internal_value: <%= Decode::TASK_STATUS_OPEN %>
+ internal_value: <%= Decode::BS_TASK_STATUS_OP %>
  sort_order: 1
 
 Filter_Param<%= i=i+1 %>:  
@@ -56,7 +56,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_status
  disp_value: Closed
  internal_param: status
- internal_value: <%= Decode::TASK_STATUS_COMPLETED %>
+ internal_value: <%= Decode::BS_TASK_STATUS_CO %>
  sort_order: 5
  
 Filter_Param<%= i=i+1 %>:  
@@ -64,7 +64,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_priority
  disp_value: High
  internal_param: priority
- internal_value: <%= Decode::TASK_PRIORITY_HIGH %>
+ internal_value: <%= Decode::BS_TASK_PRIORITY_HI %>
  sort_order: 1
 
 Filter_Param<%= i=i+1 %>:  
@@ -72,7 +72,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_priority
  disp_value: Medium
  internal_param: priority
- internal_value: <%= Decode::TASK_PRIORITY_MED %>
+ internal_value: <%= Decode::BS_TASK_PRIORITY_ME %>
  sort_order: 2
  
 Filter_Param<%= i=i+1 %>:  
@@ -80,7 +80,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_priority
  disp_value: Low
  internal_param: priority
- internal_value: <%= Decode::TASK_PRIORITY_LOW %>
+ internal_value: <%= Decode::BS_TASK_PRIORITY_LO %>
  sort_order: 3 
 
 Filter_Param<%= i=i+1 %>:  
@@ -120,7 +120,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: project_status
  disp_value: Active
  internal_param: status
- internal_value: <%= Decode::PROJECT_STATUS_ACTIVE %>
+ internal_value: <%= Decode::BS_PROJ_STATUS_AC %>
  sort_order: 1
 
 Filter_Param<%= i=i+1 %>:  
@@ -128,7 +128,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: project_status
  disp_value: Cancelled
  internal_param: status
- internal_value: <%= Decode::PROJECT_STATUS_CANCELLED %>
+ internal_value: <%= Decode::BS_PROJ_STATUS_CA %>
  sort_order: 2
  
 Filter_Param<%= i=i+1 %>:  
@@ -136,7 +136,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: project_status
  disp_value: In-active
  internal_param: status
- internal_value: <%= Decode::PROJECT_STATUS_INACTIVE %>
+ internal_value: <%= Decode::BS_PROJ_STATUS_IN %>
  sort_order: 3
  
 Filter_Param<%= i=i+1 %>:  
@@ -144,7 +144,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: project_status
  disp_value: Suspended
  internal_param: status
- internal_value: <%= Decode::PROJECT_STATUS_SUSPENDED %>
+ internal_value: <%= Decode::BS_PROJ_STATUS_SU %>
  sort_order: 4
  
 Filter_Param<%= i=i+1 %>:  
@@ -152,5 +152,5 @@ Filter_Param<%= i=i+1 %>:
  filter_param: project_status
  disp_value: Closed
  internal_param: status
- internal_value: <%= Decode::PROJECT_STATUS_CLOSED %>
+ internal_value: <%= Decode::BS_PROJ_STATUS_CL %>
  sort_order: 5

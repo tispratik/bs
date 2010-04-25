@@ -2,6 +2,8 @@
 require 'constant_cache'  
 
 class Decode < ActiveRecord::Base
+
+  establish_connection :ref_area
   
   default_scope :order => :sort_order
   

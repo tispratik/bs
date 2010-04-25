@@ -1,6 +1,6 @@
 class ProjectRole < ActiveRecord::Base
   
-  set_table_name APP_CONFIG[:db_schema_name] + ".project_roles"
+  set_table_name "bs_#{RAILS_ENV}" + ".project_roles"
   belongs_to :project
   belongs_to :user
   

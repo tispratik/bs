@@ -1,0 +1,20 @@
+development:
+  domain: localhost:3000
+  db_schema_name: backstage1_3dev
+  smtp_address: "smtp.gmail.com"
+  smtp_port: 587
+  smtp_domain: "www.gmail.com"
+  smtp_username: "usinpac.backstage@gmail.com"
+  smtp_password: "3142771639"
+  
+test:
+  domain: test.host
+
+production:
+  domain: example.com
+  db_schema_name: backstage1_3prod
+  smtp_address: ""
+  smtp_port: 999
+  smtp_domain: ""
+  smtp_username: ""
+  smtp_password: ""

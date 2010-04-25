@@ -60,9 +60,9 @@ class ArticlesController < ApplicationController
       @project.articles.all(:conditions => ["title like ?", "%#{params[:q]}%"]).collect(&:title)
     when "author" then
       User.all(
-        :select => "users.*, (select count(id) from #{Article.connection.current_database}.#{Article.table_name} where created_by=users.id and project_id=#{@project.id}) as articles_count",
+        :select => "usrs.*, (select count(id) from #{Article.connection.current_database}.#{Article.table_name} where created_by=usrs.user_id and project_id=#{@project.id}) as articles_count",
         :conditions => ["concat_ws(' ', first_name, last_name) like ?", "%#{params[:q]}%"],
-        :group => "users.id", :having => "articles_count > 0"
+        :group => "usrs.user_id", :having => "articles_count > 0"
       ).collect(&:to_s)
     when "tags" then
       @project.tags.all(:conditions => ["name like ?", "%#{params[:q]}%"]).collect(&:to_s)

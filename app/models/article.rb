@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
     indexes citation_source
     indexes citation_author
     indexes tags.name, :as => :tags
-    indexes "(select CONCAT_WS(' ', first_name, last_name) from #{User.connection.current_database}.#{User.table_name} u where u.id=articles.created_by)", :as => :author
+    indexes "(select CONCAT_WS(' ', first_name, last_name) from #{Usr.connection.current_database}.#{Usr.table_name} u where u.user_id=articles.created_by)", :as => :author
     indexes assets.data_content_type, :as => :attachment_content_type
     # indexes [creator.first_name, creator.last_name], :as => :author
     

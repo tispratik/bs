@@ -2,7 +2,7 @@ class Contact < ActiveRecord::Base
 
   establish_connection :launchpad
   
-  PHONE_TYPES = Decode.find_all_by_name("Phone_Type")
+  PHONE_TYPES = Decode.find_all_by_name("OP_Phone_Type")
   belongs_to :contactable, :polymorphic => true
   belongs_to :country
   # belongs_to :region

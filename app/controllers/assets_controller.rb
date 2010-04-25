@@ -29,7 +29,7 @@ class AssetsController < ApplicationController
   end
   
   def get_query
-    qry = "@project.assets.status_eq(#{Decode::ASSET_STATUS_ACTIVE})"
+    qry = "@project.assets.status_eq(#{Decode::BS_ASSET_STATUS_AC})"
     qry = qry + sort_order('descend_by_created_at') 
     #qry = qry + ".all(:include => {:modul => [:creator, :updator, :parent]})"
     qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 15)"

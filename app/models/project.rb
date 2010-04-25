@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   
-  STATUSES = Decode.find_all_by_name("Project_Status")
+  BS_STATUSES = Decode.find_all_by_name("BS_Proj_Status")
   
   has_one :contact, :as => :contactable
   has_many :project_roles
@@ -25,7 +25,7 @@ class Project < ActiveRecord::Base
   def before_validation_on_create
     self.alias = 'PROJ' + id.to_s
     self.is_public = 0
-    self.status = Decode::PROJECT_STATUS_ACTIVE
+    self.status = Decode::BS_PROJ_STATUS_AC
     self.permalink = Authlogic::Random.friendly_token
   end
   

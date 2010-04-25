@@ -17,7 +17,7 @@ class Asset < ActiveRecord::Base
   before_post_process :image?
 
   def before_create
-    self.status = Decode::ASSET_STATUS_ACTIVE
+    self.status = Decode::BS_ASSET_STATUS_AC
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id
   end
