@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   
   layout proc{ |c| c.request.xhr? ? false : "application" }
   
-  before_filter :find_calendarable, :only => :index
+  before_filter :find_calendarable
   before_filter :find_event, :except => [:index, :new, :create]
   
   def index
@@ -10,9 +10,12 @@ class EventsController < ApplicationController
     @year = (params[:year] || Time.zone.now.year).to_i
     @shown_month = Date.civil(@year, @month)
     
-    scope = Event.calendar_calendarable_id_is(@calendarable.id).calendar_calendarable_type_is(@calendarable.class.to_s)
+    scope = @calendarable.events.searchlogic
     if params[:calendar_ids]
       scope = scope.calendar_id_is_any(params[:calendar_ids])
+    end
+    if params[:user_ids] && !params[:user_ids].include?("all")
+      scope = scope.event_invitees_user_id_is_any(params[:user_ids])
     end
 
     @event_strips = scope.event_strips_for_month(@shown_month)
@@ -70,7 +73,8 @@ class EventsController < ApplicationController
   
   def find_calendarable
     if params[:project_id]
-      @calendarable = @project = Project.find_by_permalink(UrlStore.decode(params[:project_id]))
+      find_project
+      @calendarable = @project
     elsif params[:user_id]
       @calendarable = @user = User.find_by_username(params[:user_id])
     else

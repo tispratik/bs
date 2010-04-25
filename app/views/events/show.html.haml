@@ -13,7 +13,7 @@
   = @event
   
 Event from
-= link_to @event.calendar.calendarable, [@event.calendar.calendarable, :calendar]
+= link_to @calendarable, [@calendarable, :events]
 
 - if @event.is_all_day?
   %p
@@ -32,7 +32,16 @@ Event from
     Repeat every
     = @event.repeat_frequency
 
-- if @event.calendar.user == current_user
-  = link_to "Edit Event", edit_event_path(@event), :class => :colorbox
-  |
-  = link_to "Delete Event", event_path(@event), :class => :delete
+= link_to "Edit Event", [:edit, @calendarable, @event], :class => :colorbox
+|
+= link_to "Delete Event", [@calendarable, @event], :class => :delete
+
+%h2
+  Comments
+#comments
+  = render @event.comments
+
+- if logged_in?
+  #new_comment_form
+    %h2 Add new Comment
+    = render :partial => "comments/form", :locals => {:comment => @event.comments.new}

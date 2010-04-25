@@ -15,14 +15,15 @@
     $('#event_repeat_frequency').change();
   })
 
-- semantic_form_for event do |f|
+- semantic_form_for [@calendarable, event], :live_validations => true do |f|
   = error_messages_for :event
-  = f.hidden_field :calendar_id
   - f.inputs do
+    = f.input :calendar, :collection => @calendarable.calendars
     = f.input :summary, :label => "Subject", :input_html => {:style => "width:40%"}
     = f.input :is_all_day, :label => "All day?"
     = f.input :start_at, :label => "Start at"
     = f.input :end_at, :label => "End at"
     = f.input :repeat_frequency, :as => :select, :collection => Event::RECURRING_TYPES, :label => "Repeat every"
     = f.input :repeat_until_date, :label => "Until Date"
+    = f.input :invitees
   = f.buttons

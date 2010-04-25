@@ -33,6 +33,14 @@ require 'paperclip'
 require 'thinking_sphinx/deltas/delayed_delta'
 
 UrlStore.defaults = {:secret => '55668jkhjhjhj'}
+
+# hack for using Time.zone.now instead of Time.now
+class Date
+  def self.today
+    current
+  end
+end
+
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS[:default] = "%B %d, %Y %H:%M"
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = '%Y-%m-%d'
 

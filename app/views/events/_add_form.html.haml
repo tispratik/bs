@@ -14,14 +14,16 @@
     $('#event_repeat_frequency').change();
   })
 
-- semantic_form_for event, :html => {:class => "stack"} do |f|
+- semantic_form_for [@calendarable, event], :live_validations => true, :html => {:class => "stack"} do |f|
   = error_messages_for :event
-  = f.hidden_field :calendar_id
   - f.inputs do
+    = f.input :calendar, :collection => @calendarable.calendars
     = f.input :summary, :label => "Subject"
     = f.input :is_all_day, :label => "All day?"
     = f.input :start_at, :as => :time, :label => "What time?"
     = f.input :duration, :label => "How long?"
+    = f.input :location, :label => "Where?"
     = f.input :repeat_frequency, :as => :select, :collection => Event::RECURRING_TYPES, :label => "Repeat every"
     = f.input :repeat_until_date, :label => "Until Date"
+    = f.input :invitees
   = f.buttons

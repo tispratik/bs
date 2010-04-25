@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
   has_many :users, :through => :project_roles
   has_many :tasks
   has_one :calendar, :as => :calendarable
+  has_many :calendars, :as => :calendarable
+  has_many :events, :through => :calendars
   has_many :wiki_pages
   has_many :articles
   has_many :assets, :as => :attachable
@@ -28,11 +30,9 @@ class Project < ActiveRecord::Base
   end
   
   def after_create
-    self.calendar = Calendar.create(:name => "default")
+    calendars.create(:name => "default")
     #Make owner of project when created
-    r = self.roles.build
-    r.user = User.curr_user
-    r.save
+    roles.create(:user => User.curr_user)
   end
   
   def to_s

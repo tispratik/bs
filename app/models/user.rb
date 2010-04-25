@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   has_many :tasks, :through => :projects
   has_many :ac_proj_op_tasks, :through => :projects, :source => :tasks, :conditions => "projects.status = #{Decode::PROJECT_STATUS_ACTIVE} AND tasks.status=#{Decode::TASK_STATUS_OPEN}"
   has_one :contact, :as => :contactable
-  has_one :calendar, :as => :calendarable
+  has_many :calendars, :as => :calendarable
+  has_many :events, :through => :calendars
   has_many :project_invitations
   has_many :articles
   

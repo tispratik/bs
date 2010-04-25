@@ -51,7 +51,8 @@ class ProjectsController < ApplicationController
   private
   
   def find_project
-    @project = Project.find_by_permalink(UrlStore.decode(params[:id]))
+    params[:project_id] = params[:id]
+    super
   end
   
 end

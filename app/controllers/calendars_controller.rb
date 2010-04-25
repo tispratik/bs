@@ -59,7 +59,8 @@ class CalendarsController < ApplicationController
   
   def find_calendarable
     if params[:project_id]
-      @calendarable = @project = Project.find_by_permalink(params[:project_id])
+      find_project
+      @calendarable = @project
     elsif params[:user_id]
       @calendarable = @user = User.find_by_username(params[:user_id])
     else

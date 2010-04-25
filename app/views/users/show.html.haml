@@ -2,7 +2,7 @@
   - content_for :sidebar do
     = render :partial => "projects/my", :locals => {:user => current_user}
 
-= render :partial => "events/upcoming", :locals => {:events => @user.calendar.events}
+= render :partial => "events/upcoming", :locals => {:events => @user.events}
 
 - if logged_in?
   %h3 Incoming Project Invitations

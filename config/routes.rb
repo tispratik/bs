@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :users do |users|
-    users.resource :calendar
+    users.resources :calendars
     users.resources :events
   end
   
@@ -19,15 +19,13 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :users
     projects.resources :tasks, :has_many => :comments
     projects.resources :assets, :member => { :data => :get, :checkout => :get }
-    projects.resource :calendar
+    projects.resources :calendars
     projects.resources :events
     projects.resources :wiki_pages, :member => {:diff => :get, :restore => :get}
     projects.resources :articles, :collection => {:suggest => :get, :search => :get}
     projects.resources :project_invitations, :as => :invitations, :member => {:confirm => :get}
     projects.resources :project_roles, :as => :roles
   end
-  
-  map.resources :events
   
   map.resources :articles do |articles|
     articles.resources :comments

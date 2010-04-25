@@ -19,7 +19,7 @@ Project_Status_Two:
  display_value: Closed
  sort_order: 2
  is_active: 1
- 
+
 Project_Status_Three:
  id: <%= i=i+1 %>
  name: Project_Status

@@ -27,7 +27,7 @@ jQuery.fn.labelsWithinFields = function() {
     $(this).prev('label')
     .css('position', 'absolute')
     .css('color', '#ccc')
-    .css('width', '200px')
+    .css('width', 'auto')
     .css('padding', '2px 4px')
     $(this).focus(function() {
       $(this).prev('label').hide();

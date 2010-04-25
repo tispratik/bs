@@ -46,6 +46,11 @@ class CreateTables < ActiveRecord::Migration
     end
     
     add_index :events, :calendar_id
+
+    create_table :event_invitees do |t|
+      t.references :event
+      t.references :user
+    end
     
     create_table :wiki_pages do |t|
       t.references :project
