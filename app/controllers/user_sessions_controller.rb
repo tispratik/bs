@@ -19,13 +19,15 @@ class UserSessionsController < ApplicationController
   end
   
   def destroy
-    current_user_session.destroy
-    flash[:notice] = "Logout successful!"
-    User.curr_user = nil
-    Project.current_project = nil
-    @current_user = false
-    #Resetting the session to avoid session fixation attacks. This session cannot be reused. Authlogic does not do it.
-    reset_session
+    if !current_user_session.nil?
+      current_user_session.destroy
+      flash[:notice] = "Logout successful!"
+      User.curr_user = nil
+      Project.current_project = nil
+      @current_user = false
+      #Resetting the session to avoid session fixation attacks. This session cannot be reused. Authlogic does not do it.
+      reset_session
+    end
     redirect_to root_path
   end
   

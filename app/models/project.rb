@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   
-  BS_STATUSES = Decode.find_all_by_name("BS_Proj_Status")
+  STATUSES = Decode.find_all_by_name("BS_Proj_Status")
   
   has_one :contact, :as => :contactable
   has_many :project_roles

@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   
   acts_as_authentic do |a|
     a.logged_in_timeout = 100.minutes # default is 10.minutes
-    a.validates_format_of_login_field_options :with => /^\w+$/, :message =>"Only numbers, letters and underscore allowed"
+    a.validates_format_of_login_field_options :with => /^\w+$/, :message =>"only numbers, letters and underscore allowed"
   end
   
   def self.find_by_username_or_login_email(login)

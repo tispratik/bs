@@ -9,7 +9,7 @@ due_dates = [Date.today, Date.tomorrow, Date.yesterday, Date.today.end_of_week, 
 Project.blueprint do
   name          { Faker::Company.name }
   permalink     { Random.alphanumeric }
-  status        { Project::BS_STATUSES.rand.id }
+  status        { Project::STATUSES.rand.id }
   description   { Faker::Lorem.paragraph }
   objectives    { Faker::Lorem.paragraph }
 end
