@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   
   attr_writer :invitees
   def invitees
-    @invitees || event_invitees.map{|inv| inv.user.contact.email}.join(', ')
+    @invitees || event_invitees.map{|inv| inv.user.login_email}.join(', ')
   end
   
   def after_save

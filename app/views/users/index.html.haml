@@ -18,7 +18,7 @@
         - @users.each do |user|
           %tr{ :class => cycle(:odd, :even) }
             %td
-              = image_tag(profile_image(user.contact.email), {:width => 50, :height => 50})
+              = image_tag(profile_image(user.login_email), {:width => 50, :height => 50})
             %td
               = url_name(user, "users")
             %td

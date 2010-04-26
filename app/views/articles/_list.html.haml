@@ -16,7 +16,7 @@
       - div_for article, :class => cycle("even", "odd") do
         .left
           .author.left
-            = image_tag profile_image(article.creator.contact.email)
+            = image_tag profile_image(article.creator.login_email)
           .title
             - if articles.respond_to?(:excertps)
               = link_to article.excerpts.title, [@project, article]
