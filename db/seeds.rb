@@ -1,6 +1,6 @@
 require "#{RAILS_ROOT}/db/blueprints"
 
-[Project, Event, WikiPage, Article, Calendar].each(&:delete_all)
+[Project, Event, WikiPage, Article, Calendar, Comment, Task].each(&:delete_all)
 
 p "creating user calendar and events for that calendar"
 

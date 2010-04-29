@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save
-      flash[:notice] = "Comment was created."
+      flash[:notice] = "Comment posted successfully."
     end
     respond_to do |format|
       format.html { 

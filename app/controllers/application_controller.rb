@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
   
   def find_project
     @project = Project.find_by_permalink(UrlStore.decode(params[:project_id]))
+    if @project.nil?
+      record_not_found
+      return
+    end
     if @project.use_ssl?
       ssl_required
     end

@@ -15,10 +15,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
-    @project = Project.find(params[:project_id])
-    @task = Task.new
-    @task.project = @project
-    @page = Page.pageobj('pg_add_task')
+    @task = @project.tasks.build
   end
   
   # GET /tasks/1/edit
@@ -29,7 +26,6 @@ class TasksController < ApplicationController
     if @task.nil?
       record_not_found
     end
-    @page = Page.pageobj('pg_edit_task')
   end
   
   def show
@@ -60,8 +56,6 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        @task.updated_by = current_user.id
-        @task.save
         flash[:notice] = 'Successfully updated task.'
         format.html { redirect_to :back }
       else
@@ -127,9 +121,13 @@ class TasksController < ApplicationController
     if !params[:priority].nil?
       qry = qry + ".priority_eq('#{params[:priority]}')"
     end
+    if !params[:search].blank?
+      qry = qry + ".name_like_any_or_description_like_any(params[:search].split)"
+    end
     
     qry = qry + sort_order('descend_by_created_at')
     qry = qry + ".all(:include => [:assignee, :initiator, :updator, :project, :statusDecode, :priorityDecode])"
     qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 20)"
   end
+  
 end

@@ -1,0 +1,61 @@
+%table.tasks_index
+  %tr
+    %td
+      %table
+        - form_tag project_tasks_path, :method => :get do  
+          %tr
+            %td
+              = filter_html("tasks_index")
+            %td{ :valign => "top" }
+              #simple_search
+                = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
+                = submit_tag "Search"
+              - if tasks.empty?
+                %b
+                  No tasks !
+              - else
+                %table
+                  %tr.header
+                    %th
+                    %th
+                    %th
+                      = sort_link 'Name', :name
+                    %th
+                      = sort_link 'Initiator', :created_by
+                    %th
+                      = sort_link 'Asignee', :assign_to
+                    %th
+                      = sort_link 'Due On', :due_date
+                    %th
+                      = sort_link 'Status', :status
+                    %th
+                      = sort_link 'Created', :created_at
+                    %th
+                      = sort_link 'Updated', :updated_at          
+                  - tasks.each do |task|
+                    %tr{ :class => cycle(:odd, :even) }
+                      %td
+                        = image_tag(task.priority_image)
+                      %td
+                        = image_tag(task.type_image, {:width => 13, :height => 13})
+                      %td
+                        = link_to task.to_s, edit_project_task_path(task.project, task)
+                      %td
+                        = url_name(task.initiator, "users")
+                      %td
+                        = url_name(task.assignee, "users")
+                      %td
+                        = smart_date(task.due_date)
+                      %td
+                        = task.status_val
+                      %td
+                        = time_ago_in_words(task.created_at) 
+                        ago
+                      %td
+                        = time_ago_in_words(task.updated_at)
+                        ago      
+                  %tr
+                  %tr
+                  %tr{ :align => "right" }
+                    %td{ :colspan => "5" }
+                      = will_paginate tasks

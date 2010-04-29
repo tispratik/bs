@@ -489,6 +489,9 @@ h3 {
 table.index td, table.index th {
   padding: 10px; }
 
+table.tasks_index td, table.tasks_index th {
+  padding: 5px; }
+
 .even {
   background-color: #F0F8FF; }
 

@@ -26,8 +26,8 @@ class Task < ActiveRecord::Base
   
   def priority_image
     case priority
-      when Decode::BS_TASK_PRIORITY_MED; "medium.jpg"
-      when Decode::BS_TASK_PRIORITY_HIGH; "high.png"
+      when Decode::BS_TASK_PRIORITY_ME; "medium.jpg"
+      when Decode::BS_TASK_PRIORITY_HI; "high.png"
     else "low.jpg"
     end
   end

@@ -1,0 +1,76 @@
+:javascript
+  wmd_options = {
+    output: "Markdown"
+  }
+  
+  $('document').ready(function(){
+    $('.date_picker').datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+
+= javascript_include_tag "wmd/wmd"
+
+%table
+  %tr	
+    - semantic_form_for [@project, @task] do |f|
+      %td
+        = flash[:errors]
+        Creator:
+        = @task.initiator.to_s
+        %br
+        Created:
+        = to_date(@task.created_at)
+        %br
+        %br  
+        Assigned To:
+        %br
+        = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
+        %br
+        %br  
+        Due By:
+        %br
+        = f.text_field :due_date, :class => "date_picker", :size => '15'
+        %br
+        %br
+        Priority:
+        %br
+        = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
+        %br
+        %br
+        Task Type:
+        %br
+        = f.collection_select :task_type, Task::TYPES, :id, :display_value
+        %br
+        %br
+        Status:
+        %br  
+        = f.collection_select :status, Task::STATUSES, :id, :display_value
+        %br
+        %br
+        -if @task.new_record?  
+          = f.submit "Create Task", :class => "but"
+        -else
+          = f.submit "Update Task", :class => "but"
+      %td         
+        %div{:style => "width:3px;height:400px;background-color:#EEEEEE;"}
+      %td
+        &nbsp;&nbsp;Name
+        = f.text_field :name, :size => 60
+        %br
+        %br        
+        &nbsp;&nbsp;Description: 
+        %br
+          &nbsp;
+          = f.text_area :description, :rows => 20, :cols => 92
+
+%h2
+  Comments
+#comments
+  = render @task.comments      
+
+- if logged_in?
+  #new_comment_form
+    %h2 Add new Comment
+    = render :partial => "comments/form", :locals => {:comment => @task.comments.new}

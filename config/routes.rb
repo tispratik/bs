@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :projects do |projects|
     projects.resources :users
-    projects.resources :tasks, :has_many => :comments
+    projects.resources :tasks, :collection => {:search => :get}, :has_many => :comments
     projects.resources :assets, :member => { :data => :get, :checkout => :get }
     projects.resources :calendars
     projects.resources :events
