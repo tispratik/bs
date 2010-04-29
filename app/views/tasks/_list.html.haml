@@ -53,7 +53,9 @@
                         ago
                       %td
                         = time_ago_in_words(task.updated_at)
-                        ago      
+                        ago
+                      %td
+                        = link_to image_tag('delete.png'), [@project, task], :method => :delete, :confirm => "Are you sure?"  
                   %tr
                   %tr
                   %tr{ :align => "right" }

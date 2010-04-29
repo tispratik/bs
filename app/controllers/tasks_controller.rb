@@ -67,13 +67,9 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
-    
-    respond_to do |format|
-      format.html { redirect_to(tasks_url) }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = "Task deleted successfully."
+    redirect_to :action => :index
   end
   
   private 

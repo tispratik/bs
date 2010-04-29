@@ -2,9 +2,9 @@ class Article < ActiveRecord::Base
   
   default_scope :order => "created_at desc"
   
-  has_many :comments, :as => :commentable
-  has_many :tags, :as => :taggable
-  has_many :assets, :as => :attachable
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :tags, :as => :taggable, :dependent => :destroy
+  has_many :assets, :as => :attachable, :dependent => :destroy
   belongs_to :project
   belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :updator, :class_name => 'User', :foreign_key => "updated_by"
