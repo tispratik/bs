@@ -18,7 +18,6 @@
                   %tr.header
                     %th
                     %th
-                    %th
                       = sort_link 'Name', :name
                     %th
                       = sort_link 'Initiator', :created_by
@@ -26,8 +25,6 @@
                       = sort_link 'Asignee', :assign_to
                     %th
                       = sort_link 'Due On', :due_date
-                    %th
-                      = sort_link 'Status', :status
                     %th
                       = sort_link 'Created', :created_at
                     %th
@@ -37,8 +34,6 @@
                       %td
                         = image_tag(task.priority_image)
                       %td
-                        = image_tag(task.type_image, {:width => 13, :height => 13})
-                      %td
                         = link_to task.to_s, edit_project_task_path(task.project, task)
                       %td
                         = url_name(task.initiator, "users")
@@ -46,8 +41,6 @@
                         = url_name(task.assignee, "users")
                       %td
                         = smart_date(task.due_date)
-                      %td
-                        = task.status_val
                       %td
                         = time_ago_in_words(task.created_at) 
                         ago

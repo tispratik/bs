@@ -1,6 +1,4 @@
-- if logged_in?
-  - content_for :sidebar do
-    = render :partial => "my", :locals => {:user => current_user}
+= render :partial => "projects/list", :locals => {:user => current_user}
 
 %p
   Status:

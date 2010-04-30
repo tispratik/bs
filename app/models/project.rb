@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   STATUSES = Decode.find_all_by_name("BS_Proj_Status")
   
   has_one :contact, :as => :contactable
-  has_many :project_roles
+  has_many :project_roles, :dependent => :destroy
   has_many :users, :through => :project_roles
   has_many :tasks
   has_one :calendar, :as => :calendarable

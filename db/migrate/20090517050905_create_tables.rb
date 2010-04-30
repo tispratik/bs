@@ -44,6 +44,19 @@ class CreateTables < ActiveRecord::Migration
       t.date    :repeat_until_date
       t.timestamps
     end
+
+    create_table :events do |t|
+      t.references :calendar
+      t.references :event_series
+      t.string :summary
+      t.string :location
+      t.datetime :start_at
+      t.datetime :end_at
+      t.boolean :all_day
+      
+      t.integer :created_by
+      t.timestamps
+    end
     
     add_index :events, :calendar_id
 
@@ -181,6 +194,25 @@ class CreateTables < ActiveRecord::Migration
       t.string :internal_param
       t.string :internal_value
       t.integer :sort_order
+    end
+
+    create_table :event_series do |t|
+      t.references :calendar
+      t.string :summary
+      t.string :location
+      t.datetime :start_at
+      t.datetime :end_at
+      t.boolean :all_day
+      t.string  :repeat_frequency
+      t.integer :repeat_interval
+      t.integer :repeat_until_count
+      t.date    :repeat_until_date
+      t.string  :on_wdays
+      t.text    :invitees
+      
+      t.datetime :processed_at
+      t.integer :created_by
+      t.timestamps
     end
   end
 end

@@ -12,15 +12,15 @@
 
 - content_for :sidebar do
   %h1
-    = Time.now.strftime("%b %d")
+    = Time.current.strftime("%b %d")
 
   - if logged_in?
   
     - if (@calendarable.is_a?(Project) && @calendarable.roles.first(:conditions => {:user_id => current_user.id})) || (@calendarable.is_a?(User) && @calendarable == current_user)
       %h3
         Add an event on
-        = Time.now.strftime("%b %d")
-      = render :partial => "events/add_form", :locals => {:event => Event.new(:start_at => Time.now)}
+        = Time.current.strftime("%b %d")
+      = render :partial => "events/add_form", :locals => {:event => @calendarable.calendar.events.build(:start_at => Time.current)}
     
     %h2 Filter by calendars
     - form_tag [@calendarable, :events], :method =>:get, :id => "filter_calendars_form" do
@@ -33,6 +33,7 @@
             = link_to "Remove", [calendar.calendarable, calendar], :method => :delete
       = hidden_field_tag "calendar_ids[]"
       %br
+      
       - if @calendarable.is_a?(Project)
         %h2 Filter by project members
         %p
@@ -43,10 +44,23 @@
           %p
             %label
               = check_box_tag "user_ids[]", role.user_id, true
-              (#{Time.current.in_time_zone(role.user.contact.time_zone).to_s(:time)})
+              (#{Time.current.in_time_zone(role.user.ucontact.time_zone).to_s(:time)})
               = role.user
-        %br
-      = hidden_field_tag "user_ids[]"
+        = hidden_field_tag "user_ids[]"
+      
+      - if @calendarable.is_a?(User)
+        %h2 Filter by projects
+        %p
+          %label
+            = check_box_tag "project_ids[]", "all", true
+            All
+        - @calendarable.roles.each do |role|
+          %p
+            %label
+              = check_box_tag "project_ids[]", role.project_id, true
+              = role.project
+        = hidden_field_tag "project_ids[]"
+      %br
       %p
         = submit_tag "Apply Filters"
     %br

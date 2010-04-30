@@ -1,3 +1,5 @@
+= render :partial => "projects/list", :locals => {:user => current_user}
+
 :javascript
   wmd_options = {
     output: "Markdown"
@@ -14,8 +16,8 @@
 
 %table
   %tr	
-    - semantic_form_for [@project, @task], :html => { :class => "stack" } do |f|
-    = flash[:errors]
+    - semantic_form_for [@project, @task], :live_validations => true do |f|
+    = error_messages_for :task
       %td
         = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
         %br
@@ -30,25 +32,12 @@
         = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
         %br
         %br
-        Task Type:
-        %br
-        = f.collection_select :task_type, Task::TYPES, :id, :display_value
-        %br
-        %br
-        Status:
-        %br  
-        = f.collection_select :status, Task::STATUSES, :id, :display_value
-        %br
-        %br
-        -if @task.new_record?  
           = f.submit "Create Task", :class => "but"
-        -else
-          = f.submit "Update Task", :class => "but"
       %td         
         %div{:style => "width:3px;height:400px;background-color:#EEEEEE;"}
       %td
-        &nbsp;&nbsp;Name
-        = f.text_field :name
+        &nbsp;&nbsp;Name:
+        = f.text_field :name, :size => 100
         %br
         %br
         &nbsp;&nbsp;Description:

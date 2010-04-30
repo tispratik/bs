@@ -2,7 +2,7 @@ class Task < ActiveRecord::Base
   
   TYPES = Decode.find_all_by_name("BS_Task_Type")
   PRIORITIES = Decode.find_all_by_name("BS_Task_Priority")
-  STATUSES = Decode.find_all_by_name("BS_Task_Status")
+  STATUSES = Decode.find_all_by_name_and_is_active("BS_Task_Status", 1)
 
   has_many :comments, :as => :commentable, :dependent => :destroy
   belongs_to :project
@@ -18,7 +18,7 @@ class Task < ActiveRecord::Base
   named_scope :completed, :conditions => { :status => Decode::BS_TASK_STATUS_CO }
   named_scope :active_project, :conditions => "projects.status = 1"
 
-  validates_presence_of :assign_to, :task_type, :priority, :task_type 
+  validates_presence_of :name, :assign_to, :task_type, :priority 
   
   def priority_image
     case priority
@@ -39,14 +39,11 @@ class Task < ActiveRecord::Base
     name
   end
   
-  def status_val
-    statusDecode.display_value
-  end
-  
-  def before_validation_on_create
-    self.status = Decode::BS_TASK_STATUS_OP
+  def before_validation
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id
+    self.status = Decode::BS_TASK_STATUS_OP
+    self.task_type = Decode::BS_TASK_TYPE_AI
   end
   
   def before_create

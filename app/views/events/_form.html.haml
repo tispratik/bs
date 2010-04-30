@@ -1,7 +1,7 @@
 :javascript
   $(document).ready(function() {
     
-    $('#event_is_all_day').change(function() {
+    $('#event_all_day').change(function() {
       $('#event_start_at_4i').toggle(!this.checked);
       $('#event_start_at_5i').toggle(!this.checked);
       $('#event_end_at_input').toggle(!this.checked);
@@ -9,6 +9,7 @@
     
     $('#event_repeat_frequency').change(function() {
       $('#event_repeat_until_date_input').toggle(this.value!='');
+      $('#event_on_wdays_input').toggle(this.value == 'Week')
     })
     
     $('#event_is_all_day').change();
@@ -20,10 +21,14 @@
   - f.inputs do
     = f.input :calendar, :collection => @calendarable.calendars
     = f.input :summary, :label => "Subject", :input_html => {:style => "width:40%"}
-    = f.input :is_all_day, :label => "All day?"
+    = f.input :all_day, :label => "All day?"
     = f.input :start_at, :label => "Start at"
     = f.input :end_at, :label => "End at"
-    = f.input :repeat_frequency, :as => :select, :collection => Event::RECURRING_TYPES, :label => "Repeat every"
-    = f.input :repeat_until_date, :label => "Until Date"
     = f.input :invitees
-  = f.buttons
+    = f.input :repeat_frequency, :as => :select, :collection => EventSeries::RECURRING_TYPES, :label => "Repeat every"
+    = f.input :on_wdays, :as => :check_boxes, :collection => EventSeries::WDAYS, :checked => event.on_wdays
+    = f.input :repeat_until_date, :as => :date, :label => "Until Date"
+  - f.buttons do
+    = f.commit_button "Update current event"
+    - if event.recurring?
+      = f.commit_button "Update all events in the series"

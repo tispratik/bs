@@ -130,4 +130,5 @@ module ApplicationHelper
     str = str + "<input type='submit' value='Apply Filter'>"
     return str
   end
+  
 end

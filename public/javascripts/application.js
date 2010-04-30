@@ -1,63 +1,61 @@
-jQuery.fn.submitWithAjax = function() {
-  this.live('submit', function() {
+jQuery.fn.submitWithAjax = function(){
+    this.live('submit', function(){
+        $.ajax({
+            url: this.action,
+            data: $(this).serialize(),
+            type: this.method,
+            dataType: "script"
+        });
+        return false;
+    })
+    return this;
+};
+
+jQuery.fn.submitNow = function(){
     $.ajax({
-      url: this.action,
-      data: $(this).serialize(),
-      type: this.method,
-      dataType: "script"
+        url: $(this).attr('action'),
+        data: $(this).serialize(),
+        type: this.method,
+        dataType: "script"
     });
     return false;
-  })
-  return this;
 };
 
-jQuery.fn.submitNow = function() {
-  $.ajax({
-    url: $(this).attr('action'),
-    data: $(this).serialize(),
-    type: this.method,
-    dataType: "script"
-  });
-  return false;
-};
-
-jQuery.fn.labelsWithinFields = function() {
-  $(this).addClass('labels-within-fields')
-  $(this).find('input[type=text], textarea').each(function() {
-    $(this).prev('label')
-    .css('position', 'absolute')
-    .css('color', '#ccc')
-    .css('width', 'auto')
-    .css('padding', '2px 4px')
-    $(this).focus(function() {
-      $(this).prev('label').hide();
+jQuery.fn.labelsWithinFields = function(){
+    $(this).addClass('labels-within-fields')
+    $(this).find('input[type=text], textarea').each(function(){
+        $(this).prev('label').css('position', 'absolute').css('color', '#ccc').css('width', 'auto').css('padding', '2px 4px')
+        $(this).focus(function(){
+            $(this).prev('label').hide();
+        }).blur(function(){
+            if (this.value == "") {
+                $(this).prev('label').show();
+            }
+        })
+        if (this.value != "") {
+            $(this).prev('label').hide();
+        }
     })
-    .blur(function() {
-      if (this.value == "") {
-        $(this).prev('label').show();
-      }
-    })
-  })
 }
 
-$(document).ready(function() {
-  $('#comments .comment a.quote').live('click', function() {
-    $.get($(this).attr('href'), {}, null, 'script');
-    return false;
-  })
-  $('form#new_comment').submitWithAjax();
-  
-  $('#comments .comment .comment-header').live('click', function() {
-    $(this).closest('.comment').find('.short-message').toggle();
-    $(this).closest('.comment').find('.comment-body').toggle();
-  });
-  $('#comments .comment').each(function(i) {
-    if ($('#comments .comment').length - i > 1) {
-      $(this).find('.short-message').show();
-      $(this).find('.comment-body').hide();
-    }
-  });
-  
+$(document).ready(function(){
+    $('#comments .comment a.quote').live('click', function(){
+        $.get($(this).attr('href'), {}, null, 'script');
+        return false;
+    })
+    $('form#new_comment').submitWithAjax();
+    
+    $('#comments .comment .comment-header').live('click', function(){
+        $(this).closest('.comment').find('.short-message').toggle();
+        $(this).closest('.comment').find('.comment-body').toggle();
+    });
+    $('#comments .comment').each(function(i){
+        if ($('#comments .comment').length - i > 1) {
+            $(this).find('.short-message').show();
+            $(this).find('.comment-body').hide();
+        }
+    });
+    
 });
 
 $('document').ready(function(){
@@ -198,7 +196,7 @@ $('document').ready(function(){
 function notify(flash_message){
     // jQuery: reference div, load in message, and fade in
     var flash_div = $("#flash");
-	$("#flash").corner("50px");
+    $("#flash").corner("50px");
     flash_div.html(flash_message);
     flash_div.fadeIn(400);
     // use Javascript timeout function to delay calling

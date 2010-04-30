@@ -149,8 +149,7 @@ form.formtastic #errorExplanation {
 form.formtastic li {
   padding: 5px 0px; }
 form.formtastic li.boolean label {
-  padding-left: 20%;
-  width: 100%; }
+  padding-left: 20%; }
   form.formtastic li.boolean label input {
     width: auto;
     margin-right: 0.5em; }

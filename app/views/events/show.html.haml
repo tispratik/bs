@@ -15,7 +15,7 @@
 Event from
 = link_to @calendarable, [@calendarable, :events]
 
-- if @event.is_all_day?
+- if @event.all_day?
   %p
     All Day Event on
     = @event.start_at

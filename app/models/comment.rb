@@ -5,7 +5,6 @@ class Comment < ActiveRecord::Base
   belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :parent_comment, :foreign_key => :parent_id
   
-  validates_associated :commentable, :creator
   validates_presence_of :commentable, :creator, :message
   
   def before_validation_on_create

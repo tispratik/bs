@@ -1,4 +1,5 @@
 :javascript
+  /*
   $(document).ready(function() {
     $('#edit_event_#{@event.id}').submit(function() {
       $.post(this.action, $(this).serialize(), function() {
@@ -7,6 +8,7 @@
       }, "script")
       return false;
     })
-  })
+  })*/
 
 = render :partial => "form", :locals => {:event => @event}
+= link_to "Back", [@event.calendar.calendarable, @event]
