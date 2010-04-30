@@ -31,6 +31,22 @@ module ApplicationHelper
     i.year == Time.now.year ? i.strftime("%d-%b") : i.strftime("%d-%b-%Y")
   end
   
+  def smart_due_date(i)
+    if Date.today == i
+      return "<span style=\"background-color:#F7FAB9;\">Today</span>"
+    end  
+    if i-(Date.today) == 1
+      return "<span style=\"background-color:#F7FAB9;\">Tomorrow</span>"
+    end  
+    if Date.today-(i) > 0.9
+      return "<span style=\"background-color:#FFC7C7;\">" +  smart_date(i) + "</span>"
+    end
+    if Date.today-(i) < 1
+      return "<span style=\"background-color:#D2FFCC;\">" +  smart_date(i) + "</span>"
+    end
+    return smart_date(i)
+  end
+  
   def markdown(text)
     # text = sanitize(text, :tags => %w(object param embed))
     text.gsub!(/<script.*>.*<\/script>/, '')

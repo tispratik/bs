@@ -33,20 +33,6 @@ class CreateTables < ActiveRecord::Migration
     
     create_table :events do |t|
       t.references :calendar
-      t.string :summary
-      t.string :location
-      t.datetime :start_at
-      t.datetime :end_at
-      t.boolean :is_all_day
-      t.string  :repeat_frequency
-      t.integer :repeat_interval
-      t.integer :repeat_count
-      t.date    :repeat_until_date
-      t.timestamps
-    end
-
-    create_table :events do |t|
-      t.references :calendar
       t.references :event_series
       t.string :summary
       t.string :location

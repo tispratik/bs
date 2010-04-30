@@ -1,4 +1,4 @@
-%table.tasks_index
+%table.index
   %tr
     %td
       %table
@@ -25,32 +25,27 @@
                     %th
                       = sort_link 'Asignee', :assign_to
                     %th
-                      = sort_link 'Due On', :due_date
+                      = sort_link 'Updated', :updated_at      
                     %th
-                      = sort_link 'Created', :created_at
+                      = sort_link 'Due', :due_date
                     %th
-                      = sort_link 'Updated', :updated_at     
-                    %th       
                   - tasks.each do |task|
                     %tr{ :class => cycle(:odd, :even) }
                       %td
                         = image_tag(task.priority_image)
-                      %td
+                      %td.min200
                         = link_to task.to_s, edit_project_task_path(task.project, task)
                       %td
                         = task.initiator
                       %td
                         = task.assignee
                       %td
-                        = smart_date(task.due_date)
-                      %td
-                        = time_ago_in_words(task.created_at) 
-                        ago
-                      %td
                         = time_ago_in_words(task.updated_at)
                         ago
+                      %td.right
+                        = smart_due_date(task.due_date)
                       %td
-                        = link_to image_tag('delete.png'), [@project, task], :method => :delete, :confirm => "Are you sure?"  
+                        = link_to image_tag('delete.png'), [@project, task], :method => :delete, :confirm => "Are you sure?"                          
                   %tr
                   %tr
                   %tr{ :align => "right" }
