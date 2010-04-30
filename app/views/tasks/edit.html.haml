@@ -1,3 +1,5 @@
+= render :partial => "projects/list", :locals => {:user => current_user}
+
 :javascript
   wmd_options = {
     output: "Markdown"
@@ -12,61 +14,52 @@
 
 = javascript_include_tag "wmd/wmd"
 
-%table
-  %tr	
-    - semantic_form_for [@project, @task] do |f|
-      %td
-        = flash[:errors]
-        Creator:
-        = @task.initiator.to_s
-        %br
-        Created:
-        = to_date(@task.created_at)
-        %br
-        %br  
-        Assigned To:
-        %br
-        = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
-        %br
-        %br  
-        Due By:
-        %br
-        = f.text_field :due_date, :class => "date_picker", :size => '15'
-        %br
-        %br
-        Priority:
-        %br
-        = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
-        %br
-        %br
-        Task Type:
-        %br
-        = f.collection_select :task_type, Task::TYPES, :id, :display_value
-        %br
-        %br
-        Status:
-        %br  
-        = f.collection_select :status, Task::STATUSES, :id, :display_value
-        %br
-        %br
-        -if @task.new_record?  
-          = f.submit "Create Task", :class => "but"
-        -else
-          = f.submit "Update Task", :class => "but"
-      %td         
-        %div{:style => "width:3px;height:400px;background-color:#EEEEEE;"}
-      %td
-        &nbsp;&nbsp;Name
-        = f.text_field :name, :size => 60
-        %br
-        %br        
-        &nbsp;&nbsp;Description: 
-        %br
-          &nbsp;
-          = f.text_area :description, :rows => 20, :cols => 92
+#main_form
+  %table
+    %tr	
+      - semantic_form_for [@project, @task] do |f|
+        %td
+          = flash[:errors]
+          Creator:
+          = @task.initiator.to_s
+          %br
+          Created:
+          = to_date(@task.created_at)
+          %br
+          %br  
+          Assigned To:
+          %br
+          = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
+          %br
+          %br  
+          Due By:
+          %br
+          = f.text_field :due_date, :class => "date_picker", :size => '15'
+          %br
+          %br
+          Priority:
+          %br
+          = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
+          %br
+          %br
+            = f.submit "Update Task", :class => "but"
+        %td         
+          %div{:style => "width:3px;height:400px;background-color:#EEEEEE;"}
+        %td
+          &nbsp;&nbsp;Name
+          = f.text_field :name, :size => 100
+          %br
+          %br        
+          &nbsp;&nbsp;Description: 
+          %br
+            &nbsp;
+            = f.text_area :description, :rows => 15, :cols => 92
 
-%h2
-  Comments
+%h2.left Comments
+.right
+  = link_to "Hide Task Details", "#", :id => :hide_main_form
+  = link_to "Show Task Details", "#", :id => :show_main_form
+.clear  
 #comments
   = render @task.comments      
 

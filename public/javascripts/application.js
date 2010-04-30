@@ -66,6 +66,22 @@ $('document').ready(function(){
         notify(flash_message);
     }
     
+	$('#show_main_form').hide();
+	
+    $('#hide_main_form').click(function(){
+        $('#main_form').hide();
+        $('#hide_main_form').hide();
+        $('#show_main_form').show();
+        return false;
+    })
+    
+    $('#show_main_form').click(function(){
+        $('#main_form').show();
+        $('#show_main_form').hide();
+        $('#hide_main_form').show();
+        return false;
+    })
+    
     //    $.ajaxSetup({
     //        'beforeSend': function(xhr){
     //            xhr.setRequestHeader("Accept", "text/xml")
