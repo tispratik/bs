@@ -1,18 +1,18 @@
 require "#{RAILS_ROOT}/db/blueprints"
 
-[Project, Event, WikiPage, Article, Calendar, Comment, Task].each(&:delete_all)
+[Project, Event, WikiPage, Article, Calendar, Comment, Task].each(&:destroy_all)
 
 p "creating user calendar and events for that calendar"
 
 User.all.each do |u|
-  cal = Calendar.make(:calendarable => u)
+  User.curr_user = u
+  cal = u.calendars.make(:name => "default")
   10.times do
-    Event.make(:calendar => cal)
+    cal.events.make
   end
 end
 
-user = User.first
-User.curr_user = user
+user = User.curr_user = User.first
 
 p "creating projects"
 5.times do
@@ -23,10 +23,10 @@ p "creating projects"
     project.assets.create(:data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
     article = project.articles.make
     article.assets.create(:data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
-    t = project.tasks.make
+    task = project.tasks.make
     5.times do
-      Comment.make(:commentable => t)
-      Comment.make(:commentable => article)
+      task.comments.make
+      article.comments.make
     end
   end
 end

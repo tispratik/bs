@@ -1,6 +1,6 @@
 module CalendarHelper
   def month_link(month_date)
-    link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year})
+    link_to(I18n.localize(month_date, :format => "%B"), request.query_parameters.merge(:month => month_date.month, :year => month_date.year))
   end
   
   # custom options for this calendar
@@ -17,8 +17,8 @@ module CalendarHelper
   def event_calendar
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
-      event = args[:event].event_object
-      link_to event, [event.calendar.calendarable, event], :title => h(event)
+      event = args[:event]#.event_object
+      link_to "#{event.recurring? ? "(R)" : ""} #{h event}", [event.calendar.calendarable, event], :title => h(event)
       # %(<a href="/events/#{event.id}" title="#{h(event.name)}">#{h(event.name)}</a>)
     end
   end

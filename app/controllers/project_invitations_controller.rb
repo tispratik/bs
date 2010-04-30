@@ -1,10 +1,12 @@
 class ProjectInvitationsController < ApplicationController
-
+  
+  before_filter :login_required
+  before_filter :find_project
+  
   def new
   end
   
   def create
-    @project = Project.find_by_permalink(params[:project_id])
     @invitation = @project.invitations.new(params[:project_invitation])
     
     if @invitation.save
@@ -16,7 +18,6 @@ class ProjectInvitationsController < ApplicationController
   end
   
   def confirm
-    @project = Project.find_by_permalink(params[:project_id])
     @invitation = @project.invitations.find(params[:id])
     
     if @invitation.user == current_user && @invitation.confirm

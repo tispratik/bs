@@ -35,6 +35,10 @@ class Project < ActiveRecord::Base
     roles.create(:user => User.curr_user)
   end
   
+  def calendar
+    calendars.first
+  end
+  
   def to_s
     name
   end

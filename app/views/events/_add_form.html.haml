@@ -1,7 +1,7 @@
 :javascript
   $(document).ready(function() {
     
-    $('#event_is_all_day').change(function() {
+    $('#event_all_day').change(function() {
       $('#event_start_at_input').toggle(!this.checked);
       $('#event_duration_input').toggle(!this.checked);
     })
@@ -10,7 +10,7 @@
       $('#event_repeat_until_date_input').toggle(this.value!='');
     })
     
-    $('#event_is_all_day').change();
+    $('#event_all_day').change();
     $('#event_repeat_frequency').change();
   })
 

@@ -36,7 +36,7 @@ Article.blueprint do
 end
 
 Calendar.blueprint do
-  name         { Faker::Lorem.sentence }
+  name         { Faker::Lorem.words.join(" ") }
 end
 
 Task.blueprint do

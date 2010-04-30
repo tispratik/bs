@@ -1,20 +1,43 @@
 class Event < ActiveRecord::Base
-  RECURRING_TYPES = ["Day", "Week", "Month", "Year"]
-  # has_event_calendar
   belongs_to :calendar
+  belongs_to :event_series
   has_many :comments, :as => :commentable
   has_many :event_invitees
+  
+  has_event_calendar
   
   validates_associated :calendar
   validates_presence_of :calendar_id, :summary, :start_at
   
+  accepts_nested_attributes_for :event_series
+  
   attr_accessor :start_hour, :start_min, :duration, :color
+  attr_accessor :repeat_frequency, :repeat_until_date, :on_wdays
   
   before_validation_on_create :set_dates
   
-  attr_writer :invitees
-  def invitees
-    @invitees || event_invitees.map{|inv| inv.user.login_email}.join(', ')
+  named_scope :all_events_for_users, lambda { |user_ids|
+    { :conditions => ["created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids] }
+  }
+  
+  def attributes=(new_attributes, guard_protected_attributes = true)
+    date_hack(new_attributes, "repeat_until_date")
+    super(new_attributes, guard_protected_attributes)
+  end
+
+  def date_hack(attributes, property)
+    keys, values = [], []
+    attributes.each_key {|k| keys << k if k =~ /#{property}\(\di\)/ }
+    unless keys.empty?
+      keys.sort.each { |k| values << attributes[k]; attributes.delete(k); }
+      date = Time.zone.local(*values)
+      date = date.to_date unless values.size > 3
+      attributes[property] = date
+    end
+  end
+  
+  def before_validation_on_create
+    self.created_by = User.curr_user.id
   end
   
   def after_save
@@ -24,11 +47,48 @@ class Event < ActiveRecord::Base
     if @invitees.is_a?(Array)
       transaction do
         self.event_invitees = @invitees.map do |email|
-          contact = Contact.find_by_email(email)
-          event_invitees.create(:user => contact.contactable)
+          if user = User.find_by_login_email(email)
+            event_invitees.create(:user => user)
+          end
         end
       end
     end
+  end
+  
+  def update_series(params)
+    if event_series
+      self.attributes = params
+      event_series.attributes = params.reject { |k,v| k =~ /start_at|end_at/ }
+      
+      if changed.include?("start_at")
+        event_series.start_at += changes["start_at"][1] - changes["start_at"][0]
+      end
+      if changed.include?("end_at")
+        event_series.start_at += changes["end_at"][1] - changes["end_at"][0]
+      end
+    else
+      build_event_series(params)
+    end
+    
+    event_series.save
+    event_series
+  end
+  
+  def repeat_frequency
+    event_series.try :repeat_frequency
+  end
+  
+  def repeat_until_date
+    event_series.try :repeat_until_date
+  end
+  
+  def on_wdays
+    event_series.try(:on_wdays)
+  end
+  
+  attr_writer :invitees
+  def invitees
+    @invitees || event_invitees.map{|inv| inv.user.login_email}.join(', ')
   end
   
   def set_dates
@@ -41,7 +101,7 @@ class Event < ActiveRecord::Base
   end
   
   def recurring?
-    repeat_frequency.present?
+    event_series_id.present?
   end
   
   def duration
@@ -52,49 +112,8 @@ class Event < ActiveRecord::Base
     summary
   end
   
-  # Creating set of proxy objects for recurring events
-  # for displayiong on page
-  class Proxy
-    include EventCalendar::InstanceMethods
-    attr_accessor :event_object, :start_at, :end_at
-    delegate :color, :to => :event_object
-    delegate :id, :to => :event_object
-    
-    def initialize(event, date)
-      self.event_object = event
-      self.start_at = Time.parse("#{date.to_date} #{event.start_at.to_s(:time)}")
-      self.end_at = start_at + event.duration.hours
-    end
-  end
-  
   def color
     @color ||= "#9aa4ad"
-  end
-  
-  def self.event_strips_for_month(shown_date)
-    self.extend EventCalendar::ClassMethods
-    date_start, date_end = get_start_and_end_dates(shown_date, 0)
-    
-    events = all(:conditions => ["(? <= end_at) AND (start_at < ?) or (repeat_frequency != '' and repeat_frequency is not null)", date_start, date_end])
-    new_events = []
-    events.each do |event|
-      if event.recurring?
-        until_date = event.repeat_until_date || date_end
-        opts = {:every => event.repeat_frequency.downcase.to_sym, :starts => event.start_at, :until => until_date}
-        case opts[:every]
-          when :week  then opts[:on] = event.start_at.wday
-          when :month then opts[:on] = event.start_at.day
-          when :year  then opts[:on] = [event.start_at.month, event.start_at.day]
-        end
-        Recurrence.new(opts).each do |date|
-          new_events << Proxy.new(event, date)
-        end
-      else
-        new_events << Proxy.new(event, event.start_at)
-      end
-    end
-    
-    create_event_strips(date_start, date_end, new_events)
   end
   
 end

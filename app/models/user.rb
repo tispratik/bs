@@ -40,11 +40,11 @@ class User < ActiveRecord::Base
   end
   
   def my_projects_with_roles
-    # Project.all(:joins => "left join project_invitations on project_invitations.project_id=projects.id",
-    #   :conditions => ["projects.user_id = ? or (project_invitations.user_id = ? and project_invitations.confirmed=1)", id, id],
-    #   :group => "projects.id"
-    # )
     ProjectRole.all(:conditions => {:user_id => id}, :include => :project)
+  end
+  
+  def calendar
+    calendars.first
   end
   
   def to_param

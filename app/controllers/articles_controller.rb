@@ -87,6 +87,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was created."
       redirect_to :action => :index
     else
+      flash[:notice] = "Failed to create article."
       render :action => :new
     end
   end

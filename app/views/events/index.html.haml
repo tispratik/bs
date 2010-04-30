@@ -1,10 +1,27 @@
 
 :javascript
   $(document).ready(function() {
-    $('#filter_calendars_form').submitWithAjax();
+    $('.filter_calendars_form').submitWithAjax();
     $('.colorbox').live('click', function() {
       $.fn.colorbox({href: $(this).attr('href'), width: "60%", height: "40%"});
       return false;
+    })
+    
+    $('#calendar_ids_all, #user_ids_all, #project_ids_all').each(function() {
+      var self = this;
+      $(this).change(function() {
+        $(this).closest('fieldset').find(':checkbox').attr('checked', this.checked);
+      })
+      $(this).closest('fieldset').find(':checkbox:not(:first)').change(function() {
+        if (!this.checked) {
+          self.checked = false;
+        }
+      })
+    })
+    
+    $('.ec-month-nav a').live('click', function() {
+      $.getScript($(this).attr('href'));
+      return false
     })
     
     $('#new_event').labelsWithinFields()
@@ -23,46 +40,57 @@
       = render :partial => "events/add_form", :locals => {:event => @calendarable.calendar.events.build(:start_at => Time.current)}
     
     %h2 Filter by calendars
-    - form_tag [@calendarable, :events], :method =>:get, :id => "filter_calendars_form" do
-      - @calendarable.calendars.each do |calendar|
+    - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
+      %fieldset
         %p
           %label
-            = check_box_tag "calendar_ids[]", calendar.id, (!params[:calendar_ids] || params[:calendar_ids].include?(calendar.id.to_s))
-            = calendar.name
-          - unless calendar.name == 'default'
-            = link_to "Remove", [calendar.calendarable, calendar], :method => :delete
-      = hidden_field_tag "calendar_ids[]"
-      %br
-      
-      - if @calendarable.is_a?(Project)
-        %h2 Filter by project members
-        %p
-          %label
-            = check_box_tag "user_ids[]", "all", true
+            = check_box_tag :calendar_ids_all, 1, true
             All
-        - @calendarable.roles.each do |role|
+        - @calendarable.calendars.each do |calendar|
           %p
             %label
-              = check_box_tag "user_ids[]", role.user_id, true
-              (#{Time.current.in_time_zone(role.user.ucontact.time_zone).to_s(:time)})
-              = role.user
-        = hidden_field_tag "user_ids[]"
+              = check_box_tag "calendar_ids[]", calendar.id, (!params[:calendar_ids] || params[:calendar_ids].include?(calendar.id.to_s))
+              = calendar.name
+            - unless calendar.name == 'default'
+              = link_to "Remove", [calendar.calendarable, calendar], :method => :delete
+        = hidden_field_tag "calendar_ids[]"
+      %br
+      %p
+        = submit_tag "Apply Filter"
+    %br
+    - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
+      - if @calendarable.is_a?(Project)
+        %h2 Events for project members
+        %fieldset
+          %p
+            %label
+              = check_box_tag :user_ids_all, 1, true
+              All
+          - @calendarable.roles.each do |role|
+            %p
+              %label
+                = check_box_tag "user_ids[]", role.user_id, true
+                = image_tag role.user.ucontact.country.get_flag
+                (#{Time.current.in_time_zone(role.user.ucontact.time_zone).to_s(:time)})
+                = role.user
+          = hidden_field_tag "user_ids[]"
       
       - if @calendarable.is_a?(User)
         %h2 Filter by projects
-        %p
-          %label
-            = check_box_tag "project_ids[]", "all", true
-            All
-        - @calendarable.roles.each do |role|
+        %fieldset
           %p
             %label
-              = check_box_tag "project_ids[]", role.project_id, true
-              = role.project
-        = hidden_field_tag "project_ids[]"
+              = check_box_tag :project_ids_all, 1, true
+              All
+          - @calendarable.roles.each do |role|
+            %p
+              %label
+                = check_box_tag "project_ids[]", role.project_id, true
+                = role.project
+          = hidden_field_tag "project_ids[]"
       %br
       %p
-        = submit_tag "Apply Filters"
+        = submit_tag "Apply Filter"
     %br
     %h1 Add New Calendar
     - form_tag [@calendarable, :calendars], :multipart => true do
