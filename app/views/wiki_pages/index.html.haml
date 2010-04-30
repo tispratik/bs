@@ -8,16 +8,19 @@
       = f.commit_button "Create CoEdit Page"
 
 %table.index
-  %tr
+  %tr.header
     %th
-      Title
+      =sort_link 'Title', :title
     %th
       Updated by
     %th
-      Last Update
+      Update
+    %th
+    %th
+    %th    
   - @wiki_pages.each do |wiki_page|
     %tr{:class => cycle("even", "odd")}
-      %td
+      %td.min600
         - if wiki_page.deleted_at?
           %del
             = link_to truncate(wiki_page.title, 55, "..."), [@project, wiki_page]
@@ -32,7 +35,7 @@
           = h truncate(wiki_page.creator.to_s(), 20, "...")
       %td
         - if wiki_page.version > 1
-          = wiki_page.versions.last.created_at
+          = smart_date(wiki_page.versions.last.created_at)
       - unless wiki_page.deleted_at?
         %td
           = link_to image_tag('edit.png'), [:edit, @project, wiki_page]

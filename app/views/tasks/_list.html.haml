@@ -6,11 +6,11 @@
           %tr
             %td
               = filter_html("tasks_index")
-            %td{ :valign => "top" }
-              = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
-              = submit_tag "Search"
+            %td.top
+              %center
+                = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
+                = submit_tag "Search"
               %br
-              %br  
               - if tasks.empty?
                 %b
                   No tasks !
@@ -26,14 +26,14 @@
                       = sort_link 'Asignee', :assign_to
                     %th
                       = sort_link 'Updated', :updated_at      
-                    %th
+                    %th.right
                       = sort_link 'Due', :due_date
                     %th
                   - tasks.each do |task|
                     %tr{ :class => cycle(:odd, :even) }
                       %td
                         = image_tag(task.priority_image)
-                      %td.min200
+                      %td.min200.left
                         = link_to task.to_s, edit_project_task_path(task.project, task)
                       %td
                         = task.initiator

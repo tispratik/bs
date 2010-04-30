@@ -57,8 +57,10 @@
     - form_tag [:search, @project, :articles], :method => :get do
       = text_field_tag "search", (params[:search] if params[:search].is_a?(String)), :size => 60, :autocomplete => "off"
       = submit_tag "Search"
-      &nbsp;
-      = link_to "Advanced Search", "#", :id => :advanced_search_link
+      %small_text
+        = link_to "Advanced Search", "#", :id => :advanced_search_link
+        &nbsp;&nbsp;
+        = link_to "Clear Search", "#", :id => :clear_search
   #advanced_search{:style => params[:search].is_a?(Hash) ? "" : "display:none"}
     - form_tag [:search, @project, :articles], :method => :get, :class => :formtastic do
       %h2 Advanced Search
@@ -93,8 +95,6 @@
             = submit_tag "Search"
             &nbsp;
             = link_to "Simple Search", "#", :id => :simple_search_link
-
-  = link_to "Clear Search", "#", :id => :clear_search
 
 #articles
   = render :partial => "list", :locals => {:articles => @articles}
