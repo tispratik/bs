@@ -12,20 +12,6 @@ Filter_<%= i=i+1 %>:
 Filter_<%= i=i+1 %>: 
  id: <%= i %>
  filter_name: tasks_index
- display_name: Type
- filter_param: task_type
- sort_order: 1 
-  
-Filter_<%= i=i+1 %>: 
- id: <%= i %>
- filter_name: tasks_index
- display_name: Status
- filter_param: task_status
- sort_order: 2 
-
-Filter_<%= i=i+1 %>: 
- id: <%= i %>
- filter_name: tasks_index
  display_name: Priority
  filter_param: task_priority
  sort_order: 3
@@ -33,7 +19,7 @@ Filter_<%= i=i+1 %>:
 Filter_<%= i=i+1 %>: 
  id: <%= i %>
  filter_name: tasks_index
- display_name: Priority
+ display_name: Due
  filter_param: task_due_date
  sort_order: 4
   

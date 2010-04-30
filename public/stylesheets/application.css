@@ -500,6 +500,29 @@ ins.diffmod, ins.diffins {
 del.diffmod, del.diffdel {
   background-color: #faa; }
 
+.pagination {
+  padding: 3px;
+  margin: 3px; }
+  .pagination a {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    text-decoration: none;
+    color: #000099; }
+  .pagination a.hover {
+    color: #000; }
+  .pagination a.active {
+    color: #000; }
+  .pagination span.current {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    font-weight: bold;
+    background-color: #cc3700;
+    color: #FFF; }
+  .pagination span.disabled {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    color: #ddd; }
+
 #comments .comment {
   box-shadow: 0px 0px 4px #ccc;
   -moz-box-shadow: 0px 0px 4px #ccc;

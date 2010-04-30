@@ -123,7 +123,7 @@ class TasksController < ApplicationController
     
     qry = qry + sort_order('descend_by_created_at')
     qry = qry + ".all(:include => [:assignee, :initiator, :updator, :project, :statusDecode, :priorityDecode])"
-    qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 20)"
+    qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 10)"
   end
   
 end

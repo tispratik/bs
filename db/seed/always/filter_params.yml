@@ -86,7 +86,7 @@ Filter_Param<%= i=i+1 %>:
 Filter_Param<%= i=i+1 %>:  
  id: <%= i %>
  filter_param: task_due_date
- disp_value: Due Today
+ disp_value: Today
  internal_param: due_date
  internal_value: today
  sort_order: 1
@@ -94,7 +94,7 @@ Filter_Param<%= i=i+1 %>:
 Filter_Param<%= i=i+1 %>:  
  id: <%= i %>
  filter_param: task_due_date
- disp_value: Due Tomorrow
+ disp_value: Tomorrow
  internal_param: due_date
  internal_value: tomorrow
  sort_order: 2
@@ -102,7 +102,7 @@ Filter_Param<%= i=i+1 %>:
 Filter_Param<%= i=i+1 %>:  
  id: <%= i %>
  filter_param: task_due_date
- disp_value: Due End of Week
+ disp_value: End of Week
  internal_param: due_date
  internal_value: eow
  sort_order: 3
@@ -110,7 +110,7 @@ Filter_Param<%= i=i+1 %>:
 Filter_Param<%= i=i+1 %>:  
  id: <%= i %>
  filter_param: task_due_date
- disp_value: Past Due
+ disp_value: Past
  internal_param: due_date
  internal_value: past
  sort_order: 4
