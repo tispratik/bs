@@ -487,9 +487,39 @@ h3 {
 
 table.index td, table.index th {
   padding: 10px; }
+table.index tr.header {
+  background-color: #F5F5DC;
+  font-weight: bold;
+  text-align: left;
+  height: 28px;
+  text-align: center;
+  color: #093D72; }
+table.index tr.header a:hover {
+  background-color: #FFFFFF;
+  color: #BB4606; }
+table.index tr.header a {
+  background: url(../images/nav-arrow-down-open1.png) no-repeat right;
+  color: #BB4606;
+  padding-right: 15px; }
 
-table.tasks_index td, table.tasks_index th {
-  padding: 5px; }
+table.tasks_index {
+  border: 1; }
+  table.tasks_index td, table.tasks_index th {
+    padding: 5px; }
+  table.tasks_index tr.header {
+    background-color: #F5F5DC;
+    font-weight: bold;
+    text-align: left;
+    height: 28px;
+    text-align: center;
+    color: #093D72; }
+  table.tasks_index tr.header a:hover {
+    background-color: #FFFFFF;
+    color: #BB4606; }
+  table.tasks_index tr.header a {
+    background: url(../images/nav-arrow-down-open1.png) no-repeat right;
+    color: #BB4606;
+    padding-right: 15px; }
 
 .even {
   background-color: #F0F8FF; }

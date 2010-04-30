@@ -7,9 +7,10 @@
             %td
               = filter_html("tasks_index")
             %td{ :valign => "top" }
-              #simple_search
-                = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
-                = submit_tag "Search"
+              = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
+              = submit_tag "Search"
+              %br
+              %br  
               - if tasks.empty?
                 %b
                   No tasks !
@@ -28,7 +29,8 @@
                     %th
                       = sort_link 'Created', :created_at
                     %th
-                      = sort_link 'Updated', :updated_at          
+                      = sort_link 'Updated', :updated_at     
+                    %th       
                   - tasks.each do |task|
                     %tr{ :class => cycle(:odd, :even) }
                       %td
@@ -36,9 +38,9 @@
                       %td
                         = link_to task.to_s, edit_project_task_path(task.project, task)
                       %td
-                        = url_name(task.initiator, "users")
+                        = task.initiator
                       %td
-                        = url_name(task.assignee, "users")
+                        = task.assignee
                       %td
                         = smart_date(task.due_date)
                       %td
