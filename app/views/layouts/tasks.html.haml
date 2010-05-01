@@ -15,17 +15,6 @@
     #container
       #header
         = render :partial => "layouts/top_bar"
-        
-      #sidebar.left
-        = image_tag('logo.png')
-        .home{:class => (request.request_uri == root_path || (current_user && request.request_uri == polymorphic_path(current_user))) ? "current" : nil}
-          = link_to "Homepage", root_path
-        = yield(:sidebar)
-        
-      #content.right
-        #flash_messages
-          - flash.each do |name, msg|
-            = content_tag :div, msg, :class => "flash #{name}" if msg.is_a?(String)
-        = render :partial => "layouts/header"
-        = yield
-      .clear
+      
+      = yield  
+      
