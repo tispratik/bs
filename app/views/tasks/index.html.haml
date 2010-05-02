@@ -1,7 +1,62 @@
-- content_for :sidebar do
-  %h1 Task
-  %br
-  = link_to "New Task", new_project_task_path
+- form_tag project_tasks_path, :method => :get do
+  #sidebar.left
+    = render :partial => "layouts/logo_box"
+    %h1 Tasks List
+    = link_to "New Task", new_project_task_path
+    = filter_html("tasks_index")
   
-#tasks
-  = render :partial => "list", :locals => {:tasks => @tasks}
+  #content.right
+    = render :partial => "layouts/header"
+          
+    %table.index
+      %tr
+        %td.top
+          %center
+            = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
+            = submit_tag "Search"
+          %br
+          - if @tasks.empty?
+            %b
+              No tasks !
+          - else
+            %table
+              %tr.header
+                %th
+                %th
+                  = sort_link 'Name', :name
+                %th
+                  Description
+                %th
+                  = sort_link 'Initiator', :created_by
+                %th
+                  = sort_link 'Asignee', :assign_to
+                %th
+                  = sort_link 'Updated', :updated_at      
+                %th.right
+                  = sort_link 'Due', :due_date
+                %th
+              - @tasks.each do |task|
+                %tr{ :class => cycle(:odd, :even) }
+                  %td
+                    = image_tag(task.priority_image)
+                  %td.min200.left
+                    = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
+                  %td
+                    = truncate task.description, :omission => "...", :length => 35  
+                  %td
+                    = task.initiator
+                  %td
+                    = task.assignee
+                  %td
+                    = time_ago_in_words(task.updated_at)
+                    ago
+                  %td.right
+                    = smart_due_date(task.due_date)
+                  %td
+                    = link_to image_tag('delete.png'), [@project, task], :method => :delete, :confirm => "Are you sure?"                          
+              %tr
+              %tr
+              %tr{ :align => "right" }
+                %td{ :colspan => "5" }
+                  = will_paginate @tasks
+.clear
