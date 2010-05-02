@@ -46,7 +46,7 @@ Task.blueprint do
   due_date      { due_dates.rand } 
   task_type     { Task::TYPES.rand.id }
   priority      { Task::PRIORITIES.rand.id }
-  status        { Task::STATUSES.rand.id }
+  status        { Decode::BS_TASK_STATUS_OP }
 end
 
 Comment.blueprint do

@@ -1,4 +1,5 @@
 class WikiPagesController < ApplicationController
+
   before_filter :login_required
   before_filter :find_project
   before_filter :find_wiki_page, :except => [:index, :new, :create]

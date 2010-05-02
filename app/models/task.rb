@@ -1,22 +1,18 @@
 class Task < ActiveRecord::Base
-  
+
+  default_scope :order => "deleted_at asc, updated_at desc"
+    
   TYPES = Decode.find_all_by_name("BS_Task_Type")
   PRIORITIES = Decode.find_all_by_name("BS_Task_Priority")
-  STATUSES = Decode.find_all_by_name_and_is_active("BS_Task_Status", 1)
 
   has_many :comments, :as => :commentable, :dependent => :destroy
   belongs_to :project
-  belongs_to :type_val, :class_name => 'Decode', :foreign_key => "task_type"
-  belongs_to :priorityDecode, :class_name => 'Decode', :foreign_key => "priority"
-  belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
   belongs_to :initiator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :updator, :class_name => 'User', :foreign_key => "updated_by"
   belongs_to :assignee, :class_name => 'User', :foreign_key => "assign_to"  
-  named_scope :ai, :conditions => { :task_type => Decode::BS_TASK_TYPE_AI }
-  named_scope :oi, :conditions => { :task_type => Decode::BS_TASK_TYPE_OI }
-  named_scope :open, :conditions => { :status => Decode::BS_TASK_STATUS_OP }
-  named_scope :completed, :conditions => { :status => Decode::BS_TASK_STATUS_CO }
-  named_scope :active_project, :conditions => "projects.status = 1"
+  belongs_to :priorityDecode, :class_name => 'Decode', :foreign_key => "priority"
+  belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
+  named_scope :deleted, { :conditions => ['deleted_at != ?', nil] }
 
   validates_presence_of :name, :assign_to, :task_type, :priority 
   
@@ -49,4 +45,5 @@ class Task < ActiveRecord::Base
   def before_create
     self.alias = 'TASK' + id.to_s() 
   end
+
 end

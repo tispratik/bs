@@ -56,7 +56,7 @@ Filter_Param<%= i=i+1 %>:
  filter_param: task_status
  disp_value: Closed
  internal_param: status
- internal_value: <%= Decode::BS_TASK_STATUS_CO %>
+ internal_value: <%= Decode::BS_TASK_STATUS_CL %>
  sort_order: 5
  
 Filter_Param<%= i=i+1 %>:  

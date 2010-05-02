@@ -107,6 +107,7 @@ class CreateTables < ActiveRecord::Migration
       t.integer :task_type
       t.integer :priority
       t.integer :status
+      t.datetime :deleted_at
       t.integer :created_by
       t.integer :updated_by
       t.timestamps

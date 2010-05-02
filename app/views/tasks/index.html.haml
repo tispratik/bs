@@ -25,8 +25,6 @@
                 %th
                   = sort_link 'Name', :name
                 %th
-                  Description
-                %th
                   = sort_link 'Initiator', :created_by
                 %th
                   = sort_link 'Asignee', :assign_to
@@ -40,9 +38,11 @@
                   %td
                     = image_tag(task.priority_image)
                   %td.min200.left
-                    = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
-                  %td
-                    = truncate task.description, :omission => "...", :length => 35  
+                    - if task.deleted_at?
+                      %del
+                        = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
+                    - else
+                      = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
                   %td
                     = task.initiator
                   %td
@@ -52,8 +52,12 @@
                     ago
                   %td.right
                     = smart_due_date(task.due_date)
-                  %td
-                    = link_to image_tag('delete.png'), [@project, task], :method => :delete, :confirm => "Are you sure?"                          
+                  - if task.deleted_at?
+                    %td
+                      = link_to "Reopen", [:reopen, @project, task]
+                  - else  
+                    %td
+                      = link_to image_tag('delete.png'), [@project, task], :method => :delete                          
               %tr
               %tr
               %tr{ :align => "right" }

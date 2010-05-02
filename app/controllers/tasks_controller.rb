@@ -68,8 +68,14 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
   def destroy
-    @task.update_attribute(:status, Decode::BS_TASK_STATUS_CL)
-    flash[:notice] = "Task closed successfully."
+    @task.update_attribute(:deleted_at, Time.now)
+    flash[:notice] = "Task was closed successfully."
+    redirect_to :action => :index
+  end
+  
+  def reopen
+    @task.update_attribute(:deleted_at, nil)
+    flash[:notice] = "Task re-opened successfully."
     redirect_to :action => :index
   end
   
