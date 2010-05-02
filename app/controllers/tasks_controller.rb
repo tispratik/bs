@@ -69,14 +69,14 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.xml
   def destroy
     @task.update_attribute(:deleted_at, Time.now)
-    flash[:notice] = "Task was closed successfully."
-    redirect_to :action => :index
+    flash[:notice] = "Task closed successfully."
+    redirect_to :back
   end
   
   def reopen
     @task.update_attribute(:deleted_at, nil)
     flash[:notice] = "Task re-opened successfully."
-    redirect_to :action => :index
+    redirect_to :back
   end
   
   private 
@@ -129,7 +129,7 @@ class TasksController < ApplicationController
     end
     
     qry = qry + sort_order('descend_by_created_at')
-    qry = qry + ".all(:include => [:assignee, :initiator, :updator, :project, :statusDecode, :priorityDecode])"
+    qry = qry + ".all(:include => [:assignee, :initiator, :updator, :project, :priorityDecode])"
     qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 10)"
   end
   

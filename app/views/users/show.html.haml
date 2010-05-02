@@ -4,10 +4,17 @@
 
 = render :partial => "events/upcoming", :locals => {:events => @user.events}
 
-- if logged_in?
+- invites = @user.project_invitations.confirmed_is(false)
+
+- if logged_in? && invites.size > 0
   %h3 Incoming Project Invitations
-  - @user.project_invitations.confirmed_is(false).each do |invitation|
+  - invites.each do |invitation|
     = link_to invitation.project, invitation.project
     = link_to "Accept", confirm_project_project_invitation_path(invitation.project, invitation)
 
-= link_to "Create New Project", new_project_path    
+%h2 Tasks
+My Tasks
+= render :partial => "tasks/my", :locals => {:tasks => @my_tasks, :table_name => "upper" }    
+%br
+Related Tasks
+= render :partial => "tasks/my", :locals => {:tasks => @my_related, :table_name => "lower" }  
