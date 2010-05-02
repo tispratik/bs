@@ -3,7 +3,6 @@ class Asset < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :updator, :class_name => 'User', :foreign_key => "updated_by"
-  belongs_to :checkoutuser, :class_name => 'User', :foreign_key => "checkout_by"
   
   has_attached_file :data,
       :path => ':rails_root/private/files/:id/:style/:basename.:extension',
@@ -17,7 +16,6 @@ class Asset < ActiveRecord::Base
   before_post_process :image?
 
   def before_create
-    self.status = Decode::BS_ASSET_STATUS_AC
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id
   end

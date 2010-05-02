@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
   
   def self.cid
-    User.curr_user.id
+    curr_user.id
   end
   
 end

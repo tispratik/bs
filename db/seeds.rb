@@ -1,6 +1,6 @@
 require "#{RAILS_ROOT}/db/blueprints"
 
-[Project, Event, WikiPage, Article, Calendar, Comment, Task].each(&:destroy_all)
+[Project, Event, WikiPage, Article, Calendar, Comment, Task, Asset].each(&:destroy_all)
 
 p "creating user calendar and events for that calendar"
 
@@ -20,9 +20,9 @@ p "creating projects"
   7.times do
     project.calendar.events.make
     project.wiki_pages.make
-    project.assets.create(:data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
+    project.assets.create(:orig_name => Random.firstname,:data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
     article = project.articles.make
-    article.assets.create(:data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
+    article.assets.create(:orig_name => Random.firstname, :data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
     task = project.tasks.make
     5.times do
       task.comments.make

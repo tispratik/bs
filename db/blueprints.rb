@@ -44,9 +44,7 @@ Task.blueprint do
   description   { Populator.sentences(1..2) }
   assign_to     { [1,2,3,4,5].rand }
   due_date      { due_dates.rand } 
-  task_type     { Task::TYPES.rand.id }
   priority      { Task::PRIORITIES.rand.id }
-  status        { Decode::BS_TASK_STATUS_OP }
 end
 
 Comment.blueprint do

@@ -45,7 +45,7 @@ class CreateTables < ActiveRecord::Migration
     end
     
     add_index :events, :calendar_id
-
+    
     create_table :event_invitees do |t|
       t.references :event
       t.references :user
@@ -145,15 +145,11 @@ class CreateTables < ActiveRecord::Migration
     create_table :assets do |t|
       t.references :attachable, :polymorphic => true
       t.string :data_file_name
-      t.integer :version
-      t.integer :status
       t.string :data_content_type
       t.string :data_file_size
       t.string :orig_name
       t.integer :created_by
       t.integer :updated_by
-      t.integer :checkout_by
-      t.datetime :checkout_on
       t.timestamps
     end
     
@@ -182,7 +178,7 @@ class CreateTables < ActiveRecord::Migration
       t.string :internal_value
       t.integer :sort_order
     end
-
+    
     create_table :event_series do |t|
       t.references :calendar
       t.string :summary

@@ -1,9 +1,10 @@
 class AssetsController < ApplicationController
   
   before_filter :login_required
+  before_filter :find_project
   before_filter :find_asset, :except => [:index, :new, :create]
-  before_filter :find_project, :only => [:index]
   before_filter :check_project_membership
+  before_filter :check_ownership, :only => [:destroy]
   
   def index
     @asset = Asset.new
@@ -24,12 +25,11 @@ class AssetsController < ApplicationController
   private
   
   def find_asset
-    @asset = Asset.find(params[:id])
-    @project = @asset.attachable.project
+    @asset = @project.assets.find(params[:id])
   end
   
   def get_query
-    qry = "@project.assets.status_eq(#{Decode::BS_ASSET_STATUS_AC})"
+    qry = "@project.assets"
     qry = qry + sort_order('descend_by_created_at') 
     #qry = qry + ".all(:include => {:modul => [:creator, :updator, :parent]})"
     qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 15)"
