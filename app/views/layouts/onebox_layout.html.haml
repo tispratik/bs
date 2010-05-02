@@ -3,7 +3,7 @@
   %head
     %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "content-type" }
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
-    = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui-1.7.2.custom', 'jquery.autocomplete', 'application', "event_calendar", "colorbox", :cache => "base"
+    = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui-1.7.2.custom', 'formtastic', 'formtastic_changes', 'jquery.autocomplete', 'application', "event_calendar", "colorbox", :cache => "base"
     = javascript_include_tag 'jquery-1.4.2.min', 'jquery-ui-1.7.2.custom.min', 'jquery.colorbox-min', 'jquery.autocomplete.pack', 'jquery.validate.pack', 'application', :cache => "base"
     = include_colorbox_assets
     
@@ -15,15 +15,6 @@
     #container
       #header
         = render :partial => "layouts/top_bar"
-      	  
-      #sidebar.left
-        = image_tag('logo.png')
-        .home{:class => (request.request_uri == root_path || (current_user && request.request_uri == polymorphic_path(current_user))) ? "current" : nil}
-          = link_to "Homepage", root_path
-        = yield(:sidebar)
-        
-      #content.right
-        = render :partial => "layouts/header"
-        = yield
-      .clear
-      = render :partial => "layouts/old_browser"
+      
+      = yield  
+      

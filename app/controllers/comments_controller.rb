@@ -32,6 +32,9 @@ class CommentsController < ApplicationController
     if params[:article_id]
       @commentable = Article.find(params[:article_id])
     end
+    if params[:task_id]
+      @commentable = Task.find(params[:task_id])
+    end
   end
   
 end

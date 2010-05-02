@@ -10,6 +10,7 @@ class TasksController < ApplicationController
   # GET /tasks.xml
   def index
     @tasks = eval(get_query)
+    render :layout => 'onebox_layout'
   end
   
   # GET /tasks/new
