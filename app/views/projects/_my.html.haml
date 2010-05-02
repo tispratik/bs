@@ -3,3 +3,9 @@
   - user.my_projects_with_roles.each do |role|
     .project{:class => (@project && @project == role.project) ? "current": ""}
       = link_to role.project.to_s(), role.project
+
+%h1 My Tasks
+.projects
+  = link_to "By Me", "#"
+  %br
+  = link_to "For Me", "#"       
