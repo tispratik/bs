@@ -321,6 +321,8 @@ form.formtastic.stack #errorExplanation {
 form.formtastic.stack .label {
   #left: -0.5em;
   #position: relative; }
+form.formtastic.stack .buttons {
+  padding-left: 0; }
 form.formtastic.stack li.boolean label {
   padding-left: 0; }
 

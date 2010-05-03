@@ -12,7 +12,7 @@ class Article < ActiveRecord::Base
   validates_associated :project
   validates_presence_of :project, :title, :content
   
-  accepts_nested_attributes_for :asset
+  accepts_nested_attributes_for :assets
   
   after_save :assign_tags
   before_save :set_article_delta_flag
