@@ -4,7 +4,7 @@ class AssetsController < ApplicationController
   before_filter :find_project
   before_filter :find_asset, :except => [:index, :new, :create]
   before_filter :check_project_membership
-  before_filter :check_ownership, :only => [:destroy]
+  before_filter :check_project_ownership, :only => [:destroy]
   
   def index
     @asset = Asset.new
@@ -12,14 +12,27 @@ class AssetsController < ApplicationController
   end
   
   def destroy
-    @asset = Asset.find(params[:id])
     @asset.destroy
-    flash[:notice] = "Attachment removed."
-    redirect_to [@asset.attachable.project, :articles]
+    flash[:notice] = "File deleted."
+    redirect_to :back
   end
   
-  def show
+  def data
     send_file @asset.data.path(params[:style]), :type => @asset.data_content_type, :disposition => 'inline'
+  end
+  
+  def create
+    @asset = @project.assets.build(params[:asset][:assets])
+    #alias field is non mandatory
+    
+    if @asset.save
+      flash[:notice] = 'File uploaded successfully.'
+      redirect_to :back
+    else
+      flash[:notice] = 'Failed to upload file.'
+      flash[:errors] = @asset.errors.full_messages.join('<br />')
+      redirect_to :back
+    end
   end
   
   private
