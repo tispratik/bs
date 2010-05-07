@@ -337,21 +337,19 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
-  color: #111; }
+  color: #111;
+  margin: 0.2em 0em; }
 
 h1 {
   font-size: 2em;
-  line-height: 1;
-  margin-bottom: 0.5em; }
+  line-height: 1; }
 
 h2 {
-  font-size: 1.5em;
-  margin-bottom: 0.75em; }
+  font-size: 1.5em; }
 
 h3 {
   font-size: 1em;
-  line-height: 1;
-  margin-bottom: 1em; }
+  line-height: 1; }
 
 #flash_messages .flash {
   padding: 5px 8px;
@@ -632,3 +630,10 @@ span.match {
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px; }
+
+#calendar.loading {
+  background: url("../images/spinner.gif") left top no-repeat; }
+
+#calendar {
+  margin-top: 5px;
+  padding-top: 10px; }

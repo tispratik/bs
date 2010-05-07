@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   include RoutingErrors
   include ExceptionNotifiable
   
+  layout proc{ |c| c.request.xhr? ? false : "application" }
+  
   helper :all
   protect_from_forgery
   before_filter :set_user_time_zone, :remove_param

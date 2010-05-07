@@ -31,7 +31,7 @@
                     = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
                 - else
                   = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
-              %td
+              %td.editinplace
                 = task.initiator
               %td
                 = task.assignee

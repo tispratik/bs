@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
   
-  layout proc{ |c| c.request.xhr? ? false : "application" }
-  
   before_filter :find_calendarable
   before_filter :find_event, :except => [:index, :new, :create]
   
@@ -40,6 +38,8 @@ class EventsController < ApplicationController
         @ical = RiCal.Calendar do |cal|
           @calendarable.calendar.events.each do |event|
             cal.event do
+              uid       event.uid
+              sequence  event.sequence
               summary   event.summary
               location  event.location
               dtstart   event.start_at
@@ -98,7 +98,11 @@ class EventsController < ApplicationController
   end
   
   def destroy
-    @event.destroy
+    if params[:remove_series]
+      @event.event_series.destroy
+    else
+      @event.destroy
+    end
     flash[:notice] = "Event deleted."
     respond_to do |format|
       format.html { redirect_to @calendarable }

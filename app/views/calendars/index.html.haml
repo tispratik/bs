@@ -1,0 +1,12 @@
+%h2 Available calendars
+- @calendars.each do |calendar|
+  %p
+    = calendar.name
+    - unless calendar.name == "default"
+      = link_to image_tag('delete.png'), [@calendarable, calendar], :method => :delete
+
+%h2 Create new
+- semantic_form_for [@calendarable, @calendarable.calendars.new], :html => {:class => "stack"} do |f|
+  - f.inputs do
+    = f.input :url
+  = f.buttons

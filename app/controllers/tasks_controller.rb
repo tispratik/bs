@@ -59,6 +59,7 @@ class TasksController < ApplicationController
       if @task.update_attributes(params[:task])
         flash[:notice] = 'Successfully updated task.'
         format.html { redirect_to :back }
+        format.xml {  }
       else
         format.html render :action => "edit"
       end

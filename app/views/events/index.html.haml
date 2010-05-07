@@ -1,7 +1,14 @@
 
 :javascript
   $(document).ready(function() {
-    $('.filter_calendars_form').submitWithAjax();
+    $('.filter_calendars_form').submit(function() {
+      $('#calendar').addClass('loading');
+      $.get(this.action, $(this).serialize(), function() {
+        $('#calendar').removeClass('loading');
+      }, 'script');
+      return false;
+    });
+    
     $('.colorbox').live('click', function() {
       $.fn.colorbox({href: $(this).attr('href'), width: "60%", height: "40%"});
       return false;
@@ -17,6 +24,10 @@
           self.checked = false;
         }
       })
+    })
+    
+    $('.filter_calendars_form :checkbox').change(function() {
+      $(this.form).submit()
     })
     
     $('.ec-month-nav a').live('click', function() {
@@ -91,17 +102,13 @@
       %br
       %p
         = submit_tag "Apply Filter"
-    %br
-    %h1 Add New Calendar
-    - form_tag [@calendarable, :calendars], :multipart => true do
-      = file_field_tag :ical_file
-      = submit_tag "Upload"
-    
-    
+
 
 - ical_url = polymorphic_path([@calendarable, :events], :format => :ical)
-%p
+.left
   = link_to "Get calendar in Ical format", ical_url
-
+.right
+  = link_to "Calendars", [@calendarable, :calendars], :class => :colorbox
+.clear
 #calendar
   = event_calendar

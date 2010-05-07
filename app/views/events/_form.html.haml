@@ -8,12 +8,24 @@
     })
     
     $('#event_repeat_frequency').change(function() {
-      $('#event_repeat_until_date_input').toggle(this.value!='');
+      $('fieldset.repeat_until').toggle(this.value != '');
       $('#event_on_wdays_input').toggle(this.value == 'Week')
+    })
+    
+    $('#event_repeat_until').change(function() {
+      $('#event_repeat_until_date_input').hide();
+      $('#event_repeat_until_count_input').hide();
+      if (this.value == "date") {
+        $('#event_repeat_until_date_input').show();
+      }
+      if (this.value == "count") {
+        $('#event_repeat_until_count_input').show();
+      }
     })
     
     $('#event_is_all_day').change();
     $('#event_repeat_frequency').change();
+    $('#event_repeat_until').change();
   })
 
 - semantic_form_for [@calendarable, event], :live_validations => true do |f|
@@ -25,9 +37,12 @@
     = f.input :start_at, :label => "Start at"
     = f.input :end_at, :label => "End at"
     = f.input :invitees
-    = f.input :repeat_frequency, :as => :select, :collection => EventSeries::RECURRING_TYPES, :label => "Repeat every"
+    = f.input :repeat_frequency, :as => :select, :collection => EventSeries::RECURRING_TYPES, :label => "Repeat every", :include_blank => "No repeat"
     = f.input :on_wdays, :as => :check_boxes, :collection => EventSeries::WDAYS, :checked => event.on_wdays
+  - f.inputs nil, :class => :repeat_until do
+    = f.input :repeat_until, :as => :select, :collection => EventSeries::UNTIL_TYPES, :include_blank => false
     = f.input :repeat_until_date, :as => :date, :label => "Until Date"
+    = f.input :repeat_until_count, :label => "Until Count"
   - f.buttons do
     = f.commit_button "Update current event"
     - if event.recurring?

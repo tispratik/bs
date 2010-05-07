@@ -27,13 +27,17 @@ class CreateTables < ActiveRecord::Migration
     create_table :calendars do |t|
       t.references :calendarable, :polymorphic => true
       t.string :name
+      t.string :url
+      t.timestamps
     end
-    
+
     add_index :calendars, :calendarable_id
-    
+
     create_table :events do |t|
       t.references :calendar
       t.references :event_series
+      t.string :uid
+      t.integer :sequence
       t.string :summary
       t.string :location
       t.datetime :start_at
@@ -181,6 +185,8 @@ class CreateTables < ActiveRecord::Migration
     
     create_table :event_series do |t|
       t.references :calendar
+      t.string :uid
+      t.integer :sequence
       t.string :summary
       t.string :location
       t.datetime :start_at

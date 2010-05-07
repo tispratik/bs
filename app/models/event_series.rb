@@ -1,11 +1,13 @@
 class EventSeries < ActiveRecord::Base
   RECURRING_TYPES = ["Day", "Week", "Month", "Year"]
   WDAYS = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"]
+  UNTIL_TYPES = ["never", "date", "count"]
   
   belongs_to :calendar
-  has_many :events
+  has_many :events, :dependent => :destroy
   
   validates_presence_of :repeat_frequency
+  validates_presence_of :calendar_id
   
   after_create :create_events
   
@@ -53,12 +55,14 @@ class EventSeries < ActiveRecord::Base
           start_at.wday
         end
       when :month then start_at.day
-      when :year  then [event.start_at.month, event.start_at.day]
+      when :year  then [start_at.month, start_at.day]
     end
     transaction do
       Recurrence.new(opts).each do |date|
         event = events.build(
           :calendar_id => calendar_id,
+          :uid => uid,
+          :sequence => sequence,
           :summary => summary,
           :location => location,
           :all_day => all_day?,

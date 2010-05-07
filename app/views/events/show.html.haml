@@ -1,13 +1,3 @@
-:javascript
-  $(document).ready(function() {
-    $('a.delete').click(function() {
-      $.post($(this).attr('href'), {_method: "delete"}, function() {
-        $.fn.colorbox.close()
-        $('#filter_calendars_form').submitNow()
-      }, "script")
-      return false;
-    })
-  })
 
 %h1
   = @event
@@ -34,8 +24,11 @@ Event from
 
 = link_to "Edit Event", [:edit, @calendarable, @event], :class => :colorbox
 |
-= link_to "Delete Event", [@calendarable, @event], :class => :delete
-
+= link_to "Delete Event", [@calendarable, @event], :method => :delete
+- if @event.recurring?
+  |
+  = link_to "Delete All Events", {:remove_series => true}, :method => :delete
+  
 %h2
   Comments
 #comments

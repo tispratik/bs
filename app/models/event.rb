@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class Event < ActiveRecord::Base
   belongs_to :calendar
   belongs_to :event_series
@@ -38,6 +40,7 @@ class Event < ActiveRecord::Base
   
   def before_validation_on_create
     self.created_by = User.curr_user.id
+    self.uid = "calendar@#{Digest::SHA1.hexdigest((Time.now.to_f + rand).to_s)}" unless uid.present?
   end
   
   def after_save
@@ -74,12 +77,26 @@ class Event < ActiveRecord::Base
     event_series
   end
   
+  def repeat_until
+    if repeat_until_date.present?
+      "date"
+    elsif repeat_until_count.present?
+      "count"
+    else
+      "never"
+    end
+  end
+  
   def repeat_frequency
     event_series.try :repeat_frequency
   end
   
   def repeat_until_date
     event_series.try :repeat_until_date
+  end
+  
+  def repeat_until_count
+    event_series.try :repeat_until_count
   end
   
   def on_wdays
