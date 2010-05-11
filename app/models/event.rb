@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :event_series
   
   attr_accessor :start_hour, :start_min, :duration, :color
-  attr_accessor :repeat_frequency, :repeat_until_date, :on_wdays
+  attr_accessor :repeat_frequency, :repeat_until, :repeat_until_date, :repeat_until_count, :on_wdays
   
   before_validation_on_create :set_dates
   
@@ -38,6 +38,12 @@ class Event < ActiveRecord::Base
     end
   end
   
+  def validate
+    if self.start_at > self.end_at
+      errors.add(:start_at, 'must be earlier than end date')
+    end
+  end
+  
   def before_validation_on_create
     self.created_by = User.curr_user.id
     self.uid = "calendar@#{Digest::SHA1.hexdigest((Time.now.to_f + rand).to_s)}" unless uid.present?
@@ -49,11 +55,11 @@ class Event < ActiveRecord::Base
     end
     if @invitees.is_a?(Array)
       transaction do
-        self.event_invitees = @invitees.map do |email|
-          if user = User.find_by_login_email(email)
+        self.event_invitees = @invitees.map { |email|
+          if user = User.find_by_username_or_login_email(email)
             event_invitees.create(:user => user)
           end
-        end
+        }.compact
       end
     end
   end

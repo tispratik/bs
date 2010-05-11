@@ -23,7 +23,22 @@
       }
     })
     
-    $('#event_is_all_day').change();
+    $('#edit_event_#{event.id}').submit(function() {
+      if ($('#event_repeat_until_date_input').css('display') == "none") {
+        $('#event_repeat_until_date_1i, #event_repeat_until_date_2i, #event_repeat_until_date_3i').attr('disabled', 'disabled');
+        // set date to null
+        var m = document.createElement('input');
+        m.setAttribute('type', 'hidden');
+        m.setAttribute('name', 'event[repeat_until_date]');
+        m.setAttribute('value', '');
+        this.appendChild(m);
+      }
+      if ($('#event_repeat_until_count_input').css('display') == "none") {
+        $('#repeat_until_count').val("");
+      }
+    })
+    
+    $('#event_all_day').change();
     $('#event_repeat_frequency').change();
     $('#event_repeat_until').change();
   })
@@ -32,7 +47,7 @@
   = error_messages_for :event
   - f.inputs do
     = f.input :calendar, :collection => @calendarable.calendars
-    = f.input :summary, :label => "Subject", :input_html => {:style => "width:40%"}
+    = f.input :summary, :label => "Subject"
     = f.input :all_day, :label => "All day?"
     = f.input :start_at, :label => "Start at"
     = f.input :end_at, :label => "End at"

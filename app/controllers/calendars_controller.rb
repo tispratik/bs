@@ -7,13 +7,18 @@ class CalendarsController < ApplicationController
     @calendars = current_user.calendars
   end
   
+  def new
+    @calendar = current_user.calendars.new
+  end
+  
   def create
     @calendar = current_user.calendars.new(params[:calendar])
     
-    begin
-      @calendar.save
+    if @calendar.save
       flash[:notice] = "Created new calendar."
       redirect_to [@calendarable, :events]
+    else
+      render :action => :new
     end
   end
   

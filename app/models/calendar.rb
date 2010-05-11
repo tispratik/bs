@@ -8,6 +8,12 @@ class Calendar < ActiveRecord::Base
   
   after_create :load_from_url, :if => "url.present?"
   
+  def validate
+    unless name == "default" && url.present?
+      errors.add(:url, "can't be blank")
+    end
+  end
+  
   def user
     (calendarable.is_a?(User)) ? calendarable : calendarable.user
   end

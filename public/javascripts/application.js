@@ -39,11 +39,20 @@ jQuery.fn.labelsWithinFields = function(){
 }
 
 $(document).ready(function(){
+    $('.colorbox').colorbox();
+    
     $('#comments .comment a.quote').live('click', function(){
         $.get($(this).attr('href'), {}, null, 'script');
         return false;
     })
-    $('form#new_comment').submitWithAjax();
+    $('form#new_comment').submit(function() {
+      $(this).addClass("loading");
+      var self = this;
+      $.post($(this).attr("action"), $(this).serialize(), function() {
+        $(self).removeClass("loading");
+      }, 'script')
+      return false;
+    });
     
     $('#comments .comment .comment-header').live('click', function(){
         $(this).closest('.comment').find('.short-message').toggle();

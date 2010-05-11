@@ -11,7 +11,7 @@ class EventSeries < ActiveRecord::Base
   
   after_create :create_events
   
-  attr_accessor :duration
+  attr_accessor :duration, :repeat_until
   serialize :on_wdays
   serialize :invitees
   

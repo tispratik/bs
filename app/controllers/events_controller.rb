@@ -84,11 +84,15 @@ class EventsController < ApplicationController
     
     if @event.errors.empty?
       flash[:notice] = "Event updated."
-    else
-      render :action => :edit
     end
     respond_to do |format|
-      format.html { redirect_to [@calendarable, :events] }
+      format.html {
+        if @event.errors.empty?
+          redirect_to [@calendarable, @event.is_a?(Event) ? @event : :events]
+        else
+          render :action => :edit
+        end
+      }
       format.js {
         render :update do |page|
           page << show_flash_messages

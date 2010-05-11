@@ -17,7 +17,7 @@ class AssetsController < ApplicationController
     redirect_to :back
   end
   
-  def data
+  def show
     send_file @asset.data.path(params[:style]), :type => @asset.data_content_type, :disposition => 'inline'
   end
   

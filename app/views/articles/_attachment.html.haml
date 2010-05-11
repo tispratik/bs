@@ -4,7 +4,7 @@
   - else
     = image_tag attachment.file_icon
     = link_to attachment, attachment.url
-  = link_to "Delete", attachment, :method => :delete
+  = link_to "Delete", [@project, attachment], :method => :delete
   
   - if attachment.data_content_type == 'text/plain'
     .source

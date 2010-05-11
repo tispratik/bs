@@ -10,7 +10,7 @@ class ProjectInvitation < ActiveRecord::Base
   end
   
   def invitee=(name)
-    self.user = User.username_or_login_email_is(name).first
+    self.user = User.find_by_username_or_login_email(name)
   end
   
   def invitee

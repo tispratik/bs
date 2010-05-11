@@ -576,6 +576,9 @@ del.diffmod, del.diffdel {
     height: 90px; }
   #new_comment_form fieldset.buttons {
     padding: 0; }
+  #new_comment_form form#new_comment.loading li.commit {
+    padding-right: 25px;
+    background: url("../images/spinner.gif") right center no-repeat; }
 
 span.match {
   background-color: #ffa; }

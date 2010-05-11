@@ -6,7 +6,14 @@ class Asset < ActiveRecord::Base
   
   has_attached_file :data,
       :path => ':rails_root/private/files/:id/:style/:basename.:extension',
-      :url => '/:class/:id/:style',
+      :url => lambda {|asset|
+        path = "/:class/:id/:style"
+        if attachable = asset.instance.attachable
+          project = attachable.is_a?(Project) ? attachable : attachable.project
+          path = "/projects/#{project.to_param}" + path
+        end
+        path
+      },
       :styles => { :small => "150x150>" }
       
   validates_attachment_presence :data

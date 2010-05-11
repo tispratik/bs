@@ -13,7 +13,14 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { 
         if @comment.errors.empty?
-          redirect_to [@comment.commentable.project, @comment.commentable]
+          commentable = @comment.commentable
+          project = case commentable.class.to_s
+          when "Event" then
+            commentable.calendar.project
+          else
+            commentable.project
+          end
+          redirect_to [project, commentable]
         else
           render :action => :new
         end
