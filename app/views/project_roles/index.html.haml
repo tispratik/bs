@@ -3,7 +3,10 @@
   %h3 Pending Invitations
   - pending_invitations.each do |invitation|
     %p
-      = link_to invitation.user, invitation.user
+      - if invitation.user
+        = link_to invitation.user, invitation.user
+      - else
+        = invitation.user_email
   %br
 
 - semantic_form_for [@project, @project.invitations.new] do |f|

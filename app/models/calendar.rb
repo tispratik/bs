@@ -9,8 +9,8 @@ class Calendar < ActiveRecord::Base
   after_create :load_from_url, :if => "url.present?"
   
   def validate
-    unless name == "default" && url.present?
-      errors.add(:url, "can't be blank")
+    unless name == "default"
+      errors.add(:url, "can't be blank") unless url.present?
     end
   end
   

@@ -39,6 +39,12 @@ class User < ActiveRecord::Base
     find_by_username(login) || find_by_login_email(login)
   end
   
+  def after_create
+    calendars.create(:name => "default")
+    # set current user_id for pending project invitations.
+    ProjectInvitation.update_all({:user_id => id}, {:user_email => login_email})
+  end
+  
   def my_projects_with_roles
     ProjectRole.all(:conditions => {:user_id => id}, :include => :project)
   end

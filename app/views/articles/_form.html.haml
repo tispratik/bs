@@ -7,8 +7,7 @@
     = f.input :citation_date
     = f.input :content
     - f.inputs :for => [:assets, article.assets.build] do |af|
-      - af.inputs do
-        = af.input :data, :as => :file, :label => "Add Attachment", :input_html => {:size => 20}
+      = af.input :data, :as => :file, :label => "Add Attachment", :input_html => {:size => 20}
     = f.input :tag_list
     
   = f.buttons

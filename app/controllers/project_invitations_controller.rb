@@ -11,10 +11,14 @@ class ProjectInvitationsController < ApplicationController
     
     if @invitation.save
       flash[:notice] = "Invitation created."
+      unless @invitation.user.present?
+        # send invitation email to user
+        UserMailer.deliver_project_invitation(@invitation.user_email, current_user)
+      end
     else
       flash[:notice] = "User not found or already invited."
     end
-    redirect_to @project
+    redirect_to [@project, :project_roles]
   end
   
   def confirm

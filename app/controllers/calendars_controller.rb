@@ -23,9 +23,13 @@ class CalendarsController < ApplicationController
   end
   
   def destroy
-    @calendar = current_user.calendars.find(params[:id])
-    @calendar.destroy
-    flash[:notice] = "Calendar removed."
+    @calendar = @calendarable.calendars.find(params[:id])
+    unless @calendar.name == "default"
+      @calendar.destroy
+      flash[:notice] = "Calendar removed."
+    else
+      flash[:notice] = "You can't remove default calendar."
+    end
     redirect_to [@calendar.calendarable, :events]
   end
   

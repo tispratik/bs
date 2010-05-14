@@ -10,7 +10,8 @@ class CreateTables < ActiveRecord::Migration
       t.boolean :is_public
       t.text :objectives
       t.boolean :use_ssl
-      t.datetime :created_at      
+      t.datetime :created_at
+      t.datetime :updated_at 
     end
     
     add_index :projects, :permalink, :unique => true
@@ -162,6 +163,7 @@ class CreateTables < ActiveRecord::Migration
     create_table :project_invitations do |t|
       t.references :project
       t.references :user
+      t.string :user_email
       t.boolean :confirmed, :default => false
       t.timestamps
     end
