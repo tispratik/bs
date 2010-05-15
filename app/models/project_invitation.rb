@@ -3,7 +3,7 @@ class ProjectInvitation < ActiveRecord::Base
   belongs_to :user
   
   validates_presence_of :project, :user_email
-  validates_uniqueness_of :user_id, :scope => :project_id
+  validates_uniqueness_of :user_id, :scope => :project_id, :unless => "user_id.nil?"
   
   def after_create
     if user.present?

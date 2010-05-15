@@ -28,13 +28,13 @@ class EventsController < ApplicationController
     end
     
     respond_to do |format|
-      format.js do
+      format.html {
         @event_strips = scope.event_strips_for_month(@shown_month)
-      end
-      format.html do
+      }
+      format.js {
         @event_strips = scope.event_strips_for_month(@shown_month)
-      end
-      format.ical do
+      }
+      format.ical {
         @ical = RiCal.Calendar do |cal|
           @calendarable.calendar.events.each do |event|
             cal.event do
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
           end
         end
         render :text => @ical
-      end
+      }
     end
   end
   
