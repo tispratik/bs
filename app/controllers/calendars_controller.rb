@@ -13,12 +13,16 @@ class CalendarsController < ApplicationController
   def create
     @calendar = current_user.calendars.new(params[:calendar])
     
-    if @calendar.save
-      flash[:notice] = "Created new calendar."
-      redirect_to [@calendarable, :events]
-    else
-      render :action => :new
+    begin
+      if @calendar.save
+        flash[:notice] = "Created new calendar."
+      else
+        raise
+      end
+    rescue
+      flash[:error] = "Error parsing calendar from url."
     end
+    redirect_to [@calendarable, :events]
   end
   
   def destroy
