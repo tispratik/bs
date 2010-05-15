@@ -43,4 +43,4 @@ end
 
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS[:default] = "%B %d, %Y %H:%M"
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = '%Y-%m-%d'
-
+ActionMailer::Base.raise_delivery_errors = true

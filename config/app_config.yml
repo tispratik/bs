@@ -3,8 +3,8 @@ development:
   smtp_address: "smtp.gmail.com"
   smtp_port: 587
   smtp_domain: "www.gmail.com"
-  smtp_username: "usinpac.backstage@gmail.com"
-  smtp_password: "3142771639"
+  smtp_username: "theviri01@gmail.com"
+  smtp_password: "theviridians"
   
 test:
   domain: test.host
