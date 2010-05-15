@@ -1,6 +1,5 @@
 class AssetsController < ApplicationController
   
-  before_filter :login_required
   before_filter :find_project
   before_filter :find_asset, :except => [:index, :new, :create]
   before_filter :check_project_membership

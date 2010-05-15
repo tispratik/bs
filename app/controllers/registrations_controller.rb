@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
 
-  before_filter :login_required, :only => [:edit, :update]
+  skip_before_filter :login_required, :except => [:edit, :update]
   
   def new
     @user = User.new(:ucontact => Ucontact.new, :usr => Usr.new)

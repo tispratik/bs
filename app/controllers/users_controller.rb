@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   
-  before_filter :login_required
   before_filter :find_project, :except => [:me, :show]
   
   def show

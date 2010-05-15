@@ -1,6 +1,8 @@
 class UserSessionsController < ApplicationController
   before_filter :ssl_required, :except => :destroy
   
+  skip_before_filter :login_required
+  
   def new
     @user_session = UserSession.new
   end

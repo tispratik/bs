@@ -120,17 +120,6 @@ class EventsController < ApplicationController
   
   private
   
-  def find_calendarable
-    if params[:project_id]
-      find_project
-      @calendarable = @project
-    elsif params[:user_id]
-      @calendarable = @user = User.find_by_username(params[:user_id])
-    else
-      @calendarable = @user = current_user
-    end
-  end
-  
   def find_event
     @event = Event.find(params[:id])
   end

@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   
-  before_filter :login_required, :except => [:get_states_for_country]
+  skip_before_filter :login_required, :only => [:get_states_for_country]
   
   def new
     @contactable = find_contactable

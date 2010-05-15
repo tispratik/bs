@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   # before_filter :find_commentable, :except => :quote
+  before_filter :find_calendarable
   
   def new
     @comment = @commentable.comments.new

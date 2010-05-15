@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   
-  before_filter :login_required
   before_filter :find_project
   before_filter :find_article, :except => [:index, :new, :create, :search, :suggest]
   before_filter :check_project_membership

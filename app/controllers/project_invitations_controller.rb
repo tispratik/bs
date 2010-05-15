@@ -1,6 +1,5 @@
 class ProjectInvitationsController < ApplicationController
   
-  before_filter :login_required
   before_filter :find_project
   
   def new

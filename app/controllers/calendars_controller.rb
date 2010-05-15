@@ -1,6 +1,5 @@
 class CalendarsController < ApplicationController
   
-  before_filter :login_required
   before_filter :find_calendarable
   
   def index
@@ -31,17 +30,6 @@ class CalendarsController < ApplicationController
       flash[:notice] = "You can't remove default calendar."
     end
     redirect_to [@calendar.calendarable, :events]
-  end
-  
-  def find_calendarable
-    if params[:project_id]
-      find_project
-      @calendarable = @project
-    elsif params[:user_id]
-      @calendarable = @user = User.find_by_username(params[:user_id])
-    else
-      @calendarable = @user = current_user
-    end
   end
   
 end

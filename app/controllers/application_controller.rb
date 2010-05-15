@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   
   helper :all
   protect_from_forgery
+  before_filter :login_required
   before_filter :set_user_time_zone, :remove_param
   
   private
@@ -44,6 +45,17 @@ class ApplicationController < ActionController::Base
     end
     if @project.use_ssl?
       ssl_required
+    end
+  end
+  
+  def find_calendarable
+    if params[:project_id]
+      find_project
+      @calendarable = @project
+    elsif params[:user_id]
+      @calendarable = @user = User.find_by_username(params[:user_id])
+    else
+      @calendarable = @user = current_user
     end
   end
   

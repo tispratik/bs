@@ -13,10 +13,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |users|
     users.resources :calendars
     users.resources :events
+    users.resources :comments, :member => {:quote => :get}
   end
   
   map.resources :projects do |projects|
     projects.resources :users
+    projects.resources :comments, :member => {:quote => :get}
     projects.resources :tasks, :collection => {:search => :get}, :member => {:reopen => :get}, :has_many => :comments
     projects.resources :assets
     projects.connect '/assets/:id/:style', :controller => 'assets', :action => 'show', :conditions => {:method => :get}
@@ -29,7 +31,6 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.connect "live_validations/:action", :controller => "live_validations"
-  map.resources :comments, :member => {:quote => :get}
   map.root :controller => :users, :action => :me
   
 end

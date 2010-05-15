@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   
-  before_filter :login_required
   before_filter :find_project, :only => [:show, :edit, :update, :destroy]
   before_filter :check_project_membership, :only => [:show]
   before_filter :check_project_ownership, :only => [:edit, :update, :destroy]
