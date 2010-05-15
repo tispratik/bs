@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
   
   def find_project
-    @project = Project.find_by_permalink(UrlStore.decode(params[:project_id]))
+    @project = @calendarable = Project.find_by_permalink(UrlStore.decode(params[:project_id]))
     if @project.nil?
       record_not_found
       return
