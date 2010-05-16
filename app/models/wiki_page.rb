@@ -16,6 +16,10 @@ class WikiPage < ActiveRecord::Base
     title
   end
   
+  def versions_desc
+    versions.reverse
+  end
+  
   def before_create
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id

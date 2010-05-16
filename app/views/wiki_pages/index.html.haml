@@ -1,11 +1,11 @@
 - content_for :sidebar do
-  %h1 New Wiki Page
+  %h1 Coedit new doc
     
   - semantic_form_for [@project, @project.wiki_pages.new] do |f|
     - f.inputs do
-      =f .input :title
+      =f .input :title, :class=>'gray'
     - f.buttons do
-      = f.commit_button "Create CoEdit Page"
+      = f.commit_button "Create"
 
 %table.index
   %tr.header
@@ -40,7 +40,7 @@
         %td
           = link_to image_tag('edit.png'), [:edit, @project, wiki_page]
         %td
-          = link_to "Diff", [:diff, @project, wiki_page] if wiki_page.version > 1
+          = link_to "Compare", [:diff, @project, wiki_page] if wiki_page.version > 1
         %td
           = link_to image_tag('delete.png'), [@project, wiki_page], :method => :delete
       - else

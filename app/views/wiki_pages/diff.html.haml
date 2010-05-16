@@ -1,13 +1,19 @@
 - content_for :sidebar do
   = render 'versions'
 
-%h2.left
+%h2.left.bckhighlight
   = @wiki_page
-&nbsp;
-= link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
+  &nbsp;
+  %span.bottom
+    %small_text
+      - unless @wiki_page.deleted_at?
+        = link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
+.clear
+%span.gray.right
+  Changes From Revision #{@changes_from} to #{@changes_to}
 .clear
 
-%h3 Changes From Revision #{@changes_from} to #{@changes_to}
+%br
+%br
 
 = diff(h(@content_from), h(@content_to)).gsub(/\n/, "<br/>")
-

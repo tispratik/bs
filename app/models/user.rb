@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :events, :through => :calendars
   has_many :project_invitations
   has_many :articles
+  has_many :timesheets
   
   alias :roles :project_roles
   accepts_nested_attributes_for :usr, :ucontact

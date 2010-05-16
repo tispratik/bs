@@ -6,32 +6,38 @@
     });
   });
 
-- content_for :sidebar do
-  = render 'left'
-
+%br
 - semantic_form_for [@project, @task], :live_validations => true do |f|
   = error_messages_for :task
   %table
     %tr
       %td
         Name:
-        = f.text_field :name, :size => 100
+      %td
+        = f.text_field :name, :input_html => {:size => 50}
     %tr
       %td
-        %table
-          %tr
-            %td
-              = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
-            %td
-              Due By:
-              = f.text_field :due_date, :class => "date_picker", :size => '15'
-            %td
-              Priority:
-              = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
+        %br
+        Assigned to: 
+      %td
+        %br
+        = f.collection_select :assign_to, @project.users, :id, :to_s
     %tr
       %td
-        Description:
-        = f.text_area :description, :rows => 15, :cols => 92
+        %br  
+        Due By:
+      %td
+        %br
+        = f.text_field :due_date, :class => "date_picker"
     %tr
       %td
-        = f.submit "Create Task", :class => "but"
+        %br
+        Priority:
+      %td
+        %br
+        = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
+    %tr
+      %td
+      %td
+        %br
+        = f.submit "Create Task"

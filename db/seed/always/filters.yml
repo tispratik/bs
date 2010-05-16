@@ -19,7 +19,7 @@ Filter_<%= i=i+1 %>:
 Filter_<%= i=i+1 %>: 
  id: <%= i %>
  filter_name: tasks_index
- display_name: Due
+ display_name: Due by
  filter_param: task_due_date
  sort_order: 4
   

@@ -205,5 +205,18 @@ class CreateTables < ActiveRecord::Migration
       t.integer :created_by
       t.timestamps
     end
+   
+   create_table :timesheets do |t|
+      t.references :user
+      t.references :project
+      t.string :description
+      t.timestamps
+    end 
+    create_table :timelogs do |t|
+      t.references :timesheet
+      t.date :when
+      t.integers :howlong
+      t.timestamps
+    end
   end
 end

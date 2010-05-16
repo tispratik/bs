@@ -3,4 +3,4 @@ $('#search_form').removeClass('loading');
 $('#search_form').find('input[type=submit]').removeAttr('disabled')
 
 #tasks
-  = render :partial => "list", :locals => {:tasks => @tasks}
+  = render :partial => "list", :locals => {:articles => @tasks}

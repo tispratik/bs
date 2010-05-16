@@ -32,6 +32,9 @@ module ApplicationHelper
   end
   
   def smart_due_date(i)
+    if i == nil
+      return ""
+    end
     if Date.today == i
       return "<span style=\"background-color:#F7FAB9;padding:0px 2px 0px 2px;\">Today</span>"
     end  
@@ -127,7 +130,7 @@ module ApplicationHelper
     filter_list = Filter.filter_name_eq(filter_name)
     return "" if filter_list.blank?
     
-    str = "<div id=\"bold_text\"><u>Refine Search</div></u><br />"
+    str =  ""
     param_internal_name = ""
     
     filter_list.each do |filter_name|

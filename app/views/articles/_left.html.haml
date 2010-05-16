@@ -1,0 +1,35 @@
+%h1
+  Research Feed Details
+%p
+  .gray
+    %br
+    Added by
+    %br
+    = image_tag 'rails.png', :size=>'20x20'
+    =@article.creator
+    %br
+    = time_ago_in_words @article.created_at 
+    ago
+    %br
+    %br
+    Citation:
+    %br
+    #{process_html_links @article.citation_author}
+    %br
+    #{process_html_links @article.citation_source} 
+    %br
+    #{@article.citation_date}
+    %br
+    %br
+    Tags:
+.tags
+  - if @article.created_by == current_user.id
+    - form_for [@project, @article] do |f|
+      = f.text_field :tag_list
+      %br
+      = f.submit "Update Tags"
+  - else
+    %strong
+      Tags:
+    = @article.tag_list
+%br

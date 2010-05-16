@@ -1,0 +1,27 @@
+- content_for :sidebar do
+  %h1 Coedit new doc
+
+<h1>Listing timesheets</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Project</th>
+    <th>Description</th>
+  </tr>
+
+<% @timesheets.each do |timesheet| %>
+  <tr>
+    <td><%=h timesheet.user_id %></td>
+    <td><%=h timesheet.project_id %></td>
+    <td><%=h timesheet.description %></td>
+    <td><%= link_to 'Show', timesheet %></td>
+    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+    <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New timesheet', new_project_timesheet_path %>

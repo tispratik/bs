@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   has_many :project_roles, :dependent => :destroy
   has_many :users, :through => :project_roles
   has_many :tasks
+  has_many :timesheets
   has_one :calendar, :as => :calendarable
   has_many :calendars, :as => :calendarable
   has_many :events, :through => :calendars

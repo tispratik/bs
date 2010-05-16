@@ -27,6 +27,7 @@ class TasksController < ApplicationController
     if @task.nil?
       record_not_found
     end
+    render :layout => 'onebox_layout'
   end
   
   def show
@@ -126,12 +127,12 @@ class TasksController < ApplicationController
       qry = qry + ".priority_eq('#{params[:priority]}')"
     end
     if !params[:search].blank?
-      qry = qry + ".name_like_any_or_description_like_any(params[:search].split)"
+      qry = qry + ".name_like_any(params[:search].split)"
     end
     
-    qry = qry + sort_order('descend_by_created_at')
+    qry = qry + sort_order('ascend_by_due_date')
     qry = qry + ".all(:include => [:assignee, :initiator, :updator, :project, :priorityDecode])"
-    qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 10)"
+    qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 30)"
   end
   
 end

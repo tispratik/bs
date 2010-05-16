@@ -3,7 +3,7 @@
     .left
       .user-image.left
         = image_tag 'rails.png'
-      = link_to comment.creator, comment.creator
+      = comment.creator
       %span.source
         (#{h comment.source})
       %span.short-message.hide

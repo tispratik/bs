@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  
+ 
   # registration and login
   map.resource :registration, :only => [:new, :create, :edit, :update, :destroy], :as => :users,
       :path_names => {:new => :sign_up}, :member => {:validate => :post}, :collection => {:regions => :get, :cities => :get}
@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |users|
     users.resources :calendars
     users.resources :events
+    users.resources :timesheets
     users.resources :comments, :member => {:quote => :get}
   end
   
@@ -24,6 +25,7 @@ ActionController::Routing::Routes.draw do |map|
     projects.connect '/assets/:id/:style', :controller => 'assets', :action => 'show', :conditions => {:method => :get}
     projects.resources :calendars
     projects.resources :events
+    projects.resources :timesheets
     projects.resources :wiki_pages, :member => {:diff => :get, :restore => :get}
     projects.resources :articles, :collection => {:suggest => :get, :search => :get}
     projects.resources :project_invitations, :as => :invitations, :member => {:confirm => :get}

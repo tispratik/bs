@@ -10,32 +10,19 @@
   })
 
 - content_for :sidebar do
-  = render :partial => "new", :locals => {:article => @project.articles.build}
+  = render :partial => "left"
 
-%h2.left
+%h2.left.bckhighlight
   =h @article
 %span
   - if @article.created_by == current_user.id
     = link_to image_tag('delete.png', :title => "Delete article"), [@project, @article], :method => :delete
 .clear
 
-%p
-  Ref: #{process_html_links @article.citation_author}, #{process_html_links @article.citation_source} (#{@article.citation_date})
 %br
 
 .content
   = markdown @article.content
-%br
-
-.tags
-  - if @article.created_by == current_user.id
-    - form_for [@project, @article] do |f|
-      = f.text_field :tag_list
-      = f.submit "Update Tags"
-  - else
-    %strong
-      Tags:
-    = @article.tag_list
 %br
 
 - unless @article.assets.empty?
@@ -43,13 +30,12 @@
   #attachments
     = render :partial => 'attachment', :collection => @article.assets
 
-%h2
+%h2.gray
   Comments
 #comments
   = render @article.comments
 
 - if logged_in?
   #new_comment_form
-    %h2 Add new Comment
     = render :partial => "comments/form", :locals => {:comment => @article.comments.new}
 
