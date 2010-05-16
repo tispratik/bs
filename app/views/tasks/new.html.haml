@@ -1,18 +1,12 @@
 = render :partial => "projects/list", :locals => {:user => current_user}
 
 :javascript
-  wmd_options = {
-    output: "Markdown"
-  }
-  
   $('document').ready(function(){
     $('.date_picker').datepicker({
       changeMonth: true,
       changeYear: true
     });
   });
-
-= javascript_include_tag "wmd/wmd"
 
 %table
   %tr	
