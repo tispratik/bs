@@ -37,7 +37,6 @@ end
 
 Calendar.blueprint do
   name         { Faker::Lorem.words.join(" ") }
-  url          { 'http://' + Faker::Internet.domain_name }
 end
 
 Task.blueprint do
