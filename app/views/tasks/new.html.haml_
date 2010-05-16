@@ -1,0 +1,40 @@
+= render :partial => "projects/list", :locals => {:user => current_user}
+
+:javascript
+  $('document').ready(function(){
+    $('.date_picker').datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+
+%table
+  %tr	
+    - semantic_form_for [@project, @task], :live_validations => true do |f|
+    = error_messages_for :task
+      %td
+        = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
+        %br
+        %br  
+        Due By:
+        %br
+        = f.text_field :due_date, :class => "date_picker", :size => '15'
+        %br
+        %br
+        Priority:
+        %br
+        = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
+        %br
+        %br
+          = f.submit "Create Task", :class => "but"
+      %td         
+        %div{:style => "width:3px;height:400px;background-color:#EEEEEE;"}
+      %td
+        &nbsp;&nbsp;Name:
+        = f.text_field :name, :size => 100
+        %br
+        %br
+        &nbsp;&nbsp;Description:
+        %br
+          &nbsp;
+          = f.text_area :description, :rows => 15, :cols => 92
