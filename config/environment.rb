@@ -4,7 +4,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
 
-  config.action_controller.use_accept_header = true
   config.active_record.colorize_logging = false
   config.active_record.timestamped_migrations = false
   
