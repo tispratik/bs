@@ -43,8 +43,14 @@ span.match
       width: 60%
     input[type=text]#search_citation_date
       width: 100px
-#search_form.loading
-  background: url("../images/spinner.gif") left top no-repeat
+  #simple_search
+    input#search
+      height: 18px
+      background: url(../images/search.png) no-repeat 2px 2px
+      padding-left: 20px
+      border: 1px solid #aaa
+  &.loading
+    background: url("../images/spinner.gif") left top no-repeat
 
 #attachments
   .attachment
