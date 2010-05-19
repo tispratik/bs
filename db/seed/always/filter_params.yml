@@ -1,5 +1,4 @@
 <%
-require 'decode'
 i = 0
 %>
 
