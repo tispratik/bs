@@ -1,4 +1,5 @@
-%h2
-  Edit project Settings
+- content_for :sidebar do
+  %h1
+    Project Settings
 %br
 = render :partial => 'form', :locals => {:project => @project}

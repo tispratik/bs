@@ -8,6 +8,31 @@
       return false;
     })
     
+    $('#new_timelog').submit(function() {
+      var self = this;
+      $(this).addClass('loading');
+      $.post($(this).attr('action'), $(this).serialize(), function() {
+        $(self).removeClass('loading');
+      }, 'script')
+      return false
+    })
+    
+    $('#timesheets .timesheet a.delete').live('click', function() {
+      $.post($(this).attr('href'), {_method: "delete"}, function() {
+        $('#timesheets_filter_form').submit()
+      }, 'script')
+      return false
+    })
+    
+    $('#timesheets_filter_form').submit(function() {
+      var self = this;
+      $(this).addClass('loading');
+      $.get($(this).attr('action'), $(this).serialize(), function() {
+        $(self).removeClass('loading');
+      }, 'script')
+      return false
+    })
+    
     $('#timesheets_filter_form input[name="user_ids[]"]').change(function() {
       var form = $(this).closest('form');
       var count_checked = form.find('[name="user_ids[]"]:checked').size();
@@ -18,34 +43,37 @@
       }
     })
     
+    $('#timelog_timesheet_description').autocomplete('#{url_for([:suggest, @project, :timesheets])}')
     $('#new_timelog').labelsWithinFields();
-    $('#timesheets_filter_form').submitWithAjax();
     $('#timesheets_filter_form input[name="users[]"]').change();
   })
 
 - content_for :sidebar do
-  %h1 Filter
-  - form_tag [@project, :timesheets], :method => :get, :id => :timesheets_filter_form do
-    %p
-      = label_tag :date_from, "From Date", :style => "display:block; float:left; width: 80px"
-      = text_field_tag :date_from, nil, :class => :datepicker
-    %p
-      = label_tag :date_to, "To Date", :style => "display:block; float:left; width: 80px"
-      = text_field_tag :date_to, nil, :class => :datepicker
-    
-    %h2 For members:
-    - @project.roles.each do |role|
-      %p
-        %label
-          = check_box_tag "user_ids[]", role.user_id
-          = role.user
-    %br
-    %p
-      = submit_tag "Apply Filter"
-
+  %h1 Timesheet Reports
+  = render :partial => "shared/learnmore"
+  - form_tag [@project, :timesheets], :method => :get, :class => :formtastic, :id => :timesheets_filter_form do
+    %fieldset.inputs
+      %ol
+        %li
+          = label_tag :date_from, "From"
+          = text_field_tag :date_from, nil, :class => :datepicker
+        %li
+          = label_tag :date_to, "To"
+          = text_field_tag :date_to, nil, :class => :datepicker
+        %li.check_boxes
+          %fieldset
+            %ol
+              - @project.roles.each do |role|
+                %li
+                  %label
+                    = check_box_tag "user_ids[]", role.user_id
+                    = role.user
+    %fieldset.buttons
+      %ol
+        %li.commit
+          = submit_tag "Apply Filter"
 
 = render :partial => "timelogs/form", :locals => {:timelog => Timelog.new}
 
-
 #timesheets
-  = render @timesheets.all
+  = render :partial => "timesheets"

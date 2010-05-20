@@ -10,9 +10,16 @@ class TimelogsController < ApplicationController
     @timelog = @project.timelogs.new(params[:timelog])
     if @timelog.save
       flash[:notice] = "Timelog created."
-      redirect_to [@project, :timesheets]
-    else
-      render :action => :new
+    end
+    respond_to do |format|
+      format.html {
+        if @timelog.errors.empty?
+          redirect_to [@project, :timesheets]
+        else
+          render :action => :new
+        end
+      }
+      format.js
     end
   end
   
@@ -24,7 +31,14 @@ class TimelogsController < ApplicationController
     else
       flash[:error] = "You don't have permissions."
     end
-    redirect_to [@project, :timesheets]
+    respond_to do |format|
+      format.html { redirect_to [@project, :timesheets] }
+      format.js {
+        render :update do |page|
+          page << show_flash_messages
+        end
+      }
+    end
   end
   
 end

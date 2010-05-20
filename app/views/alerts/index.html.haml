@@ -1,4 +1,6 @@
 - content_for :sidebar do
-  %h1
-    Alerts
+  %h1 Filter Alerts
+  = render :partial => "shared/learnmore"
+  = filter_html("alerts_index")
+    
 = render :partial => "alerts/list"

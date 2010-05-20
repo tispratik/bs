@@ -4,7 +4,7 @@ class TimesheetsController < ApplicationController
   
   def index
     @timesheets = @project.timesheets.searchlogic
-    
+    @learnmore = "Log the time you spent working on the project in the timesheet."
     if params[:user_ids]
       @timesheets = @timesheets.user_id_is(params[:user_ids])
     end
@@ -20,10 +20,18 @@ class TimesheetsController < ApplicationController
       format.html
       format.js {
         render :update do |page|
-          page << "$('#timesheets').html(\"#{escape_javascript(render @timesheets.all)}\")"
+          page << "$('#timesheets').html(\"#{escape_javascript(render :partial => 'timesheets')}\")"
         end
       }
     end
+  end
+  
+  def suggest
+    @timesheets = @project.timesheets.searchlogic
+    if params[:q]
+      @timesheets.description_like(params[:q])
+    end
+    render :text => @timesheets.collect(&:description).join("\n")
   end
   
   def update
@@ -49,7 +57,14 @@ class TimesheetsController < ApplicationController
     else
       flash[:error] = "You don't have permissions."
     end
-    redirect_to [@project, :timesheets]
+    respond_to do |format|
+      format.html { redirect_to [@project, :timesheets] }
+      format.js {
+        render :update do |page|
+          page << show_flash_messages
+        end
+      }
+    end
   end
   
 end

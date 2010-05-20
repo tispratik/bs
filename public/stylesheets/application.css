@@ -683,17 +683,14 @@ span.match {
 .tags #article_tag_list {
   width: 60%; }
 
-#search_form {
-  padding-left: 100px;
-  margin-bottom: 10px; }
-  #search_form #advanced_search input[type=text] {
-    width: 60%; }
-  #search_form #advanced_search input[type=text]#search_citation_date {
-    width: 100px; }
+#search_form #advanced_search input[type=text] {
+  width: 60%; }
+#search_form #advanced_search input[type=text]#search_citation_date {
+  width: 100px; }
 
 #simple_search input#search {
   height: 18px;
-  background: url(../images/search.png) no-repeat 2px 2px;
+  background: url(../images/search.png) white no-repeat 2px 2px;
   padding-left: 20px;
   border: 1px solid #aaa; }
 #simple_search.loading {
@@ -714,31 +711,49 @@ span.match {
   margin-top: 5px;
   padding-top: 10px; }
 
-#timesheets .timesheet .timesheet-hours {
-  float: left;
-  width: 50px; }
-#timesheets .timesheet .timesheet-user {
-  float: left;
-  width: 150px; }
-#timesheets .timesheet .timesheet-date {
-  float: left;
-  width: 130px;
-  text-align: right; }
-#timesheets .timesheet .timesheet-actions {
-  float: right;
-  margin-left: 20px; }
-#timesheets .timesheet .timelogs .timelog {
-  float: right; }
-  #timesheets .timesheet .timelogs .timelog .timelog-hours {
+#timesheets {
+  padding-top: 10px; }
+  #timesheets .header {
+    background-color: #eee; }
+  #timesheets .timesheet .timesheet-description, #timesheets .header .timesheet-description {
+    float: left; }
+  #timesheets .timesheet .timesheet-hours, #timesheets .header .timesheet-hours {
     float: left;
-    width: 50px; }
-  #timesheets .timesheet .timelogs .timelog .timelog-date {
+    width: 100px; }
+  #timesheets .timesheet .timesheet-user, #timesheets .header .timesheet-user {
     float: left;
-    width: 280px;
-    text-align: right; }
-  #timesheets .timesheet .timelogs .timelog .timelog-actions {
+    width: 150px; }
+  #timesheets .timesheet .timesheet-date, #timesheets .header .timesheet-date {
+    float: left;
+    width: 100px; }
+  #timesheets .timesheet .timesheet-actions, #timesheets .header .timesheet-actions {
     float: right;
-    margin-left: 20px; }
+    width: 20px; }
+  #timesheets .timesheet .timelogs .timelog {
+    float: right; }
+    #timesheets .timesheet .timelogs .timelog .timelog-hours {
+      float: left;
+      width: 250px; }
+    #timesheets .timesheet .timelogs .timelog .timelog-date {
+      float: left;
+      width: 100px; }
+    #timesheets .timesheet .timelogs .timelog .timelog-actions {
+      float: right;
+      width: 20px; }
 
 #new_timelog #timelog_timesheet_description {
   width: 250px; }
+
+content1 {
+  text-align: left;
+  float: left;
+  position: relative;
+  width: 45%;
+  padding: 40px; }
+
+content2 {
+  text-align: left;
+  float: right;
+  position: relative;
+  width: 45%;
+  padding: 40px; }

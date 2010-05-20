@@ -1,6 +1,6 @@
 - content_for :sidebar do
   %h1 Coedit new doc
-    
+  = render :partial => "shared/learnmore"  
   - semantic_form_for [@project, @project.wiki_pages.new] do |f|
     - f.inputs do
       =f .input :title, :class=>'gray'

@@ -15,3 +15,17 @@ Filter_<%= i=i+1 %>:
  display_name: Due by
  filter_param: task_due_date
  sort_order: 4
+ 
+Filter_<%= i=i+1 %>: 
+ id: <%= i %>
+ filter_name: alerts_index
+ display_name: Action
+ filter_param: alerts_index_action
+ sort_order: 4
+ 
+Filter_<%= i=i+1 %>: 
+ id: <%= i %>
+ filter_name: alerts_index
+ display_name: Alert for
+ filter_param: alerts_index_for
+ sort_order: 2

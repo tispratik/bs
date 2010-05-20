@@ -1,0 +1,27 @@
+:javascript
+  $(document).ready(function() {
+    $('#donotlearnmorelink').click(function() {
+      $('#learnmore').show();
+      $('#dontlearnmore').hide();
+      return false;
+    })
+    
+    $('#learnmorelink').click(function() {
+      $('#learnmore').hide();
+      $('#dontlearnmore').show();
+      return false;
+    })
+  })
+
+#dontlearnmore
+  %small_text
+    .right
+      =link_to "Description", "#", :id => :donotlearnmorelink
+#learnmore{:style => "display:none" }
+  .gray
+    = @project.description
+    %br
+    %small_text
+      .right
+        =link_to "Hide", "#", :id => :learnmorelink
+%br

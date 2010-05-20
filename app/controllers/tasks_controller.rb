@@ -10,6 +10,8 @@ class TasksController < ApplicationController
   # GET /tasks.xml
   def index
     @tasks = eval(get_query)
+    @task = @project.tasks.build
+    @learnmore = "Tasks allow you to delegate exact work to a project member."
     render :layout => 'onebox_layout'
   end
   
@@ -43,7 +45,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         flash[:notice] = 'Task was successfully created.'
-        format.html { redirect_to edit_project_task_path(@project, @task) }
+        format.html { redirect_to [@project, :tasks] }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         flash[:notice] = 'Failed to create task.'

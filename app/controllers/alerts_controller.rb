@@ -4,6 +4,7 @@ class AlertsController < ApplicationController
   
   def index
     @count = '100'
+    @learnmore = "Every change in the project creates an alert."
   end
   
 end

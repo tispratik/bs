@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :articles, :collection => {:suggest => :get, :search => :get}
     projects.resources :project_invitations, :as => :invitations, :member => {:confirm => :get}
     projects.resources :project_roles, :as => :roles
-    projects.resources :timesheets
+    projects.resources :timesheets, :collection => {:suggest => :get}
     projects.resources :timelogs
   end
   

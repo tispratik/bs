@@ -8,6 +8,7 @@ class AssetsController < ApplicationController
   def index
     @asset = Asset.new
     @assets = eval(get_query)
+    @learnmore = "Share files with fellow project members through the File Center."
   end
   
   def destroy

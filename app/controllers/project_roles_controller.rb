@@ -4,6 +4,7 @@ class ProjectRolesController < ApplicationController
   
   def index
     @roles = @project.roles
+    @count = @project.roles.size
   end
   
 end

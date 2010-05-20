@@ -1,6 +1,5 @@
 .timesheet{:class => cycle("even", "odd")}
-  .timesheet-description.left
-    =# timesheet.description
+  .timesheet-description
     = in_place_editor_for [@project, timesheet], :description
   .right
     .timesheet-hours
@@ -11,7 +10,7 @@
     .timesheet-date
       = timesheet.timelogs.maximum(:date)
     .timesheet-actions
-      = link_to image_tag("delete.png"), [@project, timesheet], :method => :delete
+      = link_to image_tag("delete.png"), [@project, timesheet], :class => :delete
     .clear
   .clear
   .timelogs.hide
@@ -22,6 +21,6 @@
         .timelog-date
           = timelog.date
         .timelog-actions
-          = link_to image_tag("delete.png"), [@project, timelog], :method => :delete
+          = link_to image_tag("delete.png"), [@project, timelog], :class => :delete
         .clear
       .clear

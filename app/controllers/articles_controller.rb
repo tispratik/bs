@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = @project.articles.paginate(:per_page => 20, :page => params[:page], :order => "created_at desc")
-    
+    @learnmore = "Research Feeds are a great way to share some interesting piece of text that you just came across and want to tell your project members."
     respond_to do |format|
       format.html
       format.js

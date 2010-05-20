@@ -3,12 +3,13 @@
     = link_to 'Edit', edit_project_path(@project)
   %h1
     Project Details
+  = render :partial => 'description'  
   .gray
-    = @project.status_val
+    = @project.status_val  
     Project  
+    %br
+    = link_to(@project.roles.size.to_s() + " Members", [@project, :project_roles])
     %br  
-    %br  
-    = @project.description
 
 = render :partial => "events/upcoming", :locals => {:events => @project.events}
 %br
@@ -16,8 +17,3 @@
   Top 10 Alerts
 %br
 = render :partial => "alerts/list"
-%br
-.gray
-  My top 10 tasks
-= render :partial => "tasks/my"
-%br 

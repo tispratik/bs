@@ -1,6 +1,7 @@
 - if logged_in?
   - content_for :sidebar do
     %h1 Upload a file
+    = render :partial => "shared/learnmore"
     = render :partial => "new"
     
 - form_tag '/assets', :method => :get do

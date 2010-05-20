@@ -59,9 +59,9 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    [usr.first_name, usr.last_name].join(' ')
+    [usr.first_name, usr.last_name[0,1]].join(' ') + "."
   end
-  
+   
   def self.curr_user
     Thread.current[:curr_user]
   end

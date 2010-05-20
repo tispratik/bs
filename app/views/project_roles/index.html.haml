@@ -1,3 +1,8 @@
+- content_for :sidebar do
+  %h1
+    Project Members
+
+
 - pending_invitations = @project.invitations.confirmed_is(false)
 - if pending_invitations.present?
   %h3 Pending Invitations
@@ -16,11 +21,8 @@
     = f.commit_button "Send Invitation"
 
 %br
-  
-.gray
-  Project Members
 %br  
-%table
+%table.index
   - @roles.each do |role|
     %tr{:class => cycle("even", "odd")}
       %td.min100

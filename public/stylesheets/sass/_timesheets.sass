@@ -1,31 +1,35 @@
 #timesheets
-  .timesheet
+  padding-top: 10px
+  .header
+    background-color: #eee
+  .timesheet, .header
+    .timesheet-description
+      float: left
     .timesheet-hours
       float: left
-      width: 50px
+      width: 100px
     .timesheet-user
       float: left
       width: 150px
     .timesheet-date
       float: left
-      width: 130px
-      text-align: right
+      width: 100px
     .timesheet-actions
       float: right
-      margin-left: 20px
+      width: 20px
+  .timesheet
     .timelogs
       .timelog
         float: right
         .timelog-hours
           float: left
-          width: 50px
+          width: 250px
         .timelog-date
           float: left
-          width: 280px
-          text-align: right
+          width: 100px
         .timelog-actions
           float: right
-          margin-left: 20px
+          width: 20px
 #new_timelog
   #timelog_timesheet_description
     width: 250px

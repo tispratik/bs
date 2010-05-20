@@ -4,22 +4,6 @@ i = 0
  
 Filter_Param<%= i=i+1 %>:  
  id: <%= i %>
- filter_param: task_type
- disp_value: Action Item
- internal_param: task_type
- internal_value: <%= Decode::BS_TASK_TYPE_AI %>
- sort_order: 1
-
-Filter_Param<%= i=i+1 %>:  
- id: <%= i %>
- filter_param: task_type
- disp_value: Open Issue
- internal_param: task_type
- internal_value: <%= Decode::BS_TASK_TYPE_OI %>
- sort_order: 2
-
-Filter_Param<%= i=i+1 %>:  
- id: <%= i %>
  filter_param: task_status
  disp_value: Open
  internal_param: status
@@ -88,4 +72,68 @@ Filter_Param<%= i=i+1 %>:
  disp_value: Past
  internal_param: due_date
  internal_value: past
+ sort_order: 4
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_for
+ disp_value: CoEdit
+ internal_param: alertable_type
+ internal_value: WikiPage
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_for
+ disp_value: Research Feed
+ internal_param: alertable_type
+ internal_value: Article
+ sort_order: 2
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_for
+ disp_value: Task
+ internal_param: alertable_type
+ internal_value: Task
+ sort_order: 3
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_for
+ disp_value: File
+ internal_param: alertable_type
+ internal_value: Asset
+ sort_order: 4
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_action
+ disp_value: Added
+ internal_param: alert_type
+ internal_value: added
+ sort_order: 1
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_action
+ disp_value: Updated
+ internal_param: alert_type
+ internal_value: updated
+ sort_order: 2
+
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_action
+ disp_value: Commented
+ internal_param: alert_type
+ internal_value: commented
+ sort_order: 3
+ 
+Filter_Param<%= i=i+1 %>:  
+ id: <%= i %>
+ filter_param: alerts_index_action
+ disp_value: Deleted
+ internal_param: alert_type
+ internal_value: deleted
  sort_order: 4

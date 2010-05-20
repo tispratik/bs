@@ -7,6 +7,7 @@ class WikiPagesController < ApplicationController
   
   def index
     @wiki_pages = @project.wiki_pages
+    @learnmore = "CoEdits allow project members to work on documents collaboratively. Each update to the document is stored as a version. You are also allowed to compare between two versions and view additions and deletions."
   end
   
   def show
