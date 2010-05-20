@@ -1,59 +1,55 @@
 class TimesheetsController < ApplicationController
-  # GET /timesheets
-  # GET /timesheets.xml
+  
+  before_filter :find_project
+  
   def index
-    @timesheets = @project.timesheets
-  end
-
-  # GET /timesheets/new
-  # GET /timesheets/new.xml
-  def new
-    @timesheet = @project.Timesheet.new
-  end
-
-  # POST /timesheets
-  # POST /timesheets.xml
-  def create
-    @timesheet = Timesheet.new(params[:timesheet])
-
+    @timesheets = @project.timesheets.searchlogic
+    
+    if params[:user_ids]
+      @timesheets = @timesheets.user_id_is(params[:user_ids])
+    end
+    
+    if params[:date_from] && params[:date_from].present?
+      @timesheets = @timesheets.timelogs_date_greater_than(params[:date_from])
+    end
+    if params[:date_to] && params[:date_to].present?
+      @timesheets = @timesheets.timelogs_date_less_than(params[:date_to])
+    end
+    
     respond_to do |format|
-      if @timesheet.save
-        flash[:notice] = 'Timesheet was successfully created.'
-        format.html { redirect_to(@timesheet) }
-        format.xml  { render :xml => @timesheet, :status => :created, :location => @timesheet }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @timesheet.errors, :status => :unprocessable_entity }
-      end
+      format.html
+      format.js {
+        render :update do |page|
+          page << "$('#timesheets').html(\"#{escape_javascript(render @timesheets.all)}\")"
+        end
+      }
     end
   end
-
-  # PUT /timesheets/1
-  # PUT /timesheets/1.xml
+  
   def update
-    @timesheet = Timesheet.find(params[:id])
-
+    @timesheet = @project.timesheets.find(params[:id])
+    if @timesheet.update_attributes(params[:timesheet])
+      flash[:notice] = "Timesheet updated."
+    end
     respond_to do |format|
-      if @timesheet.update_attributes(params[:timesheet])
-        flash[:notice] = 'Timesheet was successfully updated.'
-        format.html { redirect_to(@timesheet) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @timesheet.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to [@project, :timesheets] }
+      format.js {
+        render :update do |page|
+          page << show_flash_messages
+        end
+      }
     end
   end
-
-  # DELETE /timesheets/1
-  # DELETE /timesheets/1.xml
+  
   def destroy
-    @timesheet = Timesheet.find(params[:id])
-    @timesheet.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(timesheets_url) }
-      format.xml  { head :ok }
+    @timesheet = @project.timesheets.find(params[:id])
+    if @timesheet.user_id == current_user.id
+      @timesheet.destroy
+      flash[:notice] = "Timesheet removed."
+    else
+      flash[:error] = "You don't have permissions."
     end
+    redirect_to [@project, :timesheets]
   end
+  
 end

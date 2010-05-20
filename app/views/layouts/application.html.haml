@@ -5,13 +5,12 @@
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui-1.7.2.custom', 'jquery.autocomplete', 'application', "event_calendar", "colorbox", :cache => "base"
     = javascript_include_tag 'jquery-1.4.2.min', 'jquery-ui-1.7.2.custom.min', 'jquery.colorbox-min', 'jquery.autocomplete.pack', 'jquery.validate.pack', 'application', :cache => "base"
-    
+    = javascript_include_tag 'jintastic'
   %body
   
     #container
       #header
         = render :partial => "layouts/top_bar"
-      = render :partial => "layouts/pagecontext"
       #sidebar.left
         = render :partial => "layouts/logo_box"
         = yield(:sidebar)

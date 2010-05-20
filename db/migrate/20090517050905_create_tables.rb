@@ -6,9 +6,8 @@ class CreateTables < ActiveRecord::Migration
       t.string :alias, :limit => 25
       t.string :permalink, :limit => 20
       t.integer :status
-      t.string :description, :limit => 3000
+      t.string :description, :limit => 5000
       t.boolean :is_public
-      t.text :objectives
       t.boolean :use_ssl
       t.datetime :created_at
       t.datetime :updated_at 
@@ -105,8 +104,6 @@ class CreateTables < ActiveRecord::Migration
     create_table :tasks do |t|
       t.references :project
       t.string :name
-      t.string :alias, :limit => 25
-      t.string :description, :limit => 3000
       t.integer :assign_to
       t.date :due_date
       t.integer :task_type
@@ -123,6 +120,17 @@ class CreateTables < ActiveRecord::Migration
     add_index :tasks, :updated_by
     add_index :tasks, :assign_to
     add_index :tasks, :due_date
+    
+    create_table :alerts do |t|
+      t.references :project
+      t.integer :created_by
+      t.string :alert_type
+      t.integer :alertable_id
+      t.string :alertable_type
+      t.date :due_date
+      t.string :deleted_text
+      t.timestamps
+    end
     
     create_table :comments do |t|
       t.references :commentable, :polymorphic => true
@@ -206,16 +214,19 @@ class CreateTables < ActiveRecord::Migration
       t.timestamps
     end
    
-   create_table :timesheets do |t|
+    create_table :timesheets do |t|
       t.references :user
       t.references :project
+      t.references :objectable, :polymorphic => true
       t.string :description
       t.timestamps
-    end 
+    end
+    
     create_table :timelogs do |t|
       t.references :timesheet
-      t.date :when
-      t.integers :howlong
+      t.references :project
+      t.date :date
+      t.integer :hours
       t.timestamps
     end
   end

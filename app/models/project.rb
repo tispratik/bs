@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   has_many :project_roles, :dependent => :destroy
   has_many :users, :through => :project_roles
   has_many :tasks
+  has_many :alerts
   has_many :timesheets
   has_one :calendar, :as => :calendarable
   has_many :calendars, :as => :calendarable
@@ -14,6 +15,8 @@ class Project < ActiveRecord::Base
   has_many :articles
   has_many :assets, :as => :attachable
   has_many :tags
+  has_many :timesheets
+  has_many :timelogs
   belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
   
   has_many :project_invitations

@@ -1,7 +1,8 @@
 %table.index
   %tr
     %td.top
-      - if tasks.empty?
+      %br
+      - if @tasks.empty?
         %b
           No tasks !
       - else
@@ -16,42 +17,33 @@
               = sort_link 'Asignee', :assign_to
             %th
               = sort_link 'Updated', :updated_at      
-            %th
-              = sort_link 'Project', :project_id
             %th.right
-              = sort_link 'Due', :due_date  
-            %th  
-          - tasks.each do |task|
-            %tr{ :class => cycle(:odd, :even) }
-              %td
-                = image_tag(task.priority_image)
-              %td.min200.left
-                - if task.deleted_at?
-                  %del
-                    = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
-                - else
-                  = link_to truncate(task.to_s, :omission => "...", :length => 25), edit_project_task_path(task.project, task)
-              %td.editinplace
-                = task.initiator
-              %td
-                = task.assignee
-              %td
-                = time_ago_in_words(task.updated_at)
-                ago
-              %td
-                = task.project  
-              %td.right
-                = smart_due_date(task.due_date)
-              - if task.deleted_at?
-                %td
-                  = link_to "Reopen", [:reopen, task.project, task]
-              - else  
-                %td
-                  = link_to image_tag('delete.png'), [task.project, task], :method => :delete                          
-          %tr
-          %tr
-          %tr{ :align => "right" }
-            %td{ :colspan => "5" }
-              = page_entries_info tasks
-              = will_paginate tasks, :param_name => table_name
-              
+              = sort_link 'Due', :due_date
+            %th
+              - @tasks.each do |task|
+                %tr{ :class => cycle(:odd, :even) }
+                  %td
+                    = image_tag(task.priority_image)
+                  %td.min350.left
+                    - if task.deleted_at?
+                      %del
+                        = link_to truncate(task.to_s, 45, "..."), edit_project_task_path(task.project, task)
+                    - else
+                      = link_to truncate(task.to_s, 45, "..."), edit_project_task_path(task.project, task)
+                  %td.gray
+                    = truncate(task.initiator.to_s(), 25, "...")
+                  %td.gray
+                    = truncate(task.assignee.to_s(), 25, "...")
+                  %td.gray
+                    = time_ago_in_words(task.updated_at)
+                    ago
+                  %td.right
+                    = smart_due_date(task.due_date)
+                  - if task.deleted_at?
+                    %td
+                      = link_to "Reopen", [:reopen, @project, task]
+                  - else  
+                    %td
+                      = link_to image_tag('delete.png'), [@project, task], :method => :delete                          
+              %tr
+              %tr

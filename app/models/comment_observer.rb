@@ -1,9 +1,6 @@
 class CommentObserver < ActiveRecord::Observer
-  def after_save(comment)
-    Emailer.deliver_comment("tispratik@gmail.com", "New comment was posted", "Hi")
-  end
   
-  def after_destroy(contact)
-    contact.logger.warn("Contact with an id of #{contact.id} was destroyed!")
+  def after_create(comment)
+    Alert.log(comment.commentable.project_id, comment.commentable_id, comment.commentable_type, nil, "commented", comment.created_by, nil)
   end
 end

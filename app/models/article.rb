@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   
   default_scope :order => "created_at desc"
-  
+  has_many :alerts, :as => :alertable
   has_many :comments, :as => :commentable,  :dependent => :destroy
   has_many :tags,     :as => :taggable,     :dependent => :destroy
   has_many :assets,   :as => :attachable,   :dependent => :destroy

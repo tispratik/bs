@@ -3,9 +3,6 @@
     = f.input :name
     = f.input :status, :as => :select, :collection => Project::STATUSES, :prompt => false
     = f.input :description
-    = f.input :objectives
-    = f.input :is_public
-    = f.input :use_ssl
+    = f.input :use_ssl, :label => "Enable SSL security"
   - f.buttons do
     = f.commit_button "Update Project"
-    = link_to "Go back", project_path(@project)

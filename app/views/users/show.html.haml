@@ -11,10 +11,3 @@
   - invites.each do |invitation|
     = link_to invitation.project, invitation.project
     = link_to "Accept", confirm_project_project_invitation_path(invitation.project, invitation)
-
-%h2 Tasks
-My Tasks
-= render :partial => "tasks/my", :locals => {:tasks => @my_tasks, :table_name => "upper" }    
-%br
-Related Tasks
-= render :partial => "tasks/my", :locals => {:tasks => @my_related, :table_name => "lower" }  

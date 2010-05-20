@@ -37,11 +37,12 @@
 #content.right
   = render :partial => "layouts/header"
   = flash[:errors]
-  %br
   %h2
     = @task.name
-  %h2.left.gray Discussion
-  .clear    
+  %h2.left.gray 
+    Discussion
+  %br
+  %br
   #comments
     = render @task.comments
     - if logged_in?

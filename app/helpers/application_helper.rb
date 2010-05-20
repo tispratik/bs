@@ -50,6 +50,25 @@ module ApplicationHelper
     return smart_date(i)
   end
   
+  def smart_due_date_s(i)
+        if i == nil
+      return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+    end
+    if Date.today == i
+      return "<span style=\"background-color:#F7FAB9;padding:0px 2px 0px 2px;\">due Today</span>"
+    end  
+    if i-(Date.today) == 1
+      return "<span style=\"background-color:#F7FAB9;padding:0px 2px 0px 2px;\">due Tomorrow</span>"
+    end  
+    if Date.today-(i) > 0.9
+      return "<span style=\"background-color:#FFC7C7;padding:0px 2px 0px 2px;\">due " +  smart_date(i) + "</span>"
+    end
+    if Date.today-(i) < 1
+      return "<span style=\"background-color:#D2FFCC;padding:0px 2px 0px 2px;\">due " +  smart_date(i) + "</span>"
+    end
+    return smart_date(i)
+  end
+  
   def markdown(text)
     # text = sanitize(text, :tags => %w(object param embed))
     text.gsub!(/<script.*>.*<\/script>/, '')

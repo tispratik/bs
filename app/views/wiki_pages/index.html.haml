@@ -20,7 +20,7 @@
     %th    
   - @wiki_pages.each do |wiki_page|
     %tr{:class => cycle("even", "odd")}
-      %td.min600
+      %td.min500
         - if wiki_page.deleted_at?
           %del
             = link_to truncate(wiki_page.title, 55, "..."), [@project, wiki_page]
@@ -28,12 +28,12 @@
         - else
           = link_to truncate(wiki_page.title, 55, "..."), [@project, wiki_page]
           = "(" + wiki_page.version.to_s() + ")"
-      %td
+      %td.gray
         - if wiki_page.version > 1
           = h truncate(wiki_page.versions.last.user.to_s(), 20, "...")
         - else
           = h truncate(wiki_page.creator.to_s(), 20, "...")
-      %td
+      %td.gray
         - if wiki_page.version > 1
           = smart_date(wiki_page.versions.last.created_at)
       - unless wiki_page.deleted_at?

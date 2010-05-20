@@ -6,6 +6,7 @@ Rails::Initializer.run do |config|
 
   config.active_record.colorize_logging = false
   config.active_record.timestamped_migrations = false
+  config.active_record.observers = :article_observer, :comment_observer, :asset_observer, :task_observer, :wiki_page_observer
   
   config.time_zone = 'UTC'
   
@@ -23,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx'
   config.gem 'ts-delayed-delta', :lib => false
   config.gem 'searchlogic'
+  config.gem 'jintastic'
 end
 
 Delayed::Worker.backend = :active_record

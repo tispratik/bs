@@ -27,8 +27,9 @@
                 (#{article.assets.first.data_content_type.gsub(/\/.*/, '')})
           .clear
         .right
-          = time_ago_in_words article.created_at
-          ago
+          .gray
+            = time_ago_in_words article.created_at
+            ago
         .clear
 
 = will_paginate articles

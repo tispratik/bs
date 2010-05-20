@@ -1,0 +1,27 @@
+.timesheet{:class => cycle("even", "odd")}
+  .timesheet-description.left
+    =# timesheet.description
+    = in_place_editor_for [@project, timesheet], :description
+  .right
+    .timesheet-hours
+      = timesheet.timelogs.sum(:hours)
+      = link_to "(+)", "#", :class => "timesheet_expand_logs"
+    .timesheet-user
+      = timesheet.user
+    .timesheet-date
+      = timesheet.timelogs.maximum(:date)
+    .timesheet-actions
+      = link_to image_tag("delete.png"), [@project, timesheet], :method => :delete
+    .clear
+  .clear
+  .timelogs.hide
+    - timesheet.timelogs.each do |timelog|
+      .timelog
+        .timelog-hours
+          = timelog.hours
+        .timelog-date
+          = timelog.date
+        .timelog-actions
+          = link_to image_tag("delete.png"), [@project, timelog], :method => :delete
+        .clear
+      .clear

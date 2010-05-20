@@ -3,6 +3,7 @@ class Asset < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :updator, :class_name => 'User', :foreign_key => "updated_by"
+  has_many :alerts, :as => :alertable
   
   has_attached_file :data,
       :path => ':rails_root/private/files/:id/:style/:basename.:extension',

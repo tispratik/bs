@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
   end
   
   def show
+    @count = '10'
+    @tasks = Task.all(:conditions => {:project_id => @project.id, :assign_to => current_user.id, :status => Decode::BS_TASK_STATUS_OP }, :order => "deleted_at asc, due_date asc", :limit => 10)
   end
   
   def new
@@ -53,5 +55,5 @@ class ProjectsController < ApplicationController
     params[:project_id] = params[:id]
     super
   end
-  
+    
 end

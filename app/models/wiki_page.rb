@@ -2,6 +2,7 @@ class WikiPage < ActiveRecord::Base
   
   default_scope :order => "deleted_at asc, created_at desc"
   versioned :only => :content
+  has_many :alerts, :as => :alertable
   
   has_many :comments, :as => :commentable
   belongs_to :project

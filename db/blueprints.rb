@@ -11,7 +11,6 @@ Project.blueprint do
   permalink     { Random.alphanumeric }
   status        { Project::STATUSES.rand.id }
   description   { Faker::Lorem.paragraph }
-  objectives    { Faker::Lorem.paragraph }
 end
 
 Event.blueprint do
@@ -41,7 +40,6 @@ end
 
 Task.blueprint do
   name          { Faker::Company.name }
-  description   { Populator.sentences(1..2) }
   assign_to     { [1,2,3,4,5].rand }
   due_date      { due_dates.rand } 
   priority      { Task::PRIORITIES.rand.id }

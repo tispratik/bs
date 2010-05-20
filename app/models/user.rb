@@ -7,12 +7,12 @@ class User < ActiveRecord::Base
   has_many :project_roles
   has_many :projects, :through => :project_roles
   has_many :tasks, :through => :projects
+  has_many :alerts, :through => :projects 
   has_many :ac_proj_op_tasks, :through => :projects, :source => :tasks, :conditions => "projects.status = #{Decode::BS_PROJ_STATUS_AC} AND tasks.status=#{Decode::BS_TASK_STATUS_OP}"
   has_many :calendars, :as => :calendarable
   has_many :events, :through => :calendars
   has_many :project_invitations
   has_many :articles
-  has_many :timesheets
   
   alias :roles :project_roles
   accepts_nested_attributes_for :usr, :ucontact

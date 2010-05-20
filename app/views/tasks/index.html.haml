@@ -6,16 +6,16 @@
   
   #content.right
     = render :partial => "layouts/header"
-    %br      
     %table.index
       %tr
         %td.top
-          %center
-            = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
-            = submit_tag "Search"
-            &nbsp;&nbsp;
-            = link_to "New Task", new_project_task_path
-          %br
+          #search_form
+            #simple_search{:style => params[:search].is_a?(Hash) ? "display:none" : "" }
+              %center
+                = text_field_tag "search", params[:search], :size => 60, :autocomplete => "off"
+                = submit_tag "Search"
+                &nbsp;&nbsp;
+                = link_to "New Task", new_project_task_path
           %br
           - if @tasks.empty?
             %b
@@ -45,11 +45,11 @@
                         = link_to truncate(task.to_s, 45, "..."), edit_project_task_path(task.project, task)
                     - else
                       = link_to truncate(task.to_s, 45, "..."), edit_project_task_path(task.project, task)
-                  %td
+                  %td.gray
                     = truncate(task.initiator.to_s(), 25, "...")
-                  %td
+                  %td.gray
                     = truncate(task.assignee.to_s(), 25, "...")
-                  %td
+                  %td.gray
                     = time_ago_in_words(task.updated_at)
                     ago
                   %td.right

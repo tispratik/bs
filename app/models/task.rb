@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
 
-  default_scope :order => "deleted_at asc, updated_at desc"
+  default_scope :order => "deleted_at asc, due_date asc"
+  has_many :alerts, :as => :alertable
     
   TYPES = Decode.find_all_by_name("BS_Task_Type")
   PRIORITIES = Decode.find_all_by_name("BS_Task_Priority")
@@ -44,8 +45,4 @@ class Task < ActiveRecord::Base
     self.task_type = Decode::BS_TASK_TYPE_AI
   end
   
-  def before_create
-    self.alias = 'TASK' + id.to_s() 
-  end
-
 end

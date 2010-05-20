@@ -1,0 +1,9 @@
+= error_messages_for :timelog
+
+- semantic_form_for [@project, timelog], :html => {:class => "inline"}, :live_validations => true do |f|
+  - f.inputs do
+    = f.input :timesheet_description
+    = f.input :date, :as => :string, :input_html => {:class => "datepicker"}
+    = f.input :hours
+  = f.buttons
+  .clear

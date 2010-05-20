@@ -40,6 +40,7 @@ jQuery.fn.labelsWithinFields = function(){
 
 $(document).ready(function(){
     $('.colorbox').colorbox();
+    $('input.datepicker').datepicker();
     
     $('#comments .comment a.quote').live('click', function(){
         $.get($(this).attr('href'), {}, null, 'script');

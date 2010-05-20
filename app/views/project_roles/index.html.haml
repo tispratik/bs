@@ -17,16 +17,17 @@
 
 %br
   
-%h3 Project Members
+.gray
+  Project Members
+%br  
 %table
-  %tr
-    %td
-      Name
-    %td
-      Role    
   - @roles.each do |role|
     %tr{:class => cycle("even", "odd")}
-      %td
-        = role.user
-      %td
+      %td.min100
+        = image_tag profile_image(role.user.login_email)
+      %td.members
+        %b
+          %i
+            = role.user
+        %br    
         = role.to_name

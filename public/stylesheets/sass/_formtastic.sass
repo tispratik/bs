@@ -31,6 +31,28 @@ form.formtastic
   &.stack
     +stack-form(100%, 92%)
     .buttons
-      padding-left: 0
+      :padding-left 0
     li.boolean label
       :padding-left 0
+  &.inline
+    fieldset
+      width: auto
+      &.inputs
+        label
+          width: auto
+        input[type=text]
+          width: auto
+        li
+          float: left
+          margin-right: 10px
+        float: left
+      &.buttons
+        display: inline
+        padding: 0
+        li
+          margin-right: 10px
+    label.error
+      margin: 0
+      float: none
+      width: auto
+    
