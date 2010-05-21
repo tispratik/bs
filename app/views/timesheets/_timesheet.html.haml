@@ -4,9 +4,8 @@
   .right
     .timesheet-hours
       = timesheet.timelogs.sum(:hours)
-      = link_to "(+)", "#", :class => "timesheet_expand_logs"
-    .timesheet-user
-      = timesheet.user
+      - if timesheet.timelogs.count > 1
+        = link_to "(+)", "#", :class => "timesheet_expand_logs"
     .timesheet-date
       = timesheet.timelogs.maximum(:date)
     .timesheet-actions

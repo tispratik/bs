@@ -5,9 +5,9 @@ class TimesheetsController < ApplicationController
   def index
     @timesheets = @project.timesheets.searchlogic
     @learnmore = "Log the time you spent working on the project in the timesheet."
-    if params[:user_ids]
-      @timesheets = @timesheets.user_id_is(params[:user_ids])
-    end
+    
+    @timesheet_user = (params[:user_id]) ? @project.users.find(params[:user_id]) : current_user
+    @timesheets = @timesheets.user_id_is(@timesheet_user.id)
     
     if params[:date_from] && params[:date_from].present?
       @timesheets = @timesheets.timelogs_date_greater_than(params[:date_from])
@@ -20,7 +20,8 @@ class TimesheetsController < ApplicationController
       format.html
       format.js {
         render :update do |page|
-          page << "$('#timesheets').html(\"#{escape_javascript(render :partial => 'timesheets')}\")"
+          page << "$('#timesheets').html(\"#{escape_javascript(render :partial => 'timesheets')}\");"
+          page << ((@timesheet_user == current_user) ? "$('#new_timelog').show();" : "$('#new_timelog').hide();")
         end
       }
     end

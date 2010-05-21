@@ -167,6 +167,9 @@ form.formtastic p.inline-hints {
   font-size: 11px; }
 form.formtastic .date legend label, form.formtastic .time legend label, form.formtastic .datetime legend label {
   display: block !important; }
+form.formtastic.loading li.commit {
+  padding-right: 25px;
+  background: url("../images/spinner.gif") right center no-repeat; }
 form.formtastic.labels-within-fields label.error {
   padding: 0;
   margin: 0; }
@@ -726,9 +729,6 @@ span.match {
   #timesheets .timesheet .timesheet-hours, #timesheets .header .timesheet-hours {
     float: left;
     width: 100px; }
-  #timesheets .timesheet .timesheet-user, #timesheets .header .timesheet-user {
-    float: left;
-    width: 150px; }
   #timesheets .timesheet .timesheet-date, #timesheets .header .timesheet-date {
     float: left;
     width: 100px; }
@@ -739,7 +739,7 @@ span.match {
     float: right; }
     #timesheets .timesheet .timelogs .timelog .timelog-hours {
       float: left;
-      width: 250px; }
+      width: 100px; }
     #timesheets .timesheet .timelogs .timelog .timelog-date {
       float: left;
       width: 100px; }

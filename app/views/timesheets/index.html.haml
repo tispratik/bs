@@ -8,12 +8,14 @@
       return false;
     })
     
-    $('#new_timelog').submit(function() {
-      var self = this;
-      $(this).addClass('loading');
-      $.post($(this).attr('action'), $(this).serialize(), function() {
-        $(self).removeClass('loading');
-      }, 'script')
+    $('#new_timelog').live('submit', function() {
+      if ($(this).valid()) {
+        var self = this;
+        $(this).addClass('loading');
+        $.post($(this).attr('action'), $(this).serialize(), function() {
+          $(self).removeClass('loading');
+        }, 'script')
+      }
       return false
     })
     
@@ -44,8 +46,10 @@
     })
     
     $('#timelog_timesheet_description').autocomplete('#{url_for([:suggest, @project, :timesheets])}')
-    $('#new_timelog').labelsWithinFields();
     $('#timesheets_filter_form input[name="users[]"]').change();
+    $('#new_timelog').labelsWithinFields();
+    
+    #{"$('#new_timelog').hide();" unless @timesheet_user == current_user}
   })
 
 - content_for :sidebar do
@@ -66,12 +70,14 @@
               - @project.roles.each do |role|
                 %li
                   %label
-                    = check_box_tag "user_ids[]", role.user_id
+                    = radio_button_tag :user_id, role.user_id, role.user_id == (@timesheet_user.id)
                     = role.user
     %fieldset.buttons
       %ol
         %li.commit
           = submit_tag "Apply Filter"
+
+%h2 Timesheets for #{@timesheet_user}
 
 = render :partial => "timelogs/form", :locals => {:timelog => Timelog.new}
 
