@@ -27,6 +27,6 @@ class AlertsController < ApplicationController
 
     qry = qry + sort_order('descend_by_created_at')
     qry = qry + ".all(:include => [:creator, :alertable])"
-    qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 100)"
+    qry = qry + ".paginate(:page => #{params[:page] || 1}, :per_page => 50)"
   end
 end
