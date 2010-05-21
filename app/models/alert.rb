@@ -30,9 +30,9 @@ class Alert < ActiveRecord::Base
   
   def alertable_s
     if deleted_text != nil
-      return deleted_text.to_s()
+      return deleted_text.to_s
     end
-    return alertable.to_s()
+    return alertable.to_s
   end  
   
   def is_deleted?

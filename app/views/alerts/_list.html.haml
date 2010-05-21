@@ -1,5 +1,3 @@
--trunc_hash = { :limit => 55, :omission => "..." }
-
 %table.index
   - @alerts.each do |a|
     %tr
@@ -8,16 +6,9 @@
       %td.min400
         - if a.is_deleted?
           %del
-            = truncate a.alertable_s, trunc_hash
+            = truncate a.alertable_s, :limit => 80, :omission => "..."
         - else
-          - if a.alertable_type != "Asset"
-            = link_to truncate(a.alertable_s, trunc_hash), [@project, a.alertable]
-          - elsif a.alertable_type == "Asset"  
-            - if a.alertable.image?
-              = image_tag(a.alertable.url, :size => "17x19")
-            - else
-              = image_tag(a.alertable.file_icon, :size => "17x19")
-            = link_to truncate(a.alertable_s, trunc_hash), [@project, a.alertable]
+          = link_to truncate(a.alertable_s, :limit => 80, :omission => "..."), [@project, a.alertable]
       %td.none
         = smart_due_date_s(a.due_date) 
       %td.right
