@@ -1,34 +1,31 @@
+-trunc_hash = { :limit => 55, :omission => "..." }
+
 %table.index
-  - Alert.forproject(@project.id, @count).each do |a|
-    - b = Alert.find_by_id(a.id)
+  - @alerts.each do |a|
     %tr
       %td.min50
-        = b.color_alertabletype
+        = a.color_alertabletype
       %td.min400
-        - if b.is_deleted?
+        - if a.is_deleted?
           %del
-            = truncate(b.alertable_s, 55, "...")
+            = truncate a.alertable_s, trunc_hash
         - else
-          - if b.alertable_type == "Article"
-            = link_to(truncate(b.alertable_s,55,"..."), [@project, b.alertable])
-          - elsif b.alertable_type == "Task"
-            = link_to(truncate(b.alertable_s,55,"..."), edit_project_task_path(@project, b.alertable))
-          - elsif b.alertable_type == "Asset"  
-            - if b.alertable.image?
-              = image_tag(b.alertable.url, :size => "17x19")
+          - if a.alertable_type != "Asset"
+            = link_to(truncate (a.alertable_s, trunc_hash)), [@project, a.alertable]
+          - elsif a.alertable_type == "Asset"  
+            - if a.alertable.image?
+              = image_tag(a.alertable.url, :size => "17x19")
             - else
-              = image_tag(b.alertable.file_icon, :size => "17x19")
-            = link_to(truncate(b.alertable_s,55,"..."), project_asset_path(@project, b.alertable), :popup => :true)
-          - elsif b.alertable_type == "WikiPage"
-            = link_to(truncate(b.alertable_s,55,"..."), [@project, b.alertable])
+              = image_tag(a.alertable.file_icon, :size => "17x19")
+            = link_to(truncate a.alertable_s, trunc_hash), [@project, a.alertable]
       %td.none
-        = smart_due_date_s(b.due_date) 
+        = smart_due_date_s(a.due_date) 
       %td.right
         %span.lightgray
-          - if !b.is_deleted?
-            = b.alert_type
+          - if !a.is_deleted?
+            = a.alert_type
       %td
-        = truncate(b.creator.to_s(), 15, "...")
+        = truncate a.creator.to_s, :limit => 15, :omission => "..."
       %td
         %span.lightgray
-          = smart_date(b.updated_at)
+          = smart_date(a.updated_at)

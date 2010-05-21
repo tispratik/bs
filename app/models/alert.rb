@@ -1,5 +1,6 @@
 class Alert < ActiveRecord::Base
   
+  default_scope :order => "id desc"
   belongs_to :project
   belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :alertable, :polymorphic => true
@@ -19,7 +20,6 @@ class Alert < ActiveRecord::Base
   end
     
   def self.forproject(projectid, count)
-    #a = Alert.all(:select => "alertable_id, alertable_type, id", :conditions => {:project_id => projectid }, :group => "alertable_id, alertable_type",:having => "max(id)", :limit => count)
     a = Alert.all(:conditions => {:project_id => projectid }, :order => "id desc", :limit => count)
     if a == nil or a.empty?
       return Array.new

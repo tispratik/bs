@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    @count = 10
+    @alerts = @project.alerts.all(:limit => 10)
   end
   
   def new
