@@ -77,8 +77,6 @@
         %li.commit
           = submit_tag "Apply Filter"
 
-%h2 Timesheets for #{@timesheet_user}
-
 = render :partial => "timelogs/form", :locals => {:timelog => Timelog.new}
 
 #timesheets
