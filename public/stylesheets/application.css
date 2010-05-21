@@ -328,16 +328,17 @@ form.formtastic.stack .buttons {
   padding-left: 0; }
 form.formtastic.stack li.boolean label {
   padding-left: 0; }
+form.formtastic.inline li {
+  float: left; }
+form.formtastic.inline input {
+  width: auto; }
 form.formtastic.inline fieldset {
   width: auto; }
   form.formtastic.inline fieldset.inputs {
     float: left; }
     form.formtastic.inline fieldset.inputs label {
       width: auto; }
-    form.formtastic.inline fieldset.inputs input[type=text] {
-      width: auto; }
     form.formtastic.inline fieldset.inputs li {
-      float: left;
       margin-right: 10px; }
   form.formtastic.inline fieldset.buttons {
     display: inline;

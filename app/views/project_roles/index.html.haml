@@ -33,3 +33,9 @@
             = role.user
         %br    
         = role.to_name
+      %td
+        - semantic_form_for [@project, role], :html => {:class => "inline"} do |f|
+          = f.input :name, :as => :select, :collection => {"Owner" => "O", "Collaborator" => "C"}, :label => false, :include_blank => false
+          = f.commit_button
+      %td
+        = link_to "Remove", [@project, role], :method => :delete

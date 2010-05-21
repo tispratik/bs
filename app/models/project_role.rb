@@ -16,6 +16,6 @@ class ProjectRole < ActiveRecord::Base
   end
   
   def before_validation
-    self.name = 'O'
+    self.name ||= 'O'
   end
 end
