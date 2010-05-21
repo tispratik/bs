@@ -19,6 +19,11 @@ class AlertsController < ApplicationController
     if !params[:alert_type].nil?
       qry = qry + ".alert_type_eq(params[:alert_type])"
     end
+#    if !params[:search].blank?
+#      qry = qry + ".alertable_task_type_name_like_any(params[:search].split)"
+#      qry = qry + ".alertable_article_type_title_like_any(params[:search].split)"
+#      qry = qry + ".alertable_wiki_pages_type_title_like_any(params[:search].split)"
+#    end
 
     qry = qry + sort_order('descend_by_created_at')
     qry = qry + ".all(:include => [:creator, :alertable])"

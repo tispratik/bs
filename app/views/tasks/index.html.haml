@@ -3,10 +3,8 @@
     = render :partial => "layouts/logo_box"
     %h1 Filter Tasks
     = render :partial => "shared/learnmore"
-    %br  
     #simple_search{:style => params[:search].is_a?(Hash) ? "display:none" : "" }
       = text_field_tag "search", params[:search], :size => 27, :autocomplete => "off"
-      = submit_tag "Search"
     %br  
     = filter_html("tasks_index")
 

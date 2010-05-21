@@ -18,14 +18,13 @@ class Alert < ActiveRecord::Base
     alert.deleted_text = deletedtext
     alert.save
   end
-    
+  
   def self.forproject(projectid, count)
     a = Alert.all(:conditions => {:project_id => projectid }, :order => "id desc", :limit => count)
     if a == nil or a.empty?
       return Array.new
-    else
-      return a
-    end  
+    end
+    return a
   end
   
   def alertable_s
@@ -38,35 +37,34 @@ class Alert < ActiveRecord::Base
   def is_deleted?
     if deleted_text != nil
       return true
-    else
-      return false
-    end  
+    end
+    return false
   end
   
   def color_alertabletype
     case alertable_type
       when 'Asset'
-        return "<span class=\"filetag\">File</span>"
+      return "<span class=\"filetag\">File</span>"
       when 'Task'
-        return "<span class=\"tasktag\">Task</span>"
+      return "<span class=\"tasktag\">Task</span>"
       when 'Article'
-        return "<span class=\"feedtag\">Feed</span>"
+      return "<span class=\"feedtag\">Feed</span>"
       when 'WikiPage'
-        return "<span class=\"coedittag\">CoEdit</span>"
+      return "<span class=\"coedittag\">CoEdit</span>"
     end
   end
-    
+  
   def alertable_link
     case alertable_type
       when 'Asset'
-        return "<span class=\"filetag\">File</span>"
+      return "<span class=\"filetag\">File</span>"
       when 'Task'
-        return "<span class=\"tasktag\">Task</span>"
+      return "<span class=\"tasktag\">Task</span>"
       #when 'Article'
-        #return link_to alertable.to_s(), project_article_path (alertable_id)
+      #return link_to alertable.to_s(), project_article_path (alertable_id)
       when 'WikiPage'
-        return "<span class=\"coedittag\">CoEdit</span>"
+      return "<span class=\"coedittag\">CoEdit</span>"
     end
   end  
-    
+  
 end
