@@ -19,13 +19,13 @@ class Alert < ActiveRecord::Base
     alert.save
   end
   
-  def self.forproject(projectid, count)
-    a = Alert.all(:conditions => {:project_id => projectid }, :order => "id desc", :limit => count)
-    if a == nil or a.empty?
-      return Array.new
-    end
-    return a
-  end
+#  def self.forproject(projectid, count)
+#    a = Alert.all(:conditions => {:project_id => projectid }, :order => "id desc", :limit => count)
+#    if a == nil or a.empty?
+#      return Array.new
+#    end
+#    return a
+#  end
   
   def alertable_s
     if deleted_text != nil
