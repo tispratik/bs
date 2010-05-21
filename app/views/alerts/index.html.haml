@@ -1,6 +1,6 @@
-- form_tag project_alerts_path, :method => :get do
-  - content_for :sidebar do
-    %h1 Filter Alerts
-    = render :partial => "shared/learnmore"
+- content_for :sidebar do
+  %h1 Filter Alerts
+  = render :partial => "shared/learnmore"
+  - form_tag project_alerts_path, :method => :get do
     = filter_html("alerts_index")
-  = render :partial => "alerts/list"
+= render :partial => "alerts/list"

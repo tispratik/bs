@@ -14,10 +14,10 @@ class AlertsController < ApplicationController
     qry = "@project.alerts"
     
     if !params[:alertable_type].nil?
-      qry = qry + ".alertable_type_eq(#{params[:alertable_type]})"
+      qry = qry + ".alertable_type_eq(params[:alertable_type])"
     end
     if !params[:alert_type].nil?
-      qry = qry + ".alert_type_eq(#{params[:alert_type]})"
+      qry = qry + ".alert_type_eq(params[:alert_type])"
     end
 
     qry = qry + sort_order('descend_by_created_at')

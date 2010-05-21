@@ -33,7 +33,7 @@ class TasksController < ApplicationController
   end
   
   def show
-    record_not_found
+    redirect_to edit_project_task_path(@project, @task)
   end
   
   # POST /tasks
