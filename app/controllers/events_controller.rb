@@ -16,7 +16,7 @@ class EventsController < ApplicationController
       if @calendarable.is_a?(User)
         scope = Event.all_events_for_users(@calendarable.id)
       else
-        scope = @calendarable.events.searchlogic
+        scope = Event.all_events_for_project_or_user(@calendarable.id, current_user.id)
       end
     end
     

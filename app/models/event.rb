@@ -23,6 +23,11 @@ class Event < ActiveRecord::Base
   named_scope :all_events_for_users, lambda { |user_ids|
     { :conditions => ["created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids] }
   }
+  named_scope :all_events_for_project_or_user, lambda { |project_id, user_id|
+    { :conditions => ["calendars.calendarable_type='Project' and calendars.calendarable_id=? or created_by=?", project_id, user_id],
+      :joins => :calendar
+    }
+  }
   
   def attributes=(new_attributes, guard_protected_attributes = true)
     date_hack(new_attributes, "repeat_until_date")
@@ -147,7 +152,11 @@ class Event < ActiveRecord::Base
   end
   
   def to_s(format = :summary)
-    title = (format == :summary) ? summary : creator
+    if format == :smart
+      title = calendar.calendarable_type == "User" ? creator : summary
+    else
+      title = (format == :owner) ? creator : summary
+    end
     if all_day?
       "All Day: #{title}"
     else
