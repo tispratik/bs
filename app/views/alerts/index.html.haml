@@ -4,3 +4,5 @@
   - form_tag project_alerts_path, :method => :get do
     = filter_html("alerts_index")
 = render :partial => "alerts/list"
+%br
+= will_paginate @alerts

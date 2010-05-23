@@ -6,18 +6,23 @@ class ProjectInvitationsController < ApplicationController
   end
   
   def create
-    @invitation = @project.invitations.new(params[:project_invitation])
+    t = ProjectInvitation.first(:conditions => {:project_id => @project.id, :user_email => params[:invitee], :confirmed => '0'})
+    if t != nil
+     UserMailer.deliver_project_invitation(t.user_email, current_user)
+    else  
+     @invitation = @project.invitations.new(params[:project_invitation])
     
-    if @invitation.save
-      flash[:notice] = "Invitation created."
-      unless @invitation.user.present?
-        # send invitation email to user
-        UserMailer.deliver_project_invitation(@invitation.user_email, current_user)
-      end
-    else
-      flash[:notice] = "User not found or already invited."
-    end
-    redirect_to [@project, :project_roles]
+     if @invitation.save
+       flash[:notice] = "Invitation created."
+       unless @invitation.user.present?
+         # send invitation email to user
+         UserMailer.deliver_project_invitation(@invitation.user_email, current_user)
+       end
+     else
+       flash[:notice] = "User not found or already invited."
+     end
+     end
+     redirect_to [@project, :project_roles]
   end
   
   def confirm

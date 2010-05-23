@@ -1,14 +1,14 @@
 .gray
   Upcoming Events
 %br  
-%table.ec-row-table
-  %tr
-    - (Time.now.to_date..(Time.now+5.days).to_date).each_with_index do |date, i|
-      %td.ec-event-cell
-        = "Today, " if i == 0
-        = "Tomorrow, " if i == 1
-        = date.strftime("%A")
-        - events.each do |event|
-          - if event.start_at.to_date == date || event.end_at.to_date == date
-            %p
-              = link_to event, [event.calendar.calendarable, event]
+#upcoming
+  %table.ec-row-table
+    %tr
+      - (Time.now.to_date..(Time.now+5.days).to_date).each_with_index do |date, i|
+        %td.ec-event-cell
+          .dayname
+            = (i == 0)? "Today" : date.strftime("%a").to_s() + " (" + date.strftime("%d") + ")"
+          - events.each do |event|
+            - if event.start_at.to_date == date || event.end_at.to_date == date
+              %p
+                = link_to event.upcomingheader, [event.calendar.calendarable, event], :class => (event.all_day?)? "allday" : nil

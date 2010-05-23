@@ -2,24 +2,36 @@
   $(document).ready(function() {
     $('.edit_event_link').colorbox({width: '50%', initialHeight: '50%'})
   })
-
-%h1
-  = @event
   
-Event from
-= link_to @calendarable, [@calendarable, :events]
+- content_for :sidebar do
+  %h1
+    Event Details
+  .gray
+    - if @event.all_day?
+      All Day Event on
+      %br
+      = @event.start_at.strftime("%D").to_s()
+    - else  
+      From: 
+      = @event.start_at
+      %br
+      To: 
+      = @event.end_at
 
-- if @event.all_day?
-  %p
-    All Day Event on
-    = @event.start_at
-- else
-  %p
-    Start at:
-    = @event.start_at
-  %p
-    End at:
-    = @event.end_at
+.gray
+  Subject: 
+.right
+  %span.gray
+    by 
+    = @event.creator
+    updated
+    = time_ago_in_words(@event.updated_at)
+    ago
+%h2
+  = @event
+
+%br
+= link_to @calendarable, [@calendarable, :events]
 
 - if @event.recurring?
   %p

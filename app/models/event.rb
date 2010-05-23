@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :event_series
   has_many :comments, :as => :commentable
   has_many :event_invitees
+  belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   
   has_event_calendar
   
@@ -137,6 +138,18 @@ class Event < ActiveRecord::Base
   
   def color
     @color ||= "#9aa4ad"
+  end
+  
+  def upcomingheader
+    if all_day?
+    return summary[0..21] + ".."
+    else
+    mins = start_at.min.to_s()
+    if mins == "0"
+      mins = "00"
+    end
+    return start_at.hour.to_s() + mins + ": " + summary[0..12] + ".."
+    end
   end
   
 end
