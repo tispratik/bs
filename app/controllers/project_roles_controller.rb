@@ -9,8 +9,8 @@ class ProjectRolesController < ApplicationController
   end
   
   def update
-    @role = @project.find(params[:id])
-    if @role.update_attributes({:name => params[:name],})
+    @role = @project.roles.find(params[:id])
+    if @role.update_attributes(params[:project_role])
       flash[:notice] = "Role updated."
     end
     redirect_to :action => :index

@@ -22,12 +22,16 @@
         = role.to_name
       %td
         - form_for [@project, role] do |f|
-          - if role.name == "O"
-            = f.submit(:name => "C")
-          - elsif role.name == "C"
-            = f.submit(:name => "O")
+          - case role.name
+            - when "O" then
+              = f.hidden_field :name, :value => "C"
+              = f.submit "Change to Collaborator"
+            - when "C" then
+              = f.hidden_field :name, :value => "O"
+              = f.submit "Change to Owner"
       %td
         = link_to "Remove", [@project, role], :method => :delete
+
 - pending_invitations = @project.invitations.confirmed_is(false)
 - if pending_invitations.present?
   %table.index
