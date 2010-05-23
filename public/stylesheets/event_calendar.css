@@ -17,26 +17,24 @@
 .ec-calendar {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 11px;
-  line-height: 14px;
-  margin: 0;
-  padding: 0;
+  color: gray;
   border-bottom: 1px solid #d5d5d5;
 }
 
 /* Month name header & links */
 .ec-calendar-header {
-  padding: 5px 0;
   width: 100%;
   table-layout: fixed;
 }
 
 .ec-month-name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
+  text-align: center;
 }
 
 .ec-month-nav {
-
+text-align: center;
 }
 
 /* Containers */
@@ -54,12 +52,13 @@
   width: 100%;
   table-layout: fixed;
   padding: 2px 0;
-  background: #303030;
-  color: white;
+  background: #ecede2;
+  color: black;
 }
 
 .ec-day-name {
   font-weight: normal;
+  text-align: center;
 }
 
 /* Rows container and Row */
@@ -95,7 +94,7 @@
 }
 
 .ec-today-bg {
-  background-color: #ffffdd;
+  background-color: #FFEC6E;
 }
 
 .ec-row-table {
@@ -122,15 +121,15 @@ a.ec-day-link {
 }
 
 .ec-today-header {
-  background-color: #d7d7ba;
+  background-color: #FCFFA8;
 }
 
 .ec-weekend-day-header {
-  
+  background-color: #CEEDEA;
 }
 
 .ec-other-month-header {
-  background-color: #efefef;
+  background-color: #FFFEE0;
   color: #777;
 }
 
@@ -176,6 +175,7 @@ a.ec-day-link {
 
 /* used to distinguish non-all_day events */
 .ec-event-no-bg {
+  color: red;
   position: relative;
   /* padding-left: 5px; */
 }
@@ -190,7 +190,6 @@ a.ec-day-link {
   font-weight: bold;
   padding-right: 3px;
 }
-
 
 /* Left and right arrows */
 /* Doesn't work in IE6, use bg images instead */

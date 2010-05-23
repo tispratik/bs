@@ -11,4 +11,4 @@
           - events.each do |event|
             - if event.start_at.to_date == date || event.end_at.to_date == date
               %p
-                = link_to event.upcomingheader, [event.calendar.calendarable, event], :class => (event.all_day?)? "allday" : nil
+                = link_to event.upcomingheader, [event.calendar.calendarable, event]

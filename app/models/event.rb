@@ -137,19 +137,35 @@ class Event < ActiveRecord::Base
   end
   
   def color
-    @color ||= "#9aa4ad"
+    @color ||= "#066A9C"
   end
   
   def upcomingheader
     if all_day?
-    return summary[0..21] + ".."
+    return summary
     else
     mins = start_at.min.to_s()
     if mins == "0"
       mins = "00"
     end
-    return start_at.hour.to_s() + mins + ": " + summary[0..12] + ".."
+    return start_at.hour.to_s() + mins + ": " + summary
     end
   end
   
+  def header_tooltip
+    if all_day?
+    return "All day: "+ summary
+    else
+    mins_start = start_at.min.to_s()
+    mins_end = end_at.min.to_s()
+    if mins_start == "0"
+      mins_start = "00"
+    end
+    if mins_end == "0" 
+      mins_end = "00"
+    end
+    return start_at.hour.to_s() + mins_start + " - " + end_at.hour.to_s() + mins_end + ": " + summary
+    end
+  end
+    
 end

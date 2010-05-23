@@ -48,29 +48,11 @@
         Add an event on
         = Time.current.strftime("%b %d")
       = render :partial => "events/add_form", :locals => {:event => @calendarable.calendar.events.build(:start_at => Time.current)}
-    
-    %h2 Filter by calendars
-    - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
-      %fieldset
-        %p
-          %label
-            = check_box_tag :calendar_ids_all, 1, true
-            All
-        - @calendarable.calendars.each do |calendar|
-          %p
-            %label
-              = check_box_tag "calendar_ids[]", calendar.id, (!params[:calendar_ids] || params[:calendar_ids].include?(calendar.id.to_s))
-              = calendar.name
-            - unless calendar.name == 'default'
-              = link_to "Remove", [calendar.calendarable, calendar], :method => :delete
-        = hidden_field_tag "calendar_ids[]"
-      %br
-      %p
-        = submit_tag "Apply Filter"
     %br
     - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
       - if @calendarable.is_a?(Project)
-        %h2 Events for project members
+        .gray
+          Invite Project Members
         %fieldset
           %p
             %label
@@ -101,13 +83,34 @@
       %br
       %p
         = submit_tag "Apply Filter"
+    %br
+    %h1 
+      Import / Export
+    %small_text.right
+      = link_to "Import new calendar", [@calendarable, :calendars], :class => :colorbox
+      - ical_url = polymorphic_path([@calendarable, :events], :format => :ical) 
+      %br
+      = link_to "Export calendar", ical_url
+    %br
+    - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
+      %fieldset
+        %p
+          %label
+            = check_box_tag :calendar_ids_all, 1, true
+            All
+        - @calendarable.calendars.each do |calendar|
+          %p
+            %label
+              = check_box_tag "calendar_ids[]", calendar.id, (!params[:calendar_ids] || params[:calendar_ids].include?(calendar.id.to_s))
+              = calendar.name
+            - unless calendar.name == 'default'
+              = link_to image_tag('delete.png'), [@calendarable, calendar], :method => :delete
+        = hidden_field_tag "calendar_ids[]"
+      %br
+      %p
+        = submit_tag "Apply Filter"
+    
 
-
-- ical_url = polymorphic_path([@calendarable, :events], :format => :ical)
-.left
-  = link_to "Get calendar in Ical format", ical_url
-.right
-  = link_to "Calendars", [@calendarable, :calendars], :class => :colorbox
 .clear
 #calendar
   = event_calendar

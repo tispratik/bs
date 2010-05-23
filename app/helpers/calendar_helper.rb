@@ -18,7 +18,7 @@ module CalendarHelper
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
       event = args[:event]#.event_object
-      link_to "#{event.recurring? ? "(R)" : ""} #{h event}", [event.calendar.calendarable, event], :title => h(event)
+      link_to "#{event.recurring? ? "(R)" : ""} #{h event.upcomingheader}", [event.calendar.calendarable, event], :title => h(event.header_tooltip)
       # %(<a href="/events/#{event.id}" title="#{h(event.name)}">#{h(event.name)}</a>)
     end
   end

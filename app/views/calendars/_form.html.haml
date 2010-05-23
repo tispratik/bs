@@ -1,4 +1,6 @@
 - semantic_form_for [@calendarable, calendar], :html => {:class => "stack"} do |f|
   - f.inputs do
-    = f.input :url
-  = f.buttons
+    = f.input :url, :label => "iCal URL"
+  - f.buttons do
+    = f.commit_button "Import calendar"
+

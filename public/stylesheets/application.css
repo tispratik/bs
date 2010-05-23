@@ -456,8 +456,8 @@ span.gray {
     font-size: 0.9em;
     text-decoration: none; }
   #header a.orange {
-    background-color: #FFFFE3;
-    color: #8A8A81;
+    background-color: #FFEC6E;
+    color: black;
     box-shadow: 0px 0px 5px #C9C873;
     -moz-box-shadow: 0px 0px 5px #C9C873;
     -webkit-box-shadow: 0px 0px 5px #C9C873;
@@ -721,14 +721,30 @@ span.match {
   margin-top: 5px;
   padding-top: 10px; }
 
-#upcoming a.allday {
-  background-color: #CAFCD6; }
+#upcoming a {
+  background-color: #BACDD6;
+  color: black;
+  margin: 1px 1px 2px 1px; }
 #upcoming table {
-  background-color: #F5F5F5;
   padding: 5px 1px 5px 1px; }
 #upcoming .dayname {
   text-align: center;
-  border-bottom: 1px solid #D1D1D1; }
+  border-bottom: 1px solid #D1D1D1;
+  background-color: #F5F5F5; }
+#upcoming td {
+  overflow: hidden;
+  white-space: nowrap;
+  border: 1px solid #d5d5d5; }
+#upcoming .ec-event-cell {
+  cursor: pointer;
+  vertical-align: top;
+  padding-right: 1px;
+  padding-left: 2px; }
+#upcoming .ec-event-cell a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%; }
 
 #timesheets {
   padding-top: 10px; }
