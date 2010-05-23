@@ -160,11 +160,7 @@ class Event < ActiveRecord::Base
     if all_day?
       "All Day: #{title}"
     else
-      if start_at.strftime("%Y%m%d") == end_at.strftime("%Y%m%d")
-        "#{start_at.to_s(:time)}-#{end_at.to_s(:time)} #{title}"
-      else
-        "#{title}"
-      end
+      "#{start_at.to_s(:time)}-#{end_at.to_s(:time)} #{title}"
     end
   end
   
