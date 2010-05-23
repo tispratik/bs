@@ -13,7 +13,7 @@
       return false;
     })
     
-    $('#calendar_ids_all, #user_ids_all, #project_ids_all').each(function() {
+    $('#calendar_ids_all, #invitee_ids_all, #project_ids_all').each(function() {
       var self = this;
       $(this).change(function() {
         $(this).closest('fieldset').find(':checkbox').attr('checked', this.checked);
@@ -27,6 +27,19 @@
     
     $('.filter_calendars_form :checkbox').change(function() {
       $(this.form).submit()
+    })
+    
+    $('#invitee_ids_all, :checkbox[name="event[invitee_ids][]"]').change(function() {
+      var invitee_ids = [];
+      $(':checkbox[name="event[invitee_ids][]"]').each(function() {
+        if (this.checked) {
+          invitee_ids.push(this.value)
+        }
+      })
+      $('#calendar').addClass('loading');
+      $.get("#{url_for([@calendarable, :events])}", {user_ids: invitee_ids}, function() {
+        $('#calendar').removeClass('loading');
+      }, 'script')
     })
     
     $('.ec-month-nav a').live('click', function() {
@@ -44,26 +57,8 @@
   
     - if (@calendarable.is_a?(Project) && @calendarable.roles.first(:conditions => {:user_id => current_user.id})) || (@calendarable.is_a?(User) && @calendarable == current_user)
       = render :partial => "events/add_form", :locals => {:event => @calendarable.calendar.events.build(:start_at => Time.current)}
-    %br
-    - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
-      - if @calendarable.is_a?(Project)
-        .gray
-          Invite Project Members
-        %fieldset
-          %p
-            %label
-              = check_box_tag :user_ids_all, 1, true
-              All
-          - @calendarable.roles.each do |role|
-            %p
-              %label
-                = check_box_tag "user_ids[]", role.user_id, true
-                = image_tag role.user.ucontact.country.get_flag
-                (#{Time.current.in_time_zone(role.user.ucontact.time_zone).to_s(:time)})
-                = role.user
-          = hidden_field_tag "user_ids[]"
-      
-      - if @calendarable.is_a?(User)
+    - if @calendarable.is_a?(User)
+      - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
         %h2 Filter by projects
         %fieldset
           %p

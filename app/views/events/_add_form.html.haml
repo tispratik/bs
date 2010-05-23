@@ -25,5 +25,20 @@
     = f.input :location, :label => "Where?"
     = f.input :repeat_frequency, :as => :select, :collection => EventSeries::RECURRING_TYPES, :label => "Repeat every"
     = f.input :repeat_until_date, :as => :date, :label => "Until Date"
-    = f.input :invitees
+    - if @calendarable.is_a?(Project)
+      .gray
+        Invite Project Members
+      %li
+        %fieldset
+          %label
+            = check_box_tag :invitee_ids_all
+            All
+          - @calendarable.roles.each do |role|
+            %label
+              = check_box_tag "event[invitee_ids][]", role.user_id
+              = image_tag role.user.ucontact.country.get_flag
+              (#{Time.current.in_time_zone(role.user.ucontact.time_zone).to_s(:time)})
+              = role.user
+    - else
+      = f.input :invitees
   = f.buttons

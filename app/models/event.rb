@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   
   attr_accessor :start_hour, :start_min, :duration, :color
   attr_accessor :repeat_frequency, :repeat_until, :repeat_until_date, :repeat_until_count, :on_wdays
-  attr_accessor :start_at_date
+  attr_accessor :start_at_date, :invitee_ids
   
   before_validation_on_create :set_dates
   
@@ -57,15 +57,23 @@ class Event < ActiveRecord::Base
   end
   
   def after_save
-    if @invitees.is_a?(String)
-      @invitees = @invitees.split(/,\s*/)
-    end
-    if @invitees.is_a?(Array)
+    if @invitees.present?
+      if @invitees.is_a?(String)
+        @invitees = @invitees.split(/,\s*/)
+      end
+      if @invitees.is_a?(Array)
+        transaction do
+          self.event_invitees = @invitees.map { |email|
+            if user = User.find_by_username_or_login_email(email)
+              event_invitees.create(:user => user)
+            end
+          }.compact
+        end
+      end
+    elsif @invitee_ids.present?
       transaction do
-        self.event_invitees = @invitees.map { |email|
-          if user = User.find_by_username_or_login_email(email)
-            event_invitees.create(:user => user)
-          end
+        self.event_invitees = @invitee_ids.map { |user_id|
+          event_invitees.create(:user_id => user_id)
         }.compact
       end
     end

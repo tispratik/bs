@@ -8,15 +8,15 @@ class EventsController < ApplicationController
     @year = (params[:year] || Time.zone.now.year).to_i
     @shown_month = Date.civil(@year, @month)
     
-    if @calendarable.is_a?(User)
-      params[:user_ids] = [@calendarable.id]
-    end
-    
-    if params[:user_ids]# && !params[:user_ids_all]
+    if params[:user_ids]
       scope = Event.all_events_for_users(params[:user_ids])
       @displaying_events_for_users = true
     else
-      scope = @calendarable.events.searchlogic
+      if @calendarable.is_a?(User)
+        scope = Event.all_events_for_users(@calendarable.id)
+      else
+        scope = @calendarable.events.searchlogic
+      end
     end
     
     if params[:calendar_ids] && !params[:calendar_ids_all]
