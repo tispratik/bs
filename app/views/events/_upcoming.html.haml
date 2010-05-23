@@ -5,7 +5,7 @@
   %table.ec-row-table
     %tr
       - (Time.now.to_date..(Time.now+5.days).to_date).each_with_index do |date, i|
-        %td.ec-event-cell
+        %td.ec-event-cell{:class => ("ec-today-bg" if i == 0)}
           .dayname
             = (i == 0)? "Today" : date.strftime("%a").to_s() + " (" + date.strftime("%d") + ")"
           - events.each do |event|

@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     
     if params[:user_ids]# && !params[:user_ids_all]
       scope = Event.all_events_for_users(params[:user_ids])
+      @displaying_events_for_users = true
     else
       scope = @calendarable.events.searchlogic
     end

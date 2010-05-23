@@ -132,8 +132,17 @@ class Event < ActiveRecord::Base
     (end_at - start_at) / 3600 if start_at && end_at
   end
   
-  def to_s
-    summary
+  def to_s(format = :summary)
+    title = (format == :summary) ? summary : creator
+    if all_day?
+      "All Day: #{title}"
+    else
+      if start_at.strftime("%Y%m%d") == end_at.strftime("%Y%m%d")
+        "#{start_at.to_s(:time)}-#{end_at.to_s(:time)} #{title}"
+      else
+        "#{title}"
+      end
+    end
   end
   
   def color
