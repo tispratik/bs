@@ -26,6 +26,7 @@ class CreateTables < ActiveRecord::Migration
     
     create_table :calendars do |t|
       t.references :calendarable, :polymorphic => true
+      t.string :private_url_hash, :limit => 40
       t.string :name
       t.string :url
       t.timestamps

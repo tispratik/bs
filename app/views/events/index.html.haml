@@ -79,9 +79,8 @@
       Import / Export
     %small_text.right
       = link_to "Import new calendar", [@calendarable, :calendars], :class => :colorbox
-      - ical_url = polymorphic_path([@calendarable, :events], :format => :ical) 
       %br
-      = link_to "Export calendar", ical_url
+      = link_to "Export calendar", polymorphic_path([@calendarable, :events], :format => :ical, :hash => @calendarable.calendar.private_url_hash)
     %br
     - if @calendarable.calendars.count > 1
       - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do

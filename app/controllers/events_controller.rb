@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   
   before_filter :find_calendarable
   before_filter :find_event, :except => [:index, :new, :create]
+  skip_before_filter :login_required, :only => :index, :if => "request.format.ical?"
   
   def index
     @month = (params[:month] || Time.zone.now.month).to_i
@@ -36,15 +37,18 @@ class EventsController < ApplicationController
         @event_strips = scope.event_strips_for_month(@shown_month)
       }
       format.ical {
-        @ical = RiCal.Calendar do |cal|
-          @calendarable.calendar.events.each do |event|
-            cal.event do
-              uid       event.uid
-              sequence  event.sequence
-              summary   event.summary
-              location  event.location
-              dtstart   event.start_at
-              dtend     event.end_at
+        calendar = @calendarable.calendar
+        if params[:hash] == calendar.private_url_hash
+          @ical = RiCal.Calendar do |cal|
+            calendar.events.each do |event|
+              cal.event do
+                uid       event.uid
+                sequence  event.sequence
+                summary   event.summary
+                location  event.location
+                dtstart   event.start_at
+                dtend     event.end_at
+              end
             end
           end
         end
