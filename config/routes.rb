@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :events
     projects.resources :wiki_pages, :member => {:diff => :get, :restore => :get}
     projects.resources :articles, :collection => {:suggest => :get, :search => :get}
-    projects.resources :project_invitations, :as => :invitations, :member => {:confirm => :get}
+    projects.resources :project_invitations, :as => :invitations, :member => {:confirm => :get, :resend => :get}
     projects.resources :project_roles, :as => :roles
     projects.resources :timesheets, :collection => {:suggest => :get}
     projects.resources :timelogs

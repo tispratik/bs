@@ -32,13 +32,13 @@
       %td
         = link_to "Remove", [@project, role], :method => :delete
 
-- pending_invitations = @project.invitations.confirmed_is(false)
-- if pending_invitations.present?
+%h2 Pending Invitations
+- unless @pending_invitations.empty?
   %table.index
-    - pending_invitations.each do |invitation|
+    - @pending_invitations.each do |invitation|
       %tr{:class => cycle("even", "odd")}
         %td.min100
-          = image_tag profile_image(invitation.user.login_email)
+          = image_tag profile_image(invitation.user ? invitation.user.login_email : "")
         %td.members
           %b
             %i
@@ -49,6 +49,8 @@
           %br    
           Invited
         %td
-          - semantic_form_for [@project, @project.invitations.new], :invitee => invitation.user_email do |f|
-            - f.buttons do
-              = f.commit_button "Reinvite"
+          - unless invitation.user
+            = link_to "Resend Invitation Email", [:resend, @project, invitation]
+        %td
+          = link_to "Remove", [@project, invitation], :method => :delete
+

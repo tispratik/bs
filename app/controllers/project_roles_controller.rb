@@ -5,7 +5,7 @@ class ProjectRolesController < ApplicationController
   
   def index
     @roles = @project.roles
-    @count = @project.roles.size
+    @pending_invitations = @project.invitations.confirmed_is(false)
   end
   
   def update
