@@ -2,7 +2,7 @@
   $(document).ready(function() {
     
     $('#event_all_day').change(function() {
-      $('#event_start_at_input').toggle(!this.checked);
+      $('#event_start_at_time_input').toggle(!this.checked);
       $('#event_duration_input').toggle(!this.checked);
     })
     
@@ -18,9 +18,9 @@
   = error_messages_for :event
   - f.inputs do
     = f.input :summary, :label => "Subject"
+    = f.input :start_at, :as => :string, :label => "What date?", :input_html => {:value => event.start_at.to_date.to_s, :class => "datepicker"}
     = f.input :all_day, :label => "All day?"
-    = f.input :start_at, :as => :date, :label => "What date?"
-    = f.input :start_at, :as => :time, :label => "What time?"
+    = f.input :start_at_time, :as => :string, :label => "What time?", :input_html => {:value => event.start_at.to_s(:time)}
     = f.input :duration, :label => "How long?"
     = f.input :location, :label => "Where?"
     = f.input :repeat_frequency, :as => :select, :collection => EventSeries::RECURRING_TYPES, :label => "Repeat every"

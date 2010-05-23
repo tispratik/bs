@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
   
   attr_accessor :start_hour, :start_min, :duration, :color
   attr_accessor :repeat_frequency, :repeat_until, :repeat_until_date, :repeat_until_count, :on_wdays
+  attr_accessor :start_at_time
   
   before_validation_on_create :set_dates
   
@@ -26,6 +27,10 @@ class Event < ActiveRecord::Base
   def attributes=(new_attributes, guard_protected_attributes = true)
     date_hack(new_attributes, "repeat_until_date")
     super(new_attributes, guard_protected_attributes)
+    if start_at_time.present?
+      # set time to datetime field
+      self.start_at = "#{start_at.to_date} #{start_at_time}"
+    end
   end
 
   def date_hack(attributes, property)
