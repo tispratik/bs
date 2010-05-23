@@ -30,9 +30,8 @@
               = f.hidden_field :name, :value => "O"
               = f.submit "Change to Owner"
       %td
-        = link_to "Remove", [@project, role], :method => :delete
+        = link_to image_tag('delete.png'), [@project, role], :method => :delete
 
-%h2 Pending Invitations
 - unless @pending_invitations.empty?
   %table.index
     - @pending_invitations.each do |invitation|
@@ -49,8 +48,7 @@
           %br    
           Invited
         %td
-          - unless invitation.user
-            = link_to "Resend Invitation Email", [:resend, @project, invitation]
+          = link_to "Resend Invitation Email", [:resend, @project, invitation]
         %td
-          = link_to "Remove", [@project, invitation], :method => :delete
+          = link_to image_tag('delete.png'), [@project, invitation], :method => :delete
 
