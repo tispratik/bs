@@ -60,13 +60,13 @@ class EventsController < ApplicationController
   
   def create
     if params[:event][:repeat_frequency].present?
-      @event = EventSeries.new(params[:event])
+      @event = @calendarable.calendar.event_series.new(params[:event])
     else
-      @event = Event.new(params[:event])
+      @event = @calendarable.calendar.events.new(params[:event])
     end
     if @event.save
       flash[:notice] = "Event was created."
-      redirect_to [@event.calendar.calendarable, :events]
+      redirect_to [@calendarable, :events]
     else
       render :action => :new
     end

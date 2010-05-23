@@ -17,9 +17,9 @@
 - semantic_form_for [@calendarable, event], :live_validations => true, :html => {:class => "stack"} do |f|
   = error_messages_for :event
   - f.inputs do
-    = f.input :calendar, :collection => @calendarable.calendars
     = f.input :summary, :label => "Subject"
     = f.input :all_day, :label => "All day?"
+    = f.input :start_at, :as => :date, :label => "What date?"
     = f.input :start_at, :as => :time, :label => "What time?"
     = f.input :duration, :label => "How long?"
     = f.input :location, :label => "Where?"

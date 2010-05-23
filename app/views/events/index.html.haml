@@ -92,23 +92,24 @@
       %br
       = link_to "Export calendar", ical_url
     %br
-    - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
-      %fieldset
-        %p
-          %label
-            = check_box_tag :calendar_ids_all, 1, true
-            All
-        - @calendarable.calendars.each do |calendar|
+    - if @calendarable.calendars.count > 1
+      - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
+        %fieldset
           %p
             %label
-              = check_box_tag "calendar_ids[]", calendar.id, (!params[:calendar_ids] || params[:calendar_ids].include?(calendar.id.to_s))
-              = calendar.name
-            - unless calendar.name == 'default'
+              = check_box_tag :calendar_ids_all, 1, true
+              All
+          - @calendarable.calendars.each do |calendar|
+            - next if calendar.name == 'default'
+            %p
+              %label
+                = check_box_tag "calendar_ids[]", calendar.id, (!params[:calendar_ids] || params[:calendar_ids].include?(calendar.id.to_s))
+                = calendar.name
               = link_to image_tag('delete.png'), [@calendarable, calendar], :method => :delete
-        = hidden_field_tag "calendar_ids[]"
-      %br
-      %p
-        = submit_tag "Apply Filter"
+          = hidden_field_tag "calendar_ids[]"
+        %br
+        %p
+          = submit_tag "Apply Filter"
     
 
 .clear
