@@ -23,8 +23,8 @@ class Event < ActiveRecord::Base
   named_scope :all_events_for_users, lambda { |user_ids|
     { :conditions => ["created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids] }
   }
-  named_scope :all_events_for_project_or_user, lambda { |project_id, user_id|
-    { :conditions => ["calendars.calendarable_type='Project' and calendars.calendarable_id=? or created_by=?", project_id, user_id],
+  named_scope :all_events_for_project_or_users, lambda { |project_id, user_ids|
+    { :conditions => ["calendars.calendarable_type='Project' and calendars.calendarable_id=? or created_by in (?)", project_id, user_ids],
       :joins => :calendar
     }
   }

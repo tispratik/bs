@@ -9,14 +9,14 @@ class EventsController < ApplicationController
     @year = (params[:year] || Time.zone.now.year).to_i
     @shown_month = Date.civil(@year, @month)
     
-    if params[:user_ids]
-      scope = Event.all_events_for_users(params[:user_ids])
-      @displaying_events_for_users = true
+    if @calendarable.is_a?(User)
+      scope = Event.all_events_for_users(@calendarable.id)
     else
-      if @calendarable.is_a?(User)
-        scope = Event.all_events_for_users(@calendarable.id)
+      if params[:user_ids]
+        params[:user_ids] << current_user.id
+        scope = Event.all_events_for_project_or_users(@calendarable.id, params[:user_ids])
       else
-        scope = Event.all_events_for_project_or_user(@calendarable.id, current_user.id)
+        scope = Event.all_events_for_project_or_users(@calendarable.id, current_user.id)
       end
     end
     
