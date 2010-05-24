@@ -23,8 +23,6 @@
     = f.input :all_day, :label => "All day?"
     = f.input :duration, :label => "How long?"
     = f.input :location, :label => "Where?"
-    = f.input :repeat_frequency, :as => :select, :collection => EventSeries::RECURRING_TYPES, :label => "Repeat every"
-    = f.input :repeat_until_date, :as => :date, :label => "Until Date"
     = f.input :invitees
     - project_members_except_me = @calendarable.roles.user_id_does_not_equal(current_user.id)
     - unless project_members_except_me.empty?

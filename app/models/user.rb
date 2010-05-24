@@ -42,8 +42,9 @@ class User < ActiveRecord::Base
   
   def after_create
     calendars.create(:name => "default")
-    # set current user_id for pending project invitations.
+    # set current user_id for pending project and event invitations.
     ProjectInvitation.update_all({:user_id => id}, {:user_email => login_email})
+    EventInvitee.update_all({:user_id => id}, {:user_email => login_email})
   end
   
   def my_projects_with_roles

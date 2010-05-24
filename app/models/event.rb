@@ -68,17 +68,32 @@ class Event < ActiveRecord::Base
       end
       if @invitees.is_a?(Array)
         transaction do
-          self.event_invitees = @invitees.map { |email|
-            if user = User.find_by_username_or_login_email(email)
-              event_invitees.create(:user => user)
+          # removing invitees that aren't in new list
+          event_invitees.each do |invitee|
+            unless @invitees.include?(invitee.user_email) || (invitee.user && @invitees.include?(invitee.user.login_email))
+              invitee.destroy
             end
-          }.compact
+          end
+          # adding new invitees
+          @invitees.each do |email|
+            next if event_invitees.find_by_user_email(email)
+            
+            if user = User.find_by_username_or_login_email(email)
+              event_invitees.create(:user => user, :user_email => user.login_email)
+            else
+              event_invitees.create(:user_email => email)
+            end
+          end
         end
       end
-    elsif @invitee_ids.present?
+    end
+    if @invitee_ids.present?
       transaction do
         self.event_invitees = @invitee_ids.map { |user_id|
-          event_invitees.create(:user_id => user_id)
+          user = User.find(user_id)
+          if user
+            event_invitees.create(:user => user, :user_email => user.login_email)
+          end
         }.compact
       end
     end
@@ -131,7 +146,7 @@ class Event < ActiveRecord::Base
   
   attr_writer :invitees
   def invitees
-    @invitees || event_invitees.map{|inv| inv.user.login_email}.join(', ')
+    @invitees || event_invitees.map{|inv| inv.user_email}.join(', ')
   end
   
   def set_dates
@@ -166,6 +181,15 @@ class Event < ActiveRecord::Base
   
   def color
     @color ||= "#066A9C"
+  end
+  
+  def send_emails_to_invitees(sender)
+    event_invitees.each do |invitee|
+      unless invitee.email_sent?
+        UserMailer.deliver_event_invitation(invitee.user_email, sender)
+        invitee.update_attributes(:email_sent => true)
+      end
+    end
   end
   
   def upcomingheader

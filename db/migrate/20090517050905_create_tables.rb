@@ -54,6 +54,8 @@ class CreateTables < ActiveRecord::Migration
     create_table :event_invitees do |t|
       t.references :event
       t.references :user
+      t.string :user_email
+      t.boolean :email_sent
     end
     
     create_table :wiki_pages do |t|
@@ -209,6 +211,7 @@ class CreateTables < ActiveRecord::Migration
       t.date    :repeat_until_date
       t.string  :on_wdays
       t.text    :invitees
+      t.string  :invitees_emails_sent
       
       t.datetime :processed_at
       t.integer :created_by

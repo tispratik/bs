@@ -14,6 +14,7 @@ class EventSeries < ActiveRecord::Base
   attr_accessor :duration, :repeat_until
   serialize :on_wdays
   serialize :invitees
+  serialize :invitees_emails_sent
   
   def before_validation_on_create
     if duration
@@ -25,6 +26,7 @@ class EventSeries < ActiveRecord::Base
   def before_save
     self.on_wdays = (on_wdays & WDAYS)
     @changed_attrs = changed
+    @changed_attrs.delete("invitees_emails_sent")
   end
   
   def after_update
@@ -67,7 +69,7 @@ class EventSeries < ActiveRecord::Base
           :location => location,
           :all_day => all_day?,
           :start_at => date.to_time + (start_at - start_at.beginning_of_day),
-          :end_at => date.to_time + (end_at - start_at),
+          :end_at => date.to_time + (end_at - start_at.beginning_of_day),
           :invitees => invitees,
           :created_by => created_by
         )
@@ -75,6 +77,20 @@ class EventSeries < ActiveRecord::Base
       end
     end
     
+  end
+  
+  def send_emails_to_invitees(sender)
+    transaction do
+      emails_sent = invitees_emails_sent
+      emails_sent = [] if emails_sent.nil?
+      invitees.split(/,\s*/).each do |email|
+        unless emails_sent.include?(email)
+          UserMailer.deliver_event_invitation(email, sender)
+          emails_sent << email
+        end
+      end
+      update_attributes(:invitees_emails_sent => emails_sent)
+    end
   end
   
 end

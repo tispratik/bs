@@ -6,5 +6,13 @@ class UserMailer < ActionMailer::Base
     from "notifications@example.com"
     body :email => email, :sender => sender
     content_type "text/html"
-  end 
+  end
+  
+  def event_invitation(email, sender)
+    subject "Invitation to event"
+    recipients email
+    from "notifications@example.com"
+    body :email => email, :sender => sender
+    content_type "text/html"
+  end
 end

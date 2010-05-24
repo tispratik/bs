@@ -71,6 +71,7 @@ class EventsController < ApplicationController
     end
     if @event.save
       flash[:notice] = "Event was created."
+      @event.send_emails_to_invitees(current_user)
       redirect_to [@calendarable, :events]
     else
       render :action => :new
@@ -89,6 +90,7 @@ class EventsController < ApplicationController
     
     if @event.errors.empty?
       flash[:notice] = "Event updated."
+      @event.send_emails_to_invitees(current_user)
     end
     respond_to do |format|
       format.html {
