@@ -50,6 +50,10 @@ class Event < ActiveRecord::Base
     end
   end
   
+  def before_create
+    self.uid = "calendar@#{Digest::SHA1.hexdigest((Time.now.to_f + rand).to_s)}" unless uid.present?
+  end
+  
   def validate
     if self.start_at > self.end_at
       errors.add(:start_at, 'must be earlier than end date')
@@ -58,7 +62,6 @@ class Event < ActiveRecord::Base
   
   def before_validation_on_create
     self.created_by = User.curr_user.id
-    self.uid = "calendar@#{Digest::SHA1.hexdigest((Time.now.to_f + rand).to_s)}" unless uid.present?
   end
   
   def after_save
