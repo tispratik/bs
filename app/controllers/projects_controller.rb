@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :find_project, :only => [:show, :edit, :update, :destroy]
   before_filter :check_project_membership, :only => [:show]
   before_filter :check_project_ownership, :only => [:edit, :update, :destroy]
+  before_filter :find_projects_user, :only => :index
   
   def index
     opts = {}
@@ -53,6 +54,12 @@ class ProjectsController < ApplicationController
   def find_project
     params[:project_id] = params[:id]
     super
+  end
+  
+  def find_projects_user
+    if params[:user_id]
+      @user = User.find_by_username(params[:user_id])
+    end
   end
     
 end
