@@ -501,6 +501,10 @@ span.gray {
       text-decoration: none;
       font-weight: bold;
       color: #FF5900; }
+  #sidebar form input[type=text] {
+    height: 18px; }
+  #sidebar form input[type=text], #sidebar form textarea {
+    border: 1px solid #aaa; }
 
 #content {
   width: 76%;

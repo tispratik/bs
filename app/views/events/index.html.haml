@@ -83,6 +83,7 @@
       = link_to "Download calendar", polymorphic_path([@calendarable, :events], :format => :ics, :hash => @calendarable.calendar.private_url_hash)
       %br
       = link_to "Export calendar URL", "#", :onclick => "$('.export_calendar_url').toggle(); return false"
+    .clear
     .export_calendar_url.hide
       = polymorphic_url([@calendarable, :events], :format => :ics, :hash => @calendarable.calendar.private_url_hash)
     %br
