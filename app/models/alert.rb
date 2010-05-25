@@ -48,7 +48,7 @@ class Alert < ActiveRecord::Base
       when 'Task'
       return "<span class=\"tasktag\">Task</span>"
       when 'Article'
-      return "<span class=\"feedtag\">Feed</span>"
+      return "<span class=\"feedtag\">Snippet</span>"
       when 'WikiPage'
       return "<span class=\"coedittag\">CoEdit</span>"
     end

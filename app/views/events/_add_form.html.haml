@@ -23,7 +23,6 @@
     = f.input :all_day, :label => "All day?"
     = f.input :duration, :label => "How long?"
     = f.input :location, :label => "Where?"
-    = f.input :invitees
     - project_members_except_me = @calendarable.roles.user_id_does_not_equal(current_user.id)
     - unless project_members_except_me.empty?
       - if @calendarable.is_a?(Project)
@@ -40,4 +39,7 @@
                 = image_tag role.user.ucontact.country.get_flag
                 (#{Time.current.in_time_zone(role.user.ucontact.time_zone).to_s(:time)})
                 = role.user
+    .gray
+      Invite people outside project
+    = f.input :invitees, :label => "Email ids (comma separated)"
   = f.buttons

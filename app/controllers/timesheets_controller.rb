@@ -4,7 +4,7 @@ class TimesheetsController < ApplicationController
   
   def index
     @timesheets = @project.timesheets.searchlogic
-    @learnmore = "Log the time you spent working on the project in the timesheet."
+    @learnmore = "Timesheets lets you keep a record of how long have you worked on what for this project."
     
     @timesheet_user = (params[:user_id]) ? @project.users.find(params[:user_id]) : current_user
     @timesheets = @timesheets.user_id_is(@timesheet_user.id)

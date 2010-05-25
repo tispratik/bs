@@ -7,7 +7,7 @@
     Project 
     = @project
   .menu
-    - [["Project Dashboard", "projects", nil], ["Calendar", "events", :events], ["CoEdit", "wiki_pages", :wiki_pages], ["Research Feeds", "articles", :articles], ["Tasks", "tasks", :tasks], ["Files", "assets", :assets], ["Timesheets", "timesheets", :timesheets], ["Alerts", "alerts", :alerts]].each do |link_name, link_controller, link_path|
+    - [["Project Dashboard", "projects", nil], ["Calendar", "events", :events], ["CoEdit", "wiki_pages", :wiki_pages], ["Snippets", "articles", :articles], ["Tasks", "tasks", :tasks], ["Files", "assets", :assets], ["Timesheets", "timesheets", :timesheets], ["Alerts", "alerts", :alerts]].each do |link_name, link_controller, link_path|
       = link_to link_name, [@project, link_path], :class => (controller_name == link_controller) ? "current" : nil
 
 - elsif @user && !@user.new_record? 
