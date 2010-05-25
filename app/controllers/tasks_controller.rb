@@ -11,7 +11,7 @@ class TasksController < ApplicationController
   def index
     @tasks = eval(get_query)
     @task = @project.tasks.build
-    @learnmore = "Tasks allow you to delegate exact work to a project member."
+    @learnmore = "Tasks help you keep track of all the little things that need to get done. You can add them for yourself or assign them to someone else."
     render :layout => 'onebox_layout'
   end
   

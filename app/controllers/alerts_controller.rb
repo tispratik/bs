@@ -7,7 +7,7 @@ class AlertsController < ApplicationController
   
   def index
     @alerts = eval(get_query)
-    @learnmore = "Every change in the project creates an alert."
+    @learnmore = "Alerts are short, to the point lines which capture all changes in the project. They are a great way to keep up-to-date."
   end
   
   def get_query

@@ -85,7 +85,7 @@ Filter_Param<%= i=i+1 %>:
 Filter_Param<%= i=i+1 %>:  
  id: <%= i %>
  filter_param: alerts_index_for
- disp_value: Research Feed
+ disp_value: Snippets
  internal_param: alertable_type
  internal_value: Article
  sort_order: 2
