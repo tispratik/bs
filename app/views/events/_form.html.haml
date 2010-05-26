@@ -24,7 +24,7 @@
     = f.input :on_wdays, :as => :check_boxes, :collection => EventSeries::WDAYS, :checked => event.on_wdays
   - f.inputs nil, :class => :repeat_until do
     = f.input :repeat_until, :as => :select, :collection => EventSeries::UNTIL_TYPES, :include_blank => false
-    = f.input :repeat_until_date, :as => :date, :label => "Until Date"
+    = f.input :repeat_until_date, :as => :string, :label => "Until Date", :input_html => {:class => "datepicker"}
     = f.input :repeat_until_count, :label => "Until Count"
   - f.buttons do
     - if event.new_record?

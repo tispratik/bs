@@ -1,7 +1,7 @@
 class EventSeries < ActiveRecord::Base
   RECURRING_TYPES = ["Day", "Week", "Month", "Year"]
   WDAYS = ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"]
-  UNTIL_TYPES = ["never", "date", "count"]
+  UNTIL_TYPES = {"Always" => "never", "Certain Date" => "date", "Specific Count" => "count"}
   
   belongs_to :calendar
   has_many :events, :dependent => :destroy
@@ -29,6 +29,15 @@ class EventSeries < ActiveRecord::Base
       self.end_at = start_at + duration.to_i.hours
     end
     self.created_by = User.curr_user.id
+  end
+  
+  def validate
+    if start_at > end_at
+      errors.add(:start_at, 'must be earlier than end date')
+    end
+    if repeat_until_date.present? && repeat_until_date < start_at.to_date
+      errors.add(:repeat_until_date, 'must be later than start date')
+    end
   end
   
   def before_save

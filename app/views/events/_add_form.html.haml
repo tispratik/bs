@@ -1,11 +1,41 @@
 = render :partial => "form_javascript"
 
 :javascript
+  
+  jQuery.validator.addMethod("greaterThan", function(value, element, params) {
+    if (!/Invalid|NaN/.test(new Date(value))) {
+        return new Date(value) >= new Date(params);
+    }
+    return isNaN(value) && isNaN($(params).val()) || (parseFloat(value) > parseFloat($(params).val())); 
+  },'Must be greater than {0}.');
+  
   $(document).ready(function() {
     
     $('#event_all_day').change(function() {
       $('#event_start_at_input').toggle(!this.checked);
       $('#event_duration_input').toggle(!this.checked);
+    })
+    
+    $('#event_start_at_date').rules('add', {
+      required: true,
+      date: true,
+      greaterThan: new Date(#{Time.current.strftime("%Y,%m-1,%d")}),
+      messages: {
+        greaterThan: "Must be date in future"
+      }
+    })
+    $("#event_duration").rules("add", {
+      required: function(element) {
+        return !$("#event_all_day").is(":checked")
+      },
+      number: true
+    })
+    $("#event_repeat_until_date").rules("add", {
+      required: function(element) {
+        return ($("#event_repeat_frequency").val() != "" && $("#event_repeat_until").val() == "date")
+      },
+      greaterThan: $("#event_start_at_date").val(),
+      date: true
     })
     
     $('#event_all_day').change();
@@ -24,7 +54,7 @@
     = f.input :on_wdays, :as => :check_boxes, :collection => EventSeries::WDAYS, :checked => event.on_wdays, :label => "Wdays"
   - f.inputs nil, :class => :repeat_until do
     = f.input :repeat_until, :as => :select, :collection => EventSeries::UNTIL_TYPES, :include_blank => false
-    = f.input :repeat_until_date, :as => :date, :label => "Until Date"
+    = f.input :repeat_until_date, :as => :string, :label => "Until Date", :input_html => {:class => "datepicker"}
     = f.input :repeat_until_count, :label => "Until Count"
 
     - project_members_except_me = @calendarable.roles.user_id_does_not_equal(current_user.id)
