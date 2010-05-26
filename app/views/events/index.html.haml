@@ -54,9 +54,9 @@
   %h1 Add an event
 
   - if logged_in?
-  
     - if (@calendarable.is_a?(Project) && @calendarable.roles.first(:conditions => {:user_id => current_user.id})) || (@calendarable.is_a?(User) && @calendarable == current_user)
       = render :partial => "events/add_form", :locals => {:event => @calendarable.calendar.events.build(:start_at => Time.current)}
+      = link_to "Advanced create event form", [:new, @calendarable, :event]
     - if @calendarable.is_a?(User)
       - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
         %h2 Filter by projects
@@ -83,6 +83,7 @@
       = link_to "Download calendar", polymorphic_path([@calendarable, :events], :format => :ics, :hash => @calendarable.calendar.private_url_hash)
       %br
       = link_to "Export calendar URL", "#", :onclick => "$('.export_calendar_url').toggle(); return false"
+    .clear
     .export_calendar_url.hide
       = polymorphic_url([@calendarable, :events], :format => :ics, :hash => @calendarable.calendar.private_url_hash)
     %br

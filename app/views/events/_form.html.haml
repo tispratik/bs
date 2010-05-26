@@ -14,27 +14,16 @@
     
     $('#event_repeat_until').change(function() {
       $('#event_repeat_until_date_input').hide();
+      $('#event_repeat_until_date_input select').attr('disabled', 'disabled');
       $('#event_repeat_until_count_input').hide();
+      $('#event_repeat_until_count').attr('disabled', 'disabled');
       if (this.value == "date") {
         $('#event_repeat_until_date_input').show();
+        $('#event_repeat_until_date_input select').removeAttr('disabled');
       }
       if (this.value == "count") {
         $('#event_repeat_until_count_input').show();
-      }
-    })
-    
-    $('#edit_event_#{event.id}').submit(function() {
-      if ($('#event_repeat_until_date_input').css('display') == "none") {
-        $('#event_repeat_until_date_1i, #event_repeat_until_date_2i, #event_repeat_until_date_3i').attr('disabled', 'disabled');
-        // set date to null
-        var m = document.createElement('input');
-        m.setAttribute('type', 'hidden');
-        m.setAttribute('name', 'event[repeat_until_date]');
-        m.setAttribute('value', '');
-        this.appendChild(m);
-      }
-      if ($('#event_repeat_until_count_input').css('display') == "none") {
-        $('#repeat_until_count').val("");
+        $('#event_repeat_until_count_input').removeAttr('disabled');
       }
     })
     
@@ -46,7 +35,6 @@
 - semantic_form_for [@calendarable, event], :live_validations => true do |f|
   = error_messages_for :event
   - f.inputs do
-    = f.input :calendar, :collection => @calendarable.calendars
     = f.input :summary, :label => "Subject"
     = f.input :all_day, :label => "All day?"
     = f.input :start_at, :label => "Start at"
@@ -59,6 +47,9 @@
     = f.input :repeat_until_date, :as => :date, :label => "Until Date"
     = f.input :repeat_until_count, :label => "Until Count"
   - f.buttons do
-    = f.commit_button "Update current event"
-    - if event.recurring?
-      = f.commit_button "Update all events in the series"
+    - if event.new_record?
+      = f.commit_button "Create event"
+    - else
+      = f.commit_button "Update current event"
+      - if event.recurring?
+        = f.commit_button "Update all events in the series"

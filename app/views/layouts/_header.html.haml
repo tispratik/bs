@@ -14,6 +14,6 @@
   %h1
     = @user
   .menu
-    - [["Homepage", "users", nil], ["My Calendar", "events", :events]].each do |link_name, link_controller, link_path|
+    - [["Homepage", "users", nil], ["My Calendar", "events", :events], ["My Projects", "projects", :projects]].each do |link_name, link_controller, link_path|
       = link_to link_name, [User.find(@user.id), link_path], :class => (controller_name == link_controller) ? "current" : nil
 %br

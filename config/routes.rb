@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :calendars
     users.resources :events
     users.resources :comments, :member => {:quote => :get}
+    users.resources :projects
   end
   
   map.resources :projects do |projects|
