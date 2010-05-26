@@ -10,7 +10,7 @@ class Article < ActiveRecord::Base
   belongs_to :updator, :class_name => 'User', :foreign_key => "updated_by"
   
   validates_associated :project
-  validates_presence_of :project, :title, :content
+  validates_presence_of :project, :title, :citation_source, :content
   
   accepts_nested_attributes_for :assets
   
