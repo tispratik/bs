@@ -1,3 +1,5 @@
+= render :partial => "form_javascript"
+
 :javascript
   $(document).ready(function() {
     
@@ -6,12 +8,7 @@
       $('#event_duration_input').toggle(!this.checked);
     })
     
-    $('#event_repeat_frequency').change(function() {
-      $('#event_repeat_until_date_input').toggle(this.value!='');
-    })
-    
     $('#event_all_day').change();
-    $('#event_repeat_frequency').change();
   })
 
 - semantic_form_for [@calendarable, event], :live_validations => true, :html => {:class => "stack"} do |f|
@@ -23,6 +20,13 @@
     = f.input :all_day, :label => "All day?"
     = f.input :duration, :label => "How long?"
     = f.input :location, :label => "Where?"
+    = f.input :repeat_frequency, :as => :select, :collection => EventSeries::RECURRING_TYPES, :label => "Repeat every", :include_blank => "No repeat"
+    = f.input :on_wdays, :as => :check_boxes, :collection => EventSeries::WDAYS, :checked => event.on_wdays, :label => "Wdays"
+  - f.inputs nil, :class => :repeat_until do
+    = f.input :repeat_until, :as => :select, :collection => EventSeries::UNTIL_TYPES, :include_blank => false
+    = f.input :repeat_until_date, :as => :date, :label => "Until Date"
+    = f.input :repeat_until_count, :label => "Until Count"
+
     - project_members_except_me = @calendarable.roles.user_id_does_not_equal(current_user.id)
     - unless project_members_except_me.empty?
       - if @calendarable.is_a?(Project)

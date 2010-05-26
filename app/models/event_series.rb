@@ -12,9 +12,17 @@ class EventSeries < ActiveRecord::Base
   after_create :create_events
   
   attr_accessor :duration, :repeat_until
+  attr_accessor :start_at_date
   serialize :on_wdays
   serialize :invitees
   serialize :invitees_emails_sent
+  
+  def after_initialize
+    # merge date with time
+    if start_at_date.present?
+      self.start_at = "#{start_at_date} #{start_at.to_s(:time)}"
+    end
+  end
   
   def before_validation_on_create
     if duration

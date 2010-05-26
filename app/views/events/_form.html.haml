@@ -1,3 +1,5 @@
+= render :partial => "form_javascript"
+
 :javascript
   $(document).ready(function() {
     
@@ -7,29 +9,7 @@
       $('#event_end_at_input').toggle(!this.checked);
     })
     
-    $('#event_repeat_frequency').change(function() {
-      $('fieldset.repeat_until').toggle(this.value != '');
-      $('#event_on_wdays_input').toggle(this.value == 'Week')
-    })
-    
-    $('#event_repeat_until').change(function() {
-      $('#event_repeat_until_date_input').hide();
-      $('#event_repeat_until_date_input select').attr('disabled', 'disabled');
-      $('#event_repeat_until_count_input').hide();
-      $('#event_repeat_until_count').attr('disabled', 'disabled');
-      if (this.value == "date") {
-        $('#event_repeat_until_date_input').show();
-        $('#event_repeat_until_date_input select').removeAttr('disabled');
-      }
-      if (this.value == "count") {
-        $('#event_repeat_until_count_input').show();
-        $('#event_repeat_until_count_input').removeAttr('disabled');
-      }
-    })
-    
     $('#event_all_day').change();
-    $('#event_repeat_frequency').change();
-    $('#event_repeat_until').change();
   })
 
 - semantic_form_for [@calendarable, event], :live_validations => true do |f|
