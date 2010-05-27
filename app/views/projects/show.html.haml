@@ -1,15 +1,22 @@
 - content_for :sidebar do
   .right
     = link_to 'Edit', edit_project_path(@project)
-  %h1
-    Project Details
-  = render :partial => 'description'  
+  %h1 Project Details
   .gray
-    = @project.status_val  
-    Project  
-    %br
-    = link_to(@project.roles.size.to_s() + " Members", [@project, :project_roles])
-    %br  
+    = @project.description
+  %br  
+  - if !@project.is_archieved?
+    %span{ :style => "color :#06A600"}
+      %b
+        Active Project
+  - else
+    %span{ :style => "color :#FA0724"}
+      %b
+        Archieved Project
+  %br  
+  = link_to(@project.roles.size.to_s() + " Members", [@project, :project_roles])
+  
+  
 
 = render :partial => "events/upcoming", :locals => {:events => @project.events}
 %br

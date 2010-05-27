@@ -50,7 +50,8 @@
   })
 
 - content_for :sidebar do
-  = render :partial => "new", :locals => {:article => @project.articles.build}
+  - if !@archieved
+    = render :partial => "new", :locals => {:article => @project.articles.build}
 
 #search_form
   #simple_search{:style => params[:search].is_a?(Hash) ? "display:none" : "" }

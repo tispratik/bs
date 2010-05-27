@@ -1,8 +1,6 @@
-%h1 My Projects
+%h1 My Active Projects
 .projects
   - user.my_projects_with_roles.each do |role|
-    .project{:class => (@project && @project == role.project) ? "current": ""}
-      = link_to role.project.to_s(), role.project   
-      
-%br
-= link_to "Create New Project", new_project_path        
+    - if !role.project.is_archieved?
+      .project{:class => (@project && @project == role.project) ? "current": ""}
+        = link_to role.project.to_s(), role.project

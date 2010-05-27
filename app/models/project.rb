@@ -28,6 +28,19 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink
   
+  def owner
+    p = ProjectRole.find_by_project_id_and_name(id, "O")
+    return p.user
+  end
+  
+  def is_archieved?
+    if status == Decode::BS_PROJ_STATUS_CL
+      return true
+    else
+      return false
+    end
+  end
+  
   def before_validation_on_create
     self.alias = 'PROJ' + id.to_s
     self.is_public = 0

@@ -7,6 +7,7 @@ class AssetsController < ApplicationController
   
   def index
     @asset = Asset.new
+    @archieved = @project.is_archieved?
     @assets = eval(get_query)
     @learnmore = "Upload, download, and share files online with your team, clients, or colleagues."
   end

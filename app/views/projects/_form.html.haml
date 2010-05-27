@@ -1,8 +1,24 @@
 - semantic_form_for @project do |f|
   - f.inputs do
-    = f.input :name
+    - if @project.is_archieved?
+      Name: 
+      = @project.name
+    - else 
+      = f.input :name
     = f.input :status, :as => :select, :collection => Project::STATUSES, :prompt => false
-    = f.input :description
-    = f.input :use_ssl, :label => "Enable SSL security"
+    - if @project.is_archieved?
+      %br
+      Description: 
+      = @project.description
+      %br
+      %br
+    - else 
+      = f.input :description
+    - if @project.is_archieved?
+      SSL Enabled: 
+      = @project.use_ssl
+      %br
+    - else 
+      = f.input :use_ssl, :label => "Enable SSL security"
   - f.buttons do
     = f.commit_button "Update Project"

@@ -9,6 +9,8 @@ class EventsController < ApplicationController
     @year = (params[:year] || Time.zone.now.year).to_i
     @shown_month = Date.civil(@year, @month)
     
+    @archieved = @calendarable.is_archieved?
+    
     if @calendarable.is_a?(User)
       scope = Event.all_events_for_users(@calendarable.id)
     else
@@ -58,6 +60,7 @@ class EventsController < ApplicationController
   end
   
   def show
+    @archieved = @calendarable.is_archieved?
   end
   
   def new
@@ -80,6 +83,7 @@ class EventsController < ApplicationController
   end
   
   def edit
+    @archieved = @calendarable.is_archieved?
   end
   
   def update

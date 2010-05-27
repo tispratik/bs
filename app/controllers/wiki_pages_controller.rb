@@ -7,15 +7,18 @@ class WikiPagesController < ApplicationController
   before_filter :check_ownership, :only => [:destroy]
   
   def index
+    @archieved = @project.is_archieved?
     @wiki_pages = @project.wiki_pages
     @learnmore = "CoEdits make collaborative writing easy. CoEdits help you track changes, make corrections and compare versions for changes. Use CoEdits to write solo or collaborate with others."
   end
   
   def show
+    @archieved = @project.is_archieved?
     @wiki_page.revert_to(params[:version].to_i) if params[:version]
   end
   
   def diff
+    @archieved = @project.is_archieved?
     if params[:versions]
       @changes_from, @changes_to = params[:versions].map(&:to_i)
     else

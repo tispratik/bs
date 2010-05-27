@@ -1,7 +1,7 @@
 - form_tag project_tasks_path, :method => :get do
   #sidebar.left
     = render :partial => "layouts/logo_box"
-    %h1 Filter Tasks
+    %h1 Filter tasks
     = render :partial => "shared/learnmore"
     #simple_search{:style => params[:search].is_a?(Hash) ? "display:none" : "" }
       = text_field_tag "search", params[:search], :size => 27, :autocomplete => "off"
@@ -13,7 +13,8 @@
   %table.index
     %tr
       %td.top
-        = render :partial => 'new'
+        - if !@archieved
+          = render :partial => 'new'
         %br
         - if @tasks.empty?
           %b
@@ -57,7 +58,8 @@
                     = link_to "Reopen", [:reopen, @project, task]
                 - else  
                   %td
-                    = link_to image_tag('delete.png'), [@project, task], :method => :delete                          
+                    - if !@archieved
+                      = link_to image_tag('delete.png'), [@project, task], :method => :delete                          
             %tr
             %tr
             %tr{ :align => "right" }

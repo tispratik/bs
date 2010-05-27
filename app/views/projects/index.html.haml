@@ -1,37 +1,36 @@
-= link_to "Create New Project", new_project_path
-
-%h2
-  Projects
+= content_for :sidebar do
+  %h1
+    All my projects
+  %br
+  = link_to "Start new project", new_project_path
 
 - if @projects.empty?
   %b
     No Projects Found !
 - else
-  %table.chapter_table
-    %tr.header
-      %th
-      %th
-        = sort_link 'Name', :name
-      %th
-        = sort_link 'Permalink', :permalink
-      %th
-        Description
-      %th
-        = sort_link 'Status', :statusDecode
-      %th
-        = sort_link 'Creation', :created_at
-    - @projects.each do |project|
-      %tr{:class => cycle(:odd, :even)}
-        %td
-          = image_tag("project.ico", {:width => 13, :height => 13})
-        %td
+  - @projects.each do |project|
+    #projectbox
+      #gray
+        %b
           = link_to project.name, project_path(project)
-        %td
-          = project.permalink
-        %td
-          = truncate(project.description, :length => 100, :omission => "...")
-        %td
-          = project.status
-        %td
-          = project.created_at
+        (
+        - if !project.is_archieved?
+          %span{ :style => "color :#06A600"}
+            Active
+        - else
+          %span{ :style => "color :#FA0724"}
+            Archieved
+        )  
+        %small_text.gray
+          updated
+          = time_ago_in_words(project.updated_at)
+          ago
+      %small_text
+        Project Leader: 
+        = project.owner
+      %br
+      .gray
+        = project.description
+    %br
+    %br
   = will_paginate @projects

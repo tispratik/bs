@@ -7,8 +7,9 @@
   &nbsp;
   %span.bottom
     %small_text
-      - unless @wiki_page.deleted_at?
-        = link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
+      - unless @wiki_page.deleted_at? 
+        - if !@archieved
+          = link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
 .clear
 %span.gray.right
   Revision #{@wiki_page.version}, edited by
@@ -28,5 +29,5 @@
 - if logged_in?
   #new_comment_form
     #comment_errors
-    = render :partial => "comments/form", :locals => {:comment => @wiki_page.comments.new}
-
+    - if !@archieved
+      = render :partial => "comments/form", :locals => {:comment => @wiki_page.comments.new}

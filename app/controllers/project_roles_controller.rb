@@ -4,6 +4,7 @@ class ProjectRolesController < ApplicationController
   before_filter :check_project_ownership, :only => [:update, :destroy]
   
   def index
+    @archieved = @project.is_archieved?
     @roles = @project.roles
     @pending_invitations = @project.invitations.confirmed_is(false)
   end

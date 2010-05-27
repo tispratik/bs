@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
   
   def index
+    @archieved = @project.is_archieved?
     @articles = @project.articles.paginate(:per_page => 20, :page => params[:page], :order => "created_at desc")
     @learnmore = "Snippets are a dumping ground for unorganized text, images, links, videos, audio and files which you come across and feel that might be helpful to the project. Share snippets without cluttering inbox with FYI emails."
     respond_to do |format|
@@ -74,6 +75,7 @@ class ArticlesController < ApplicationController
   end
   
   def show
+    @archieved = @project.is_archieved?
   end
   
   def new

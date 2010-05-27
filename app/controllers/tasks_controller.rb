@@ -11,6 +11,7 @@ class TasksController < ApplicationController
   def index
     @tasks = eval(get_query)
     @task = @project.tasks.build
+    @archieved = @project.is_archieved?
     @learnmore = "Tasks help you keep track of all the little things that need to get done. You can add them for yourself or assign them to someone else."
     render :layout => 'onebox_layout'
   end
@@ -26,6 +27,7 @@ class TasksController < ApplicationController
     #Deliberately adding parent condition
     #If someone tries to access a task not belonging to any of his projects directly by manipulating the URL,
     #a ActiveRecord::RecordNotFound exception will be thrown since the task is project scoped
+    @archieved = @project.is_archieved?
     if @task.nil?
       record_not_found
     end

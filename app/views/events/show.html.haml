@@ -38,12 +38,13 @@
     Repeat every
     = @event.repeat_frequency
 
-= link_to "Edit Event", [:edit, @calendarable, @event], :class => :edit_event_link
-|
-= link_to "Delete Event", [@calendarable, @event], :method => :delete
-- if @event.recurring?
+- if !@archieved
+  = link_to "Edit Event", [:edit, @calendarable, @event], :class => :edit_event_link
   |
-  = link_to "Delete All Events", {:remove_series => true}, :method => :delete
+  = link_to "Delete Event", [@calendarable, @event], :method => :delete
+  - if @event.recurring?
+    |
+    = link_to "Delete All Events", {:remove_series => true}, :method => :delete
   
 %h2.gray
   Comments
@@ -52,5 +53,6 @@
 
 - if logged_in?
   #new_comment_form
-    %h2 Add new Comment
-    = render :partial => "comments/form", :locals => {:comment => @event.comments.new}
+    - if !@archieved
+      %h2 Add new Comment
+      = render :partial => "comments/form", :locals => {:comment => @event.comments.new}

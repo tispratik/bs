@@ -2,11 +2,12 @@
   %h1
     Project Members
 %br
-- semantic_form_for [@project, @project.invitations.new] do |f|
-  - f.inputs do
-    = f.input :invitee, :label => "Invite new member", :hint => "Username or email of user who you are inviting"
-  - f.buttons do
-    = f.commit_button "Send Invitation"
+- if !@archieved 
+  - semantic_form_for [@project, @project.invitations.new] do |f|
+    - f.inputs do
+      = f.input :invitee, :label => "Invite new member", :hint => "Username or email of user who you are inviting"
+    - f.buttons do
+      = f.commit_button "Send Invitation"
 %br
 %br  
 %table.index
@@ -21,16 +22,18 @@
         %br    
         = role.to_name
       %td
-        - form_for [@project, role] do |f|
-          - case role.name
-            - when "O" then
-              = f.hidden_field :name, :value => "C"
-              = f.submit "Change to Collaborator"
-            - when "C" then
-              = f.hidden_field :name, :value => "O"
-              = f.submit "Change to Owner"
+        - if !@archieved 
+          - form_for [@project, role] do |f|
+            - case role.name
+              - when "O" then
+                = f.hidden_field :name, :value => "C"
+                = f.submit "Change to Collaborator"
+              - when "C" then
+                = f.hidden_field :name, :value => "O"
+                = f.submit "Change to Owner"
       %td
-        = link_to image_tag('delete.png'), [@project, role], :method => :delete
+        - if !@archieved 
+          = link_to image_tag('delete.png'), [@project, role], :method => :delete
 
 - unless @pending_invitations.empty?
   %table.index

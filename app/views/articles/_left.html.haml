@@ -23,7 +23,7 @@
     %br
     Tags:
 .tags
-  - if @article.created_by == current_user.id
+  - if @article.created_by == current_user.id and !@archieved
     - form_for [@project, @article] do |f|
       = f.text_field :tag_list
       %br

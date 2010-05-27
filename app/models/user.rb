@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   validates_associated :usr, :ucontact
   validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? }
 
+  def is_archieved?
+    return false
+  end
+  
   def validate
     validate_login_email
   end

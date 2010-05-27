@@ -20,6 +20,7 @@
         .timelog-date
           = timelog.date
         .timelog-actions
-          = link_to image_tag("delete.png"), [@project, timelog], :class => :delete
+          - if !@archieved
+            = link_to image_tag("delete.png"), [@project, timelog], :class => :delete
         .clear
       .clear

@@ -1,8 +1,9 @@
 - if logged_in?
   - content_for :sidebar do
-    %h1 Upload a file
-    = render :partial => "shared/learnmore"
-    = render :partial => "new"
+    - if !@archieved
+      %h1 Upload a file
+      = render :partial => "shared/learnmore"
+      = render :partial => "new"
     
 - form_tag '/assets', :method => :get do
   - if @assets.empty?
@@ -36,7 +37,8 @@
           %td.gray
             = asset.updator
           %td
-            = link_to image_tag('delete.png'), [@project, asset], :method => :delete, :confirm => 'Are you sure?'
+            - if !@archieved
+              = link_to image_tag('delete.png'), [@project, asset], :method => :delete, :confirm => 'Are you sure?'
       %tr
       %tr
       %tr{ :align => "right" }

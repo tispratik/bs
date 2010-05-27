@@ -15,7 +15,7 @@
 %h2.left.bckhighlight
   =h @article
 %span
-  - if @article.created_by == current_user.id
+  - if @article.created_by == current_user.id and !@archieved
     = link_to image_tag('delete.png', :title => "Delete article"), [@project, @article], :method => :delete
 .clear
 
@@ -37,5 +37,5 @@
 
 - if logged_in?
   #new_comment_form
-    = render :partial => "comments/form", :locals => {:comment => @article.comments.new}
-
+    - if !@archieved
+      = render :partial => "comments/form", :locals => {:comment => @article.comments.new}

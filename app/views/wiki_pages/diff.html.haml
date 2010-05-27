@@ -7,7 +7,8 @@
   %span.bottom
     %small_text
       - unless @wiki_page.deleted_at?
-        = link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
+        - if !@archieved
+          = link_to "Edit Page", edit_polymorphic_path([@wiki_page.project, @wiki_page])
 .clear
 %span.gray.right
   Changes From Revision #{@changes_from} to #{@changes_to}
