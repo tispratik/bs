@@ -29,6 +29,7 @@ class ProjectInvitationsController < ApplicationController
   
   def resend
     UserMailer.deliver_project_invitation(@invitation.user_email, current_user)
+    flash[:notice] = "Invitation email sent."
     redirect_to [@project, :project_roles]
   end
   
@@ -41,7 +42,7 @@ class ProjectInvitationsController < ApplicationController
 private
 
   def find_invitation
-    @invitation = @project.invitations.find(params[:id])
+    @invitation = @project.invitations.find_by_token(params[:id])
   end
 
 end

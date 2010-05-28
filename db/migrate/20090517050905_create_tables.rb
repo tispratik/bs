@@ -175,6 +175,7 @@ class CreateTables < ActiveRecord::Migration
       t.references :project
       t.references :user
       t.string :user_email
+      t.string :token
       t.boolean :confirmed, :default => false
       t.timestamps
     end

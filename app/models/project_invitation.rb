@@ -3,7 +3,10 @@ class ProjectInvitation < ActiveRecord::Base
   belongs_to :user
   
   validates_presence_of :project, :user_email
-  validates_uniqueness_of :user_id, :scope => :project_id, :unless => "user_id.nil?"
+  
+  def before_create
+    self.token = Digest::SHA1.hexdigest "#{Time.now.to_i}-#{rand(10**10)}"
+  end
   
   def after_create
     if user.present?
@@ -23,5 +26,9 @@ class ProjectInvitation < ActiveRecord::Base
   def confirm
     update_attribute(:confirmed, true)
     ProjectRole.create(:project => project, :user => user, :name => "Collaborator")
+  end
+  
+  def to_param
+    token
   end
 end
