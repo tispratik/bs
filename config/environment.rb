@@ -25,6 +25,10 @@ Rails::Initializer.run do |config|
   config.gem 'ts-delayed-delta', :lib => false
   config.gem 'searchlogic'
   config.gem 'jintastic'
+  #Bluepill gems
+  config.gem 'bluepill'
+  config.gem 'blankslate'  
+  config.gem 'state_machine'    
 end
 
 Delayed::Worker.backend = :active_record

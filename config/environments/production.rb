@@ -5,3 +5,4 @@ config.action_view.cache_template_loading            = true
 
 config.action_mailer.default_content_type = "text/html"
 config.action_mailer.default_charset = "utf-8"
+config.action_mailer.default_url_options = { :host => 'backstage.viridian.railsplayground.net' }
