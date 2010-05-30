@@ -4,8 +4,8 @@ development:
 production:
   enable_star: true
   min_infix_len: 3
-  bin_path: /usr/local/sphinx/bin
-  query_log_file: /home/deploy/rails_apps/bs/log/sphinx/searchd.query.log
-  searchd_log_file: /home/deploy/rails_apps/bs/log/sphinx/searchd.log
-  pid_file: /home/deploy/rails_apps/bs/tmp/pids/searchd.production.pid
-  searchd_file_path: /home/deploy/rails_apps/bs/db/sphinx/production/
+  # bin_path: /usr/local/sphinx/bin
+  # query_log_file: /home/deploy/rails_apps/bs/log/sphinx/searchd.query.log
+  # searchd_log_file: /home/deploy/rails_apps/bs/log/sphinx/searchd.log
+  pid_file: tmp/pids/searchd.production.pid
+  # searchd_file_path: /home/deploy/rails_apps/bs/db/sphinx/production/

@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   has_event_calendar
   
   validates_associated :calendar
-  validates_presence_of :calendar_id, :summary, :start_at
+  validates_presence_of :calendar_id, :summary, :start_at, :start_at_date
   
   accepts_nested_attributes_for :event_series
   
