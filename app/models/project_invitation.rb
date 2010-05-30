@@ -9,7 +9,7 @@ class ProjectInvitation < ActiveRecord::Base
   end
   
   def after_create
-    if user.present?
+    if user.present? && user.calendar.present?
       user.calendar.events.create(:summary => "Invitation to project #{project}", :start_at => Time.now, :end_at => Time.now)
     end
   end
