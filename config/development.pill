@@ -9,9 +9,9 @@ Bluepill.application("calendar_app", :log_file => "#{current_dir}/log/bluepill.l
     process.stop_command  = "ruby script/delayed_job stop"
     process.restart_command  = "ruby script/delayed_job restart"
     process.pid_file = "#{current_dir}/tmp/pids/delayed_job.pid"
-    process.start_grace_time    = 10.seconds
-    process.stop_grace_time     = 10.seconds
-    process.restart_grace_time  = 10.seconds
+    process.start_grace_time    = 20.seconds
+    process.stop_grace_time     = 20.seconds
+    process.restart_grace_time  = 20.seconds
     
     process.checks :flapping, :times => 2, :within => 30.seconds, :retry_in => 7.seconds
   end
@@ -21,9 +21,9 @@ Bluepill.application("calendar_app", :log_file => "#{current_dir}/log/bluepill.l
     process.stop_command =  "rake ts:stop"
     process.restart_command = "rake ts:restart"
     process.pid_file = "#{current_dir}/log/searchd.development.pid"
-    process.start_grace_time    = 10.seconds
-    process.stop_grace_time     = 10.seconds
-    process.restart_grace_time  = 10.seconds
+    process.start_grace_time    = 20.seconds
+    process.stop_grace_time     = 20.seconds
+    process.restart_grace_time  = 20.seconds
     
     process.checks :flapping, :times => 2, :within => 30.seconds, :retry_in => 7.seconds
   end
