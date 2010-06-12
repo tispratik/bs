@@ -3,7 +3,7 @@ class ProjectLogo < ActiveRecord::Base
   has_attached_file :image,
     :url => lambda { |img|
       project = img.instance.project
-      path = "/projects/#{project.to_param}" + "/project_logos/:id/:attachment?style=:style"
+      path = "/projects/#{project.to_param}" + "/project_logos/:attachment?style=:style"
       path
     },
     :storage => :database,

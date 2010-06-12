@@ -11,7 +11,7 @@ class ProjectLogosController < ApplicationController
   end
 
   def show
-    send_file @project.project_logo.image.path(params[:style])
+    send_file @project.project_logo.image_file.url
   end
   
   def create
