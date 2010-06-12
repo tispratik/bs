@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   
   STATUSES = Decode.find_all_by_name("BS_Proj_Status")
   
-  has_many :project_logos
+  has_one :project_logo
   has_one :contact, :as => :contactable
   has_many :project_roles, :dependent => :destroy
   has_many :users, :through => :project_roles
@@ -26,6 +26,7 @@ class Project < ActiveRecord::Base
   alias :roles :project_roles
   
   accepts_nested_attributes_for :assets
+  #accepts_nested_attributes_for :project_logo
   
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink

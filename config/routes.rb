@@ -33,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :project_roles, :as => :roles
     projects.resources :timesheets, :collection => {:suggest => :get}
     projects.resources :timelogs
-    projects.resources :project_logos, :member => [ :images ]
+    projects.resources :project_logos, :member => [ :image ]
   end
   
   map.connect "live_validations/:action", :controller => "live_validations"

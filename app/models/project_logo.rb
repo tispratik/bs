@@ -1,7 +1,11 @@
 class ProjectLogo < ActiveRecord::Base
   belongs_to :project
   has_attached_file :image,
-    :url => '/projects/:project_id/project_logos/:id/:attachment?style=:style',
+    :url => lambda { |img|
+      project = img.instance.project
+      path = "/projects/#{project.to_param}" + "/project_logos/:id/:attachment?style=:style"
+      path
+    },
     :storage => :database,
     :styles => {
       :medium => '64x64>',

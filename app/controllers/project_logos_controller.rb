@@ -7,18 +7,22 @@ class ProjectLogosController < ApplicationController
   #before_filter :check_ownership, :only => [:edit, :update, :destroy, :new, :create]
 
   def edit
-    @project_logo = @project.project_logos[0]
+    @project_logo = @project.project_logo
   end
 
+  def show
+    send_file @project.project_logo.image.path(params[:style])
+  end
+  
   def create
-    @project_logo = @project.project_logos.build(params[:project_logo])
+    @project_logo = @project.build_project_logo(params[:project_logo])
      if @project_logo.save
        redirect_to edit_project_path(@project)
      end
   end
 
   def update
-    @project_logo = @project.project_logos.find(params[:id])
+    @project_logo = @project.project_logo
 
     if @project_logo.update_attributes(params[:project_logo])
       if params[:project_logo][:image].blank?
@@ -32,10 +36,8 @@ class ProjectLogosController < ApplicationController
   end
 
   def destroy
-    @project_logo = @project.project_logos.find(params[:id])
-    @project_logo.destroy
-
-    redirect_to(project_project_logos_path(@project_logo))
+    @project.project_logo.destroy
+    redirect_to(project_project_logo_path(@project_logo))
   end
 
 end

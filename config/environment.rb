@@ -3,7 +3,7 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-
+  
   config.active_record.colorize_logging = false
   config.active_record.timestamped_migrations = false
   config.active_record.observers = :article_observer, :comment_observer, :asset_observer, :task_observer, :wiki_page_observer
@@ -20,15 +20,11 @@ Rails::Initializer.run do |config|
   config.gem 'geoip'
   config.gem 'email_veracity'
   config.gem 'url_store'
-  config.gem 'delayed_job'
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx'
-  config.gem 'ts-delayed-delta', :lib => false
   config.gem 'searchlogic'
   config.gem 'jintastic'
-  #Bluepill gems
-  config.gem 'bluepill'
-  config.gem 'blankslate'  
-  config.gem 'state_machine'    
+  config.gem 'delayed_job'
+  config.gem 'ts-delayed-delta', :lib => false
 end
 
 Delayed::Worker.backend = :active_record

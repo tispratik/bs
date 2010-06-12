@@ -44,7 +44,7 @@
   <%= image_tag @project_logo.image.url(:large), :id => 'preview' %>
 </div>
 
-<% form_for([@project, @project_logo]) do |form| %>
+<% form_for([@project, @project_logo], :html => { :multipart => true }) do |form| %>
   <% [:crop_x, :crop_y, :crop_w, :crop_h].each do |attribute| %>
     <%= form.hidden_field attribute, :id => attribute %>
   <% end %>

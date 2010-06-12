@@ -35,16 +35,12 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-    @islogonew = true
-    if @project.project_logos == nil
-      @project_logo = @project.project_logos.new
-    else    
-      if @project.project_logos.empty?
-        @project_logo = @project.project_logos.new
-      else 
-        @project_logo = @project.project_logos[0]
-        @islogonew = false
-      end
+    if @project.project_logo == nil
+      @islogonew = true
+      @project_logo = @project.project_logo.new
+    else
+      @project_logo = @project.project_logo
+      @islogonew = false
     end
   end
   

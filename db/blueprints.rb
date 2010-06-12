@@ -49,4 +49,8 @@ end
 Comment.blueprint do
   message       { Faker::Lorem.paragraph }
   is_spam       { Random.boolean }
-end        
+end
+
+ProjectLogo.blueprint do
+  image         {File.open("#{RAILS_ROOT}/public/images/rails.png")}
+end
