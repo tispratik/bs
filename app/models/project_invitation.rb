@@ -26,6 +26,7 @@ class ProjectInvitation < ActiveRecord::Base
   def confirm
     update_attribute(:confirmed, true)
     ProjectRole.create(:project => project, :user => user, :name => "Collaborator")
+    Notification.create(:project => project, :user => user)
   end
   
   def to_param

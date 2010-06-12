@@ -7,7 +7,11 @@
       - (Time.now.to_date..(Time.now+5.days).to_date).each_with_index do |date, i|
         %td.ec-event-cell{:class => ("ec-today-bg" if i == 0)}
           .dayname
-            = (i == 0)? "Today" : date.strftime("%a").to_s() + " (" + date.strftime("%d") + ")"
+            - if i == 0
+              .ec-today-header
+                Today
+            -else
+              = date.strftime("%a").to_s() + " (" + date.strftime("%d") + ")"
           - events.each do |event|
             - if event.start_at.to_date == date || event.end_at.to_date == date
               %p

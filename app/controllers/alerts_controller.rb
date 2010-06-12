@@ -7,6 +7,7 @@ class AlertsController < ApplicationController
   
   def index
     @alerts = eval(get_query)
+    @notification = @project.getnotify(current_user.id)
     @learnmore = "Alerts are short, to the point lines which capture all changes in the project. They are a great way to keep up-to-date."
   end
   

@@ -8,22 +8,25 @@ class ProjectsController < ApplicationController
   def index
     opts = {}
     opts[:order] = params[:order_by] if params[:order_by]
-    
+    @project = current_user.projects.new
     @projects = current_user.projects.paginate(opts.merge(:page => params[:page] || 1, :per_page => 10))
   end
   
   def show
     @alerts = @project.alerts.all(:limit => 10)
-  end
-  
-  def new
-    @project = current_user.projects.new
+    @cusage = ((Consumption.get(@project.id ,"BS_CONSP_DS").to_f() / 1024) / 1024)
+    cpercent = (@cusage/20)*100
+    npercent = 100 - cpercent
+    @comp = "<span id=\"complete\" style=\"width:" + cpercent.to_s() + "%\"></span>"
+    @notcomp = "<span id=\"notcomplete\" style=\"width:" + npercent.to_s() + "%\"> </span>"
+    @totalavail = 20
   end
   
   def create
     @project = Project.new(params[:project])
     
     if @project.save
+      Consumption.on_create_project(@project.id)
       flash[:notice] = 'Project was successfully created.'
       redirect_to @project
     else
@@ -32,6 +35,17 @@ class ProjectsController < ApplicationController
   end
   
   def edit
+    @islogonew = true
+    if @project.project_logos == nil
+      @project_logo = @project.project_logos.new
+    else    
+      if @project.project_logos.empty?
+        @project_logo = @project.project_logos.new
+      else 
+        @project_logo = @project.project_logos[0]
+        @islogonew = false
+      end
+    end
   end
   
   def update

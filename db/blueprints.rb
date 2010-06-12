@@ -17,6 +17,7 @@ Event.blueprint do
   summary       { Faker::Lorem.sentence }
   location      { Faker::Address.city }
   start_at      { Random.date }
+  start_at_date { Random.date }
   end_at        { start_at + rand(40).hours }
 end
 

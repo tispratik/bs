@@ -12,6 +12,7 @@
   %span.gray Name: 
   = f.text_field :name, :size => 120
   %br
+  %br
   %table
     %tr
       %td
@@ -27,4 +28,4 @@
         = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
       %td
         &nbsp; 
-        = f.submit "Add Task"
+        = f.submit "Add Task", :style => "width:80px;"

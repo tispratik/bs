@@ -1,8 +1,26 @@
 - content_for :sidebar do
+  %h1 Configure your Alerts
+  - if !@archieved
+    - semantic_form_for [@project, @notification] do |f|
+      = f.check_box :is_email
+      %span.gray
+        Emails
+      %br
+      = f.check_box :is_sms
+      %span.gray
+        SMS
+      %br
+      %br
+      - #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      = f.submit " Update ", :style=>"width:80px;"
+  %br
   %h1 Filter Alerts
   = render :partial => "shared/learnmore"
   - form_tag project_alerts_path, :method => :get do
     = filter_html("alerts_index")
+%h2
+  Alerts
+%br
 = render :partial => "alerts/list"
 %br
 = will_paginate @alerts

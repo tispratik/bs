@@ -1,8 +1,8 @@
 = content_for :sidebar do
   %h1
-    All my projects
+    Start new project
   %br
-  = link_to "Start new project", new_project_path
+  = render :partial => 'new'
 
 - if @projects.empty?
   %b
@@ -12,6 +12,7 @@
     #projectbox
       #gray
         %b
+          &nbsp;
           = link_to project.name, project_path(project)
         (
         - if !project.is_archieved?

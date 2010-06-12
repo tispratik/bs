@@ -3,3 +3,8 @@
     Project Settings
 %br
 = render :partial => 'form', :locals => {:project => @project}
+- if @islogonew
+  = render :partial => 'project_logos/new', :locals => {:project => @project}
+- else
+  = image_tag(@project_logo.image.url(:medium))
+  = render :partial => 'project_logos/crop', :locals => {:project => @project}

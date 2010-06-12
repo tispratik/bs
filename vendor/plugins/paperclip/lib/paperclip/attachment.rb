@@ -209,7 +209,7 @@ module Paperclip
     def reprocess!
       new_original = Tempfile.new("paperclip-reprocess")
       new_original.binmode
-      if old_original = to_file(:original)
+      if old_original = File.new(to_file(:original).path)
         new_original.write( old_original.read )
         new_original.rewind
 

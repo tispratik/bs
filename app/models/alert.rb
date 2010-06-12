@@ -17,6 +17,9 @@ class Alert < ActiveRecord::Base
     alert.alert_type = alerttype
     alert.deleted_text = deletedtext
     alert.save
+    #~ if fromtype == "Task"
+      #~ Comment.create( :commentable_id =>fromid, :commentable_type = fromtype, :is_spam = 0, :source = "Alert", :message = "test", :created_by = createdby, :created_at = Date.today)
+    #~ end
   end
   
 #  def self.forproject(projectid, count)
@@ -32,7 +35,7 @@ class Alert < ActiveRecord::Base
       return deleted_text.to_s
     end
     return alertable.to_s
-  end  
+  end
   
   def is_deleted?
     if deleted_text != nil

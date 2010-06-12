@@ -114,7 +114,7 @@ class ArticlesController < ApplicationController
   
   def destroy
     @article.destroy
-    flash[:notice] = "Article was removed."
+    flash[:notice] = "Snippet was removed."
     redirect_to :action => :index
   end
   

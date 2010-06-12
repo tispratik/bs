@@ -4,6 +4,9 @@
       %h1 Upload a file
       = render :partial => "shared/learnmore"
       = render :partial => "new"
+    %br
+    %br
+    = render :partial => "diskusage"
     
 - form_tag '/assets', :method => :get do
   - if @assets.empty?
@@ -24,10 +27,6 @@
       - @assets.each do |asset|
         %tr{ :class => cycle(:odd, :even) }
           %td.min500
-            - if asset.image?
-              = image_tag(asset.url, :size => "30x30")
-            - else
-              = image_tag(asset.file_icon, :size => "30x30")
             = link_to truncate(asset.to_s, :length => 50, :omission => "..."), project_asset_path(@project, asset), :popup => :true
           %td.gray
             = number_to_human_size asset.data_file_size

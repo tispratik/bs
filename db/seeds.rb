@@ -17,6 +17,8 @@ user = User.curr_user = User.first
 p "creating projects"
 5.times do
   project = user.projects.make
+  Notification.create(:project => project, :user => user)
+  Consumption.on_create_project(project.id)
   7.times do
     project.calendar.events.make
     project.wiki_pages.make

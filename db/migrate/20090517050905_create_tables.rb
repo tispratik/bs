@@ -15,6 +15,19 @@ class CreateTables < ActiveRecord::Migration
     
     add_index :projects, :permalink, :unique => true
     
+    create_table :project_logos do |t|
+      t.integer :project_id, :null => false
+      t.string :name
+      t.string :image_file_name
+      t.integer :image_file_size
+      t.string :image_content_type
+      t.timestamps
+    end
+    
+    execute 'ALTER TABLE project_logos ADD COLUMN image_file LONGBLOB'
+    execute 'ALTER TABLE project_logos ADD COLUMN image_medium_file LONGBLOB'
+    execute 'ALTER TABLE project_logos ADD COLUMN image_large_file LONGBLOB'
+    
     create_table :project_roles do |t|
       t.references :project
       t.references :user
@@ -58,6 +71,21 @@ class CreateTables < ActiveRecord::Migration
       t.boolean :email_sent
     end
     
+    create_table :consumptions do |t|
+      t.references :project
+      t.integer :paramname
+      t.integer :count
+      t.timestamps
+    end
+    
+    create_table :notifications do |t|
+      t.references :project
+      t.references :user
+      t.boolean :is_email
+      t.boolean :is_sms
+      t.timestamps
+    end
+
     create_table :wiki_pages do |t|
       t.references :project
       t.string :title

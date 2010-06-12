@@ -94,8 +94,9 @@ text-align: center;
 }
 
 .ec-today-bg {
-  background-color: #FFEC6E;
+  background-color: #FFD9E1;
 }
+
 
 .ec-row-table {
   position: relative;
@@ -116,17 +117,19 @@ text-align: center;
   overflow: hidden;
 }
 
+.ec-today-header {
+  background-color: #FFD9E1;
+}
+
+
 a.ec-day-link {
   color: #444;
 }
 
-.ec-today-header {
-  background-color: #FCFFA8;
-}
 
-.ec-weekend-day-header {
+/*.ec-weekend-day-header {
   background-color: #CEEDEA;
-}
+}*/
 
 .ec-other-month-header {
   background-color: #FFFEE0;

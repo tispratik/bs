@@ -1,0 +1,10 @@
+<% form_for([@project, @project_logo], :html => { :multipart => true }) do |form| %>
+  <%= form.error_messages %>
+  <p>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </p>
+  <p>
+    <%= form.submit 'Create', :controller => 'project_logos', :action=> 'create' %>
+  </p>
+<% end %>

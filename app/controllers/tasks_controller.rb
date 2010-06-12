@@ -28,6 +28,7 @@ class TasksController < ApplicationController
     #If someone tries to access a task not belonging to any of his projects directly by manipulating the URL,
     #a ActiveRecord::RecordNotFound exception will be thrown since the task is project scoped
     @archieved = @project.is_archieved?
+    @newtask = @project.tasks.build
     if @task.nil?
       record_not_found
     end

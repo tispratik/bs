@@ -452,11 +452,9 @@ span.gray {
   margin-bottom: 10px;
   text-align: right; }
   #header a {
-    padding: 2px 20px;
-    font-size: 0.9em;
-    text-decoration: none; }
+    padding: 2px 20px; }
   #header a.orange {
-    background-color: #FFEC6E;
+    background-color: white;
     color: black;
     box-shadow: 0px 0px 5px #C9C873;
     -moz-box-shadow: 0px 0px 5px #C9C873;
@@ -464,7 +462,7 @@ span.gray {
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
-    font-size: 1em; }
+    text-decoration: none; }
 
 #sidebar {
   width: 20%; }
@@ -506,6 +504,23 @@ span.gray {
   #sidebar form input[type=text], #sidebar form textarea {
     border: 1px solid #aaa; }
 
+#task form input[type=text] {
+  height: 18px; }
+#task form input[type=text], #task form textarea {
+  border: 1px solid #aaa; }
+
+#notcomplete {
+  height: 15px;
+  background-color: #FCFFC4;
+  position: relative;
+  float: right; }
+
+#complete {
+  background-color: #FA9005;
+  height: 15px;
+  position: relative;
+  float: left; }
+
 #content {
   width: 76%;
   float: right;
@@ -518,8 +533,8 @@ span.gray {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px; }
   #content h1 {
-    background-color: #D0E4F5;
-    color: #787D7B;
+    background-color: #D6FFE0;
+    color: black;
     text-align: center;
     padding: 15px;
     line-height: 1; }
@@ -697,10 +712,12 @@ span.match {
 .tags #article_tag_list {
   width: 60%; }
 
-#search_form #advanced_search input[type=text] {
-  width: 60%; }
-#search_form #advanced_search input[type=text]#search_citation_date {
-  width: 100px; }
+#search_form {
+  text-align: center; }
+  #search_form #advanced_search input[type=text] {
+    width: 60%; }
+  #search_form #advanced_search input[type=text]#search_citation_date {
+    width: 100px; }
 
 #simple_search input#search {
   height: 18px;

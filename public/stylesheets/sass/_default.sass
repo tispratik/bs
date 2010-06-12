@@ -105,14 +105,12 @@ span.gray
   text-align: right
   a
     padding: 2px 20px
-    font-size: 0.9em
-    text-decoration: none
   a.orange
-    background-color: #FFEC6E
+    background-color: white
     color: black
     +box-shadow("0px 0px 5px #C9C873")
     +border-radius("2px")
-    font-size: 1em
+    text-decoration: none
   
 #sidebar
   width: 20%
@@ -156,6 +154,24 @@ span.gray
     input[type=text], textarea
       border: 1px solid #aaa
 
+#task 
+  form
+    input[type=text]
+      height: 18px
+    input[type=text], textarea
+      border: 1px solid #aaa
+
+#notcomplete
+  height: 15px
+  background-color: #FCFFC4
+  position: relative
+  float: right
+#complete
+  background-color: #FA9005
+  height: 15px
+  position: relative
+  float: left
+
 #content
   width: 76%
   float: right
@@ -164,8 +180,8 @@ span.gray
   +box-shadow("0px 0px 6px #A8A6A0")
   +border-radius("4px")
   h1
-    background-color: #D0E4F5
-    color: #787D7B
+    background-color: #D6FFE0
+    color: black
     text-align: center
     padding: 15px
     line-height: 1

@@ -53,6 +53,7 @@
   - if !@archieved
     = render :partial => "new", :locals => {:article => @project.articles.build}
 
+%br
 #search_form
   #simple_search{:style => params[:search].is_a?(Hash) ? "display:none" : "" }
     - form_tag [:search, @project, :articles], :method => :get do
@@ -97,5 +98,6 @@
             &nbsp;
             = link_to "Simple Search", "#", :id => :simple_search_link
 
+%br
 #articles
   = render :partial => "list", :locals => {:articles => @articles}

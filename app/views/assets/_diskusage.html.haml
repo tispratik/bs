@@ -1,0 +1,12 @@
+%h1 Diskspace Usage
+.gray
+  %i
+    Note: Disk usage measures size of files in snippets and file center.
+%br
+=@comp
+=@notcomp
+.gray
+  = @cusage.truncate
+  MB consumed of
+  = @totalavail
+  MB

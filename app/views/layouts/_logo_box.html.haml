@@ -1,3 +1,5 @@
-= image_tag('logo.png')
+- if @project && !@project.new_record?
+  = image_tag(ProjectLogo.find_by_project_id(@project.id).image.url(:medium))
+%br
 .home{:class => (request.request_uri == root_path || (current_user && request.request_uri == polymorphic_path(current_user))) ? "current" : nil}
   = link_to "Homepage", root_path

@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   
   STATUSES = Decode.find_all_by_name("BS_Proj_Status")
   
+  has_many :project_logos
   has_one :contact, :as => :contactable
   has_many :project_roles, :dependent => :destroy
   has_many :users, :through => :project_roles
@@ -16,6 +17,7 @@ class Project < ActiveRecord::Base
   has_many :assets, :as => :attachable
   has_many :tags
   has_many :timesheets
+  has_many :consumptions
   has_many :timelogs
   belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
   
@@ -31,6 +33,10 @@ class Project < ActiveRecord::Base
   def owner
     p = ProjectRole.find_by_project_id_and_name(id, "O")
     return p.user
+  end
+  
+  def getnotify(userid)
+    Notification.find_by_project_id_and_user_id(id, userid)
   end
   
   def is_archieved?

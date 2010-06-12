@@ -15,9 +15,9 @@
         Archieved Project
   %br  
   = link_to(@project.roles.size.to_s() + " Members", [@project, :project_roles])
-  
-  
-
+  %br
+  %br
+  = render :partial => "assets/diskusage"
 = render :partial => "events/upcoming", :locals => {:events => @project.events}
 %br
 .gray

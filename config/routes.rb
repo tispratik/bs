@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :projects do |projects|
     projects.resources :users
+    projects.resources :notifications
     projects.resources :comments, :member => {:quote => :get}
     projects.resources :tasks, :collection => {:search => :get}, :member => {:reopen => :get}, :has_many => :comments
     projects.resources :alerts
@@ -32,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :project_roles, :as => :roles
     projects.resources :timesheets, :collection => {:suggest => :get}
     projects.resources :timelogs
+    projects.resources :project_logos, :member => [ :images ]
   end
   
   map.connect "live_validations/:action", :controller => "live_validations"

@@ -19,17 +19,14 @@
         = to_date(@task.created_at)
       %br  
       Assigned To:
-      %br
       = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
-      %br
       %br  
-      Due By:
       %br
+      Due By:
       = f.text_field :due_date, :class => "date_picker", :size => '15'
       %br
       %br
       Priority:
-      %br
       = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
       %br
       %br
@@ -44,18 +41,38 @@
         %br  
         %br  
         Assigned To:
-        %br
         = @task.assignee
         %br
-        %br  
         Due By:
-        %br
         = @task.due_date
         %br
-        %br
         Priority:
-        %br
         = @task.priorityDecode.to_s()
+  %br
+  %h1 Clone task
+  %br
+  - semantic_form_for [@project, @newtask], :live_validations => true do |f|
+    = error_messages_for :task
+    %span.gray Assign to:
+    = f.collection_select :assign_to, @project.users, :id, :to_s
+    = f.hidden_field :name, :value => @task.name
+    = f.hidden_field :due_date, :value => @task.due_date
+    = f.hidden_field :task_type, :value => @task.task_type
+    = f.hidden_field :priority, :value => @task.priority
+    %br
+    %br
+    = f.submit " Clone ", :style => "width:80px;", :taskid => @task.id
+  %br
+  %h1 Alerts
+  - @task.alerts.each do |t|
+    .gray
+      = t.alert_type
+      by
+      = t.creator
+      %br
+      = time_ago_in_words(t.created_at)
+      ago
+    %br
   
 #content.right
   = render :partial => "layouts/header"

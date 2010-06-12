@@ -1,0 +1,16 @@
+<h1>Editing project_logo</h1>
+
+<% form_for([@project, @project_logo], :html => { :multipart => true }) do |form| %>
+  <%= form.error_messages %>
+
+  <p>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', project_project_logo_path(@project, @project_logo) %> |
+<%= link_to 'Back', project_project_logos_path(@project) %>

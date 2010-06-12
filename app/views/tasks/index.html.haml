@@ -10,12 +10,14 @@
 
 #content.right
   = render :partial => "layouts/header"
+  - if !@archieved
+    #task
+      = render :partial => 'new'
+  %br
+  %br
   %table.index
     %tr
       %td.top
-        - if !@archieved
-          = render :partial => 'new'
-        %br
         - if @tasks.empty?
           %b
             No tasks !
@@ -59,7 +61,7 @@
                 - else  
                   %td
                     - if !@archieved
-                      = link_to image_tag('delete.png'), [@project, task], :method => :delete                          
+                      = link_to image_tag('delete.png'), [@project, task], :method => :delete         
             %tr
             %tr
             %tr{ :align => "right" }

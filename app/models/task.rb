@@ -27,6 +27,16 @@ class Task < ActiveRecord::Base
     end
   end
   
+  def clone
+    t = Task.new
+    t.project_id = project_id
+    t.name = name
+    t.due_date = due_date
+    t.task_type = task_type
+    t.priority = priority
+    return t
+  end
+  
   def type_image
     if task_type == Decode::BS_TASK_TYPE_OI
       return "openissue.png"
