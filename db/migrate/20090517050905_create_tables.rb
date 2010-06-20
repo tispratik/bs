@@ -259,7 +259,7 @@ class CreateTables < ActiveRecord::Migration
       t.references :timesheet
       t.references :project
       t.date :date
-      t.integer :hours
+      t.float :hours
       t.timestamps
     end
 
@@ -275,7 +275,7 @@ class CreateTables < ActiveRecord::Migration
       t.references :expense
       t.references :project
       t.date :date
-      t.integer :amount
+      t.float :amount
       t.timestamps
     end
 
