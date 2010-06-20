@@ -17,8 +17,10 @@ class Project < ActiveRecord::Base
   has_many :assets, :as => :attachable
   has_many :tags
   has_many :timesheets
-  has_many :consumptions
   has_many :timelogs
+  has_many :expenses
+  has_many :expenselogs
+  has_many :consumptions
   belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
   
   has_many :project_invitations

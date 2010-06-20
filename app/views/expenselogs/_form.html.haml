@@ -1,0 +1,11 @@
+= error_messages_for :expenselog
+
+- if !@archieved
+  - semantic_form_for [@project, expenselog], :html => {:class => "inline"}, :live_validations => true do |f|
+    - f.inputs do
+      = f.input :expense_description
+      = f.input :date, :as => :string, :input_html => {:class => "datepicker"}
+      = f.input :amount
+    - f.buttons do
+      = f.commit_button "Log time"
+.clear

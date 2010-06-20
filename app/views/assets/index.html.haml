@@ -5,7 +5,6 @@
       = render :partial => "shared/learnmore"
       = render :partial => "new"
     %br
-    %br
     = render :partial => "diskusage"
     
 - form_tag '/assets', :method => :get do
@@ -15,6 +14,7 @@
   - else
     %table.index
       %tr.header
+        %th
         %th
           = sort_link 'Name', :orig_name
         %th
@@ -26,6 +26,8 @@
         %th
       - @assets.each do |asset|
         %tr{ :class => cycle(:odd, :even) }
+          %td
+            = image_tag asset.small_file_icon
           %td.min500
             = link_to truncate(asset.to_s, :length => 50, :omission => "..."), project_asset_path(@project, asset), :popup => :true
           %td.gray

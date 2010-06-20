@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
+  require 'FasterCSV'
   
   before_filter :login_required
   before_filter :find_project
-  before_filter :find_task, :except => [:index, :new, :create]
+  before_filter :find_task, :except => [:index, :new, :create, :export_csv]
   before_filter :check_project_membership
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
   
@@ -14,6 +15,16 @@ class TasksController < ApplicationController
     @archieved = @project.is_archieved?
     @learnmore = "Tasks help you keep track of all the little things that need to get done. You can add them for yourself or assign them to someone else."
     render :layout => 'onebox_layout'
+  end
+  
+  def export_csv
+    csv_string = FasterCSV.generate do |csv|
+      csv << ["name", "assigned to", "due date", "priority", "status", "creator", "updator", "created_at", "updated_at"]
+      @project.tasks.each do |t|
+        csv << [t.name, t.assignee.to_s(), t.due_date, t.priorityDecode.display_value, t.statusDecode.display_value, t.initiator.to_s(), t.updator.to_s(), t.created_at, t.updated_at]
+      end
+    end
+    send_data(csv_string, :type => 'text/csv', :filename => 'tasks.csv')
   end
   
   # GET /tasks/new

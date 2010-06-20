@@ -1,0 +1,83 @@
+:javascript
+  $(document).ready(function() {
+    $('.expense_expand_logs').live("click", function() {
+      var expenselogs = $(this).closest('.expense').find('.expenselogs');
+      expenselogs.toggle();
+      $(this).html(expenselogs.css('display') == "none" ? "(+)" : "(-)");
+      
+      return false;
+    })
+    
+    $('#new_expenselog').live('submit', function() {
+      if ($(this).valid()) {
+        var self = this;
+        $(this).addClass('loading');
+        $.post($(this).attr('action'), $(this).serialize(), function() {
+          $(self).removeClass('loading');
+        }, 'script')
+      }
+      return false
+    })
+    
+    $('#expenses .expense a.delete').live('click', function() {
+      $.post($(this).attr('href'), {_method: "delete"}, function() {
+        $('#expenses_filter_form').submit()
+      }, 'script')
+      return false
+    })
+    
+    $('#expenses_filter_form').submit(function() {
+      var self = this;
+      $(this).addClass('loading');
+      $.get($(this).attr('action'), $(this).serialize(), function() {
+        $(self).removeClass('loading');
+      }, 'script')
+      return false
+    })
+    
+    $('#expenses_filter_form input[name="user_ids[]"]').change(function() {
+      var form = $(this).closest('form');
+      var count_checked = form.find('[name="user_ids[]"]:checked').size();
+      if (count_checked > 0) {
+        form.find('[name="user_ids[]"]:not(:checked)').attr("disabled", "disabled");
+      } else {
+        form.find('[name="user_ids[]"]').removeAttr("disabled");
+      }
+    })
+    
+    $('#expenselog_expense_description').autocomplete('#{url_for([:suggest, @project, :expenses])}')
+    $('#expenses_filter_form input[name="users[]"]').change();
+    $('#new_expenselog').labelsWithinFields();
+    
+    #{"$('#new_expenselog').hide();" unless @expense_user == current_user}
+  })
+
+- content_for :sidebar do
+  %h1 Filter expenses
+  = render :partial => "shared/learnmore"
+  - form_tag [@project, :expenses], :method => :get, :class => :formtastic, :id => :expenses_filter_form do
+    %fieldset.inputs
+      %ol
+        %li
+          = label_tag :date_from, "From"
+          = text_field_tag :date_from, nil, :class => :datepicker
+        %li
+          = label_tag :date_to, "To"
+          = text_field_tag :date_to, nil, :class => :datepicker
+        %li.check_boxes
+          %fieldset
+            %ol
+              - @project.roles.each do |role|
+                %li
+                  %label
+                    = radio_button_tag :user_id, role.user_id, role.user_id == (@expense_user.id)
+                    = role.user
+    %fieldset.buttons
+      %ol
+        %li.commit
+          = submit_tag "Apply Filter"
+
+= render :partial => "expenselogs/form", :locals => {:expenselog => Expenselog.new}
+
+#expenses
+  = render :partial => "expenses"

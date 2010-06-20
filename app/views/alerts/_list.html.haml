@@ -8,6 +8,8 @@
           %del
             = truncate a.alertable_s, :limit => 80, :omission => "..."
         - else
+          - if a.alertable_type == 'Asset'
+            = image_tag a.alertable.small_file_icon
           = link_to truncate(a.alertable_s, :limit => 80, :omission => "..."), [@project, a.alertable]
       %td.none
         = smart_due_date_s(a.due_date) 

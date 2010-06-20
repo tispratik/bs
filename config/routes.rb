@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :notifications
     projects.resources :comments, :member => {:quote => :get}
     projects.resources :tasks, :collection => {:search => :get}, :member => {:reopen => :get}, :has_many => :comments
+    projects.connect '/tasksexport', :controller => 'tasks', :action => 'export_csv', :conditions => {:method => :get}
     projects.resources :alerts
     projects.resources :assets
     projects.connect '/assets/:id/:style', :controller => 'assets', :action => 'show', :conditions => {:method => :get}
@@ -33,6 +34,8 @@ ActionController::Routing::Routes.draw do |map|
     projects.resources :project_roles, :as => :roles
     projects.resources :timesheets, :collection => {:suggest => :get}
     projects.resources :timelogs
+    projects.resources :expenses, :collection => {:suggest => :get}
+    projects.resources :expenselogs
     projects.resources :project_logos, :member => [ :image ]
   end
   

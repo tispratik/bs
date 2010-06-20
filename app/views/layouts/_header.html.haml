@@ -3,14 +3,19 @@
     = content_tag :div, msg, :class => "flash #{name}" if msg.is_a?(String)
         
 - if @project && !@project.new_record?
+  %title
+    = @project
   %h1
-    Project 
+    %span.gray
+      Project 
     = @project
   .menu
-    - [["Project Dashboard", "projects", nil], ["Calendar", "events", :events], ["CoEdit", "wiki_pages", :wiki_pages], ["Snippets", "articles", :articles], ["Tasks", "tasks", :tasks], ["Files", "assets", :assets], ["Timesheets", "timesheets", :timesheets], ["Alerts", "alerts", :alerts]].each do |link_name, link_controller, link_path|
+    - [["Dashboard", "projects", nil], ["Calendar", "events", :events], ["CoEdit", "wiki_pages", :wiki_pages], ["Snippets", "articles", :articles], ["Tasks", "tasks", :tasks], ["Files", "assets", :assets], ["Hours", "timesheets", :timesheets], ["Expenses", "expenses", :expenses], ["Alerts", "alerts", :alerts]].each do |link_name, link_controller, link_path|
       = link_to link_name, [@project, link_path], :class => (controller_name == link_controller) ? "current" : nil
 
 - elsif @user && !@user.new_record? 
+  %title
+    = @user
   %h1
     = @user
   .menu

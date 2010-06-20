@@ -7,80 +7,21 @@
   });
 
 #sidebar.left
-  - semantic_form_for [@project, @task] do |f|
-    = render :partial => "layouts/logo_box"
-    %h1 Task Properties
-    - if !@archieved
-      .gray
-        Task created by 
-        = @task.initiator.to_s
-        %br
-        at 
-        = to_date(@task.created_at)
-      %br  
-      Assigned To:
-      = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
-      %br  
-      %br
-      Due By:
-      = f.text_field :due_date, :class => "date_picker", :size => '15'
-      %br
-      %br
-      Priority:
-      = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
-      %br
-      %br
-      = f.submit "Update Task", :class => "but"
-    - else
-      .gray
-        Task created by 
-        = @task.initiator.to_s
-        %br
-        at 
-        = to_date(@task.created_at)
-        %br  
-        %br  
-        Assigned To:
-        = @task.assignee
-        %br
-        Due By:
-        = @task.due_date
-        %br
-        Priority:
-        = @task.priorityDecode.to_s()
-  %br
-  %h1 Clone task
-  %br
-  - semantic_form_for [@project, @newtask], :live_validations => true do |f|
-    = error_messages_for :task
-    %span.gray Assign to:
-    = f.collection_select :assign_to, @project.users, :id, :to_s
-    = f.hidden_field :name, :value => @task.name
-    = f.hidden_field :due_date, :value => @task.due_date
-    = f.hidden_field :task_type, :value => @task.task_type
-    = f.hidden_field :priority, :value => @task.priority
-    %br
-    %br
-    = f.submit " Clone ", :style => "width:80px;", :taskid => @task.id
-  %br
-  %h1 Alerts
-  - @task.alerts.each do |t|
-    .gray
-      = t.alert_type
-      by
-      = t.creator
-      %br
-      = time_ago_in_words(t.created_at)
-      ago
-    %br
+  = render :partial => "layouts/logo_box"
+  = render :partial => "taskproperties"
+  = render :partial => "clone"
   
 #content.right
   = render :partial => "layouts/header"
   = flash[:errors]
+  .right
+    .gray
+      by 
+      = @task.initiator.to_s
+      at 
+      = to_date(@task.created_at)
   %h2
     = @task.name
-  %h2.left.gray 
-    Discussion
   %br
   %br
   #comments

@@ -42,6 +42,15 @@ class Asset < ActiveRecord::Base
     end
   end
   
+  def small_file_icon
+    icon_path = "file_icons/16px/#{File.extname(data_file_name).sub('.','')}.png"
+    if File.exists? "#{RAILS_ROOT}/public/images/#{icon_path}"
+      icon_path
+    else
+      "file_icons/16px/_blank.png"
+    end
+  end
+  
   def image?
     !(data_content_type =~ /^image.*/).nil?
   end

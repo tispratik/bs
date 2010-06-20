@@ -1,6 +1,6 @@
 - content_for :sidebar do
   - if !@archieved
-    %h1 Coedit new doc
+    %h1 Coedit a new document
     = render :partial => "shared/learnmore"  
     - semantic_form_for [@project, @project.wiki_pages.new] do |f|
       - f.inputs do

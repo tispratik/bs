@@ -1,4 +1,5 @@
 class Timelog < ActiveRecord::Base
+  
   belongs_to :timesheet
   belongs_to :project
   

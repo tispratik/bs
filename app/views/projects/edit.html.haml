@@ -1,6 +1,38 @@
+:javascript
+  $(document).ready(function() {
+    $('#donotlearnmorelink').click(function() {
+      $('#learnmore').show();
+      $('#dontlearnmore').hide();
+      return false;
+    })
+    
+    $('#learnmorelink').click(function() {
+      $('#learnmore').hide();
+      $('#dontlearnmore').show();
+      return false;
+    })
+  })
+
 - content_for :sidebar do
-  %h1
-    Project Settings
+  %h1 Project Settings
+  #dontlearnmore
+    %small_text
+      .right
+        =link_to "Understanding SSL Security", "#", :id => :donotlearnmorelink
+  #learnmore{:style => "display:none" }
+    .gray
+      SSL stands for Secure Sockets Layer. What this means is that the data that you send between your computer and the Backstage server is encrypted. Its like sending a coded message. If you bank online or use ecommerce sites then you have already used SSL. You should enable SSL if you are looking for added security when working on Backstage.
+      %br
+      %br
+      How do I know that SSL is enabled for this project?
+      %br
+      1. You will see https:// in the URL above instead of http://
+      %br
+      2. At the bottom, depending on your browser & settings, you will also see a yellow lock icon.
+      %br
+      %small_text
+        .right
+          =link_to "Hide", "#", :id => :learnmorelink  
 %br
 = render :partial => 'form', :locals => {:project => @project}
 - if @islogonew

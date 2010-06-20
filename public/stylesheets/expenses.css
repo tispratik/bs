@@ -1,0 +1,29 @@
+#expenses {
+  padding-top: 10px; }
+  #expenses .header {
+    background-color: #eee; }
+  #expenses .expense .expense-description, #expenses .header .expense-description {
+    float: left; }
+  #expenses .expense .expense-hours, #expenses .header .expense-hours {
+    float: left;
+    width: 100px; }
+  #expenses .expense .expense-date, #expenses .header .expense-date {
+    float: left;
+    width: 100px; }
+  #expenses .expense .expense-actions, #expenses .header .expense-actions {
+    float: right;
+    width: 20px; }
+  #expenses .expense .expenselogs .expenselog {
+    float: right; }
+    #expenses .expense .expenselogs .expenselog .expenselog-hours {
+      float: left;
+      width: 100px; }
+    #expenses .expense .expenselogs .expenselog .expenselog-date {
+      float: left;
+      width: 100px; }
+    #expenses .expense .expenselogs .expenselog .expenselog-actions {
+      float: right;
+      width: 20px; }
+
+#new_expenselog #expenselog_expense_description {
+  width: 250px; }

@@ -262,5 +262,22 @@ class CreateTables < ActiveRecord::Migration
       t.integer :hours
       t.timestamps
     end
+
+    create_table :expenses do |t|
+      t.references :user
+      t.references :project
+      t.references :objectable, :polymorphic => true
+      t.string :description
+      t.timestamps
+    end
+    
+    create_table :expenselogs do |t|
+      t.references :expense
+      t.references :project
+      t.date :date
+      t.integer :amount
+      t.timestamps
+    end
+
   end
 end

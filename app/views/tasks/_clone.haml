@@ -1,0 +1,40 @@
+:javascript
+  $(document).ready(function() {
+    $('#donotlearnmorelink').click(function() {
+      $('#learnmore').show();
+      $('#dontlearnmore').hide();
+      return false;
+    })
+    
+    $('#learnmorelink').click(function() {
+      $('#learnmore').hide();
+      $('#dontlearnmore').show();
+      return false;
+    })
+  })
+  
+%br
+%h1 Clone task
+#dontlearnmore
+  %small_text
+    .right
+      =link_to "Learn More", "#", :id => :donotlearnmorelink
+#learnmore{:style => "display:none" }
+  .gray
+    Recreate task with one click for another project member.
+    %br
+    %small_text
+      .right
+        =link_to "Hide", "#", :id => :learnmorelink
+%br
+- semantic_form_for [@project, @newtask], :live_validations => true do |f|
+  = error_messages_for :task
+  %span.gray Assign to:
+  = f.collection_select :assign_to, @project.users, :id, :to_s
+  = f.hidden_field :name, :value => @task.name
+  = f.hidden_field :due_date, :value => @task.due_date
+  = f.hidden_field :task_type, :value => @task.task_type
+  = f.hidden_field :priority, :value => @task.priority
+  %br
+  %br
+  = f.submit " Clone ", :style => "width:80px;", :taskid => @task.id

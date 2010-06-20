@@ -1,0 +1,26 @@
+.expense{:class => cycle("even", "odd")}
+  .expense-description
+    = in_place_editor_for [@project, expense], :description
+  .right
+    .expense-amounts
+      = expense.expenselogs.sum(:amount)
+      - if expense.expenselogs.count > 1
+        = link_to "(+)", "#", :class => "expense_expand_logs"
+    .expense-date
+      = expense.expenselogs.maximum(:date)
+    .expense-actions
+      = link_to image_tag("delete.png"), [@project, expense], :class => :delete
+    .clear
+  .clear
+  .expenselogs.hide
+    - expense.expenselogs.each do |expenselog|
+      .expenselog
+        .expenselog-amounts
+          = expenselog.amount
+        .expenselog-date
+          = expenselog.date
+        .expenselog-actions
+          - if !@archieved
+            = link_to image_tag("delete.png"), [@project, expenselog], :class => :delete
+        .clear
+      .clear

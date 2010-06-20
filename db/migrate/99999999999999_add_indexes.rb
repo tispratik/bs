@@ -6,6 +6,9 @@ class AddIndexes < ActiveRecord::Migration
     add_index 'timesheets', 'user_id'
     add_index 'timesheets', 'project_id'
     add_index 'timesheets', 'objectable_id'
+    add_index 'expenses', 'user_id'
+    add_index 'expenses', 'project_id'
+    add_index 'expenses', 'objectable_id'
     add_index 'tags', 'project_id'
     add_index 'events', 'event_series_id'
     add_index 'event_series', 'calendar_id'
@@ -13,5 +16,6 @@ class AddIndexes < ActiveRecord::Migration
     add_index 'event_invitees', 'user_id'
     add_index 'timelogs', 'timesheet_id'
     add_index 'timelogs', 'project_id'
+    add_index 'expenselogs', 'expense_id'
   end
 end

@@ -1,0 +1,34 @@
+- semantic_form_for [@project, @task] do |f|
+  %h1 Task Properties
+  - if !@archieved
+    %br  
+    Assigned To:
+    = f.collection_select :assign_to, @project.users, :id, :to_s, :prompt => 'Assigned to'
+    %br  
+    %br
+    Due By:
+    = f.text_field :due_date, :class => "date_picker", :size => '15'
+    %br
+    %br
+    Priority:
+    = f.collection_select :priority, Task::PRIORITIES, :id, :display_value
+    %br
+    %br
+    = f.submit "Update Task", :style => "width:100px;"
+  - else
+    .gray
+      Task created by 
+      = @task.initiator.to_s
+      %br
+      at 
+      = to_date(@task.created_at)
+      %br  
+      %br  
+      Assigned To:
+      = @task.assignee
+      %br
+      Due By:
+      = @task.due_date
+      %br
+      Priority:
+      = @task.priorityDecode.to_s()

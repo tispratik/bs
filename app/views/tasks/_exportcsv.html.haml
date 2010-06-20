@@ -1,0 +1,31 @@
+:javascript
+  $(document).ready(function() {
+    $('#donotlearnmorelinke').click(function() {
+      $('#learnmoree').show();
+      $('#dontlearnmoree').hide();
+      return false;
+    })
+    
+    $('#learnmorelinke').click(function() {
+      $('#learnmoree').hide();
+      $('#dontlearnmoree').show();
+      return false;
+    })
+  })
+
+%br
+%br
+%h1 Export in CSV format
+#dontlearnmoree
+  %small_text
+    .right
+      =link_to "Learn More", "#", :id => :donotlearnmorelinke
+#learnmoree{:style => "display:none" }
+  .gray
+    Tasks when exported will be saved in a file called tasks.csv. This file can then be opened in a spreadsheet program (e.g. Microsoft Excel).
+    %br
+    %small_text
+      .right
+        =link_to "Hide", "#", :id => :learnmorelinke
+%br
+= link_to 'Export tasks', '/tasksexport'

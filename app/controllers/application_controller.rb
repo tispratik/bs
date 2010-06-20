@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   #include SMSFu
+  require 'FasterCSV'
   
   #Sanitizes all the input params for POST and PUT requests
   # sanitize_params

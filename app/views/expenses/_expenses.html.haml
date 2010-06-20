@@ -1,0 +1,16 @@
+%h2 
+  .gray
+    Expenses for #{@expense_user}
+%br
+.header
+  .expense-description
+    Description
+  .right
+    .expense-amount
+      Amount
+    .expense-date
+      Date
+    .expense-actions
+      &nbsp;
+  .clear
+= render expenses.all
