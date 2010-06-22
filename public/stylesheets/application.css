@@ -359,6 +359,14 @@ body {
   font-family: 'Lucida Grande', Verdana, Arial, Tahoma, Helvetica;
   font-size: 0.75em; }
 
+chartPanel {
+  margin: 0;
+  padding: 0; }
+
+dashChart {
+  margin: 0;
+  padding: 0; }
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   color: #111;
@@ -829,13 +837,19 @@ content2 {
     background-color: #DFE3DE;
     padding: 5px 3px 5px 0px; }
 
+.red {
+  color: red;
+  text-decoration: none; }
+
 #expenses {
   padding-top: 10px; }
+  #expenses .bold {
+    font-weight: bold; }
   #expenses .header {
     background-color: #eee; }
   #expenses .expense .expense-description, #expenses .header .expense-description {
     float: left; }
-  #expenses .expense .expense-amounts, #expenses .header .expense-amounts {
+  #expenses .expense .expense-amount, #expenses .header .expense-amount {
     float: left;
     width: 100px; }
   #expenses .expense .expense-date, #expenses .header .expense-date {
@@ -846,10 +860,12 @@ content2 {
     width: 20px; }
   #expenses .expense .expenselogs .expenselog {
     float: right; }
-    #expenses .expense .expenselogs .expenselog .expenselog-amounts {
+    #expenses .expense .expenselogs .expenselog .expenselog-amount {
+      color: gray;
       float: left;
       width: 100px; }
     #expenses .expense .expenselogs .expenselog .expenselog-date {
+      color: gray;
       float: left;
       width: 100px; }
     #expenses .expense .expenselogs .expenselog .expenselog-actions {

@@ -9,6 +9,7 @@ class CreateTables < ActiveRecord::Migration
       t.string :description, :limit => 5000
       t.boolean :is_public
       t.boolean :use_ssl
+      t.string :currency_code
       t.datetime :created_at
       t.datetime :updated_at 
     end

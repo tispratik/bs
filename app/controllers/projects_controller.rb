@@ -20,6 +20,12 @@ class ProjectsController < ApplicationController
     @comp = "<span id=\"complete\" style=\"width:" + cpercent.to_s() + "%\"></span>"
     @notcomp = "<span id=\"notcomplete\" style=\"width:" + npercent.to_s() + "%\"> </span>"
     @totalavail = 20
+    @istimesheet = true
+    if @project.timesheets == nil 
+     @istimesheet = false
+    elsif @project.timesheets.empty?
+      @istimesheet = false
+    end
   end
   
   def create

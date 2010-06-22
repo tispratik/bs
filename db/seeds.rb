@@ -1,6 +1,6 @@
 require "#{RAILS_ROOT}/db/blueprints"
 
-[Project, Event, WikiPage, Article, Calendar, Comment, Task, Asset, ProjectRole, ProjectLogo].each(&:destroy_all)
+[Project, Event, WikiPage, Article, Calendar, Comment, Task, Asset, ProjectRole, ProjectLogo, Timesheet, Timelog].each(&:destroy_all)
 
 p "creating user calendar and events for that calendar"
 
@@ -13,6 +13,14 @@ User.all.each do |u|
 end
 
 user = User.curr_user = User.first
+
+Timesheet.create(:user_id => 1, :project_id => 1)
+ Timesheet.create(:user_id => 2, :project_id => 1)
+ Timelog.delete_all
+  1000.times do
+     Timelog.create(:timesheet_id => rand(9) + 1  ,:date => Date.today.strftime("%A, %d de %B de %Y"),:hours => rand(23) + 1 )
+  end
+
 
 p "creating projects"
 5.times do

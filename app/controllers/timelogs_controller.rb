@@ -1,6 +1,7 @@
 class TimelogsController < ApplicationController
   
   before_filter :find_project
+  before_filter :login_required
   
   def new
     @timelog = Timelog.new

@@ -9,7 +9,7 @@ module RoutingErrors
   private
   
   def record_not_found
-    flash[:notice] = "Sorry, the page you requested was not found."
+    flash[:error] = "Error: We are sorry. The page you requested was not found."
     redirect_back
   end
   

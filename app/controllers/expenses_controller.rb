@@ -3,6 +3,7 @@ class ExpensesController < ApplicationController
   before_filter :find_project
   
   def index
+    @sum = Expenselog.sum(:amount)
     @expenses = @project.expenses.searchlogic
     @archieved = @project.is_archieved?
     @learnmore = "..."
@@ -11,10 +12,10 @@ class ExpensesController < ApplicationController
     @expenses = @expenses.user_id_is(@expense_user.id)
     
     if params[:date_from] && params[:date_from].present?
-      @expenses = @expenses.timelogs_date_greater_than(params[:date_from])
+      @expenses = @expenses.timelog_date_greater_than(params[:date_from])
     end
     if params[:date_to] && params[:date_to].present?
-      @expenses = @expenses.timelogs_date_less_than(params[:date_to])
+      @expenses = @expenses.timelog_date_less_than(params[:date_to])
     end
     
     respond_to do |format|
@@ -27,7 +28,19 @@ class ExpensesController < ApplicationController
       }
     end
   end
-  
+
+  def export_csv
+    csv_string = FasterCSV.generate do |csv|
+      csv << ["Name", "Description", "Date", "Amount"]
+      @project.expenses.each do |t|
+        t.expenselogs.each do |tl|
+          csv << [t.user.to_s(), t.description, tl.date, tl.amount]
+        end
+      end
+    end
+    send_data(csv_string, :type => 'text/csv', :filename => 'expense.csv', :disposition => 'inline')
+  end
+
   def suggest
     @expenses = @project.expenses.searchlogic
     if params[:q]

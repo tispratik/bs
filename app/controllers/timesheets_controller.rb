@@ -1,6 +1,7 @@
 class TimesheetsController < ApplicationController
   
   before_filter :find_project
+  before_filter :login_required
   
   def index
     @timesheets = @project.timesheets.searchlogic
@@ -26,6 +27,18 @@ class TimesheetsController < ApplicationController
         end
       }
     end
+  end
+  
+  def export_csv
+    csv_string = FasterCSV.generate do |csv|
+      csv << ["Name", "Description", "Date", "Hours Reported"]
+      @project.timesheets.each do |t|
+        t.timelogs.each do |tl|
+          csv << [t.user.to_s(), t.description, tl.date, tl.hours]
+        end
+      end
+    end
+    send_data(csv_string, :type => 'text/csv', :filename => 'timesheets.csv', :disposition => 'inline')
   end
   
   def suggest

@@ -22,6 +22,7 @@ class Project < ActiveRecord::Base
   has_many :expenselogs
   has_many :consumptions
   belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
+  belongs_to :currency, :class_name => 'Country', :foreign_key => "currency_code"
   
   has_many :project_invitations
   alias :invitations :project_invitations
@@ -32,11 +33,15 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink
-  
+    
   def owner
     p = ProjectRole.find_by_project_id_and_name(id, "O")
     return p.user
   end
+  
+#  def currency_country
+#    Country.find_by_id(currency_code)
+#  end
   
   def getnotify(userid)
     Notification.find_by_project_id_and_user_id(id, userid)

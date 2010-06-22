@@ -1,11 +1,16 @@
+.red
+  color: red
+  text-decoration: none
 #expenses
   padding-top: 10px
+  .bold
+    font-weight: bold
   .header
     background-color: #eee
   .expense, .header
     .expense-description
       float: left
-    .expense-amounts
+    .expense-amount
       float: left
       width: 100px
     .expense-date
@@ -18,10 +23,12 @@
     .expenselogs
       .expenselog
         float: right
-        .expenselog-amounts
+        .expenselog-amount
+          color: gray
           float: left
           width: 100px
         .expenselog-date
+          color: gray
           float: left
           width: 100px
         .expenselog-actions

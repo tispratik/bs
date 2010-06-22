@@ -2,8 +2,9 @@
   .expense-description
     = in_place_editor_for [@project, expense], :description
   .right
-    .expense-amounts
-      = expense.expenselogs.sum(:amount)
+    .expense-amount
+      %span.bold
+        = expense.expenselogs.sum(:amount)
       - if expense.expenselogs.count > 1
         = link_to "(+)", "#", :class => "expense_expand_logs"
     .expense-date
@@ -15,7 +16,8 @@
   .expenselogs.hide
     - expense.expenselogs.each do |expenselog|
       .expenselog
-        .expenselog-amounts
+        .expenselog-plusminus
+        .expenselog-amount
           = expenselog.amount
         .expenselog-date
           = expenselog.date

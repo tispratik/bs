@@ -25,6 +25,11 @@ Rails::Initializer.run do |config|
   config.gem 'jintastic'
   config.gem 'delayed_job'
   config.gem 'ts-delayed-delta', :lib => false
+  config.gem 'fastercsv'
+  config.gem 'blankslate'
+  #config.gem 'bluepill'
+  config.gem 'daemons'
+  #config.gem 'redcloth'
 end
 
 Delayed::Worker.backend = :active_record

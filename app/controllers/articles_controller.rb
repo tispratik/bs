@@ -85,10 +85,9 @@ class ArticlesController < ApplicationController
   def create
     @article = @project.articles.new(params[:article])
     if @article.save
-      flash[:notice] = "Article was created."
       redirect_to :action => :index
     else
-      flash[:notice] = "Failed to create article."
+      flash[:error] = "Error: Failed to create snippet."
       render :action => :new
     end
   end
@@ -98,7 +97,6 @@ class ArticlesController < ApplicationController
   
   def update
     if @article.update_attributes(params[:article])
-      flash[:notice] = "Article was updated."
     end
     respond_to do |format|
       format.html { 
@@ -114,7 +112,6 @@ class ArticlesController < ApplicationController
   
   def destroy
     @article.destroy
-    flash[:notice] = "Snippet was removed."
     redirect_to :action => :index
   end
   

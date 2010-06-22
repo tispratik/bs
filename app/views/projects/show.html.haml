@@ -18,6 +18,9 @@
   %br
   %br
   = render :partial => "assets/diskusage"
+%br
+= render :partial => "timesheets/graph", :locals => {:tims => @project.timesheets}
+%br
 = render :partial => "events/upcoming", :locals => {:events => @project.events}
 %br
 .gray

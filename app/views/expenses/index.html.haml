@@ -53,6 +53,17 @@
   })
 
 - content_for :sidebar do
+  %h1 
+    Balance = 
+    = @project.currency_code
+    <b> 
+    - if @sum < 0
+      %span.red
+        = @sum
+    - else
+      = @sum
+    </b>
+    = "/-"  
   %h1 Filter expenses
   = render :partial => "shared/learnmore"
   - form_tag [@project, :expenses], :method => :get, :class => :formtastic, :id => :expenses_filter_form do
@@ -76,6 +87,7 @@
       %ol
         %li.commit
           = submit_tag "Apply Filter"
+  = render :partial => 'exportcsv'
 
 = render :partial => "expenselogs/form", :locals => {:expenselog => Expenselog.new}
 

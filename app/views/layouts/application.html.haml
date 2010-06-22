@@ -6,6 +6,7 @@
     = stylesheet_link_tag 'reset', 'ui-lightness/jquery-ui-1.7.2.custom', 'jquery.autocomplete', 'application', "event_calendar", "colorbox", :cache => "base"
     = javascript_include_tag 'jquery-1.4.2.min', 'jquery-ui-1.7.2.custom.min', 'jquery.colorbox-min', 'jquery.autocomplete.pack', 'jquery.validate.pack', 'application', :cache => "base"
     = javascript_include_tag 'jintastic'
+    = yield(:head)
   %body
     <LINK REL="SHORTCUT ICON" HREF="/images/websitelogo.png">  
     #container
@@ -18,5 +19,6 @@
       #content.right
         = render :partial => "layouts/header"
         = yield
+        
         
       .clear

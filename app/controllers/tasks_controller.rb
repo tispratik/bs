@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
-  require 'FasterCSV'
-  
+ 
   before_filter :login_required
   before_filter :find_project
   before_filter :find_task, :except => [:index, :new, :create, :export_csv]
@@ -24,7 +23,7 @@ class TasksController < ApplicationController
         csv << [t.name, t.assignee.to_s(), t.due_date, t.priorityDecode.display_value, t.statusDecode.display_value, t.initiator.to_s(), t.updator.to_s(), t.created_at, t.updated_at]
       end
     end
-    send_data(csv_string, :type => 'text/csv', :filename => 'tasks.csv')
+    send_data(csv_string, :type => 'text/csv', :filename => 'tasks.csv', :disposition => 'inline')
   end
   
   # GET /tasks/new

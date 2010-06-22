@@ -15,6 +15,10 @@ class Country < ActiveRecord::Base
     "flags/small/" + iso2 + ".gif"
   end
   
+  def currency_todisp
+    currency_name + " (" + name + ")"
+  end
+  
   def self.get_flag_by_name(name)
     "flags/medium/" + name.sub(' ', '_') + ".png"
   end

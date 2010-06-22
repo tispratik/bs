@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :events, :through => :calendars
   has_many :project_invitations
   has_many :articles
+  has_many :timesheets, :through => :projects 
   
   alias :roles :project_roles
   accepts_nested_attributes_for :usr, :ucontact
@@ -21,6 +22,17 @@ class User < ActiveRecord::Base
   validates_associated :usr, :ucontact
   validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? }
 
+  def total_hours(pid)
+    timesheetsvar = Timesheet.all(:conditions => { :project_id => pid, :user_id => id})
+    totalhours = 0
+    timesheetsvar.each do |t|
+      t.timelogs.each do |tl|
+        totalhours = totalhours + tl.hours
+      end
+    end
+    return totalhours
+  end
+  
   def is_archieved?
     return false
   end

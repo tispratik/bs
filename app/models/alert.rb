@@ -12,8 +12,8 @@ class Alert < ActiveRecord::Base
     alert.alertable_id = fromid
     alert.alertable_type = fromtype
     alert.due_date = duedate
-    alert.created_at = Date.today
-    alert.updated_at = Date.today
+    alert.created_at = DateTime.now
+    alert.updated_at = DateTime.now
     alert.alert_type = alerttype
     alert.deleted_text = deletedtext
     alert.save
@@ -21,14 +21,6 @@ class Alert < ActiveRecord::Base
       #~ Comment.create( :commentable_id =>fromid, :commentable_type = fromtype, :is_spam = 0, :source = "Alert", :message = "test", :created_by = createdby, :created_at = Date.today)
     #~ end
   end
-  
-#  def self.forproject(projectid, count)
-#    a = Alert.all(:conditions => {:project_id => projectid }, :order => "id desc", :limit => count)
-#    if a == nil or a.empty?
-#      return Array.new
-#    end
-#    return a
-#  end
   
   def alertable_s
     if deleted_text != nil

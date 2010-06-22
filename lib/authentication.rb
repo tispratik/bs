@@ -56,7 +56,7 @@ module Authentication
   def require_user
     unless current_user
       store_target_location
-      flash[:notice] = "You must be logged in to access this page."
+      flash[:notice] = "Error: Please log in to access this page."
       redirect_to root_path
       return false
     end

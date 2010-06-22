@@ -53,7 +53,7 @@
   })
 
 - content_for :sidebar do
-  %h1 Timesheet Reports
+  %h1 Filter timesheets
   = render :partial => "shared/learnmore"
   - form_tag [@project, :timesheets], :method => :get, :class => :formtastic, :id => :timesheets_filter_form do
     %fieldset.inputs
@@ -76,6 +76,7 @@
       %ol
         %li.commit
           = submit_tag "Apply Filter"
+  = render :partial => "exportcsv"  
 
 = render :partial => "timelogs/form", :locals => {:timelog => Timelog.new}
 
