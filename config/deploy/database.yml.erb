@@ -1,0 +1,25 @@
+base: &base
+  adapter: mysql
+  username: <%= db_username %>
+  password: <%= db_password %>
+  timeout: 5000
+  collation: utf8_general_ci  
+  encoding: utf8
+  pool: 5
+  host: localhost
+
+production:
+  database: <%=application%>_production
+  <<: *base
+
+va_production:
+  database: va_production
+  <<: *base
+    
+op_production:
+  database: op_production
+  <<: *base
+        
+ref_area:
+  database: ref_area_production
+  <<: *base
