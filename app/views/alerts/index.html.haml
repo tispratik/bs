@@ -1,6 +1,6 @@
 - content_for :sidebar do
   %h1 Receive alerts via
-  - if !@archieved
+  - if !@archieved && !@notification.nil?
     - semantic_form_for [@project, @notification] do |f|
       .gray
         = f.check_box :is_email
