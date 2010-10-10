@@ -28,7 +28,8 @@ class ApplicationController < ActionController::Base
   end
   
   def ssl_supported?
-    (ENV['RAILS_ENV'] == 'production')
+    #(ENV['RAILS_ENV'] == 'production')
+    false
   end
   
   def ssl_required
