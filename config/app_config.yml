@@ -5,14 +5,3 @@ development:
   smtp_domain: "www.gmail.com"
   smtp_username: "theviri01@gmail.com"
   smtp_password: "theviridians"
-  
-test:
-  domain: test.host
-
-production:
-  domain: example.com
-  smtp_address: ""
-  smtp_port: 999
-  smtp_domain: ""
-  smtp_username: ""
-  smtp_password: ""
