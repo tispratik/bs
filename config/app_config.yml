@@ -5,3 +5,11 @@ development:
   smtp_domain: "www.gmail.com"
   smtp_username: "theviri01@gmail.com"
   smtp_password: "theviridians"
+  
+production:
+  domain: localhost:3000
+  smtp_address: "smtp.gmail.com"
+  smtp_port: 587
+  smtp_domain: "www.gmail.com"
+  smtp_username: "theviri01@gmail.com"
+  smtp_password: "theviridians"  
