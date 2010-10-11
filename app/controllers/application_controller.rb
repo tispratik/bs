@@ -27,17 +27,17 @@ class ApplicationController < ActionController::Base
     params.delete_if {|key, value| value == "ANY" }
   end
   
-  def ssl_supported?
-    true
-  end
-  
-  def ssl_required
-    if !request.ssl? && ssl_supported?
-      redirect_to :protocol => "https"
-      flash.keep
-      return false
-    end
-  end
+#  def ssl_supported?
+#    true
+#  end
+#  
+#  def ssl_required
+#    if !request.ssl? && ssl_supported?
+#      redirect_to :protocol => "https"
+#      flash.keep
+#      return false
+#    end
+#  end
   
   def find_project
     @project = @calendarable = Project.find_by_permalink(UrlStore.decode(params[:project_id]))
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
       return
     end
     if @project.use_ssl?
-      ssl_required
+      true
     end
   end
   
