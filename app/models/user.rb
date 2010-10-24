@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   
   validates_presence_of :login_email, :username
   validates_associated :usr, :ucontact
-  validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? }
+  #validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? } --> Name Nanny Plugin not available in Rails3
 
   def total_hours(pid)
     timesheetsvar = Timesheet.all(:conditions => { :project_id => pid, :user_id => id})

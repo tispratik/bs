@@ -2,7 +2,9 @@ Bs::Application.routes.draw do
   
   # registration and login
   resource  :registration, :only => [:new, :create, :edit, :update, :destroy], :as => :users, :path_names => {:new => :sign_up} do
-    post :validate
+    member do
+      post :validate
+    end
     get :regions 
     get :cities
   end

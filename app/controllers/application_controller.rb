@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   include Authentication
   include GuiHelpers
   include RoutingErrors
-  include ExceptionNotifiable
   
   layout proc{ |c| c.request.xhr? ? false : "application" }
   
@@ -28,7 +27,9 @@ class ApplicationController < ActionController::Base
   end
   
   def ssl_supported?
-    true
+    if Rails.env = 'production'
+      true
+    end
   end
   
   def ssl_required
