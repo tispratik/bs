@@ -7,7 +7,7 @@ class Timelog < ActiveRecord::Base
   
   validates_presence_of :timesheet, :project, :hours, :date, :timesheet_description
   
-  def before_validation_on_create
+  def before_validation(:on => :create) do
     if timesheet_description.present?
       #find or create new timesheet
       self.timesheet = project.timesheets.find_by_user_id_and_description(User.curr_user.id, timesheet_description)

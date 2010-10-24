@@ -18,14 +18,15 @@ class Event < ActiveRecord::Base
   attr_accessor :repeat_frequency, :repeat_until, :repeat_until_date, :repeat_until_count, :on_wdays
   attr_accessor :start_at_date, :invitee_ids
   
-  before_validation_on_create :set_dates
+  before_validation(:on => :create) do
+    :set_dates
+  end
   
-  named_scope :all_events_for_users, lambda { |user_ids|
-    { :conditions => ["created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids] }
+  scope :all_events_for_users, lambda { |user_ids|
+    { where("created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids) }
   }
-  named_scope :all_events_for_project_or_users, lambda { |project_id, user_ids|
-    { :conditions => ["(calendars.calendarable_type='Project' and calendars.calendarable_id=?) or created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", project_id, user_ids, user_ids],
-      :joins => :calendar
+  scope :all_events_for_project_or_users, lambda { |project_id, user_ids|
+    { where("(calendars.calendarable_type='Project' and calendars.calendarable_id=?) or created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", project_id, user_ids, user_ids).joins(:calendar)
     }
   }
   
@@ -60,7 +61,7 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def before_validation_on_create
+  def before_validation(:on => :create) do
     self.created_by = User.curr_user.id
   end
   
@@ -93,7 +94,7 @@ class Event < ActiveRecord::Base
     if @invitee_ids.present?
       transaction do
         self.event_invitees = @invitee_ids.map { |user_id|
-          user = User.find(user_id)
+          user = User.where(user_id)
           if user
             event_invitees.create(:user => user, :user_email => user.login_email)
           end

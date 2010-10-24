@@ -35,7 +35,7 @@ class Asset < ActiveRecord::Base
   
   def file_icon
     icon_path = "file_icons/48px/#{File.extname(data_file_name).sub('.','')}.png"
-    if File.exists? "#{RAILS_ROOT}/public/images/#{icon_path}"
+    if File.exists? "#{Rails.root}/public/images/#{icon_path}"
       icon_path
     else
       "file_icons/48px/_blank.png"
@@ -44,7 +44,7 @@ class Asset < ActiveRecord::Base
   
   def small_file_icon
     icon_path = "file_icons/16px/#{File.extname(data_file_name).sub('.','')}.png"
-    if File.exists? "#{RAILS_ROOT}/public/images/#{icon_path}"
+    if File.exists? "#{Rails.root}/public/images/#{icon_path}"
       icon_path
     else
       "file_icons/16px/_blank.png"

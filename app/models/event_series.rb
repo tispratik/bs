@@ -24,7 +24,7 @@ class EventSeries < ActiveRecord::Base
     end
   end
   
-  def before_validation_on_create
+  def before_validation(:on => :create)
     if duration
       self.end_at = start_at + duration.to_i.hours
     end

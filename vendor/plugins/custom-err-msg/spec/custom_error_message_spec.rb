@@ -1,108 +1,45 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require 'rubygems'
+require 'spec'
 require 'active_record'
-require 'custom_error_message'
-require 'action_controller'
 
-include ActionView::Helpers::ActiveRecordHelper
-include ActionView::Helpers::TextHelper
-include ActionView::Helpers::TagHelper
-
-def create_ar_object_that_validates_presence_of(field, message)
-  test_model_class = Class.new(ActiveRecord::Base) do
-    validates_presence_of field, :message => message
-
-    #to avoid hitting the db
-    class_methods = Module.new do
-      define_method :columns do
-        [ActiveRecord::ConnectionAdapters::Column.new(field.to_s, nil, 'string', false)]
-      end
-    end
-    extend class_methods
-  end
-  return test_model_class.new
-end
-
-def create_ar_object_with_columns(*cols)
-  ar_class = Class.new(ActiveRecord::Base) do
-    class_methods = Module.new do
-      define_method :columns do
-        cols.inject([]) do |array, column|
-          array << ActiveRecord::ConnectionAdapters::Column.new(column.to_s, nil, 'string', false)
-        end
-      end
-    end
-    extend class_methods
-  end
-  return ar_class.new
-end
-
-describe 'custom_err_msg with a declarative validation' do
-  it 'without circumflex should not change behaviour' do
-    @rec = create_ar_object_that_validates_presence_of :email, 'is not present'
-    @rec.valid?
-    error_messages_for(:object => @rec).should match(/Email is not present/)
-  end
-
-  it 'with circumflex in the beginning should show only the message' do
-    @rec = create_ar_object_that_validates_presence_of :email, '^The email is missing'
-    @rec.valid?
-    error_messages_for(:object => @rec).should match(/>The email is missing/)
-  end
-
-  it 'with a proc should show procs result' do
-    @rec = create_ar_object_that_validates_presence_of :email, Proc.new { "You forgot the email" }
-    @rec.valid?
-    error_messages_for(:object => @rec).should match(/>You forgot the email/)
-  end
-
-  it 'with circumflex not in the beginning should leave original behaviour' do
-    @rec = create_ar_object_that_validates_presence_of :email, 'is not ^ present'
-    @rec.valid?
-    error_messages_for(:object => @rec).should match(/Email is not \^ present/)
-  end
-end
-
-describe 'custom_err_msg using the errors.add method' do
+class User < ActiveRecord::Base
+  has_many :user_roles
+  has_many :roles, :through => :user_roles
   
-  before :each do
-    @rec = create_ar_object_with_columns :name
-  end
- 
-  it 'query of error without circumflex should not change behaviour' do
-    @rec.errors.add(:name, 'is too long')
-    @rec.errors.on(:name).should == 'is too long'
-  end
-
-  it 'added error without circumflex should not change behaviour' do
-    @rec.errors.add(:name, 'is too long')
-    error_messages_for(:object => @rec).should match(/Name is too long/)
-  end
-
-  it 'query of error with circumflex should show the message' do
-    @rec.errors.add(:name, '^You forgot the name')
-    @rec.errors.on(:name).should == '^You forgot the name'
-  end
-
-  it 'added error with circumflex should only show the message' do
-    @rec.errors.add(:name, '^You forgot the name')
-    error_messages_for(:object => @rec).should match(/>You forgot the name/)
-  end
-
-  it 'can specify error message as a proc' do
-    @rec.name = 'Bobby'
-    @rec.errors.add(:name, Proc.new {|ar| "#{ar.name} is an ugly name"})
-    error_messages_for(:object => @rec).should match(/>Bobby is an ugly name/)
-  end
-
-  it 'should handle correctly a field with one normal, one circumflex based and one proc based error message' do
-    @rec.name = 'Bobby'
-    @rec.errors.add(:name, '^You forgot the name')
-    @rec.errors.add(:name, 'is not pretty')
-    @rec.errors.add(:name, Proc.new {|ar| "#{ar.name} is an ugly name"})
-
-    error_messages_for(:object => @rec).should match(/>You forgot the name/)
-    error_messages_for(:object => @rec).should match(/Name is not pretty/)
-    error_messages_for(:object => @rec).should match(/>Bobby is an ugly name/)
-  end
+  validates_presence_of :email, :message => "^Your email is invalid"
+  
+  accepts_nested_attributes_for :roles 
 end
 
+class Role < ActiveRecord::Base
+  has_many :user_roles
+  has_many :users, :through => :user_roles
+  
+  validates_presence_of :role, :message => "^You must enter a role"
+end
+
+class UserRole < ActiveRecord::Base
+  belongs_to :role
+  belongs_to :user
+end
+
+require 'custom_error_message'
+
+describe "validating attributes" do
+  before do
+    ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
+    load File.join(File.dirname(__FILE__), 'db', 'schema.rb')
+  end
+  
+  it "should return the message specified without a prefix" do
+    @user = User.create
+    @user.errors.full_messages.should include "Your email is invalid"
+  end
+  
+  describe "validating nested attributes" do
+    it "should return the message specified without a prefix" do
+      @user = User.create(:roles_attributes => [{}])
+      @user.errors.full_messages.should include "You must enter a role"
+    end
+  end
+end

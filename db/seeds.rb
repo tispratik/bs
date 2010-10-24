@@ -1,4 +1,12 @@
-require "#{RAILS_ROOT}/db/blueprints"
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
+#   Mayor.create(:name => 'Daley', :city => cities.first)
+
+require "#{Rails.root}/db/blueprints"
 
 [Project, Event, WikiPage, Article, Calendar, Comment, Task, Asset, ProjectRole, ProjectLogo, Timesheet, Timelog].each(&:destroy_all)
 
@@ -30,11 +38,11 @@ p "creating projects"
   7.times do
     project.calendar.events.make
     project.wiki_pages.make
-    project.assets.create(:orig_name => Random.firstname,:data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
-    #ProjectLogo.make(:project => project, :image => File.open("#{RAILS_ROOT}/public/images/rails.png"))
+    project.assets.create(:orig_name => Random.firstname,:data => File.open("#{Rails.root}/public/images/rails.png"))
+    #ProjectLogo.make(:project => project, :image => File.open("#{Rails.root}/public/images/rails.png"))
     ProjectLogo.make(:project => project)
     article = project.articles.make
-    article.assets.create(:orig_name => Random.firstname, :data => File.open("#{RAILS_ROOT}/public/images/rails.png"))
+    article.assets.create(:orig_name => Random.firstname, :data => File.open("#{Rails.root}/public/images/rails.png"))
     task = project.tasks.make
     5.times do
       task.comments.make

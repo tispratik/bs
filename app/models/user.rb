@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-  establish_connection "va_#{RAILS_ENV}"
+  establish_connection "va_#{Rails.env}"
   
   has_one :usr
   has_one :ucontact

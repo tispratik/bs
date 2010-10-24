@@ -55,7 +55,7 @@ class Project < ActiveRecord::Base
     end
   end
   
-  def before_validation_on_create
+  def before_validation(:on => :create)
     self.alias = 'PROJ' + id.to_s
     self.is_public = 0
     self.status = Decode::BS_PROJ_STATUS_AC

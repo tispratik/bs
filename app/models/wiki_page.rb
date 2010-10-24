@@ -8,7 +8,7 @@ class WikiPage < ActiveRecord::Base
   belongs_to :project
   belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :updator, :class_name => 'User', :foreign_key => "updated_by"
-  named_scope :deleted, { :conditions => ['deleted_at != ?', nil] }
+  scope :deleted, where('deleted_at != ?', nil)
   
   validates_associated :project
   validates_presence_of :project, :title

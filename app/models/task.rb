@@ -13,9 +13,9 @@ class Task < ActiveRecord::Base
   belongs_to :assignee, :class_name => 'User', :foreign_key => "assign_to"  
   belongs_to :priorityDecode, :class_name => 'Decode', :foreign_key => "priority"
   belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
-  named_scope :deleted, { :conditions => ['deleted_at != ?', nil] }
-  named_scope :my, lambda {{:conditions => { :assign_to => User.cid }}}
-  named_scope :my_related, lambda {{:conditions => ['(created_by = ? OR updated_by = ?) AND assign_to != ?', User.cid, User.cid, User.cid]}}
+  scope :deleted, where('deleted_at != ?', nil)
+  scope :my, lambda { where(:assign_to => User.cid) }
+  scope :my_related, lambda { where('(created_by = ? OR updated_by = ?) AND assign_to != ?', User.cid, User.cid, User.cid)}
 
   validates_presence_of :name, :assign_to, :task_type, :priority 
   

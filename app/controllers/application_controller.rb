@@ -77,5 +77,4 @@ class ApplicationController < ActionController::Base
       record_not_found
     end
   end
-  
 end
