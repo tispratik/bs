@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   alias :roles :project_roles
   accepts_nested_attributes_for :usr, :ucontact
   
-  validates_presence_of :login_email, :username
+  validates :login_email, :username, :presence => true
   validates_associated :usr, :ucontact
   #validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? } --> Name Nanny Plugin not available in Rails3
 

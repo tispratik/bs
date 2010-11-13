@@ -71,12 +71,12 @@
 %h1
   Registration
 
-- semantic_form_for @user, :url => registration_path, :html => {:class => 'validate'} do |f|
+= semantic_form_for @user, :url => users_path, :html => {:class => 'validate'} do |f|
   
-  - f.inputs do
+  = f.inputs do
     = f.input :username
     = f.input :login_email
-    - f.inputs :for => :usr do |uf|
+    = f.inputs :for => :usr do |uf|
       = uf.input :first_name
       = uf.input :last_name
       = uf.input :one_line_bio

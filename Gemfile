@@ -21,7 +21,6 @@ gem 'ts-delayed-delta'
 gem 'bluepill'
 gem 'daemons'
 gem 'constant_cache'
-gem 'formtastic'
 gem 'paperclip'
 #gem 'live_validations' --> Not found in Rails3
 #gem 'name_nanny' --> Not found in Rails3
@@ -32,10 +31,10 @@ gem 'paperclip'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'thin'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
@@ -50,6 +49,7 @@ gem 'paperclip'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'rspec'
   gem 'machinist'
   gem 'populator'
   gem 'faker'
@@ -58,3 +58,9 @@ group :development, :test do
 end
 
 gem "exception_notification", :git => "git://github.com/rails/exception_notification", :require => 'exception_notifier'
+
+group :development do
+  gem "rails3-generators"
+  gem "haml-rails"
+  gem 'formtastic'
+end

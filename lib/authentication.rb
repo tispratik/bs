@@ -3,7 +3,7 @@ module Authentication
     controller.send :before_filter, :set_current_user_in_model
     controller.send :helper_method, :current_user, :logged_in?, :redirect_to_target_or_default, :cu, :cid
     controller.send :after_filter, :store_target_location
-    controller.filter_parameters :password, :password_confirmation
+    #controller.filter_parameters :password, :password_confirmation
   end
   
   def current_user_session

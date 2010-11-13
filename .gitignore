@@ -14,3 +14,6 @@ private/*
 config/app_config.yml
 public/javascripts/base.js
 public/stylesheets/base.css
+Gemfile.lock
+*~
+*.swp

@@ -1,7 +1,7 @@
 Bs::Application.routes.draw do
   
   # registration and login
-  resource  :registration, :only => [:new, :create, :edit, :update, :destroy], :as => :users, :path_names => {:new => :sign_up} do
+  resource  :registration, :as => :users, :only => [:new, :create, :edit, :update, :destroy], :path_names => {:new => 'sign_up'} do
     member do
       post :validate
     end

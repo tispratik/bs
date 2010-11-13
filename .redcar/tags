@@ -1,6 +1,4 @@
-1287895697
-ACTION_FORMAT_BUILDERS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  ACTION_FORMAT_BUILDERS =
-ACTION_VIEW_TEMPLATES	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  ACTION_VIEW_TEMPLATES =
+1289689436
 ANY	/home/pratik/projects/bs/app/models/decode.rb	  ANY =
 ActionController	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      module ActionController
 ActiveModel	/home/pratik/projects/bs/vendor/plugins/custom-err-msg/lib/custom_error_message.rb	module ActiveModel
@@ -35,12 +33,6 @@ Asset	/home/pratik/projects/bs/app/models/asset.rb	class Asset
 AssetObserver	/home/pratik/projects/bs/app/models/asset_observer.rb	class AssetObserver 
 AssetsController	/home/pratik/projects/bs/app/controllers/assets_controller.rb	class AssetsController 
 Authentication	/home/pratik/projects/bs/lib/authentication.rb	module Authentication
-BANNER_ARGS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	  BANNER_ARGS =
-BANNER_ARGS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  BANNER_ARGS =
-BANNER_ARGS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  BANNER_ARGS =
-BANNER_OPTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	  BANNER_OPTIONS =
-BANNER_OPTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  BANNER_OPTIONS =
-BANNER_OPTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  BANNER_OPTIONS =
 BASE_ROOT	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/application_checker_test.rb	  BASE_ROOT =
 BOLD	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      BOLD       =
 BS_CONSP	/home/pratik/projects/bs/app/models/consumption.rb	  BS_CONSP =
@@ -49,11 +41,7 @@ Bs	/home/pratik/projects/bs/config/application.rb	module Bs
 CLEAR	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      CLEAR      =
 CODE	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/new_configuration_generator_test.rb	  CODE =
 CONFIG	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/new_configuration_generator_test.rb	  CONFIG =
-CONFIG_ARGS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    CONFIG_ARGS =
-CONFIG_OPTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    CONFIG_OPTIONS =
-CONTROLLERS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  CONTROLLERS_PATH =
 CORE_VALIDATONS	/home/pratik/projects/bs/vendor/plugins/validation_reflection/lib/validation_reflection.rb	  CORE_VALIDATONS =
-CUSTOM_TEMPLATES_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  CUSTOM_TEMPLATES_PATH =
 CYAN	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      CYAN       =
 Calendar	/home/pratik/projects/bs/app/models/calendar.rb	class Calendar 
 CalendarHelper	/home/pratik/projects/bs/app/helpers/calendar_helper.rb	module CalendarHelper
@@ -71,39 +59,11 @@ Consumption	/home/pratik/projects/bs/app/models/consumption.rb	class Consumption
 ContactsController	/home/pratik/projects/bs/app/controllers/contacts_controller.rb	class ContactsController 
 Country	/home/pratik/projects/bs/app/models/country.rb	class Country 
 CreateDelayedJobs	/home/pratik/projects/bs/db/migrate/100000000000000_create_delayed_jobs.rb	class CreateDelayedJobs 
-CreateDucks	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/prototypes/active_record_migration.rb	class CreateDucks 
 CreateTables	/home/pratik/projects/bs/db/migrate/20090517050905_create_tables.rb	class CreateTables 
 Cropper	/home/pratik/projects/bs/lib/paperclip_processors/cropper.rb	  class Cropper 
 CustomEvent	/home/pratik/projects/bs/vendor/plugins/event_calendar/spec/fixtures/models.rb	class CustomEvent 
-DEFAULT_ARGS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  DEFAULT_ARGS =
-DEFAULT_COLLECTION_ACTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  DEFAULT_COLLECTION_ACTIONS =
-DEFAULT_COLLECTION_AUTOLOAD_ACTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  DEFAULT_COLLECTION_AUTOLOAD_ACTIONS =
-DEFAULT_CONTROLLER_ACTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  DEFAULT_CONTROLLER_ACTIONS =
-DEFAULT_FACTORY_FRAMEWORK	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  DEFAULT_FACTORY_FRAMEWORK =
-DEFAULT_MEMBER_ACTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  DEFAULT_MEMBER_ACTIONS =
-DEFAULT_MEMBER_AUTOLOAD_ACTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  DEFAULT_MEMBER_AUTOLOAD_ACTIONS =
-DEFAULT_OPTIONS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  DEFAULT_OPTIONS =
-DEFAULT_RESPOND_TO_FORMATS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  DEFAULT_RESPOND_TO_FORMATS =
-DEFAULT_TEST_FRAMEWORK	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  DEFAULT_TEST_FRAMEWORK =
-DEFAULT_VIEW_TEMPLATE_FORMAT	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  DEFAULT_VIEW_TEMPLATE_FORMAT =
 Decode	/home/pratik/projects/bs/app/models/decode.rb	class Decode 
-DmodelGenerator	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dmodel/dmodel_generator.rb	class DmodelGenerator 
-DryGenerator	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	class DryGenerator 
-DryModelGenerator	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	class DryModelGenerator 
-DryScaffoldGenerator	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	class DryScaffoldGenerator 
-DscaffoldGenerator	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dscaffold/dscaffold_generator.rb	class DscaffoldGenerator 
-Duck	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/prototypes/active_record_model.rb	class Duck 
-DuckTest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/prototypes/tests/shoulda/unit_test.rb	class DuckTest 
-DuckTest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/prototypes/tests/test_unit/unit_test.rb	class DuckTest 
-DucksController	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	class DucksController 
-DucksController	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/inherited_resources_controller.rb	class DucksController 
-DucksControllerTest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/tests/shoulda/functional_test.rb	class DucksControllerTest 
-DucksControllerTest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/tests/test_unit/functional_test.rb	class DucksControllerTest 
-DucksHelper	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/helpers/helper.rb	module DucksHelper
-DucksHelperTest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/helpers/tests/shoulda/unit_test.rb	class DucksHelperTest 
-DucksHelperTest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/helpers/tests/test_unit/unit_test.rb	class DucksHelperTest 
 Dummy	/home/pratik/projects/bs/vendor/plugins/validation_reflection/test/validation_reflection_test.rb	  class Dummy 
-ENHANCED_RESPOND_TO_FORMATS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  ENHANCED_RESPOND_TO_FORMATS =
 Error	/home/pratik/projects/bs/vendor/plugins/custom-err-msg/lib/custom_error_message.rb	  class Error
 Errors	/home/pratik/projects/bs/vendor/plugins/custom-err-msg/lib/custom_error_message.rb	  class Errors 
 Event	/home/pratik/projects/bs/app/models/event.rb	class Event 
@@ -120,7 +80,6 @@ Expenselog	/home/pratik/projects/bs/app/models/expenselog.rb	class Expenselog
 ExpenselogsController	/home/pratik/projects/bs/app/controllers/expenselogs_controller.rb	class ExpenselogsController 
 ExpensesController	/home/pratik/projects/bs/app/controllers/expenses_controller.rb	class ExpensesController 
 FRAME	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/new_configuration_generator_test.rb	  FRAME =
-FUNCTIONAL_TESTS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  FUNCTIONAL_TESTS_PATH =
 FakeNamespace	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	    class FakeNamespace 
 FakeResourceRoute	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	    class FakeResourceRoute 
 FakeRoute	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	    class FakeRoute 
@@ -134,15 +93,7 @@ GemfileGenerator	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/gemfi
 GemfileGenerator	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/gemfile_generator_test.rb	    class GemfileGenerator
 GemfileGeneratorTest	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/gemfile_generator_test.rb	class GemfileGeneratorTest 
 GeneralAdapterTest	/home/pratik/projects/bs/vendor/plugins/live-validations/test/general_adapter_test.rb	class GeneralAdapterTest 
-GeneratedAttribute	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    class GeneratedAttribute
-Generator	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  module Generator
 GuiHelpers	/home/pratik/projects/bs/lib/gui_helpers.rb	module GuiHelpers
-HAS_FORMTASTIC	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  HAS_FORMTASTIC =
-HAS_INHERITED_RESOURCES	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  HAS_INHERITED_RESOURCES =
-HAS_RSPEC	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  HAS_RSPEC =
-HAS_SHOULDA	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  HAS_SHOULDA =
-HAS_WILL_PAGINATE	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  HAS_WILL_PAGINATE =
-HELPERS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  HELPERS_PATH =
 Helpers	/home/pratik/projects/bs/lib/pie_chart.rb	  module Helpers
 InlineTemplate	/home/pratik/projects/bs/vendor/plugins/live-validations/test/test_helper.rb	class ActionView::InlineTemplate
 InstanceMethods	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	  module InstanceMethods
@@ -151,7 +102,6 @@ InvalidFormBuilderObject	/home/pratik/projects/bs/vendor/plugins/live-validation
 JqueryValidations	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapters/jquery_validations.rb	    class JqueryValidations 
 JqueryValidationsControllerOutputTest	/home/pratik/projects/bs/vendor/plugins/live-validations/test/jquery_validations_controller_output_test.rb	class JqueryValidationsControllerOutputTest 
 JqueryValidationsTest	/home/pratik/projects/bs/vendor/plugins/live-validations/test/jquery_validations_test.rb	class JqueryValidationsTest 
-LAYOUTS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  LAYOUTS_PATH =
 LiveValidationDotComControllerOutputTest	/home/pratik/projects/bs/vendor/plugins/live-validations/test/live_validation_dot_com_controller_output_test.rb	class LiveValidationDotComControllerOutputTest 
 LiveValidations	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations.rb	module LiveValidations
 LiveValidations	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/active_record_hooks.rb	module LiveValidations
@@ -171,14 +121,9 @@ LiveValidationsDotComTest	/home/pratik/projects/bs/vendor/plugins/live-validatio
 LiveValidatorGenerator	/home/pratik/projects/bs/vendor/plugins/live-validations/generators/live_validator/live_validator_generator.rb	class LiveValidatorGenerator 
 LivevalidationDotCom	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapters/livevalidation_dot_com.rb	    class LivevalidationDotCom 
 LoadData	/home/pratik/projects/bs/db/migrate/20100222050744_load_data.rb	class LoadData 
-MASS_ASSIGNMENT	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  MASS_ASSIGNMENT =
-MIGRATIONS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	  MIGRATIONS_PATH =
-MODELS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	  MODELS_PATH =
 Mappings	/home/pratik/projects/bs/lib/pie_chart.rb	  module Mappings
-MassAssignment	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	module MassAssignment
 MotionChart	/home/pratik/projects/bs/lib/pie_chart.rb	  class MotionChart
 MyApplication	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/new_configuration_generator_test.rb	module MyApplication
-NON_ATTR_ARG_KEY_PREFIX	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  NON_ATTR_ARG_KEY_PREFIX =
 NewConfigurationGenerator	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/new_configuration_generator.rb	    class NewConfigurationGenerator
 NewConfigurationGenerator	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/new_configuration_generator_test.rb	    class NewConfigurationGenerator
 NewConfigurationGeneratorTest	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/new_configuration_generator_test.rb	class NewConfigurationGeneratorTest 
@@ -202,11 +147,6 @@ ProjectsController	/home/pratik/projects/bs/app/controllers/projects_controller.
 RAILS_ROOT	/home/pratik/projects/bs/vendor/plugins/validation_reflection/test/test_helper.rb	RAILS_ROOT =
 RECURRING_TYPES	/home/pratik/projects/bs/app/models/event_series.rb	  RECURRING_TYPES =
 RED	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      RED        =
-RESOURCEFUL_COLLECTION_NAME	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  RESOURCEFUL_COLLECTION_NAME =
-RESOURCEFUL_SINGULAR_NAME	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  RESOURCEFUL_SINGULAR_NAME =
-RESPOND_TO_FEED_FORMATS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  RESPOND_TO_FEED_FORMATS =
-ROUTES_FILE_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  ROUTES_FILE_PATH =
-Rails	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	module Rails
 Rails	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	module Rails
 Rails	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/gemfile_generator.rb	module Rails
 Rails	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/new_configuration_generator.rb	module Rails
@@ -229,11 +169,6 @@ RoutesUpgraderTest	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/ro
 Routing	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	        module Routing
 RoutingErrors	/home/pratik/projects/bs/lib/routing_errors.rb	module RoutingErrors
 STATUSES	/home/pratik/projects/bs/app/models/project.rb	  STATUSES =
-SetupHelper	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/setup_helper.rb	module SetupHelper
-String	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	class String
-TESTS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  TESTS_PATH =
-TEST_PATHS	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  TEST_PATHS =
-TEST_POST_FIX	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  TEST_POST_FIX =
 TYPES	/home/pratik/projects/bs/app/models/task.rb	  TYPES =
 Tag	/home/pratik/projects/bs/app/models/tag.rb	class Tag 
 Task	/home/pratik/projects/bs/app/models/task.rb	class Task 
@@ -246,7 +181,6 @@ Timelog	/home/pratik/projects/bs/app/models/timelog.rb	class Timelog
 TimelogsController	/home/pratik/projects/bs/app/controllers/timelogs_controller.rb	class TimelogsController 
 Timesheet	/home/pratik/projects/bs/app/models/timesheet.rb	class Timesheet 
 TimesheetsController	/home/pratik/projects/bs/app/controllers/timesheets_controller.rb	class TimesheetsController 
-UNIT_TESTS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  UNIT_TESTS_PATH =
 UNTIL_TYPES	/home/pratik/projects/bs/app/models/event_series.rb	  UNTIL_TYPES =
 Ucontact	/home/pratik/projects/bs/app/models/ucontact.rb	class Ucontact 
 Upgrading	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	  module Upgrading
@@ -267,7 +201,6 @@ UserSessionsController	/home/pratik/projects/bs/app/controllers/user_sessions_co
 UsersController	/home/pratik/projects/bs/app/controllers/users_controller.rb	class UsersController 
 Usr	/home/pratik/projects/bs/app/models/usr.rb	class Usr 
 VALIDATION_METHODS	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/active_record_hooks.rb	    VALIDATION_METHODS =
-VIEWS_PATH	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  VIEWS_PATH =
 ValidationHook	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base/validation_hook.rb	    class ValidationHook
 ValidationReflection	/home/pratik/projects/bs/vendor/plugins/validation_reflection/lib/validation_reflection.rb	module ValidationReflection 
 ValidationReflectionTest	/home/pratik/projects/bs/vendor/plugins/validation_reflection/test/validation_reflection_test.rb	class ValidationReflectionTest 
@@ -293,9 +226,6 @@ add_custom_rule	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/liv
 add_heading	/home/pratik/projects/bs/lib/pie_chart.rb	    def add_heading
 add_headings_for	/home/pratik/projects/bs/lib/pie_chart.rb	    def add_headings_for
 add_line	/home/pratik/projects/bs/lib/pie_chart.rb	    def add_line
-add_options!	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	    def add_options!
-add_options!	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	    def add_options!
-add_options!	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    def add_options!
 add_options!	/home/pratik/projects/bs/vendor/plugins/event_calendar/generators/event_calendar/event_calendar_generator.rb	  def add_options!
 add_row	/home/pratik/projects/bs/lib/pie_chart.rb	    def add_row
 adjust_all_day_dates	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def adjust_all_day_dates
@@ -334,19 +264,8 @@ assert_expected_json	/home/pratik/projects/bs/vendor/plugins/live-validations/te
 assert_html	/home/pratik/projects/bs/vendor/plugins/live-validations/test/test_helper.rb	  def assert_html
 assert_no_html	/home/pratik/projects/bs/vendor/plugins/live-validations/test/test_helper.rb	  def assert_no_html
 assert_validators	/home/pratik/projects/bs/vendor/plugins/live-validations/test/live_validation_dot_com_test.rb	  def assert_validators
-assign_names!	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	    def assign_names!
 assign_tags	/home/pratik/projects/bs/app/models/article.rb	  def assign_tags
-attr_accessible?	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def attr_accessible?
 attributes	/home/pratik/projects/bs/app/models/event.rb	  def attributes
-banner	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	    def banner
-banner	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	    def banner
-banner	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    def banner
-banner_args	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	    def banner_args
-banner_args	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	    def banner_args
-banner_args	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    def banner_args
-banner_options	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	    def banner_options
-banner_options	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	    def banner_options
-banner_options	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    def banner_options
 base_path	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def base_path
 base_path	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/application_checker_test.rb	      def base_path
 basic_alert	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def basic_alert
@@ -369,7 +288,6 @@ before_validation	/home/pratik/projects/bs/app/models/timelog.rb	  def before_va
 beginning_of_week	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def beginning_of_week
 beginning_of_week	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar/calendar_helper.rb	    def beginning_of_week
 body	/home/pratik/projects/bs/lib/pie_chart.rb	    def body
-build_object	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def build_object
 cal_row_heights	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar/calendar_helper.rb	    def cal_row_heights
 calendar	/home/pratik/projects/bs/app/models/project.rb	  def calendar
 calendar	/home/pratik/projects/bs/app/models/user.rb	  def calendar
@@ -409,11 +327,6 @@ clip_range	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_cale
 clone	/home/pratik/projects/bs/app/models/task.rb	  def clone
 collection	/home/pratik/projects/bs/lib/pie_chart.rb	    attr_reader :collection, :collection_methods, :options, :size, :helpers, :procedure_hash, :name
 collection	/home/pratik/projects/bs/lib/pie_chart.rb	    attr_reader :collection, :options, :helpers, :dates, :lines, :google_chart_name
-collection	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	    def collection
-collection	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/inherited_resources_controller.rb	    def collection
-collection	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	    def collection
-collection	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/inherited_resources_controller.rb	    def collection
-collection_instance	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def collection_instance
 collection_methods	/home/pratik/projects/bs/lib/pie_chart.rb	    attr_reader :collection, :collection_methods, :options, :size, :helpers, :procedure_hash, :name
 color	/home/pratik/projects/bs/app/models/event.rb	  attr_accessor :start_hour, :start_min, :duration, :color
 color	/home/pratik/projects/bs/app/models/event.rb	  def color
@@ -423,15 +336,11 @@ color_alertabletype	/home/pratik/projects/bs/app/models/alert.rb	  def color_ale
 columns	/home/pratik/projects/bs/lib/pie_chart.rb	    def self.columns
 columns	/home/pratik/projects/bs/vendor/plugins/validation_reflection/test/validation_reflection_test.rb	      def columns
 config	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/gemfile_generator.rb	      def config
-config_gems	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/setup_helper.rb	  def config_gems
 confirm	/home/pratik/projects/bs/app/controllers/project_invitations_controller.rb	  def confirm
 confirm	/home/pratik/projects/bs/app/models/project_invitation.rb	  def confirm
 connect	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def connect
 controller_class_name	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	  def controller_class_name
-controller_file_name	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  alias_method  :controller_file_name
-controller_name	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  attr_reader   :controller_name,
 controller_name	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	  def controller_name
-controller_table_name	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  alias_method  :controller_table_name
 convert_month	/home/pratik/projects/bs/lib/gui_helpers.rb	  def convert_month
 count_nodes	/home/pratik/projects/bs/vendor/plugins/live-validations/test/test_helper.rb	  def count_nodes
 create	/home/pratik/projects/bs/app/controllers/articles_controller.rb	  def create
@@ -449,8 +358,6 @@ create	/home/pratik/projects/bs/app/controllers/tasks_controller.rb	  def create
 create	/home/pratik/projects/bs/app/controllers/timelogs_controller.rb	  def create
 create	/home/pratik/projects/bs/app/controllers/user_sessions_controller.rb	  def create
 create	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def create
-create	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def create
-create	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	  def create
 createVisitLog	/home/pratik/projects/bs/app/models/visit.rb	    def self.createVisitLog
 create_event_strips	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def create_event_strips
 create_events	/home/pratik/projects/bs/app/models/event_series.rb	  def create_events
@@ -473,8 +380,6 @@ current_project	/home/pratik/projects/bs/app/models/project.rb	  def self.curren
 current_project	/home/pratik/projects/bs/app/models/project.rb	  def self.current_project
 current_user	/home/pratik/projects/bs/lib/authentication.rb	  def current_user
 current_user_session	/home/pratik/projects/bs/lib/authentication.rb	  def current_user_session
-custom_action	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def custom_action
-custom_action	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/inherited_resources_controller.rb	  def custom_action
 custom_methods	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def custom_methods
 custom_rules	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapters/jquery_validations.rb	      def self.custom_rules
 data	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    attr_reader :data, :active_record_instance, :rendered_attributes
@@ -487,8 +392,6 @@ days	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.r
 days_between	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def days_between
 days_between	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar/calendar_helper.rb	    def days_between
 debug	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def debug
-default_for_factory	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	      def default_for_factory
-default_for_fixture	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	      def default_for_fixture
 destroy	/home/pratik/projects/bs/app/controllers/articles_controller.rb	  def destroy
 destroy	/home/pratik/projects/bs/app/controllers/assets_controller.rb	  def destroy
 destroy	/home/pratik/projects/bs/app/controllers/calendars_controller.rb	  def destroy
@@ -504,17 +407,11 @@ destroy	/home/pratik/projects/bs/app/controllers/timelogs_controller.rb	  def de
 destroy	/home/pratik/projects/bs/app/controllers/timesheets_controller.rb	  def destroy
 destroy	/home/pratik/projects/bs/app/controllers/user_sessions_controller.rb	  def destroy
 destroy	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def destroy
-destroy	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def destroy
-destroy	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	  def destroy
-destroy_path	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def destroy_path
-destroy_url	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def destroy_url
 diff	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def diff
 disp_name	/home/pratik/projects/bs/app/models/filter.rb	  def disp_name
 display_event_time	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar/calendar_helper.rb	    def display_event_time
 do_it	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	  def do_it
 down	/home/pratik/projects/bs/db/migrate/100000000000000_create_delayed_jobs.rb	  def self.down
-down	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/prototypes/active_record_migration.rb	  def self.down
-down	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/templates/models/active_record_migration.rb	  def self.down
 draw	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	            def self.draw
 duration	/home/pratik/projects/bs/app/models/event.rb	  attr_accessor :start_hour, :start_min, :duration, :color
 duration	/home/pratik/projects/bs/app/models/event.rb	  def duration
@@ -527,10 +424,6 @@ edit	/home/pratik/projects/bs/app/controllers/projects_controller.rb	  def edit
 edit	/home/pratik/projects/bs/app/controllers/registrations_controller.rb	  def edit
 edit	/home/pratik/projects/bs/app/controllers/tasks_controller.rb	  def edit
 edit	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def edit
-edit	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def edit
-edit	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	  def edit
-edit_path	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def edit_path
-edit_url	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def edit_url
 end_at_field	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	      cattr_accessor :start_at_field, :end_at_field 
 end_of_week	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar/calendar_helper.rb	    def end_of_week
 environment_code	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/gemfile_generator.rb	      def environment_code
@@ -552,13 +445,8 @@ extra_column	/home/pratik/projects/bs/lib/pie_chart.rb	    def extra_column
 extract_filenames	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def extract_filenames
 extract_filenames_from_grep	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def extract_filenames_from_grep
 extract_filenames_from_rak	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def extract_filenames_from_rak
-feed_date	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def feed_date
-feed_entry_date	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def feed_entry_date
-feed_entry_link	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def feed_entry_link
-feed_link	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def feed_link
 file_icon	/home/pratik/projects/bs/app/models/asset.rb	  def file_icon
 filter_html	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def filter_html
-find	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def self.find
 find_article	/home/pratik/projects/bs/app/controllers/articles_controller.rb	  def find_article
 find_asset	/home/pratik/projects/bs/app/controllers/assets_controller.rb	  def find_asset
 find_by_username_or_login_email	/home/pratik/projects/bs/app/models/user.rb	  def self.find_by_username_or_login_email
@@ -610,7 +498,6 @@ google_formatted_value	/home/pratik/projects/bs/lib/pie_chart.rb	    def google_
 google_type	/home/pratik/projects/bs/lib/pie_chart.rb	    def google_type
 grep_for	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def grep_for
 grep_for_with_perl_regex	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def grep_for_with_perl_regex
-gsub_file_if_missing	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/setup_helper.rb	  def gsub_file_if_missing
 handle_form_for_options	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def handle_form_for_options
 handwritten_message_for	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base/validation_hook.rb	      def handwritten_message_for
 has_environment?	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/gemfile_generator.rb	      def has_environment?
@@ -654,18 +541,8 @@ index	/home/pratik/projects/bs/app/controllers/projects_controller.rb	  def inde
 index	/home/pratik/projects/bs/app/controllers/tasks_controller.rb	  def index
 index	/home/pratik/projects/bs/app/controllers/timesheets_controller.rb	  def index
 index	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def index
-index	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def index
-index	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	  def index
-index_path	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def index_path
-index_url	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def index_url
-indexes	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	  attr_reader :indexes,
 initialize	/home/pratik/projects/bs/lib/pie_chart.rb	    def initialize
 initialize	/home/pratik/projects/bs/lib/pie_chart.rb	    def initialize
-initialize	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dmodel/dmodel_generator.rb	  def initialize
-initialize	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	  def initialize
-initialize	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def initialize
-initialize	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dscaffold/dscaffold_generator.rb	  def initialize
-initialize	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  def initialize
 initialize	/home/pratik/projects/bs/vendor/plugins/event_calendar/generators/event_calendar/event_calendar_generator.rb	  def initialize
 initialize	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def initialize
 initialize	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base/validation_hook.rb	      def initialize
@@ -693,25 +570,16 @@ label_to_color	/home/pratik/projects/bs/lib/pie_chart.rb	    def label_to_color
 last	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def last
 last	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def last
 lines	/home/pratik/projects/bs/lib/pie_chart.rb	    attr_reader :collection, :options, :helpers, :dates, :lines, :google_chart_name
-load_and_paginate_ducks	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	    alias :load_and_paginate_ducks
-load_and_paginate_resources	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	    alias :load_and_paginate_resources
 load_from_url	/home/pratik/projects/bs/app/models/calendar.rb	  def load_from_url
-load_resource	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	    alias :load_resource
-load_resource	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	    alias :load_resource
 log	/home/pratik/projects/bs/app/models/alert.rb	  def self.log
 logged_in?	/home/pratik/projects/bs/lib/authentication.rb	  def logged_in?
 login_required	/home/pratik/projects/bs/lib/authentication.rb	  def login_required
 make_file	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/application_checker_test.rb	  def make_file
-manifest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/dry_model_generator.rb	  def manifest
-manifest	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def manifest
 manifest	/home/pratik/projects/bs/vendor/plugins/event_calendar/generators/event_calendar/event_calendar_generator.rb	  def manifest
 manifest	/home/pratik/projects/bs/vendor/plugins/live-validations/generators/live_validator/live_validator_generator.rb	  def manifest
 manifest	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	                    grep_for("def manifest
 manifest	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/application_checker_test.rb	    make_file("vendor/plugins/thing/generators/thing/", "thing_generator.rb", "def manifest
 markdown	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def markdown
-mass_assignment?	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def mass_assignment?
-mass_assignment_models	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def mass_assignment_models
-mass_assignment_problem?	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def mass_assignment_problem?
 me	/home/pratik/projects/bs/app/controllers/users_controller.rb	  def me
 message_for	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base/validation_hook.rb	      def message_for
 method_missing	/home/pratik/projects/bs/lib/pie_chart.rb	    def method_missing
@@ -743,11 +611,7 @@ new	/home/pratik/projects/bs/app/controllers/tasks_controller.rb	  def new
 new	/home/pratik/projects/bs/app/controllers/timelogs_controller.rb	  def new
 new	/home/pratik/projects/bs/app/controllers/user_sessions_controller.rb	  def new
 new	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def new
-new	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def new
-new	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	  def new
-new_path	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def new_path
 new_post	/home/pratik/projects/bs/vendor/plugins/live-validations/test/active_record_hooks_test.rb	  def new_post
-new_url	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def new_url
 next_migration_number	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	  def self.next_migration_number
 no_event_bg?	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar/calendar_helper.rb	    def no_event_bg?
 on_create_project	/home/pratik/projects/bs/app/models/consumption.rb	  def self.on_create_project
@@ -766,10 +630,7 @@ path	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.r
 pie_chart_for	/home/pratik/projects/bs/lib/pie_chart.rb	    def pie_chart_for
 prefix	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def prefix
 prefix	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base/validation_hook.rb	      attr_reader :data, :callback, :prefix, :adapter_instance
-print_mass_assignment_problems	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def self.print_mass_assignment_problems
 priority_image	/home/pratik/projects/bs/app/models/task.rb	  def priority_image
-problem?	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def problem?
-problem_model?	/home/pratik/projects/bs/vendor/plugins/limerick_rake/lib/find_mass_assignment.rb	  def problem_model?
 procedure_hash	/home/pratik/projects/bs/lib/pie_chart.rb	    attr_reader :collection, :collection_methods, :options, :size, :helpers, :procedure_hash, :name
 process_html_links	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def process_html_links
 profile_image	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def profile_image
@@ -827,12 +688,7 @@ required_methods_supplied?	/home/pratik/projects/bs/lib/pie_chart.rb	    def req
 resend	/home/pratik/projects/bs/app/controllers/project_invitations_controller.rb	  def resend
 reset_callbacks	/home/pratik/projects/bs/vendor/plugins/live-validations/test/test_helper.rb	  def reset_callbacks
 reset_database	/home/pratik/projects/bs/vendor/plugins/live-validations/test/test_helper.rb	  def reset_database
-resource	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	    def resource
-resource	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/inherited_resources_controller.rb	    def resource
-resource	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	    def resource
 resource	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def resource
-resource_instance	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def resource_instance
-resource_route_exists?	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	    def resource_route_exists?
 resources	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def resources
 respond	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base/validation_response.rb	      def respond
 response	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def self.response
@@ -869,7 +725,6 @@ send_emails_to_invitees	/home/pratik/projects/bs/app/models/event_series.rb	  de
 set_article_delta_flag	/home/pratik/projects/bs/app/models/article.rb	  def set_article_delta_flag
 set_current_user_in_model	/home/pratik/projects/bs/lib/authentication.rb	  def set_current_user_in_model
 set_dates	/home/pratik/projects/bs/app/models/event.rb	  def set_dates
-set_test_framework	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    def set_test_framework
 set_user_time_zone	/home/pratik/projects/bs/app/controllers/application_controller.rb	  def set_user_time_zone
 setup	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def self.setup
 setup	/home/pratik/projects/bs/vendor/plugins/live-validations/test/active_record_hooks_test.rb	  def setup
@@ -895,11 +750,7 @@ show	/home/pratik/projects/bs/app/controllers/projects_controller.rb	  def show
 show	/home/pratik/projects/bs/app/controllers/tasks_controller.rb	  def show
 show	/home/pratik/projects/bs/app/controllers/users_controller.rb	  def show
 show	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def show
-show	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def show
-show	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	  def show
 show_flash_messages	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def show_flash_messages
-show_path	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def show_path
-show_url	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/dry_scaffold_generator.rb	  def show_url
 signup	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/application_checker_test.rb	    make_file("app/controllers/", "thing_controller.rb", "def signup
 signup	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/application_checker_test.rb	    make_file("app/models/", "notifications.rb", "def signup
 signup	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/test/application_checker_test.rb	    make_file("app/models/", "notifications.rb", "def signup
@@ -915,7 +766,6 @@ smart_due_date	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def 
 smart_due_date_s	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def smart_due_date_s
 sort_link	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def sort_link
 sort_order	/home/pratik/projects/bs/lib/gui_helpers.rb	  def sort_order
-source_path	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  def source_path
 space_in_current_strips?	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def space_in_current_strips?
 ssl_required	/home/pratik/projects/bs/app/controllers/application_controller.rb	  def ssl_required
 ssl_supported?	/home/pratik/projects/bs/app/controllers/application_controller.rb	  def ssl_supported?
@@ -933,7 +783,6 @@ sub	/home/pratik/projects/bs/app/models/consumption.rb	  def self.sub
 suggest	/home/pratik/projects/bs/app/controllers/articles_controller.rb	  def suggest
 suggest	/home/pratik/projects/bs/app/controllers/expenses_controller.rb	  def suggest
 suggest	/home/pratik/projects/bs/app/controllers/timesheets_controller.rb	  def suggest
-symbol_array_to_expression	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	    def symbol_array_to_expression
 table_name	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	  def table_name
 tag_list	/home/pratik/projects/bs/app/models/article.rb	  attr_writer :tag_list
 tag_list	/home/pratik/projects/bs/app/models/article.rb	  def tag_list
@@ -1078,6 +927,7 @@ timesheet_description	/home/pratik/projects/bs/app/models/timelog.rb	  attr_acce
 to_date	/home/pratik/projects/bs/lib/gui_helpers.rb	  def to_date
 to_date_time	/home/pratik/projects/bs/lib/gui_helpers.rb	  def to_date_time
 to_json_with_function_awareness	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapters/jquery_validations.rb	      def self.to_json_with_function_awareness
+to_key	/home/pratik/projects/bs/app/models/user_session.rb	  def to_key
 to_label	/home/pratik/projects/bs/app/models/decode.rb	  def to_label
 to_name	/home/pratik/projects/bs/app/models/project_role.rb	  def to_name
 to_param	/home/pratik/projects/bs/app/models/project.rb	  def to_param
@@ -1105,8 +955,6 @@ up	/home/pratik/projects/bs/db/migrate/100000000000000_create_delayed_jobs.rb	  
 up	/home/pratik/projects/bs/db/migrate/20090517050905_create_tables.rb	  def self.up
 up	/home/pratik/projects/bs/db/migrate/20100222050744_load_data.rb	  def self.up
 up	/home/pratik/projects/bs/db/migrate/99999999999999_add_indexes.rb	  def self.up
-up	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/prototypes/active_record_migration.rb	  def self.up
-up	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_model/templates/models/active_record_migration.rb	  def self.up
 upcomingheader	/home/pratik/projects/bs/app/models/event.rb	  def upcomingheader
 update	/home/pratik/projects/bs/app/controllers/articles_controller.rb	  def update
 update	/home/pratik/projects/bs/app/controllers/contacts_controller.rb	  def update
@@ -1120,8 +968,6 @@ update	/home/pratik/projects/bs/app/controllers/registrations_controller.rb	  de
 update	/home/pratik/projects/bs/app/controllers/tasks_controller.rb	  def update
 update	/home/pratik/projects/bs/app/controllers/timesheets_controller.rb	  def update
 update	/home/pratik/projects/bs/app/controllers/wiki_pages_controller.rb	  def update
-update	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/prototypes/controllers/action_controller.rb	  def update
-update	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dry_scaffold/templates/controllers/action_controller.rb	  def update
 updateCoords	/home/pratik/projects/bs/public/lib/Jcrop/demos/crop.php	function updateCoords(
 update_series	/home/pratik/projects/bs/app/models/event.rb	  def update_series
 upgrade_routes	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      def upgrade_routes
@@ -1129,8 +975,6 @@ url	/home/pratik/projects/bs/app/models/asset.rb	  def url
 url_name	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def url_name
 url_name	/home/pratik/projects/bs/lib/gui_helpers.rb	  def url_name
 url_only	/home/pratik/projects/bs/app/helpers/application_helper.rb	  def url_only
-usage_message	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dmodel/dmodel_generator.rb	  def usage_message
-usage_message	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/generators/dscaffold/dscaffold_generator.rb	  def usage_message
 use	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations.rb	  def use
 user	/home/pratik/projects/bs/app/models/calendar.rb	  def user
 utilizes_inline_javascript?	/home/pratik/projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def utilizes_inline_javascript?
@@ -1154,6 +998,5 @@ versions_desc	/home/pratik/projects/bs/app/models/wiki_page.rb	  def versions_de
 view	/home/pratik/projects/bs/vendor/plugins/live-validations/test/test_helper.rb	  def view
 view_name	/home/pratik/projects/bs/vendor/plugins/event_calendar/generators/event_calendar/event_calendar_generator.rb	  attr_reader :class_name, :view_name
 view_name	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	  def view_name
-view_template_format	/home/pratik/projects/bs/vendor/plugins/dry_scaffold/lib/dry_generator.rb	  attr_accessor :view_template_format,
 weekend?	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar/calendar_helper.rb	    def weekend?
 year	/home/pratik/projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def year
