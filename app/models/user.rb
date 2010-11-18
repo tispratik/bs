@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :project_invitations
   has_many :articles
   has_many :timesheets, :through => :projects 
-  
+
   alias :roles :project_roles
   accepts_nested_attributes_for :usr, :ucontact
   
@@ -56,11 +56,11 @@ class User < ActiveRecord::Base
     find_by_username(login) || find_by_login_email(login)
   end
   
-  def after_create
-    calendars.create(:name => "default")
+  after_create do
+    self.calendars.create(:name => "default")
     # set current user_id for pending project and event invitations.
-    ProjectInvitation.update_all({:user_id => id}, {:user_email => login_email})
-    EventInvitee.update_all({:user_id => id}, {:user_email => login_email})
+    ProjectInvitation.create :user_id => id, :user_email => login_email
+    EventInvitee.create :user_id => id, :user_email => login_email
   end
   
   def my_projects_with_roles

@@ -1,4 +1,4 @@
-1289689436
+1290062134
 ANY	/home/pratik/projects/bs/app/models/decode.rb	  ANY =
 ActionController	/home/pratik/projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      module ActionController
 ActiveModel	/home/pratik/projects/bs/vendor/plugins/custom-err-msg/lib/custom_error_message.rb	module ActiveModel
@@ -235,7 +235,6 @@ after_create	/home/pratik/projects/bs/app/models/comment_observer.rb	  def after
 after_create	/home/pratik/projects/bs/app/models/project.rb	  def after_create
 after_create	/home/pratik/projects/bs/app/models/project_invitation.rb	  def after_create
 after_create	/home/pratik/projects/bs/app/models/task_observer.rb	  def after_create
-after_create	/home/pratik/projects/bs/app/models/user.rb	  def after_create
 after_create	/home/pratik/projects/bs/app/models/wiki_page_observer.rb	  def after_create
 after_destroy	/home/pratik/projects/bs/app/models/article_observer.rb	  def after_destroy
 after_destroy	/home/pratik/projects/bs/app/models/asset_observer.rb	  def after_destroy
@@ -278,10 +277,8 @@ before_create	/home/pratik/projects/bs/app/models/wiki_page.rb	  def before_crea
 before_save	/home/pratik/projects/bs/app/models/event_series.rb	  def before_save
 before_update	/home/pratik/projects/bs/app/models/asset.rb	  def before_update
 before_validation	/home/pratik/projects/bs/app/models/comment.rb	  def before_validation
-before_validation	/home/pratik/projects/bs/app/models/event.rb	  def before_validation
 before_validation	/home/pratik/projects/bs/app/models/event_series.rb	  def before_validation
 before_validation	/home/pratik/projects/bs/app/models/expenselog.rb	  def before_validation
-before_validation	/home/pratik/projects/bs/app/models/project.rb	  def before_validation
 before_validation	/home/pratik/projects/bs/app/models/project_role.rb	  def before_validation
 before_validation	/home/pratik/projects/bs/app/models/task.rb	  def before_validation
 before_validation	/home/pratik/projects/bs/app/models/timelog.rb	  def before_validation

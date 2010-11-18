@@ -39,5 +39,5 @@ class ProjectLogosController < ApplicationController
     @project.project_logo.destroy
     redirect_to(project_project_logo_path(@project_logo))
   end
-
+  
 end

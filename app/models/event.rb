@@ -23,11 +23,11 @@ class Event < ActiveRecord::Base
   end
   
   scope :all_events_for_users, lambda { |user_ids|
-    { where("created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids) }
+    where("created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids)
   }
+  
   scope :all_events_for_project_or_users, lambda { |project_id, user_ids|
-    { where("(calendars.calendarable_type='Project' and calendars.calendarable_id=?) or created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", project_id, user_ids, user_ids).joins(:calendar)
-    }
+    where("(calendars.calendarable_type='Project' and calendars.calendarable_id=?) or created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", project_id, user_ids, user_ids).joins(:calendar)
   }
   
   def attributes=(new_attributes, guard_protected_attributes = true)
@@ -61,7 +61,7 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def before_validation(:on => :create) do
+  before_validation(:on => :create) do
     self.created_by = User.curr_user.id
   end
   
