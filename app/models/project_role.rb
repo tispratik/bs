@@ -5,9 +5,11 @@ class ProjectRole < ActiveRecord::Base
   belongs_to :user
   
   validates_presence_of :project, :user, :name
-
-  before_validation :set_name
   
+  before_validation(:on => :create) do
+    self.name ||= 'O'
+  end
+      
   def to_name
     if self.name == "O"
       return "Owner"
@@ -17,7 +19,4 @@ class ProjectRole < ActiveRecord::Base
     end
   end
   
-  def set_name
-    self.name ||= 'O'
-  end
 end

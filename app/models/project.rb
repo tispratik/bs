@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink
     
-  after_create :create_calendar, :create_role
+  after_create :create_calendar_for_project, :make_project_owner
   
   def owner
     p = ProjectRole.find_by_project_id_and_name(id, "O")
@@ -64,13 +64,13 @@ class Project < ActiveRecord::Base
     self.permalink = Authlogic::Random.friendly_token
   end
   
-  def create_calendar
-    calendars.create(:name => "default")
+  def create_calendar_for_project
+    self.calendars.create(:name => "default")
   end
   
-  def create_role
+  def make_project_owner
     #Make owner of project when created
-    roles.create(:user => User.curr_user)
+    self.roles.create(:user => User.curr_user, :name => "O")
   end
   
   def calendar
