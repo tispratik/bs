@@ -1,4 +1,4 @@
-1290495730
+1290499462
 ANY	/home/pratik/Projects/bs/app/models/decode.rb	  ANY =
 ActionController	/home/pratik/Projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      module ActionController
 ActiveModel	/home/pratik/Projects/bs/vendor/plugins/custom-err-msg/lib/custom_error_message.rb	module ActiveModel
@@ -977,12 +977,12 @@ url_only	/home/pratik/Projects/bs/app/helpers/application_helper.rb	  def url_on
 use	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations.rb	  def use
 user	/home/pratik/Projects/bs/app/models/calendar.rb	  def user
 utilizes_inline_javascript?	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def utilizes_inline_javascript?
+validate	/home/pratik/Projects/bs/app/controllers/registrations_controller.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/calendar.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/event.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/event_series.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/user.rb	  def validate
 validate_login_email	/home/pratik/Projects/bs/app/models/user.rb	  def validate_login_email
-validate_user	/home/pratik/Projects/bs/app/controllers/registrations_controller.rb	  def validate_user
 validates	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def self.validates
 validates_	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/active_record_hooks.rb	            def validates_
 validates_positive_or_zero	/home/pratik/Projects/bs/lib/validations.rb	def validates_positive_or_zero

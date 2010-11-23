@@ -1,7 +1,6 @@
 class RegistrationsController < ApplicationController
 
   skip_before_filter :login_required, :except => [:edit, :update]
-  Base.validate :validate_user
   
   def new
     @user = User.new(:ucontact => Ucontact.new, :usr => Usr.new)
@@ -19,7 +18,7 @@ class RegistrationsController < ApplicationController
     end
   end
   
-  def validate_user
+  def validate
     @user = User.new(params[:user])
     @user.valid?
     errors = {}
@@ -38,7 +37,6 @@ class RegistrationsController < ApplicationController
     @cities = City.all(:conditions => {:region_id => params[:region_id]})
     render :layout => false
   end
-  
   
   def edit
     @user = current_user
