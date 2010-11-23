@@ -4,11 +4,14 @@ class ProjectInvitation < ActiveRecord::Base
   
   validates_presence_of :project, :user_email
   
-  def before_create
+  before_create :create_sha_token
+  after_create :create_calendar_event
+  
+  def create_sha_token
     self.token = Digest::SHA1.hexdigest "#{Time.now.to_i}-#{rand(10**10)}"
   end
   
-  def after_create
+  def create_calendar_event
     if user.present? && user.calendar.present?
       user.calendar.events.create(:summary => "Invitation to project #{project}", :start_at => Time.now, :end_at => Time.now)
     end

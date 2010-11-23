@@ -1,6 +1,7 @@
 class RegistrationsController < ApplicationController
 
   skip_before_filter :login_required, :except => [:edit, :update]
+  Base.validate :validate_user
   
   def new
     @user = User.new(:ucontact => Ucontact.new, :usr => Usr.new)
@@ -18,7 +19,7 @@ class RegistrationsController < ApplicationController
     end
   end
   
-  def validate
+  def validate_user
     @user = User.new(params[:user])
     @user.valid?
     errors = {}

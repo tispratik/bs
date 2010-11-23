@@ -26,4 +26,6 @@ Bs::Application.configure do
   #Rails2
   config.log_level = :debug
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.colorize_logging = false
+
 end

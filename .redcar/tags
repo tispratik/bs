@@ -1,4 +1,4 @@
-1290491965
+1290495730
 ANY	/home/pratik/Projects/bs/app/models/decode.rb	  ANY =
 ActionController	/home/pratik/Projects/bs/vendor/plugins/rails_upgrade/lib/routes_upgrader.rb	      module ActionController
 ActiveModel	/home/pratik/Projects/bs/vendor/plugins/custom-err-msg/lib/custom_error_message.rb	module ActiveModel
@@ -232,14 +232,11 @@ adjust_all_day_dates	/home/pratik/Projects/bs/vendor/plugins/event_calendar/lib/
 after_create	/home/pratik/Projects/bs/app/models/article_observer.rb	  def after_create
 after_create	/home/pratik/Projects/bs/app/models/asset_observer.rb	  def after_create
 after_create	/home/pratik/Projects/bs/app/models/comment_observer.rb	  def after_create
-after_create	/home/pratik/Projects/bs/app/models/project.rb	  def after_create
-after_create	/home/pratik/Projects/bs/app/models/project_invitation.rb	  def after_create
 after_create	/home/pratik/Projects/bs/app/models/task_observer.rb	  def after_create
 after_create	/home/pratik/Projects/bs/app/models/wiki_page_observer.rb	  def after_create
 after_destroy	/home/pratik/Projects/bs/app/models/article_observer.rb	  def after_destroy
 after_destroy	/home/pratik/Projects/bs/app/models/asset_observer.rb	  def after_destroy
 after_initialize	/home/pratik/Projects/bs/app/models/event_series.rb	  def after_initialize
-after_save	/home/pratik/Projects/bs/app/models/event.rb	  def after_save
 after_update	/home/pratik/Projects/bs/app/models/event_series.rb	  def after_update
 after_update	/home/pratik/Projects/bs/app/models/task_observer.rb	  def after_update
 after_update	/home/pratik/Projects/bs/app/models/wiki_page_observer.rb	  def after_update
@@ -270,16 +267,12 @@ base_path	/home/pratik/Projects/bs/vendor/plugins/rails_upgrade/test/application
 basic_alert	/home/pratik/Projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def basic_alert
 before_create	/home/pratik/Projects/bs/app/models/article.rb	  def before_create
 before_create	/home/pratik/Projects/bs/app/models/asset.rb	  def before_create
-before_create	/home/pratik/Projects/bs/app/models/calendar.rb	  def before_create
-before_create	/home/pratik/Projects/bs/app/models/event.rb	  def before_create
-before_create	/home/pratik/Projects/bs/app/models/project_invitation.rb	  def before_create
 before_create	/home/pratik/Projects/bs/app/models/wiki_page.rb	  def before_create
 before_save	/home/pratik/Projects/bs/app/models/event_series.rb	  def before_save
 before_update	/home/pratik/Projects/bs/app/models/asset.rb	  def before_update
 before_validation	/home/pratik/Projects/bs/app/models/comment.rb	  def before_validation
 before_validation	/home/pratik/Projects/bs/app/models/event_series.rb	  def before_validation
 before_validation	/home/pratik/Projects/bs/app/models/expenselog.rb	  def before_validation
-before_validation	/home/pratik/Projects/bs/app/models/project_role.rb	  def before_validation
 before_validation	/home/pratik/Projects/bs/app/models/task.rb	  def before_validation
 before_validation	/home/pratik/Projects/bs/app/models/timelog.rb	  def before_validation
 beginning_of_week	/home/pratik/Projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def beginning_of_week
@@ -356,10 +349,18 @@ create	/home/pratik/Projects/bs/app/controllers/timelogs_controller.rb	  def cre
 create	/home/pratik/Projects/bs/app/controllers/user_sessions_controller.rb	  def create
 create	/home/pratik/Projects/bs/app/controllers/wiki_pages_controller.rb	  def create
 createVisitLog	/home/pratik/Projects/bs/app/models/visit.rb	    def self.createVisitLog
+create_calendar	/home/pratik/Projects/bs/app/models/project.rb	  def create_calendar
+create_calendar	/home/pratik/Projects/bs/app/models/user.rb	  def create_calendar
+create_calendar_event	/home/pratik/Projects/bs/app/models/project_invitation.rb	  def create_calendar_event
+create_event_invite	/home/pratik/Projects/bs/app/models/user.rb	  def create_event_invite
 create_event_strips	/home/pratik/Projects/bs/vendor/plugins/event_calendar/lib/event_calendar.rb	    def create_event_strips
 create_events	/home/pratik/Projects/bs/app/models/event_series.rb	  def create_events
 create_fake_column	/home/pratik/Projects/bs/vendor/plugins/validation_reflection/test/validation_reflection_test.rb	      def create_fake_column
 create_post	/home/pratik/Projects/bs/vendor/plugins/live-validations/test/active_record_hooks_test.rb	  def create_post
+create_private_url_hash	/home/pratik/Projects/bs/app/models/calendar.rb	  def create_private_url_hash
+create_project_invite	/home/pratik/Projects/bs/app/models/user.rb	  def create_project_invite
+create_role	/home/pratik/Projects/bs/app/models/project.rb	  def create_role
+create_sha_token	/home/pratik/Projects/bs/app/models/project_invitation.rb	  def create_sha_token
 crop_command	/home/pratik/Projects/bs/lib/paperclip_processors/cropper.rb	    def crop_command
 crop_h	/home/pratik/Projects/bs/app/models/project_logo.rb	  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 crop_w	/home/pratik/Projects/bs/app/models/project_logo.rb	  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
@@ -713,6 +714,7 @@ ruby_to_google_type	/home/pratik/Projects/bs/lib/pie_chart.rb	    def self.ruby_
 ruby_to_javascript_object	/home/pratik/Projects/bs/lib/pie_chart.rb	    def self.ruby_to_javascript_object
 ruby_to_javascript_options	/home/pratik/Projects/bs/lib/pie_chart.rb	    def ruby_to_javascript_options
 run	/home/pratik/Projects/bs/vendor/plugins/rails_upgrade/lib/application_checker.rb	      def run
+run_after_save	/home/pratik/Projects/bs/app/models/event.rb	  def run_after_save
 run_validation	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base/validation_hook.rb	      def run_validation
 run_validations	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def run_validations
 search	/home/pratik/Projects/bs/app/controllers/articles_controller.rb	  def search
@@ -721,6 +723,8 @@ send_emails_to_invitees	/home/pratik/Projects/bs/app/models/event_series.rb	  de
 set_article_delta_flag	/home/pratik/Projects/bs/app/models/article.rb	  def set_article_delta_flag
 set_current_user_in_model	/home/pratik/Projects/bs/lib/authentication.rb	  def set_current_user_in_model
 set_dates	/home/pratik/Projects/bs/app/models/event.rb	  def set_dates
+set_name	/home/pratik/Projects/bs/app/models/project_role.rb	  def set_name
+set_uid	/home/pratik/Projects/bs/app/models/event.rb	  def set_uid
 set_user_time_zone	/home/pratik/Projects/bs/app/controllers/application_controller.rb	  def set_user_time_zone
 setup	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def self.setup
 setup	/home/pratik/Projects/bs/vendor/plugins/live-validations/test/active_record_hooks_test.rb	  def setup
@@ -973,12 +977,12 @@ url_only	/home/pratik/Projects/bs/app/helpers/application_helper.rb	  def url_on
 use	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations.rb	  def use
 user	/home/pratik/Projects/bs/app/models/calendar.rb	  def user
 utilizes_inline_javascript?	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def utilizes_inline_javascript?
-validate	/home/pratik/Projects/bs/app/controllers/registrations_controller.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/calendar.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/event.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/event_series.rb	  def validate
 validate	/home/pratik/Projects/bs/app/models/user.rb	  def validate
 validate_login_email	/home/pratik/Projects/bs/app/models/user.rb	  def validate_login_email
+validate_user	/home/pratik/Projects/bs/app/controllers/registrations_controller.rb	  def validate_user
 validates	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/adapter_base.rb	    def self.validates
 validates_	/home/pratik/Projects/bs/vendor/plugins/live-validations/lib/live_validations/active_record_hooks.rb	            def validates_
 validates_positive_or_zero	/home/pratik/Projects/bs/lib/validations.rb	def validates_positive_or_zero

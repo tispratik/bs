@@ -9,11 +9,15 @@ Bs::Application.routes.draw do
     get :cities
   end
   
-  scope '/session', :name_prefix => nil do
-    get '/sign_in' => 'user_sessions#new', :as => :new_user_session
-    post '/sign_in' => 'user_sessions#create', :as => :user_session
-    get '/sign_out' => 'user_sessions#destroy', :as => :destroy_user_session
-  end
+  # resource :user_session do
+  #   get '/sign_in' => 'user_sessions#new', :as => :new_user_session
+  #   post '/sign_in' => 'user_sessions#create', :as => :user_session
+  #   get '/sign_out' => 'user_sessions#destroy', :as => :destroy_user_session
+  # end
+  
+  get '/sign_in' => 'user_sessions#new', :as => :new_user_session
+  post '/sign_in' => 'user_sessions#create', :as => :user_session
+  get '/sign_out' => 'user_sessions#destroy', :as => :destroy_user_session
   
   resources :users do
     resources :calendars

@@ -5,6 +5,8 @@ class ProjectRole < ActiveRecord::Base
   belongs_to :user
   
   validates_presence_of :project, :user, :name
+
+  before_validation :set_name
   
   def to_name
     if self.name == "O"
@@ -15,7 +17,7 @@ class ProjectRole < ActiveRecord::Base
     end
   end
   
-  def before_validation
+  def set_name
     self.name ||= 'O'
   end
 end

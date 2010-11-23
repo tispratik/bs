@@ -6,9 +6,10 @@ class Calendar < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :event_series, :dependent => :destroy
   
-  after_create :load_from_url, :if => "url.present?"
-  
-  def before_create
+  before_create :load_from_url, :if => "url.present?"
+  after_create :create_private_url_hash
+    
+  def create_private_url_hash
     self.private_url_hash = Digest::SHA1.hexdigest("#{name} #{Time.now} #{rand(10**10)}")
   end
   

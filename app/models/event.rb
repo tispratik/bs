@@ -22,6 +22,9 @@ class Event < ActiveRecord::Base
     :set_dates
   end
   
+  before_create :set_uid
+  after_save :run_after_save
+  
   scope :all_events_for_users, lambda { |user_ids|
     where("created_by in (?) or 0 < (select count(id) from event_invitees where event_id=events.id and user_id in (?))", user_ids, user_ids)
   }
@@ -51,7 +54,7 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def before_create
+  def set_uid
     self.uid = "calendar@#{Digest::SHA1.hexdigest((Time.now.to_f + rand).to_s)}" unless uid.present?
   end
   
@@ -65,7 +68,7 @@ class Event < ActiveRecord::Base
     self.created_by = User.curr_user.id
   end
   
-  def after_save
+  def run_after_save
     if @invitees.present?
       if @invitees.is_a?(String)
         @invitees = @invitees.split(/,\s*/)

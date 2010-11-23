@@ -4,7 +4,7 @@
 
 = render :partial => "events/upcoming", :locals => {:events => @user.events}
 
-- invites = @user.project_invitations.confirmed_is(false)
+- invites = @user.project_invitations.confirmed_eq(false)
 
 - if logged_in? && invites.size > 0
   %h3 Incoming Project Invitations

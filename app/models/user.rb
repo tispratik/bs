@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   validates_associated :usr, :ucontact
   #validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? } --> Name Nanny Plugin not available in Rails3
 
+  after_create :create_calendar, :create_project_invite, :create_event_invite
+  
   def total_hours(pid)
     timesheetsvar = Timesheet.all(:conditions => { :project_id => pid, :user_id => id})
     totalhours = 0
@@ -56,10 +58,16 @@ class User < ActiveRecord::Base
     find_by_username(login) || find_by_login_email(login)
   end
   
-  after_create do
+  def create_calendar
     self.calendars.create(:name => "default")
+  end
+  
+  def create_project_invite
     # set current user_id for pending project and event invitations.
-    ProjectInvitation.create :user_id => id, :user_email => login_email
+    ProjectInvitation.create :user_id => id, :user_email => login_email    
+  end
+  
+  def create_event_invite
     EventInvitee.create :user_id => id, :user_email => login_email
   end
   
