@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
   end
   
   def ssl_supported?
-    if Rails.env = 'production'
-      false
+    if Rails.env == 'production'
+      true
     end
   end
   
