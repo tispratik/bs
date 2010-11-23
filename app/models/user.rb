@@ -59,12 +59,12 @@ class User < ActiveRecord::Base
   end
   
   def create_calendar
-    self.calendars.create(:name => "default")
+    self.calendars.create :name => "default"
   end
   
   def create_project_invite
     # set current user_id for pending project and event invitations.
-    ProjectInvitation.create :user_id => id, :user_email => login_email    
+    self.project_invitations.create :user_email => login_email
   end
   
   def create_event_invite
@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   end
   
   def my_projects_with_roles
-    ProjectRole.all(:conditions => {:user_id => id}, :include => :project)
+    ProjectRole.where(:user_id => id).includes(:project)
   end
   
   def calendar

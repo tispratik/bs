@@ -3,7 +3,7 @@ class ProjectInvitation < ActiveRecord::Base
   belongs_to :user
   
   validates_presence_of :project, :user_email
-  
+
   before_create :create_sha_token
   after_create :create_calendar_event
   
