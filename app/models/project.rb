@@ -4,12 +4,12 @@ class Project < ActiveRecord::Base
   
   has_one :project_logo
   has_one :contact, :as => :contactable
+  has_one :calendar, :as => :calendarable
   has_many :project_roles, :dependent => :destroy
   has_many :users, :through => :project_roles
   has_many :tasks
   has_many :alerts
   has_many :timesheets
-  has_one :calendar, :as => :calendarable
   has_many :calendars, :as => :calendarable
   has_many :events, :through => :calendars
   has_many :wiki_pages
@@ -21,10 +21,10 @@ class Project < ActiveRecord::Base
   has_many :expenses
   has_many :expenselogs
   has_many :consumptions
+  has_many :project_invitations
   belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
   belongs_to :currency, :class_name => 'Country', :foreign_key => "currency_code"
   
-  has_many :project_invitations
   alias :invitations :project_invitations
   alias :roles :project_roles
   
@@ -33,31 +33,27 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink
-    
+  
+  before_validation :run_before_validation, :on => :create
   after_create :create_calendar_for_project, :make_project_owner
   
   def owner
-    p = ProjectRole.find_by_project_id_and_name(id, "O")
-    return p.user
+    ProjectRole.find_by_project_id_and_name(id, "O").user
   end
-  
-#  def currency_country
-#    Country.find_by_id(currency_code)
-#  end
   
   def getnotify(userid)
     Notification.find_by_project_id_and_user_id(id, userid)
   end
   
   def is_archieved?
-    if status == Decode::BS_PROJ_STATUS_CL
+    if self.status == Decode::BS_PROJ_STATUS_CL
       return true
     else
       return false
     end
   end
-  
-  before_validation(:on => :create) do
+    
+  def run_before_validation
     self.alias = 'PROJ' + id.to_s
     self.is_public = 0
     self.status = Decode::BS_PROJ_STATUS_AC
@@ -70,7 +66,7 @@ class Project < ActiveRecord::Base
   
   def make_project_owner
     #Make owner of project when created
-    self.roles.create(:user => User.curr_user, :name => "O")
+    self.roles.create(:user => User.curr_user, :name => 'O')
   end
   
   def calendar

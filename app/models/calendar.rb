@@ -8,12 +8,13 @@ class Calendar < ActiveRecord::Base
   
   before_create :load_from_url, :if => "url.present?"
   after_create :create_private_url_hash
-    
+  validate :validate_url
+  
   def create_private_url_hash
     self.private_url_hash = Digest::SHA1.hexdigest("#{name} #{Time.now} #{rand(10**10)}")
   end
   
-  def validate
+  def validate_url
     unless name == "default"
       errors.add(:url, "can't be blank") unless url.present?
     end

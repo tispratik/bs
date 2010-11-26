@@ -5,7 +5,7 @@ gem 'mysql'
 gem 'authlogic'
 gem 'haml'
 gem 'acts_as_tree'
-gem 'will_paginate'
+gem "will_paginate", :git => "git://github.com/mislav/will_paginate.git", :branch => "rails3"
 gem 'vestal_versions'
 gem 'htmldiff'
 gem 'ri_cal'
@@ -21,7 +21,6 @@ gem 'delayed_job'
 gem 'ts-delayed-delta'
 gem 'bluepill'
 gem 'daemons'
-gem 'constant_cache'
 gem 'paperclip'
 #gem 'live_validations' --> Not found in Rails3
 #gem 'name_nanny' --> Not found in Rails3

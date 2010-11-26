@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   validates :login_email, :username, :presence => true
   validates_associated :usr, :ucontact
   #validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? } --> Name Nanny Plugin not available in Rails3
-
+  validate :validate_login_email
   after_create :create_calendar, :create_project_invite, :create_event_invite
   
   def total_hours(pid)
@@ -37,10 +37,6 @@ class User < ActiveRecord::Base
   
   def is_archieved?
     return false
-  end
-  
-  def validate
-    validate_login_email
   end
   
   def validate_login_email

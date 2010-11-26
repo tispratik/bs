@@ -10,6 +10,10 @@ class EventSeries < ActiveRecord::Base
   validates_presence_of :calendar_id
   
   after_create :create_events
+  before_save :update_changed_attrs
+  before_validation :set_variables, :on => :create
+  validate :validate_custom
+  after_update :run_after_update
   
   attr_accessor :duration, :repeat_until
   attr_accessor :start_at_date
@@ -24,14 +28,14 @@ class EventSeries < ActiveRecord::Base
     end
   end
   
-  def before_validation(:on => :create)
+  def set_variables
     if duration
       self.end_at = start_at + duration.to_i.hours
     end
     self.created_by = User.curr_user.id
   end
   
-  def validate
+  def validate_custom
     if start_at > end_at
       errors.add(:start_at, 'must be earlier than end date')
     end
@@ -40,13 +44,13 @@ class EventSeries < ActiveRecord::Base
     end
   end
   
-  def before_save
+  def update_changed_attrs
     self.on_wdays = (on_wdays & WDAYS)
     @changed_attrs = changed
     @changed_attrs.delete("invitees_emails_sent")
   end
   
-  def after_update
+  def run_after_update
     series_changes = ["start_at", "end_at", "repeat_frequency", "repeat_interval", "repeat_until_date", "repeat_until_count", "on_wdays"]
     if @changed_attrs.any?{|c| series_changes.include?(c) }
       create_events

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/mislav/will_paginate.git
+  revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
+  branch: rails3
+  specs:
+    will_paginate (3.0.pre3)
+
+GIT
   remote: git://github.com/rails/exception_notification
   revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
   specs:
@@ -51,9 +58,6 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
-    constant_cache (0.0.2)
-      activerecord (>= 2.0.2)
-      activesupport (>= 2.0.2)
     daemons (1.1.0)
     delayed_job (2.1.1)
       activesupport (~> 3.0)
@@ -99,7 +103,7 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    paperclip (2.3.5)
+    paperclip (2.3.6)
       activerecord
       activesupport
     polyglot (0.3.1)
@@ -154,7 +158,6 @@ GEM
     url_store (0.3.0)
     vestal_versions (1.0.2)
       activerecord (>= 2.1.0)
-    will_paginate (2.3.15)
 
 PLATFORMS
   ruby
@@ -164,7 +167,6 @@ DEPENDENCIES
   authlogic
   bluepill
   capistrano
-  constant_cache
   daemons
   delayed_job
   email_veracity
@@ -190,4 +192,4 @@ DEPENDENCIES
   ts-delayed-delta
   url_store
   vestal_versions
-  will_paginate
+  will_paginate!

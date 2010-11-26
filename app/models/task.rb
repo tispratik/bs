@@ -18,6 +18,7 @@ class Task < ActiveRecord::Base
   scope :my_related, lambda { where('(created_by = ? OR updated_by = ?) AND assign_to != ?', User.cid, User.cid, User.cid)}
 
   validates_presence_of :name, :assign_to, :task_type, :priority 
+  before_validation :run_before_validation
   
   def priority_image
     case priority
@@ -48,7 +49,7 @@ class Task < ActiveRecord::Base
     name
   end
   
-  def before_validation
+  def run_before_validation
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id
     self.status = Decode::BS_TASK_STATUS_OP

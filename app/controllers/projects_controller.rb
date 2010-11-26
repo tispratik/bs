@@ -32,11 +32,11 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     
     if @project.save
-      Consumption.on_create_project(@project.id)
+      #Consumption.on_create_project(@project.id)
       flash[:notice] = 'Project was successfully created.'
       redirect_to @project
     else
-      render :new
+      redirect_to :back
     end
   end
   

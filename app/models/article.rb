@@ -15,6 +15,7 @@ class Article < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   
   after_save :assign_tags
+  before_create :set_creator_updator
   before_save :set_article_delta_flag
   
   define_index do
@@ -35,17 +36,17 @@ class Article < ActiveRecord::Base
     title
   end
   
-  def before_create
-    self.created_by = User.curr_user.id
-    self.updated_by = User.curr_user.id
-  end
-  
   attr_writer :tag_list
   def tag_list
     @tag_list || tags.map(&:name).join(', ')
   end
   
   private
+  
+  def set_creator_updator
+    self.created_by = User.curr_user.id
+    self.updated_by = User.curr_user.id
+  end
   
   def set_article_delta_flag
     self.delta = true

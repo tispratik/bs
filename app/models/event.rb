@@ -18,11 +18,9 @@ class Event < ActiveRecord::Base
   attr_accessor :repeat_frequency, :repeat_until, :repeat_until_date, :repeat_until_count, :on_wdays
   attr_accessor :start_at_date, :invitee_ids
   
-  before_validation(:on => :create) do
-    :set_dates
-  end
-  
   before_create :set_uid
+  before_validation :set_dates, :on => :create
+  validate :validate_start_date
   after_save :run_after_save
   
   scope :all_events_for_users, lambda { |user_ids|
@@ -58,14 +56,20 @@ class Event < ActiveRecord::Base
     self.uid = "calendar@#{Digest::SHA1.hexdigest((Time.now.to_f + rand).to_s)}" unless uid.present?
   end
   
-  def validate
+  def validate_start_date
     if self.start_at > self.end_at
       errors.add(:start_at, 'must be earlier than end date')
     end
   end
   
-  before_validation(:on => :create) do
+  def set_variables
     self.created_by = User.curr_user.id
+    # if start_hour && start_min
+    #   self.start_at = Time.parse("#{start_hour}:#{start_min}")
+    # end
+    if @duration
+      self.end_at = start_at + @duration.to_i.hours
+    end
   end
   
   def run_after_save
@@ -154,15 +158,6 @@ class Event < ActiveRecord::Base
   attr_writer :invitees
   def invitees
     @invitees || event_invitees.map{|inv| inv.user_email}.join(', ')
-  end
-  
-  def set_dates
-    # if start_hour && start_min
-    #   self.start_at = Time.parse("#{start_hour}:#{start_min}")
-    # end
-    if @duration
-      self.end_at = start_at + @duration.to_i.hours
-    end
   end
   
   def recurring?

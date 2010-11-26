@@ -24,12 +24,15 @@ class Asset < ActiveRecord::Base
   attr_protected :data_file_name, :data_content_type, :data_file_size, :orig_name
   before_post_process :image?
 
-  def before_create
+  before_create :set_creator_updator
+  before_update :set_updator
+  
+  def set_creator_updator
     self.created_by = User.curr_user.id
-    self.updated_by = User.curr_user.id
+    set_updator
   end
 
-  def before_update
+  def set_updator
     self.updated_by = User.curr_user.id
   end
   
