@@ -112,7 +112,7 @@ Bs::Application.routes.draw do
     
   end
   
-  match "live_validations/:action" => "live_validations"
+  match "live_validations/:action", :controller => 'live_validations'
   root :to => 'users#me'
   
 end
