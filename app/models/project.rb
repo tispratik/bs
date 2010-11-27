@@ -66,7 +66,8 @@ class Project < ActiveRecord::Base
   
   def make_project_owner
     #Make owner of project when created
-    self.roles.create(:user => User.curr_user, :name => 'O')
+    self.roles.create(:user => User.curr_user, :name => "O")
+    #connection.execute("Insert into project_roles(project_id, user_id, name) values(#{self.id}, #{User.curr_user.id}, 'O')")
   end
   
   def calendar

@@ -42,6 +42,7 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     acts_as_tree (0.1.1)
+    archive-tar-minitar (0.5.2)
     arel (2.0.4)
     authlogic (2.1.6)
       activesupport
@@ -58,6 +59,7 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
+    columnize (0.3.2)
     daemons (1.1.0)
     delayed_job (2.1.1)
       activesupport (~> 3.0)
@@ -83,6 +85,8 @@ GEM
     i18n (0.4.2)
     jintastic (1.1.0)
       formtastic
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
     machinist (1.0.6)
     mail (2.2.10)
       activesupport (>= 2.3.6)
@@ -128,6 +132,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rdiscount (1.6.5)
     recurrence (1.0.1)
       activesupport
     ri_cal (0.8.7)
@@ -140,6 +145,16 @@ GEM
     rspec-expectations (2.1.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.1.0)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     state_machine (0.9.4)
     thin (1.2.7)
       daemons (>= 1.0.9)
@@ -184,9 +199,11 @@ DEPENDENCIES
   populator
   rails (= 3.0.3)
   rails3-generators
+  rdiscount
   recurrence
   ri_cal
   rspec
+  ruby-debug19
   thin
   thinking-sphinx
   ts-delayed-delta

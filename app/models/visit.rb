@@ -1,4 +1,4 @@
-require 'geoip'
+#require 'geoip'
 class Visit < ActiveRecord::Base
     
     def self.createVisitLog(username, request)

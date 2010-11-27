@@ -86,7 +86,7 @@ Bs::Application.routes.draw do
       end
     end
     
-    resources :project_roles
+    resources :project_roles, :as => :roles
 
     resources :timesheets do
       collection do
