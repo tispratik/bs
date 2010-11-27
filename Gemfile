@@ -45,3 +45,4 @@ group :development do
   gem "haml-rails"
   gem 'formtastic'
 end
+
