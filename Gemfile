@@ -1,6 +1,8 @@
 source 'http://rubygems.org', 'http://gemcutter.org'
 
 gem 'rails', '3.0.3'
+# gem "searchlogic", :git => "git://github.com/binarylogic/searchlogic", :require => 'searchlogic'
+gem "meta_search", :git => "git://github.com/ernie/meta_search.git", :branch => 'arel-2.0'
 gem 'mysql'
 gem 'authlogic'
 gem 'haml'
@@ -14,26 +16,17 @@ gem 'recurrence'
 gem 'email_veracity'
 gem 'url_store'
 gem 'thinking-sphinx'
-# gem "searchlogic", :git => "git://github.com/binarylogic/searchlogic", :require => 'searchlogic'
-gem "meta_search"
+
 gem 'jintastic'
 gem 'delayed_job'
 gem 'ts-delayed-delta'
 gem 'bluepill'
 gem 'daemons'
 gem 'paperclip'
-# gem 'live_validations' --> Not found in Rails3
-# gem 'name_nanny' --> Not found in Rails3
-gem "rdiscount"
+gem 'rdiscount'
 # gem 'riddle'
   
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'thin'
-
-# Deploy with Capistrano
-gem 'capistrano'
 
 group :development, :test do
   gem 'rspec'
