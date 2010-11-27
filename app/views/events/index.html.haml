@@ -50,7 +50,7 @@
     $('#new_event').labelsWithinFields()
   })
 
-- content_for :sidebar do
+= content_for :sidebar do
   - if !@archieved
     %h1 Add an event
 
@@ -58,7 +58,7 @@
       - if (@calendarable.is_a?(Project) && @calendarable.roles.first(:conditions => {:user_id => current_user.id})) || (@calendarable.is_a?(User) && @calendarable == current_user)
         = render :partial => "events/add_form", :locals => {:event => @calendarable.calendar.events.build(:start_at => Time.current)}
       - if @calendarable.is_a?(User)
-        - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
+        = form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
           %h2 Filter by projects
           %fieldset
             %p
@@ -88,7 +88,7 @@
         = polymorphic_url([@calendarable, :events], :format => :ics, :hash => @calendarable.calendar.private_url_hash)
       %br
       - if @calendarable.calendars.count > 1
-        - form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
+        = form_tag [@calendarable, :events], :method =>:get, :class => "filter_calendars_form" do
           %fieldset
             %p
               %label
