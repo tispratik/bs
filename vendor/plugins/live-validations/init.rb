@@ -1,7 +1,7 @@
 require 'live_validations'
 
 # Dynamic adapter loading.
-ActiveSupport::Dependencies.load_paths.unshift(File.join(File.dirname(__FILE__), 'lib'))
+#ActiveSupport::Dependencies.load_paths.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
 # Hook into ActiveRecord.
 ActiveRecord::Base.class_eval { include LiveValidations::ActiveRecordHooks }
