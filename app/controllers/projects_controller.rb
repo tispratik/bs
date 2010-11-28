@@ -17,8 +17,8 @@ class ProjectsController < ApplicationController
     @cusage = 0#((Consumption.get(@project.id ,"BS_CONSP_DS").to_f() / 1024) / 1024)
     cpercent = 0#(@cusage/20)*100
     npercent = 0#100 - cpercent
-    @comp = "<span id=\"complete\" style=\"width:" + cpercent.to_s() + "%\"></span>"
-    @notcomp = "<span id=\"notcomplete\" style=\"width:" + npercent.to_s() + "%\"> </span>"
+    #@comp = "<span id=\"complete\" style=\"width:" + cpercent.to_s() + "%\"></span>"
+    #@notcomp = "<span id=\"notcomplete\" style=\"width:" + npercent.to_s() + "%\"> </span>"
     @totalavail = 20
     @istimesheet = true
     if @project.timesheets == nil 

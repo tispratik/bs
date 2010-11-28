@@ -1,6 +1,7 @@
 # GoogleVisualization
 module PieChart
 
+
   class MotionChart
 
     attr_reader :collection, :collection_methods, :options, :size, :helpers, :procedure_hash, :name
