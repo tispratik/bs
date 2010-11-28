@@ -1,10 +1,10 @@
 - if logged_in?
-  - content_for :sidebar do
+  = content_for :sidebar do
     = render :partial => "projects/my", :locals => {:user => current_user}
 
 = render :partial => "events/upcoming", :locals => {:events => @user.events}
 
-- invites = @user.project_invitations.confirmed_is(false)
+- invites = @user.project_invitations.where(:confirmed => :false)
 
 - if logged_in? && invites.size > 0
   %h3 Incoming Project Invitations

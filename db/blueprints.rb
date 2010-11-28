@@ -52,5 +52,5 @@ Comment.blueprint do
 end
 
 ProjectLogo.blueprint do
-  image         {File.open("#{RAILS_ROOT}/public/images/rails.png")}
+  image         {File.open("#{Rails.root}/public/images/rails.png")}
 end

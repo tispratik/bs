@@ -6,7 +6,7 @@ Bs::Application.routes.draw do
   post '/sign_in' => 'user_sessions#create', :as => :user_session
   get '/sign_out' => 'user_sessions#destroy', :as => :destroy_user_session
 
-  resource :registration, :as => :users, :only => [:new, :create, :edit, :update, :destroy], :path_names => {:new => 'sign_up'} do
+  resource :registration, :only => [:new, :create, :edit, :update, :destroy], :as => :users, :path_names => {:new => 'sign_up'} do
     get :regions
     get :cities
     member do
@@ -15,6 +15,7 @@ Bs::Application.routes.draw do
   end
  
   resources :users do
+    resources :projects
     resources :calendars
     resources :events
     resources :comments do
@@ -22,7 +23,6 @@ Bs::Application.routes.draw do
         get :quote
       end
     end
-    resources :projects
   end
   
   resources :projects do

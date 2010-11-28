@@ -1,4 +1,4 @@
-- form_for @user_session, :url => user_session_path  do |f|
+= form_for @user_session, :url => user_session_path  do |f|
   .theloginbox
     %table
       %tr
@@ -43,5 +43,5 @@
 /         %td
 
 Don't have an account?
-= link_to "Sign Up", new_registration_path
+= link_to "Sign Up", new_users_path
 = render :partial => "layouts/old_browser"

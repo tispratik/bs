@@ -22,20 +22,20 @@
 %h1
   Edit Profile
   
-- semantic_form_for @user, :url => registration_path, :live_validations => true do |f|
+= semantic_form_for @user, :url => registration_path, :live_validations => true do |f|
 
-  - f.inputs :name => "Login Information" do
+  = f.inputs :name => "Login Information" do
     = f.input :username
     = f.input :login_email
     = f.input :password
     = f.input :password_confirmation
 
-  - f.inputs :name => "Account Information", :for => :usr do |uf|
+  = f.inputs :name => "Account Information", :for => :usr do |uf|
     = uf.input :first_name
     = uf.input :last_name
     = uf.input :one_line_bio
     
-  - f.inputs :name => "Contact Information", :for => :ucontact do |cf|
+  = f.inputs :name => "Contact Information", :for => :ucontact do |cf|
     = cf.input :country
     = cf.input :city
     = cf.input :state

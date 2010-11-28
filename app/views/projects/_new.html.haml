@@ -1,6 +1,6 @@
-- semantic_form_for @project do |f|
+= semantic_form_for @project do |f|
   = error_messages_for :project
-  - f.inputs do
+  = f.inputs do
     Project Name*
     = f.input :name, :label => false
     Description*
@@ -9,5 +9,5 @@
     %br
     Use SSL 
     = f.check_box :use_ssl
-  - f.buttons do
+  = f.buttons do
     = f.commit_button "Create Project"

@@ -33,7 +33,9 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink
-    
+  before_validation :run_before_validation, :on => :create
+  after_create :run_after_create
+  
   def owner
     p = ProjectRole.find_by_project_id_and_name(id, "O")
     return p.user
@@ -55,14 +57,14 @@ class Project < ActiveRecord::Base
     end
   end
   
-  def before_validation_on_create
+  def run_before_validation
     self.alias = 'PROJ' + id.to_s
     self.is_public = 0
     self.status = Decode::BS_PROJ_STATUS_AC
     self.permalink = Authlogic::Random.friendly_token
   end
   
-  def after_create
+  def run_after_create
     calendars.create(:name => "default")
     #Make owner of project when created
     roles.create(:user => User.curr_user)

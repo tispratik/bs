@@ -36,7 +36,7 @@
     $('#user_password').password_strength({'container': '#password_strength'})
 
     $('#user_username').blur(function() {
-      $.post("#{validate_registration_path}", {'user[username]': this.value}, function(data) {
+      $.post("#{validate_users_path}", {'user[username]': this.value}, function(data) {
         if (data.username) {
           add_message_to_field('#user_username', data.username, false);
         } else {
@@ -47,7 +47,7 @@
 
     $('#user_login_email').blur(function() {
       var self = this;
-      $.post("#{validate_registration_path}", {'user[login_email]': this.value}, function(data) {
+      $.post("#{validate_users_path}", {'user[login_email]': this.value}, function(data) {
         if (data["login_email"]) {
           add_message_to_field(self, data["login_email"], false);
         } else {
@@ -71,12 +71,12 @@
 %h1
   Registration
 
-- semantic_form_for @user, :url => registration_path, :html => {:class => 'validate'} do |f|
+= semantic_form_for @user, :url => { :controller => "registrations", :action => "create" }, :html => {:class => 'validate'} do |f|
   
-  - f.inputs do
+  = f.inputs do
     = f.input :username
     = f.input :login_email
-    - f.inputs :for => :usr do |uf|
+    = f.inputs :for => :usr do |uf|
       = uf.input :first_name
       = uf.input :last_name
       = uf.input :one_line_bio

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-  establish_connection "va_#{RAILS_ENV}"
+  establish_connection "va_#{Rails.env}"
   
   has_one :usr
   has_one :ucontact
@@ -20,8 +20,10 @@ class User < ActiveRecord::Base
   
   validates_presence_of :login_email, :username
   validates_associated :usr, :ucontact
-  validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? }
+  #validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? } => Name Nanny Plugin
 
+  after_create :run_after_create
+  
   def total_hours(pid)
     timesheetsvar = Timesheet.all(:conditions => { :project_id => pid, :user_id => id})
     totalhours = 0
@@ -56,7 +58,7 @@ class User < ActiveRecord::Base
     find_by_username(login) || find_by_login_email(login)
   end
   
-  def after_create
+  def run_after_create
     calendars.create(:name => "default")
     # set current user_id for pending project and event invitations.
     ProjectInvitation.update_all({:user_id => id}, {:user_email => login_email})
