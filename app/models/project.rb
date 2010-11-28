@@ -29,7 +29,7 @@ class Project < ActiveRecord::Base
   alias :roles :project_roles
   
   accepts_nested_attributes_for :assets
-  #accepts_nested_attributes_for :project_logo
+  accepts_nested_attributes_for :project_logo
   
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink
