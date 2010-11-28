@@ -1,4 +1,4 @@
-- content_for :sidebar do
+= content_for :sidebar do
   .right
     = link_to 'Edit', edit_project_path(@project)
   %h1 Project Details
@@ -14,7 +14,7 @@
       %b
         Archieved Project
   %br  
-  = link_to(@project.roles.size.to_s() + " Members", [@project, :project_roles])
+  = link_to(@project.roles.size.to_s() + " Members", [@project, :roles])
   %br
   %br
   = render :partial => "assets/diskusage"

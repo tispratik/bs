@@ -14,9 +14,9 @@ class ProjectsController < ApplicationController
   
   def show
     @alerts = @project.alerts.all(:limit => 10)
-    @cusage = ((Consumption.get(@project.id ,"BS_CONSP_DS").to_f() / 1024) / 1024)
-    cpercent = (@cusage/20)*100
-    npercent = 100 - cpercent
+    @cusage = 0#((Consumption.get(@project.id ,"BS_CONSP_DS").to_f() / 1024) / 1024)
+    cpercent = 0#(@cusage/20)*100
+    npercent = 0#100 - cpercent
     @comp = "<span id=\"complete\" style=\"width:" + cpercent.to_s() + "%\"></span>"
     @notcomp = "<span id=\"notcomplete\" style=\"width:" + npercent.to_s() + "%\"> </span>"
     @totalavail = 20
