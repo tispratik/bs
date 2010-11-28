@@ -18,10 +18,10 @@ class User < ActiveRecord::Base
   alias :roles :project_roles
   accepts_nested_attributes_for :usr, :ucontact
   
-  validates_presence_of :login_email, :username
+  validates :login_email, :username, :presence => true
   validates_associated :usr, :ucontact
   #validates_wholesomeness_of :username, :if => lambda{|user| user.username.present? } => Name Nanny Plugin
-
+  validate :validate_login_email
   after_create :run_after_create
   
   def total_hours(pid)
@@ -37,10 +37,6 @@ class User < ActiveRecord::Base
   
   def is_archieved?
     return false
-  end
-  
-  def validate
-    validate_login_email
   end
   
   def validate_login_email

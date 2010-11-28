@@ -3,7 +3,7 @@ module Authentication
     controller.send :before_filter, :set_current_user_in_model
     controller.send :helper_method, :current_user, :logged_in?, :redirect_to_target_or_default, :cu, :cid
     controller.send :after_filter, :store_target_location
-    controller.filter_parameter_logging :password, :password_confirmation
+    #controller.filter_parameters :password, :password_confirmation
   end
   
   def current_user_session
@@ -48,8 +48,8 @@ module Authentication
   private
   
   def store_target_location
-    if (request.request_uri <=> session[:return_to]) == 0
-      session[:return_to] = request.request_uri
+    if (request.fullpath <=> session[:return_to]) == 0
+      session[:return_to] = request.fullpath
     end
   end
   

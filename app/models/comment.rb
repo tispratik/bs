@@ -7,7 +7,9 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :commentable, :creator, :message
   
-  def before_validation_on_create
+  before_validation :set_variables, :on => :create
+  
+  def set_variables
     self.source = "Web" unless source.present?
     self.created_by = User.curr_user.id
   end

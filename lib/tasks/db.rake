@@ -119,4 +119,38 @@ namespace :db do
       puts asset.save ? "Image: #{asset.data_file_name} added successfully" : "Problem saving image: #{asset.data_file_name}"
     end
   end
+  
+  desc "Destroy all data in development environment."
+  task :destroy_data => [:environment, :development_environment_only] do
+    puts "==  Data: Destroying all data ".ljust(79, "=")
+    sql = ActiveRecord::Base.connection()
+ 
+    sql.execute "SET autocommit=0"
+    sql.begin_db_transaction
+ 
+    if sql.adapter_name == "MySQL"
+      sql.execute("/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */")
+      sql.execute("/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */")
+    end
+ 
+    tables = sql.tables - ["schema_migrations"]
+ 
+    tables.each do |table|
+      puts "-- Deleting all for #{table}."
+      # So far, disabling and enabling keys was not needed.
+      #sql.execute("/*!40000 ALTER TABLE `#{table}` DISABLE KEYS */") if sql.adapter_name == "MySQL"
+      record_count = sql.delete("DELETE FROM `#{table}`")
+      #sql.execute("/*!40000 ALTER TABLE `#{table}` ENABLE KEYS */") if sql.adapter_name == "MySQL"
+      puts "   -> done: #{record_count} reconds"
+    end
+ 
+    if sql.adapter_name == "MySQL"
+      sql.execute("/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */")
+      sql.execute("/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */")
+    end
+ 
+    sql.commit_db_transaction
+ 
+    puts "==  Data: Destroying all data (done) ".ljust(79, "=") + "\n\n"
+  end
 end

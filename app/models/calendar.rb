@@ -6,13 +6,15 @@ class Calendar < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :event_series, :dependent => :destroy
   
+  validate :validate_url
+  before_create :run_before_create
   after_create :load_from_url, :if => "url.present?"
   
-  def before_create
+  def run_before_create
     self.private_url_hash = Digest::SHA1.hexdigest("#{name} #{Time.now} #{rand(10**10)}")
   end
   
-  def validate
+  def validate_url
     unless name == "default"
       errors.add(:url, "can't be blank") unless url.present?
     end

@@ -16,6 +16,7 @@ class Article < ActiveRecord::Base
   
   after_save :assign_tags
   before_save :set_article_delta_flag
+  before_create :run_before_create
   
   define_index do
     indexes title
@@ -35,7 +36,7 @@ class Article < ActiveRecord::Base
     title
   end
   
-  def before_create
+  def run_before_create
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id
   end

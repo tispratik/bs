@@ -8,10 +8,11 @@ class WikiPage < ActiveRecord::Base
   belongs_to :project
   belongs_to :creator, :class_name => 'User', :foreign_key => "created_by"
   belongs_to :updator, :class_name => 'User', :foreign_key => "updated_by"
-  named_scope :deleted, { :conditions => ['deleted_at != ?', nil] }
+  scope :deleted, where('deleted_at != ?', nil)
   
   validates_associated :project
   validates_presence_of :project, :title
+  before_create :run_before_create
   
   def to_s
     title
@@ -21,7 +22,7 @@ class WikiPage < ActiveRecord::Base
     versions.reverse
   end
   
-  def before_create
+  def run_before_create
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id
   end

@@ -1,0 +1,147 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    abstract (1.0.0)
+    actionmailer (3.0.0.rc2)
+      actionpack (= 3.0.0.rc2)
+      mail (~> 2.2.5)
+    actionpack (3.0.0.rc2)
+      activemodel (= 3.0.0.rc2)
+      activesupport (= 3.0.0.rc2)
+      builder (~> 2.1.2)
+      erubis (~> 2.6.6)
+      i18n (~> 0.4.1)
+      rack (~> 1.2.1)
+      rack-mount (~> 0.6.12)
+      rack-test (~> 0.5.4)
+      tzinfo (~> 0.3.23)
+    activemodel (3.0.0.rc2)
+      activesupport (= 3.0.0.rc2)
+      builder (~> 2.1.2)
+      i18n (~> 0.4.1)
+    activerecord (3.0.0.rc2)
+      activemodel (= 3.0.0.rc2)
+      activesupport (= 3.0.0.rc2)
+      arel (~> 1.0.0.rc1)
+      tzinfo (~> 0.3.23)
+    activeresource (3.0.0.rc2)
+      activemodel (= 3.0.0.rc2)
+      activesupport (= 3.0.0.rc2)
+    activesupport (3.0.0.rc2)
+    acts_as_tree (0.1.1)
+    after_commit (1.0.8)
+      activerecord (< 3.0.0)
+    arel (1.0.1)
+      activesupport (~> 3.0.0)
+    authlogic (2.1.6)
+      activesupport
+    builder (2.1.2)
+    daemons (1.1.0)
+    delayed_job (2.1.1)
+      activesupport (~> 3.0)
+      daemons
+    email_veracity (0.6.0)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    faker (0.3.1)
+    formtastic (1.2.1)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      i18n (>= 0.4.0)
+    haml (3.0.24)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
+    htmldiff (0.0.1)
+    i18n (0.4.2)
+    jintastic (1.1.0)
+      formtastic
+    machinist (1.0.6)
+    mail (2.2.10)
+      activesupport (>= 2.3.6)
+      i18n (~> 0.4.1)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    meta_search (0.9.8)
+      actionpack (~> 3.0.0)
+      activerecord (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      arel (~> 1.0.1)
+    mime-types (1.16)
+    mysql (2.8.1)
+    paperclip (2.3.6)
+      activerecord
+      activesupport
+    polyglot (0.3.1)
+    populator (0.2.5)
+    rack (1.2.1)
+    rack-mount (0.6.13)
+      rack (>= 1.0.0)
+    rack-test (0.5.6)
+      rack (>= 1.0)
+    rails (3.0.0.rc2)
+      actionmailer (= 3.0.0.rc2)
+      actionpack (= 3.0.0.rc2)
+      activerecord (= 3.0.0.rc2)
+      activeresource (= 3.0.0.rc2)
+      activesupport (= 3.0.0.rc2)
+      bundler (>= 1.0.0.rc.6)
+      railties (= 3.0.0.rc2)
+    railties (3.0.0.rc2)
+      actionpack (= 3.0.0.rc2)
+      activesupport (= 3.0.0.rc2)
+      rake (>= 0.8.3)
+      thor (~> 0.14.0)
+    rake (0.8.7)
+    random_data (1.5.2)
+    recurrence (1.0.1)
+      activesupport
+    ri_cal (0.8.7)
+    riddle (1.2.1)
+    thinking-sphinx (1.4.0)
+      activerecord (>= 1.15.6, < 3.0.0)
+      after_commit (>= 1.0.7)
+      riddle (>= 1.2.0)
+    thor (0.14.6)
+    treetop (1.4.9)
+      polyglot (>= 0.3.1)
+    ts-delayed-delta (1.1.1)
+      delayed_job (>= 1.8.4)
+      thinking-sphinx (>= 1.3.6)
+    tzinfo (0.3.23)
+    url_store (0.3.0)
+    vestal_versions (1.0.2)
+      activerecord (>= 2.1.0)
+    will_paginate (2.3.15)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  acts_as_tree
+  authlogic
+  delayed_job
+  email_veracity
+  faker
+  formtastic
+  haml
+  haml-rails
+  htmldiff
+  jintastic
+  machinist
+  meta_search
+  mysql
+  paperclip
+  populator
+  rails (= 3.0.0.rc2)
+  random_data
+  recurrence
+  ri_cal
+  riddle
+  thinking-sphinx
+  ts-delayed-delta
+  url_store
+  vestal_versions
+  will_paginate

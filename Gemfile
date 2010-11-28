@@ -1,0 +1,35 @@
+source 'http://rubygems.org'
+
+gem 'rails', '3.0.0.rc2'
+gem 'mysql'
+gem 'acts_as_tree'
+gem 'delayed_job'
+gem 'email_veracity'
+gem 'faker'
+#gem 'fastercsv'
+#gem 'geoip'
+gem 'haml'
+gem 'htmldiff'
+gem 'jintastic'
+gem 'machinist'
+gem 'populator'
+gem 'random_data'
+gem 'recurrence'
+gem 'ri_cal'
+gem 'riddle'
+gem 'meta_search'
+gem 'thinking-sphinx'
+gem 'ts-delayed-delta'
+gem 'url_store'
+gem 'vestal_versions'
+gem 'will_paginate'
+
+#Plugins
+gem 'authlogic'
+gem 'formtastic'
+gem 'paperclip'
+#gem 'custom-err-msg'
+
+group :development do
+  gem 'haml-rails'
+end

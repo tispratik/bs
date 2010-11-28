@@ -4,12 +4,12 @@ class Project < ActiveRecord::Base
   
   has_one :project_logo
   has_one :contact, :as => :contactable
+  has_one :calendar, :as => :calendarable
   has_many :project_roles, :dependent => :destroy
   has_many :users, :through => :project_roles
   has_many :tasks
   has_many :alerts
   has_many :timesheets
-  has_one :calendar, :as => :calendarable
   has_many :calendars, :as => :calendarable
   has_many :events, :through => :calendars
   has_many :wiki_pages
@@ -21,10 +21,10 @@ class Project < ActiveRecord::Base
   has_many :expenses
   has_many :expenselogs
   has_many :consumptions
+  has_many :project_invitations
   belongs_to :statusDecode, :class_name => 'Decode', :foreign_key => "status"
   belongs_to :currency, :class_name => 'Country', :foreign_key => "currency_code"
   
-  has_many :project_invitations
   alias :invitations :project_invitations
   alias :roles :project_roles
   
@@ -34,11 +34,10 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :permalink, :status
   validates_uniqueness_of :permalink
   before_validation :run_before_validation, :on => :create
-  after_create :run_after_create
+  after_create :create_calendar_for_project, :make_project_owner
   
   def owner
-    p = ProjectRole.find_by_project_id_and_name(id, "O")
-    return p.user
+    ProjectRole.find_by_project_id_and_name(id, "O").user
   end
   
 #  def currency_country
@@ -64,10 +63,14 @@ class Project < ActiveRecord::Base
     self.permalink = Authlogic::Random.friendly_token
   end
   
-  def run_after_create
+  def create_calendar_for_project
     calendars.create(:name => "default")
+  end
+  
+  def make_project_owner
     #Make owner of project when created
     roles.create(:user => User.curr_user)
+    #connection.execute("Insert into project_roles(project_id, user_id, name) values(#{self.id}, #{User.curr_user.id}, 'O')")
   end
   
   def calendar

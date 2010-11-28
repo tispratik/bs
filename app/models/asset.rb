@@ -22,14 +22,16 @@ class Asset < ActiveRecord::Base
   validates_attachment_content_type :data, :content_type => [/^(?!application\/octet-stream)/]
   
   attr_protected :data_file_name, :data_content_type, :data_file_size, :orig_name
+  before_create :run_before_create
+  before_update :run_before_update
   before_post_process :image?
 
-  def before_create
+  def run_before_create
     self.created_by = User.curr_user.id
     self.updated_by = User.curr_user.id
   end
 
-  def before_update
+  def run_before_update
     self.updated_by = User.curr_user.id
   end
   

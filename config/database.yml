@@ -1,0 +1,25 @@
+base: &base
+  adapter: mysql
+  username: root
+  password: pratik
+  timeout: 5000
+  collation: utf8_general_ci
+  encoding: utf8
+  pool: 5
+  host: localhost
+
+development:
+  database: bs_development
+  <<: *base
+
+va_development:
+  database: va_development
+  <<: *base
+    
+op_development:
+  database: op_development
+  <<: *base
+        
+ref_area:
+  database: ref_area_development
+  <<: *base

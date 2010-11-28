@@ -1,5 +1,5 @@
 - if @project && !@project.new_record?
   = image_tag("rails.png")#@project.project_logo.image.url(:medium))
 %br
-.home{:class => (request.request_uri == root_path || (current_user && request.request_uri == polymorphic_path(current_user))) ? "current" : nil}
+.home{:class => (request.fullpath == root_path || (current_user && request.fullpath == polymorphic_path(current_user))) ? "current" : nil}
   = link_to "Homepage", root_path
