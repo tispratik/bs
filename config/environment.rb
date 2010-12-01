@@ -10,26 +10,6 @@ Rails::Initializer.run do |config|
   
   config.time_zone = 'UTC'
   
-  config.gem 'haml'
-  config.gem 'acts_as_tree'
-  config.gem 'will_paginate'
-  config.gem 'vestal_versions'
-  config.gem 'htmldiff'
-  config.gem 'ri_cal'
-  config.gem 'recurrence'
-  config.gem 'geoip'
-  config.gem 'email_veracity'
-  config.gem 'url_store'
-  config.gem 'thinking-sphinx', :lib => 'thinking_sphinx'
-  config.gem 'searchlogic'
-  config.gem 'jintastic'
-  config.gem 'delayed_job'
-  config.gem 'ts-delayed-delta', :lib => false
-  config.gem 'fastercsv'
-  config.gem 'blankslate'
-  #config.gem 'bluepill'
-  config.gem 'daemons'
-  #config.gem 'redcloth'
 end
 
 Delayed::Worker.backend = :active_record

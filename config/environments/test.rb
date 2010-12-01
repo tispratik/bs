@@ -5,6 +5,3 @@ config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 config.action_controller.allow_forgery_protection    = false
 config.action_mailer.delivery_method = :test
-
-config.gem 'capybara'
-config.gem 'shoulda'
