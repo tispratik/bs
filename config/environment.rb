@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   
-  config.active_record.colorize_logging = false
+  config.active_record.colorize_logging = true
   config.active_record.timestamped_migrations = false
   config.active_record.observers = :article_observer, :comment_observer, :asset_observer, :task_observer, :wiki_page_observer
   
