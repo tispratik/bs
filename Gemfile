@@ -21,6 +21,7 @@ gem 'ts-delayed-delta', '1.0.4'
 gem 'fastercsv', '1.5.3'
 gem 'daemons'
 gem 'riddle', '1.0.10'
+gem 'thin'
 # gem 'redcloth'
 
 # Bluepill gems
