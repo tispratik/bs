@@ -18,6 +18,7 @@ GEM
     delayed_job (2.0.3)
       daemons
     email_veracity (0.5.0)
+    eventmachine (0.12.10)
     faker (0.3.1)
     fastercsv (1.5.3)
     formtastic (1.1.0)
@@ -49,6 +50,10 @@ GEM
     riddle (1.0.10)
     searchlogic (2.4.12)
       activerecord (>= 2.0.0)
+    thin (1.2.7)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thinking-sphinx (1.3.16)
       activerecord (>= 1.15.6)
       after_commit (>= 1.0.6)
@@ -86,6 +91,7 @@ DEPENDENCIES
   ri_cal (= 0.8.5)
   riddle (= 1.0.10)
   searchlogic (= 2.4.12)
+  thin
   thinking-sphinx (= 1.3.16)
   ts-delayed-delta (= 1.0.4)
   url_store (= 0.3.0)
