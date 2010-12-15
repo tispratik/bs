@@ -37,7 +37,6 @@ group :development do
   # gem 'rails-footnotes'
 end
 
-
 # acts_as_tree-0.1.1
 # after_commit-1.0.6
 # delayed_job-2.0.3
