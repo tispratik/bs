@@ -85,7 +85,6 @@ DEPENDENCIES
   machinist (= 1.0.6)
   mysql
   populator (= 0.2.5)
-  rack (= 1.0.1)
   rails (= 2.3.5)
   random_data (= 1.5.1)
   recurrence (= 0.1.1)
