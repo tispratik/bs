@@ -1,0 +1,35 @@
+development: &development
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  database: bs_development
+  username: root
+  password:
+
+ref_area: &ref_area
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  database: ref_area
+  username: root
+  password:
+
+op_development: &op
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  database: op_development
+  username: root
+  password:
+
+va_development: &va
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  database: va_development
+  username: root
+  password:
